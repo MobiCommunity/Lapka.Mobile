@@ -11,9 +11,9 @@ class BasicText extends StatelessWidget {
   const BasicText.heading1(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading1;
   const BasicText.heading1Light(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading1Light;
   const BasicText.heading1Bold(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading1Bold;
-  const BasicText.heading2(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading2;
-  const BasicText.heading2Bold(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading2Bold;
-  const BasicText.heading2Light(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading2Light;
+  const BasicText.heading2(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading3;
+  const BasicText.heading2Bold(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading3Bold;
+  const BasicText.heading2Light(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading3Light;
   const BasicText.subtitleBig(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = subtitleBig;
   const BasicText.subtitleBigBold(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = subtitleBigBold;
   const BasicText.subtitleBigLight(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = subtitleBigLight;

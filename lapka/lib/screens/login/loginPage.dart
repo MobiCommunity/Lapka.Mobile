@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basicButton.dart';
 import 'package:lapka/components/basic/basicFormField.dart';
 import 'package:lapka/components/basic/basicText.dart';
+import 'package:lapka/components/basicDialog.dart';
 import 'package:lapka/settings/colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -17,7 +18,38 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
 
   _login() {
-    throw UnimplementedError();
+    BasicDialog.showDialog(context,
+      Container(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical : 24.0),
+          child: Stack(
+            children: [
+              
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  BasicText.heading2Bold('Uppps'),
+                  SizedBox(height: 6),
+                  Container(height: 90,width: 90,color: Colors.grey,),
+                  SizedBox(height: 24,),
+                  BasicText.subtitle('Zaloguj się lub załóż konto'),
+                  SizedBox(height:4),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: BasicText.body14Light(
+                      'Aby skorzystać z tej możliwości musisz się zalogować! Jeśli nie posiadasz jeszcze konta załóż je już teraz. Rejestracja potrwa jedynie kilka chwil. :)',
+                      center: true,
+                      ),
+                  )
+                ],
+              ),
+              Container(height: 100, width:150, color: Colors.red,),
+            ],
+          ),
+        ),
+        color: BasicColors.white
+      )
+    );
   }
 
   _moveToRegister() {
@@ -131,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(width: 25,),
                       InkWell(
                         onTap: _loginFacebook,
-                        child: SvgPicture.asset('lib/assets/facebook-logo.svg',color: BasicColors.white, height: 36)),
+                        child: SvgPicture.asset('lib/assets/facebook-logo.svg', height: 36)),
                     ],
                   ),
                 ],

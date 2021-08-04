@@ -16,16 +16,31 @@ const TextStyle heading1Bold = TextStyle(
 );
 
 const TextStyle heading2 = TextStyle(
-  fontSize: 22,
+  fontSize: 24,
   fontWeight: FontWeight.w500,
 );
 
 const TextStyle heading2Light = TextStyle(
-  fontSize: 22,
+  fontSize: 24,
   fontWeight: FontWeight.w400,
 );
 
 const TextStyle heading2Bold = TextStyle(
+  fontSize: 24,
+  fontWeight: FontWeight.w700,
+);
+
+const TextStyle heading3 = TextStyle(
+  fontSize: 22,
+  fontWeight: FontWeight.w500,
+);
+
+const TextStyle heading3Light = TextStyle(
+  fontSize: 22,
+  fontWeight: FontWeight.w400,
+);
+
+const TextStyle heading3Bold = TextStyle(
   fontSize: 22,
   fontWeight: FontWeight.w700,
 );
