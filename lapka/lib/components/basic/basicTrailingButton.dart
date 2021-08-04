@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/settings/colors.dart';
-import 'package:lapka/settings/texts.dart';
 
 class BasicTrailingButton extends StatelessWidget {
   final String text;
@@ -32,7 +32,7 @@ class BasicTrailingButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                text.isNotEmpty ? BasicTexts.buttonWhite(text) : Container(),
+                text.isNotEmpty ? BasicText.subtitle(text, color: BasicColors.white,) : Container(),
                 text.isNotEmpty ? SizedBox(width: 8,): Container(),
                 Icon(icon, color: iconColor, size: 18,)
               ],

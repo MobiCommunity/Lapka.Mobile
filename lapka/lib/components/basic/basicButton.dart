@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/settings/colors.dart';
-import 'package:lapka/settings/texts.dart';
 
 class BasicButton extends StatelessWidget {
   final String? text;
-  final color;
+  final Color color;
+  final Color? textColor;
   final Function() onPressed;
 
   const BasicButton({ 
     Key? key,
     this.text,
     this.color = BasicColors.lightGreen,
+    this.textColor,
     required this.onPressed 
     }) : super(key: key);
 
@@ -28,7 +30,7 @@ class BasicButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BasicTexts.buttonWhite(text??""),
+                BasicText.subtitle(text!,color: BasicColors.white)
               ],
             )
           ),
