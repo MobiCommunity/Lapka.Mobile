@@ -30,6 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
   flutter_svg: ^0.22.0
+  provider: ^5.0.0
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:
@@ -47,7 +49,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - lib/assets/loginCat.svg
+    - lib/assets/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

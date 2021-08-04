@@ -33,7 +33,7 @@ class BasicFormField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: placeholder,
         contentPadding:
-        const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         filled: true,
         fillColor: Colors.transparent,
         prefixIcon: leading,
@@ -44,7 +44,7 @@ class BasicFormField extends StatelessWidget {
         )
             : null,
         border: circularBorder.copyWith(
-          borderSide: BorderSide(color: BasicColors.white.withOpacity(0.8)),
+          borderSide: BorderSide(color: BasicColors.white),
         ),
         errorBorder: circularBorder.copyWith(
           borderSide: BorderSide(color: Colors.red),
@@ -53,7 +53,7 @@ class BasicFormField extends StatelessWidget {
           borderSide: BorderSide(color: BasicColors.white),
         ),
         enabledBorder: circularBorder.copyWith(
-          borderSide: BorderSide(color: BasicColors.white.withOpacity(0.5)),
+          borderSide: BorderSide(color: BasicColors.white),
         ),
       ),
     );

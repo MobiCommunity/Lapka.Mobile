@@ -30,7 +30,7 @@ class BasicButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BasicText.subtitle(text!,color: BasicColors.white)
+                BasicText.subtitleBold(text!,color: textColor ?? BasicColors.white)
               ],
             )
           ),
