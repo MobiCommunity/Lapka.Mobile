@@ -6,6 +6,8 @@ import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/components/basicDialog.dart';
 import 'package:lapka/settings/colors.dart';
 
+import '../../main.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -53,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _moveToRegister() {
-    throw UnimplementedError();
+    Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHomePage()),);
   }
 
   _forgotPassword() {
