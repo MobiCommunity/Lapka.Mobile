@@ -30,6 +30,7 @@ class BasicFormField extends StatelessWidget {
       controller: controller,
       style: subtitleLight,
       obscureText: password,
+      cursorColor: BasicColors.white,
       decoration: InputDecoration(
         hintText: placeholder,
         contentPadding:
