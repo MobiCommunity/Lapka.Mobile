@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:flutter_svg/svg.dart';
 
 class BasicButton extends StatelessWidget {
   final String? text;
@@ -38,3 +39,5 @@ class BasicButton extends StatelessWidget {
     );
   }
 }
+
+
