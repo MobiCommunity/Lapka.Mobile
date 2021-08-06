@@ -63,7 +63,8 @@ class _LoginPageState extends State<LoginPage> {
             color: BasicColors.white));
   }
 
-  _moveToRegister() {
+  _moveToRegister() async{
+
     InternetConectivity.check(context);
   }
 
