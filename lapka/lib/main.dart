@@ -65,12 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
         key: _scaffoldKey,
         appBar: CustomAppBar(
           showLocalization: true,
-          localization: context.watch<LocationProvider>().position != null ? context.watch<LocationProvider>().position!.latitude.toString() : 'brak',
+          localization: context.watch<LocationProvider>().city ?? 'brak',
         ),
         body: LoginPage());
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:lapka/utils/location.dart';
 
 enum LocationStatus{NoPermision, Determined, New}
 
@@ -34,11 +36,12 @@ class LocationProvider with ChangeNotifier{
       return;
     }
 
-    Position tmpLocation = await Geolocator.getCurrentPosition(
+    position = await Geolocator.getCurrentPosition(
         forceAndroidLocationManager: true);
+    Placemark? placemark = await LocationHelper.getAddressFromLatLng(position!);
+    city = placemark!.locality;
 
     status= LocationStatus.Determined;
-    position = tmpLocation;
     notifyListeners();
   }
 }
