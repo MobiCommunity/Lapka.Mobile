@@ -6,6 +6,7 @@ import 'package:lapka/components/dialogs/basicDialog.dart';
 import 'package:lapka/components/dialogs/noInternetDialog.dart';
 import 'package:lapka/providers/locationProvider.dart';
 import 'package:lapka/providers/loginProvider.dart';
+import 'package:lapka/screens/adoptPet/adoptPetListPage.dart';
 import 'package:lapka/screens/login/loginPage.dart';
 import 'package:provider/provider.dart';
 
@@ -65,13 +66,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: _scaffoldKey,
-        appBar: CustomAppBar(
-          showLocalization: true,
-          localization: context.watch<LocationProvider>().city ?? 'brak',
-        ),
-        body: LoginPage());
+    // return Scaffold(
+    //     key: _scaffoldKey,
+    //     appBar: CustomAppBar(
+    //       showLocalization: true,
+    //       localization: context.watch<LocationProvider>().city ?? 'brak',
+    //     ),
+    //     body: LoginPage());
+    return AdoptPetListPage();
   }
 
   @override
