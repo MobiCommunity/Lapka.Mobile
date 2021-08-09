@@ -3,13 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basicButton.dart';
 import 'package:lapka/components/basic/basicFormField.dart';
 import 'package:lapka/components/basic/basicText.dart';
-import 'package:lapka/components/basicDialog.dart';
+import 'package:lapka/components/dialogs/basicDialog.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/utils/checkConectivity.dart';
-
-import '../../main.dart';
-
-import 'loginDialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

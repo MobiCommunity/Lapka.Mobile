@@ -1,6 +1,6 @@
-import 'package:lapka/models/location.dart';
+import 'package:lapka/models/latLng.dart';
 
 class ShelterAdreess{
-  Location? location;
+  LatLngModel? location;
   String? street, zipCode, City;
 }

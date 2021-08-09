@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basicText.dart';
+import 'package:lapka/models/latLng.dart';
+import 'package:lapka/models/pet.dart';
+import 'package:lapka/providers/locationProvider.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/utils/locationHelper.dart';
+import 'package:provider/provider.dart';
 
 class PetCard extends StatelessWidget { 
+  final Pet pet;
+  const PetCard({Key? key, required this.pet}) : super(key: key);
   
-  const PetCard({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,11 +56,18 @@ class PetCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BasicText.heading1Bold('Moniak'),
-                    Icon(
-                      Icons.male,
+                    BasicText.heading1Bold(pet.name?? 'Nieznane'),
+                    pet.sex == Sex.famale ? SvgPicture.asset(
+                      'lib/assets/famale-symbol.svg',
                       color: BasicColors.darkGreen,
-                      size: 30,
+                      width: 30,
+                      height: 30,
+                    ): 
+                    SvgPicture.asset(
+                      'lib/assets/male-symbol.svg',
+                      color: BasicColors.darkGreen,
+                      width: 30,
+                      height: 30,
                     )
                   ],
                 ),
@@ -63,7 +76,7 @@ class PetCard extends StatelessWidget {
                 ),
                 Align(
                     alignment: Alignment.centerLeft,
-                    child: BasicText.subtitleLight('Kundelek')),
+                    child: BasicText.subtitleLight(pet.race ?? "Nieznane")),
                 SizedBox(height: 14),
                 Row(
                   children: [
@@ -82,7 +95,9 @@ class PetCard extends StatelessWidget {
                     SizedBox(
                       width: 8,
                     ),
-                    BasicText.body14Light('Schronisko Pudelek, Rzeszów (2.5km)')
+                    BasicText.body14Light('Schronisko Pudelek, Rzeszów (' +
+                    LocationHelper.getDistance(LatLngModel.fromPosition(context.watch<LocationProvider>().position!),LatLngModel(lat: 20, lng: 20) ).toStringAsFixed(1)
+                    + 'km)'),
                   ],
                 ),
                 SizedBox(height: 22),

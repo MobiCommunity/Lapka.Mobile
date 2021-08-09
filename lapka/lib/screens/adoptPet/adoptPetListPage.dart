@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/screens/petCard.dart';
+import 'package:lapka/models/pet.dart';
+import 'package:lapka/screens/adoptPet/adoptPetDetails.dart';
 import 'package:lapka/settings/colors.dart';
 
 class AdoptPetListPage extends StatelessWidget {
@@ -25,22 +27,23 @@ class AdoptPetListPage extends StatelessWidget {
                   print(1);
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PetCard())
+                  MaterialPageRoute(builder: (context) => AdoptPetDetails())
                 );
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(bottom : 16.0),
-                  child: PetCard(),
+                  child: 
+                  PetCard(pet: Pet()),
                 ),
               ),Padding(
                 padding: const EdgeInsets.only(bottom : 16.0),
-                child: PetCard(),
+                child: PetCard(pet: Pet()),
               ),Padding(
                 padding: const EdgeInsets.only(bottom : 16.0),
-                child: PetCard(),
+                child: PetCard(pet: Pet()),
               ),Padding(
                 padding: const EdgeInsets.only(bottom : 16.0),
-                child: PetCard(),
+                child: PetCard(pet: Pet()),
               ),
               
             ],
