@@ -10,6 +10,7 @@ import 'package:lapka/screens/adoptPet/adoptPetListPage.dart';
 import 'package:lapka/screens/login/loginPage.dart';
 import 'package:provider/provider.dart';
 
+
 void main() {
   runApp(MyApp());
 }
