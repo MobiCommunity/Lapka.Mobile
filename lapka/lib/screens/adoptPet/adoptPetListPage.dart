@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
+import 'package:lapka/components/basic/shelterList.dart';
 import 'package:lapka/components/screens/petCard.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/screens/adoptPet/adoptPetDetails.dart';
@@ -27,7 +28,7 @@ class AdoptPetListPage extends StatelessWidget {
                   print(1);
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AdoptPetDetails())
+                  MaterialPageRoute(builder: (context) => ShelterList())
                 );
                 },
                 child: Padding(

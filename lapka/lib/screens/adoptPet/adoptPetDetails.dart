@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lapka/components/appBar/customAppBar.dart';
+import 'package:lapka/components/appBar/imgDownloadAppBar.dart';
 import 'package:lapka/components/basic/adoptButton.dart';
 import 'package:lapka/components/basic/basicButton.dart';
 import 'package:lapka/components/basic/basicText.dart';
@@ -15,7 +15,7 @@ class AdoptPetDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: CustomAppBar(
+      appBar: ImgDownloadAppBar(
         transparent: true,
         title: '',
         showBack: true,
@@ -104,8 +104,9 @@ class AdoptPetDetails extends StatelessWidget {
             ),
             SizedBox(width: 1, height: 36),
             Padding(
-              padding: const EdgeInsets.only(left:20, right: 45,),
+              padding: const EdgeInsets.only(left:20, right: 20,),
               child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20,),
@@ -118,6 +119,7 @@ class AdoptPetDetails extends StatelessWidget {
                           ),
                           SizedBox(height: 1, width: 8,),
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               BasicText.body14Light('Psiaki Adopciaki z Schroniska Pudelek'),
                               BasicText.body14Bold('Rzeszów ul. Krakowska 12 (2.5 km)',),
