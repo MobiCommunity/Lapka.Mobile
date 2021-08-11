@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
-import 'package:lapka/components/basic/shelterList.dart';
+import 'package:lapka/components/basic/infOwner.dart';
+import 'package:lapka/components/dialogs/basicDialog.dart';
 import 'package:lapka/components/screens/petCard.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/screens/adoptPet/adoptPetDetails.dart';
@@ -26,10 +27,7 @@ class AdoptPetListPage extends StatelessWidget {
               InkWell(
                 onTap: () {
                   print(1);
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ShelterList())
-                );
+                  BasicDialog.showDialog(context, InfOwner(petImg: Container(width: 30, height: 30, color: BasicColors.darkGrey), number: 512643432,));
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(bottom : 16.0),

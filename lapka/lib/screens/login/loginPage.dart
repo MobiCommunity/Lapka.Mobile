@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(top: 55),
                 child: Container(
                   height: 170,
-                  child: SvgPicture.asset('lib/assets/loginCat.svg',
+                  child: SvgPicture.asset('lib/assets/login-cat.svg',
                       color: Colors.white.withOpacity(0.7),
                       fit: BoxFit.fitHeight,
                       ),
