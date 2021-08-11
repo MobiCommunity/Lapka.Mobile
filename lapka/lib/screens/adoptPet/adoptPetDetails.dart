@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/adoptButton.dart';
-import 'package:lapka/components/basic/basicButton.dart';
 import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/components/basic/imageButton.dart';
 import 'package:lapka/components/basic/petDetailsComp.dart';
+import 'package:lapka/components/imageCarusel.dart';
 import 'package:lapka/settings/colors.dart';
 
 class AdoptPetDetails extends StatelessWidget {
@@ -31,7 +31,13 @@ class AdoptPetDetails extends StatelessWidget {
                       children: [
                         Container(
                           height: 300,
-                          color: Colors.red,
+                          child: ImageCarusel(
+                            images: [
+                              Container(color: Colors.grey,),
+                              Container(color: Colors.blueGrey,),
+                              Container(color: Colors.grey,),
+                            ],
+                          ),
                         ),
                         Container(
                           padding: EdgeInsets.only(top:197, right: 20),
