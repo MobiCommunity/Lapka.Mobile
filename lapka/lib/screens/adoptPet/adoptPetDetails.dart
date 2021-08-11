@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lapka/components/appBar/imgDownloadAppBar.dart';
-import 'package:lapka/components/basic/adoptButton.dart';
-import 'package:lapka/components/basic/basicButton.dart';
+import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/components/basic/imageButton.dart';
-import 'package:lapka/components/basic/petDetailsComp.dart';
+import 'package:lapka/components/basic/basicPetInfoRow.dart';
 import 'package:lapka/settings/colors.dart';
 
 class AdoptPetDetails extends StatelessWidget {
@@ -15,10 +13,12 @@ class AdoptPetDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: ImgDownloadAppBar(
+      appBar: CustomAppBar(
         transparent: true,
         title: '',
         showBack: true,
+        customTrailling: true,
+        trailling: SvgPicture.asset('lib/assets/download-sign.svg'),
       ),
       body: Container(
         child: Column(
@@ -108,28 +108,25 @@ class AdoptPetDetails extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20,),
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(color: BasicColors.darkGrey, shape: BoxShape.circle),
-                            width: 40,
-                            height: 43,
-                          ),
-                          SizedBox(height: 1, width: 8,),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              BasicText.body14Light('Psiaki Adopciaki z Schroniska Pudelek'),
-                              BasicText.body14Bold('Rzeszów ul. Krakowska 12 (2.5 km)',),
-                            ],
-                          ),
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(color: BasicColors.darkGrey, shape: BoxShape.circle),
+                          width: 40,
+                          height: 43,
+                        ),
+                        SizedBox(height: 1, width: 8,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BasicText.body14Light('Psiaki Adopciaki z Schroniska Pudelek'),
+                            BasicText.body14Bold('Rzeszów ul. Krakowska 12 (2.5 km)',),
+                          ],
+                        ),
+                      ],
                     ),
                     SizedBox(height: 24, width: 1,),
-                    PetDetailsComp(
+                    BasicPetInfoRow(
                         age: DateTime(10-10-2010), petColor: 'Czarny', weight: 12.0, sterile: true),
                     SizedBox(height: 23, width: 1,),
                     BasicText.subtitleBigBold('Podstawowe informacje'),
@@ -138,10 +135,16 @@ class AdoptPetDetails extends StatelessWidget {
                     SizedBox(height: 14, width: 1,),
                     Row(
                       children: [
-                        ImageButton(onPressed: (){print ('asd');}, child: SvgPicture.asset('lib/assets/heartIcon.svg',color: BasicColors.white,)),
+                        ImageButton(onPressed: (){print('adsdasd');}, trailling: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                            child: SvgPicture.asset('lib/assets/heart-icon.svg',color: BasicColors.white)
+                        ),),
                         SizedBox(width: 20, height: 1,),
                         Expanded(
-                            child: AdoptButton(onPressed: (){print ('das');},)
+                            child: ImageButton(onPressed: (){print('adsdasd');}, trailling: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              child: SvgPicture.asset('lib/assets/paw-symbol.svg',color: BasicColors.white)
+                            ), text: 'Aasda'),
                         ),
                       ],
                     )

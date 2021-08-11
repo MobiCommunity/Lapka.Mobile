@@ -9,15 +9,14 @@ class ShelterComp extends StatelessWidget {
   final String lowerText;
   final Widget logoWidget;
 
-  ShelterComp({required this.shelterName, required this.logoWidget, required this.upperText, required this.lowerText});
+  ShelterComp({required this.shelterName, required this.logoWidget, required this.upperText, required this.lowerText,});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 92,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(14),color: BasicColors.white,),
       child: Padding(
-        padding: const EdgeInsets.only(top: 16.0, right: 16, left: 16, bottom: 12),
+        padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
             logoWidget,
@@ -30,7 +29,7 @@ class ShelterComp extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.asset('lib/assets/geoSign.svg'),
+                    SvgPicture.asset('lib/assets/geo-sign.svg'),
                     SizedBox(height: 1, width: 4,),
                     Column(
                       children: [

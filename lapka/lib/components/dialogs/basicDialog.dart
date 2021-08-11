@@ -9,6 +9,7 @@ class BasicDialog {
         context: context,
         builder: (BuildContext context) {
           return Dialog(
+            insetPadding: EdgeInsets.all(0),
             elevation: 0,
             backgroundColor: Colors.transparent,
             child: modal,

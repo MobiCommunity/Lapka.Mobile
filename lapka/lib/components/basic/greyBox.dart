@@ -5,18 +5,20 @@ import 'package:lapka/settings/colors.dart';
 
 class GreyBox extends StatelessWidget{
   final Widget child;
-  GreyBox({required this.child});
+  final double padding;
+  GreyBox({required this.child, this.padding=8});
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        //width: 70,
-        height: 49,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.all(color: BasicColors.lightGrey)
         ),
-        child: child,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: padding),
+          child: child,
+        ),
       ),
     );
   }
