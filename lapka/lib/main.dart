@@ -10,7 +10,6 @@ import 'package:lapka/screens/adoptPet/adoptPetListPage.dart';
 import 'package:lapka/screens/login/loginPage.dart';
 import 'package:provider/provider.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -51,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _getLocation();
   }
 
-  _internetListenerInit(){
+  _internetListenerInit() {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
@@ -61,8 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  _getLocation(){
+  _getLocation() {
     context.read<LocationProvider>().getLocation();
+    print('xd');
   }
 
   @override
@@ -74,7 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
     //       localization: context.watch<LocationProvider>().city ?? 'brak',
     //     ),
     //     body: LoginPage());
-    return AdoptPetListPage();
+    print('build');
+    return context.watch<LocationProvider>().status != LocationStatus.New
+        ? AdoptPetListPage()
+        : Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
   }
 
   @override

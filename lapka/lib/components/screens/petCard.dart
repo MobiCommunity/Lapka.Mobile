@@ -95,8 +95,8 @@ class PetCard extends StatelessWidget {
                     SizedBox(
                       width: 8,
                     ),
-                    BasicText.body14Light('Schronisko Pudelek, Rzeszów (' +
-                    LocationHelper.getDistance(LatLngModel.fromPosition(context.watch<LocationProvider>().position!),LatLngModel(lat: 20, lng: 20) ).toStringAsFixed(1)
+                    BasicText.body14Light('Schronisko Pudelek, Rzeszów (' 
+                    + (context.read<LocationProvider>().status != LocationStatus.Determined? '?': LocationHelper.getDistance(LatLngModel.fromPosition(context.watch<LocationProvider>().position!),LatLngModel(lat: 20, lng: 20) ).toStringAsFixed(1))
                     + 'km)'),
                   ],
                 ),

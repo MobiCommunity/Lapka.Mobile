@@ -40,67 +40,76 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      shadowColor: Colors.transparent,
-      backgroundColor: transparent ? Colors.transparent : BasicColors.white,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          showBack
-              ? InkWell(
-                  onTap: (){_back(context);},
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: transparent ? BasicColors.white : BasicColors.darkGrey,
-                  ))
-              : InkWell(
-                  onTap: (){
-                    _openDrawer(context);
-                  },
-                  child: SvgPicture.asset('lib/assets/menu-icon.svg', color: transparent ? BasicColors.white : BasicColors.darkGrey,)),
-          showLocalization
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    BasicText.body14(
-                      'Lokalizacja',
-                      color: BasicColors.lightGrey,
-                    ),
-                    Row(
+    return Stack(
+      children: [
+        // Container(decoration: BoxDecoration(
+        //     gradient: LinearGradient(
+        //       begin: Alignment.topCenter,
+        //       end: Alignment.bottomCenter,
+        //       colors: [Colors.white, Colors.white.withOpacity(0.0)])),),
+        AppBar(
+          automaticallyImplyLeading: false,
+          shadowColor: Colors.transparent,
+          backgroundColor: transparent ? Colors.transparent : BasicColors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              showBack
+                  ? InkWell(
+                      onTap: (){_back(context);},
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: transparent ? BasicColors.white : BasicColors.darkGrey,
+                      ))
+                  : InkWell(
+                      onTap: (){
+                        _openDrawer(context);
+                      },
+                      child: SvgPicture.asset('lib/assets/menu-icon.svg', color: BasicColors.darkGrey,)),
+              showLocalization
+                  ? Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.place,
-                          color: BasicColors.lightGreen,
+                        BasicText.body14(
+                          'Lokalizacja',
+                          color: BasicColors.lightGrey,
                         ),
-                        BasicText.body14Bold(localization),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.place,
+                              color: BasicColors.lightGreen,
+                            ),
+                            BasicText.body14Bold(localization),
+                          ],
+                        )
                       ],
                     )
-                  ],
-                )
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    BasicText.body14(
-                      title,
-                      color: BasicColors.lightGrey,
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        BasicText.body14(
+                          title,
+                          color: BasicColors.lightGrey,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-          customTrailling
-              ? trailling!
-              : InkWell(
-                  onTap: _openAccount,
-                  child: CircleAvatar(
-                    backgroundColor: BasicColors.lightGrey,
-                  ),
-                  radius: 20,
-                ),
-        ],
-      ),
+              customTrailling
+                  ? trailling!
+                  : InkWell(
+                      onTap: _openAccount,
+                      child: CircleAvatar(
+                        backgroundColor: BasicColors.lightGrey,
+                      ),
+                      radius: 20,
+                    ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

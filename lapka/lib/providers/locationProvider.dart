@@ -4,7 +4,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:lapka/models/latLng.dart';
 import 'package:lapka/utils/locationHelper.dart';
 
-enum LocationStatus{NoPermision, Determined, New}
+enum LocationStatus{NoPermision, Determined, New, NoLocation}
 
 class LocationProvider with ChangeNotifier{
   Position? position;
@@ -12,6 +12,7 @@ class LocationProvider with ChangeNotifier{
   LocationStatus status = LocationStatus.New;
   
   getLocation()async {
+    Geolocator geolocator = Geolocator();
     status = LocationStatus.New;
 
     bool serviceEnabled;
@@ -36,13 +37,18 @@ class LocationProvider with ChangeNotifier{
       status= LocationStatus.NoPermision;
       return;
     }
-
-    position = await Geolocator.getCurrentPosition(
-        forceAndroidLocationManager: true);
+    try{
+    position = await Geolocator.getCurrentPosition(forceAndroidLocationManager: true, timeLimit: Duration(seconds: 1));
+    }catch(e){
+      print(e);
+      status= LocationStatus.NoLocation;
+      notifyListeners();
+      return;
+    }
     Placemark? placemark = await LocationHelper.getAddressFromLatLng(position!);
     city = placemark!.locality;
-
     status= LocationStatus.Determined;
     notifyListeners();
+    return;
   }
 }

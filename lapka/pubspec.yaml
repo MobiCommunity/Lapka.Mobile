@@ -33,7 +33,7 @@ dependencies:
   provider: ^5.0.0
   http: ^0.13.3
   connectivity_plus: ^1.0.6
-  geolocator: ^7.4.0
+  geolocator: ^7.0.0
   geocoding: ^2.0.0
   jiffy: ^4.1.0
   carousel_slider: ^4.0.0
