@@ -1,14 +1,20 @@
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/settings/colors.dart';
 
 class ImageButton extends StatelessWidget{
   final Function() onPressed;
-  final Widget child;
+  //final bool customTrailling;
+  //final Widget img;
+  final Widget trailling;
+  final String text;
 
   const ImageButton({
     required this.onPressed,
-    required this.child,
+    //this.customTrailling = false,
+    required this.trailling,
+    //required this.img,
+    this.text = '',
   });
 
   @override
@@ -16,11 +22,19 @@ class ImageButton extends StatelessWidget{
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: 52,
-        height: 52,
         decoration: BoxDecoration(color: BasicColors.lightGreen, borderRadius: BorderRadius.circular(16),),
-        padding: const EdgeInsets.all(16),
-        child: child,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            text == ''?
+                Container():
+                BasicText.subtitle(text, color: BasicColors.white,),
+            text == ''?
+                Container():
+                SizedBox(width: 8,),
+            trailling
+          ],
+        ),
       ),
     );
   }

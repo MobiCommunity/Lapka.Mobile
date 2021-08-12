@@ -27,7 +27,7 @@ class LoginDialog extends StatelessWidget {
                   BasicText.heading2Bold('Uppps'),
                   SizedBox(height: 6),
                   SvgPicture.asset(
-                    'lib/assets/alertCat.svg',
+                    'lib/assets/alert-cat.svg',
                   ),
                   SizedBox(
                     height: 24,
