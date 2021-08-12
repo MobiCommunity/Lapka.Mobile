@@ -42,16 +42,16 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(decoration: BoxDecoration(
+        fade ?Container(decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               stops: [0.8,1],
-              colors: [Colors.white, Colors.white.withOpacity(0.0)])),),
+              colors: [Colors.white, Colors.white.withOpacity(0.0)])),): Container(),
         AppBar(
           automaticallyImplyLeading: false,
           shadowColor: Colors.transparent,
-          backgroundColor: fade ? Colors.transparent : BasicColors.white,
+          backgroundColor: Colors.transparent,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -60,7 +60,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                       onTap: (){_back(context);},
                       child: Icon(
                         Icons.arrow_back,
-                        color: fade ? BasicColors.white : BasicColors.darkGrey,
+                        color: fade ? BasicColors.darkGrey : BasicColors.white,
                       ))
                   : InkWell(
                       onTap: (){

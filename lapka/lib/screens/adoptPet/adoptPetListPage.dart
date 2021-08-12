@@ -64,7 +64,7 @@ class AdoptPetListPage extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> AdoptPetDetails()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> AdoptPetDetails(pet: Pet(),)));
                         },
                         child: PetCard(pet: Pet())),
                       SizedBox(
