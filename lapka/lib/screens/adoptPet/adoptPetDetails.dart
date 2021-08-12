@@ -16,7 +16,7 @@ class AdoptPetDetails extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(
-        transparent: true,
+        fade: true,
         title: '',
         showBack: true,
       ),

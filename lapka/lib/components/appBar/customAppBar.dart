@@ -10,7 +10,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String localization;
   final bool showLocalization;
   final bool showBack;
-  final bool transparent;
+  final bool fade;
   final bool customTrailling;
   final Widget? trailling;
 
@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       {Key? key,
       this.showLocalization = false,
       this.showBack = false,
-      this.transparent = false,
+      this.fade = false,
       this.customTrailling = false,
       this.trailling,
       this.title = "",
@@ -42,15 +42,16 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Container(decoration: BoxDecoration(
-        //     gradient: LinearGradient(
-        //       begin: Alignment.topCenter,
-        //       end: Alignment.bottomCenter,
-        //       colors: [Colors.white, Colors.white.withOpacity(0.0)])),),
+        Container(decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.8,1],
+              colors: [Colors.white, Colors.white.withOpacity(0.0)])),),
         AppBar(
           automaticallyImplyLeading: false,
           shadowColor: Colors.transparent,
-          backgroundColor: transparent ? Colors.transparent : BasicColors.white,
+          backgroundColor: fade ? Colors.transparent : BasicColors.white,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -59,7 +60,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                       onTap: (){_back(context);},
                       child: Icon(
                         Icons.arrow_back,
-                        color: transparent ? BasicColors.white : BasicColors.darkGrey,
+                        color: fade ? BasicColors.white : BasicColors.darkGrey,
                       ))
                   : InkWell(
                       onTap: (){
