@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:lapka/models/latLng.dart';
+import 'package:lapka/models/geoLocation.dart';
 import 'package:lapka/utils/locationHelper.dart';
 
 enum LocationStatus{NoPermision, Determined, New, NoLocation}

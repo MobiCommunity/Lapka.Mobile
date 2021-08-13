@@ -2,46 +2,63 @@ import 'package:flutter/material.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/settings/textStyles.dart';
 
-class BasicFormField extends StatelessWidget {
+class BasicFormField extends StatefulWidget {
   final TextEditingController controller;
   final String placeholder;
   final Widget? leading;
-  final Widget? trailing;
   final bool password;
-  final void Function()? trailingTapped;
 
-  final circularBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(8),
-  );
 
   BasicFormField({
     Key? key,
     required this.controller,
     this.placeholder = '',
     this.leading,
-    this.trailing,
-    this.trailingTapped,
     this.password = false,
-  }) : super(key: key);
+  }) : super(key: key,);
+
+  @override
+  _BasicFormFieldState createState() => _BasicFormFieldState();
+}
+
+class _BasicFormFieldState extends State<BasicFormField> {
+  late bool _visibility;
+  final circularBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8),
+  );
+  @override
+  void initState() {
+    _visibility = widget.password;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
-      style: subtitleLight,
-      obscureText: password,
+      controller: widget.controller,
+      style: subtitleLight.copyWith(color: BasicColors.white),
+      obscureText: _visibility,
       cursorColor: BasicColors.white,
       decoration: InputDecoration(
-        hintText: placeholder,
+        hintText: widget.placeholder,
         contentPadding:
         const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         filled: true,
         fillColor: Colors.transparent,
-        prefixIcon: leading,
-        suffixIcon: trailing != null
+        prefixIcon: widget.leading,
+        suffixIcon: widget.password
             ? GestureDetector(
-          onTap: trailingTapped,
-          child: trailing,
+          onTap: (){
+            setState(() {
+              _visibility = !_visibility;
+            });
+            
+          },
+          child: Icon(
+                    Icons.visibility,
+                    color: BasicColors.white,
+                    size: 22,
+                  ),
         )
             : null,
         border: circularBorder.copyWith(

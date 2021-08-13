@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lapka/components/basic/basicText.dart';
 import 'package:intl/intl.dart';
 import 'package:lapka/components/basic/greyBox.dart';
+import 'package:lapka/utils/dateHelper.dart';
 
 class BasicPetInfoRow extends StatelessWidget {
   final DateTime age;
@@ -14,7 +15,6 @@ class BasicPetInfoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String dak = DateFormat('yyyy').format(age);
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -23,8 +23,7 @@ class BasicPetInfoRow extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
-                BasicText.body14Bold(dak),
+                BasicText.body14Bold(DateTimeHelper.getDuration(age).toString()),
                 BasicText.captionLight('Wiek')
               ]
             ),
@@ -44,7 +43,7 @@ class BasicPetInfoRow extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BasicText.body14Bold(weight.toStringAsFixed(1)),
+                BasicText.body14Bold(weight.toStringAsFixed(1) + " kg"),
                 BasicText.captionLight('Waga')
               ],
             ),

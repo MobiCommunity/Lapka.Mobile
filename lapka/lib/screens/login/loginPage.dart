@@ -122,6 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: TextEditingController()),
               SizedBox(height: 25),
               BasicFormField(
+                password: true,
                   leading: Icon(
                     Icons.lock_open,
                     color: BasicColors.white,

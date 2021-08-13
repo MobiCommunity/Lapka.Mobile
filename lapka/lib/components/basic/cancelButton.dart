@@ -4,9 +4,11 @@ import 'package:lapka/settings/colors.dart';
 
 class CancelButton extends StatelessWidget{
   final Function() onPressed;
+  final double size;
 
   const CancelButton({
-    required this.onPressed
+    required this.onPressed,
+    this.size = 44
   });
 
   @override
@@ -14,10 +16,10 @@ class CancelButton extends StatelessWidget{
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: 44,
-        width: 44,
+        height: size,
+        width: size,
         decoration: BoxDecoration(color: BasicColors.lightGreen, shape: BoxShape.circle,),
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(12),
         child: SvgPicture.asset('lib/assets/x-sign.svg',color: BasicColors.white,),
       ),
     );

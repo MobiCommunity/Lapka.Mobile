@@ -1,6 +1,9 @@
+import 'package:jiffy/jiffy.dart';
+
 class DateTimeHelper{
   static getDuration(DateTime date){
-    DateTime now = DateTime.now();
-    final difference = date.difference(now).inDays;
+    Jiffy from = Jiffy(DateTime.now());
+    Jiffy to = Jiffy(date);
+    return from.diff(to, Units.YEAR);
   }
 }

@@ -46,9 +46,7 @@ class LoginDialog extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: BasicButton(
                       text: 'ZALOGUJ SIĘ',
-                      onPressed: () {
-                        print('sda');
-                      },
+                      onPressed: onLogin
                     ),
                   ),
                 ],
@@ -60,9 +58,7 @@ class LoginDialog extends StatelessWidget {
           height: 44,
           alignment: Alignment.topRight,
           child: CancelButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
+            onPressed: onExit
           ),
         )
       ],

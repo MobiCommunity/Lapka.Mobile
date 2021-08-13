@@ -1,90 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
+import 'package:lapka/components/basic/loadingIndicator.dart';
 import 'package:lapka/components/screens/floatingBarScaffold.dart';
 import 'package:lapka/components/screens/petCard.dart';
+import 'package:lapka/components/screens/speciesSelector.dart';
 import 'package:lapka/models/pet.dart';
+import 'package:lapka/providers/adoptPetProvider.dart';
+import 'package:lapka/providers/locationProvider.dart';
 import 'package:lapka/screens/adoptPet/adoptPetDetails.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/utils/locationHelper.dart';
+import 'package:provider/provider.dart';
 
-class AdoptPetListPage extends StatelessWidget {
+class AdoptPetListPage extends StatefulWidget {
   const AdoptPetListPage({Key? key}) : super(key: key);
 
   @override
+  _AdoptPetListPageState createState() => _AdoptPetListPageState();
+}
+
+class _AdoptPetListPageState extends State<AdoptPetListPage> {
+  final GlobalKey key = GlobalKey();
+  @override
+  void initState() {
+    context.read<AdoptPetProvider>().getAllPets();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return FloatingBarScaffold(
-      appbar: CustomAppBar(
-          fade: true,
-          title: "Example",
-        ),
-      headerSliver: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 100),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: BasicColors.grey,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(33),
-                              topRight: Radius.circular(33)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 33.0),
-                                child: Container(
-                                  height: 100,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 16),
-                                child: Container(
-                                  height: 100,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+    return context.watch<AdoptPetProvider>().status == AdoptPetStatus.Done
+        ? FloatingBarScaffold(
+            appbar: CustomAppBar(
+              fade: true,
+              localization: context.watch<LocationProvider>().city ?? 'Nieznana',
+              showLocalization: true,
+            ),
+            headerSliver: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 100),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: BasicColors.grey,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(33),
+                          topRight: Radius.circular(33)),
                     ),
-                  ],
-                ),
-      body: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      InkWell(
-                        onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> AdoptPetDetails(pet: Pet(),)));
-                        },
-                        child: PetCard(pet: Pet())),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      PetCard(pet: Pet()),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      PetCard(pet: Pet()),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      PetCard(pet: Pet()),
-                      SizedBox(
-                        height: 16,
-                      ),
-                    ],
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(height: 33,),
+                        SpeciesSelector(selected: context.watch<AdoptPetProvider>().speciesFilter,)
+                      ],
+                    ),
                   ),
                 ),
-    );
+              ],
+            ),
+            body: Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: context.watch<AdoptPetProvider>().pets.length,
+                itemBuilder: (context, i) {
+                  print('1');
+                  return Padding(
+                    padding: i == 0
+                        ? const EdgeInsets.only(bottom: 16, top: 20)
+                        : const EdgeInsets.only(bottom: 16),
+                    child: PetCard(
+                      pet: context.read<AdoptPetProvider>().pets[i],
+                    ),
+                  );
+                },
+              ),
+            ),
+          )
+        : Scaffold(
+            body: LoadingIndicator()
+          );
   }
 }

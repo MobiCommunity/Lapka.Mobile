@@ -2,8 +2,10 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
+import 'package:lapka/components/basic/loadingIndicator.dart';
 import 'package:lapka/components/dialogs/basicDialog.dart';
 import 'package:lapka/components/dialogs/noInternetDialog.dart';
+import 'package:lapka/providers/adoptPetProvider.dart';
 import 'package:lapka/providers/locationProvider.dart';
 import 'package:lapka/providers/loginProvider.dart';
 import 'package:lapka/screens/adoptPet/adoptPetListPage.dart';
@@ -17,19 +19,19 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-          textTheme: GoogleFonts.ubuntuTextTheme(
-            Theme.of(context).textTheme,
-          ),
-        ),
-        home: MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (_) => LoginProvider()),
-            ChangeNotifierProvider(create: (_) => LocationProvider()),
-          ],
-          child: MyHomePage(),
-        ));
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => LoginProvider()),
+          ChangeNotifierProvider(create: (_) => LocationProvider()),
+          ChangeNotifierProvider(create: (_) => AdoptPetProvider()),
+        ],
+        child: MaterialApp(
+            theme: ThemeData(
+              textTheme: GoogleFonts.ubuntuTextTheme(
+                Theme.of(context).textTheme,
+              ),
+            ),
+            home: MyHomePage()));
   }
 }
 
@@ -62,24 +64,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _getLocation() {
     context.read<LocationProvider>().getLocation();
-    print('xd');
   }
 
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //     key: _scaffoldKey,
-    //     appBar: CustomAppBar(
-    //       showLocalization: true,
-    //       localization: context.watch<LocationProvider>().city ?? 'brak',
-    //     ),
-    //     body: LoginPage());
     print('build');
     return context.watch<LocationProvider>().status != LocationStatus.New
         ? AdoptPetListPage()
         : Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: LoadingIndicator(),
             ),
           );
   }

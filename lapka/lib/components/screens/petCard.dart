@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basicText.dart';
-import 'package:lapka/models/latLng.dart';
+import 'package:lapka/components/basic/roundedImage.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/locationProvider.dart';
+import 'package:lapka/screens/adoptPet/adoptPetDetails.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/requestSettings.dart';
+import 'package:lapka/utils/checkConectivity.dart';
+import 'package:lapka/utils/dateHelper.dart';
 import 'package:lapka/utils/locationHelper.dart';
 import 'package:provider/provider.dart';
 
-class PetCard extends StatelessWidget { 
+class PetCard extends StatelessWidget {
   final Pet pet;
   const PetCard({Key? key, required this.pet}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
+    int age = DateTimeHelper.getDuration(pet.birthDay!); 
     return Container(
       decoration: BoxDecoration(
         color: BasicColors.white,
@@ -22,11 +27,7 @@ class PetCard extends StatelessWidget {
       child: Column(
         children: [
           Stack(children: [
-            Container(
-                height: 170,
-                decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(14))),
+            ImageFromUrl(imageUrl: imagesUrl + 'api/files/${pet.mainPhotoPath}', height: 170),
             Container(
               alignment: Alignment.topRight,
               padding: EdgeInsets.all(16),
@@ -56,19 +57,20 @@ class PetCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BasicText.heading1Bold(pet.name?? 'Nieznane'),
-                    pet.sex == Sex.famale ? SvgPicture.asset(
-                      'lib/assets/famale-symbol.svg',
-                      color: BasicColors.darkGreen,
-                      width: 30,
-                      height: 30,
-                    ): 
-                    SvgPicture.asset(
-                      'lib/assets/male-symbol.svg',
-                      color: BasicColors.darkGreen,
-                      width: 30,
-                      height: 30,
-                    )
+                    BasicText.heading1Bold(pet.name ?? 'Nieznane'),
+                    pet.sex == true
+                        ? SvgPicture.asset(
+                            'lib/assets/famale-symbol.svg',
+                            color: BasicColors.darkGreen,
+                            width: 30,
+                            height: 30,
+                          )
+                        : SvgPicture.asset(
+                            'lib/assets/male-symbol.svg',
+                            color: BasicColors.darkGreen,
+                            width: 30,
+                            height: 30,
+                          )
                   ],
                 ),
                 SizedBox(
@@ -85,19 +87,22 @@ class PetCard extends StatelessWidget {
                     SizedBox(
                       width: 8,
                     ),
-                    BasicText.body14Light('1 rok')
+                    BasicText.body14Light(age.toString() + (age == 1 ?' rok' : ' lata'))
                   ],
                 ),
                 SizedBox(height: 8),
                 Row(
                   children: [
-                    Icon(Icons.location_on, size: 14, color: BasicColors.darkGreen),
+                    Icon(Icons.location_on,
+                        size: 14, color: BasicColors.darkGreen),
                     SizedBox(
                       width: 8,
                     ),
-                    BasicText.body14Light('Schronisko Pudelek, Rzeszów (' 
-                    + (context.read<LocationProvider>().status != LocationStatus.Determined? '?': LocationHelper.getDistance(LatLngModel.fromPosition(context.watch<LocationProvider>().position!),LatLngModel(lat: 20, lng: 20) ).toStringAsFixed(1))
-                    + 'km)'),
+                    BasicText.body14Light('${pet.shelterAddress!.name}, ${pet.shelterAddress!.city} ('
+                        + LocationHelper.getDistance(context.read<LocationProvider>().position, 
+                                            pet.shelterAddress!.geoLocation!).toStringAsFixed(1)
+                        +
+                        'km)'),
                   ],
                 ),
                 SizedBox(height: 22),
@@ -111,14 +116,29 @@ class PetCard extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(14),
                     bottomRight: Radius.circular(14))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                BasicText.subtitleBold("Poznaj mnie",color: BasicColors.white,),
-                SizedBox(width: 6,),
-                Icon(Icons.pets, color: BasicColors.white,size:  20)
-              ],
+            child: InkWell(
+              onTap: () async{
+                if(await InternetConectivity.check(context))
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AdoptPetDetails(id: pet.id!)),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  BasicText.subtitleBold(
+                    "Poznaj mnie",
+                    color: BasicColors.white,
+                  ),
+                  SizedBox(
+                    width: 6,
+                  ),
+                  Icon(Icons.pets, color: BasicColors.white, size: 20)
+                ],
+              ),
             ),
           )
         ],

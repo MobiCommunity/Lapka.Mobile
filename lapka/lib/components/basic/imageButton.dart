@@ -4,16 +4,12 @@ import 'package:lapka/settings/colors.dart';
 
 class ImageButton extends StatelessWidget{
   final Function() onPressed;
-  //final bool customTrailling;
-  //final Widget img;
   final Widget trailling;
   final String text;
 
   const ImageButton({
     required this.onPressed,
-    //this.customTrailling = false,
     required this.trailling,
-    //required this.img,
     this.text = '',
   });
 

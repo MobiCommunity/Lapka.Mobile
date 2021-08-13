@@ -1,6 +1,6 @@
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:lapka/models/latLng.dart';
+import 'package:lapka/models/geoLocation.dart';
 
 class LocationHelper {
 
@@ -15,9 +15,9 @@ class LocationHelper {
     return null;
   }
 
-  static double getDistance(LatLngModel? current, LatLngModel desired){
+  static double getDistance(Position? current, GeoLocation desired){
     if(current != null)
-    return Geolocator.distanceBetween(current.lat, current.lng, desired.lat, desired.lng) / 1000;
+    return Geolocator.distanceBetween(current.latitude, current.longitude, desired.latitude!, desired.longitude!) / 1000;
     return 0;
   }
 }
