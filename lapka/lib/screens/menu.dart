@@ -1,7 +1,9 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:lapka/components/basic/basicText.dart';
+import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:provider/provider.dart';
 
 class Menu extends StatelessWidget {
   final Animation<Offset> slideAnimation;
@@ -16,6 +18,30 @@ class Menu extends StatelessWidget {
       required this.selectedIndex,
       required this.onMenuItemClicked})
       : super(key: key);
+
+  _buildMenuItem(
+      {required Widget widget, required String name, required IconData icon}) {
+    return InkWell(
+      onTap: () {
+        onMenuItemClicked(widget);
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon,
+            color: BasicColors.white,
+            size: 25,
+          ),
+          SizedBox(width: 20),
+          BasicText.subtitleLight(
+            name,
+            color: BasicColors.white,
+          )
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,210 +59,136 @@ class Menu extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(),
-                Row(
-                  children: [
-                    DottedBorder(
-                        borderType: BorderType.Circle,
-                        color: BasicColors.white,
-                        dashPattern: [7, 5],
-                        padding: EdgeInsets.all(4),
-                        child: CircleAvatar(
-                          radius: 33,
-                          backgroundColor: BasicColors.darkGrey,
-                        )),
-                    SizedBox(
-                      width: 14,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        BasicText.overlineLight(
-                          'email@gmail.com',
-                          color: BasicColors.white,
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(
-                              Icons.place,
-                              color: BasicColors.white,
-                              size: 10,
-                            ),
-                            BasicText.captionLight(
-                              'Example',
-                              color: BasicColors.white,
-                            ),
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.mail,
-                      color: BasicColors.white,
-                      size: 25,
-                    ),
-                    SizedBox(width: 20),
-                    BasicText.subtitleLight(
-                      'Wiadomości',
-                      color: BasicColors.white,
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.favorite,
-                      color: BasicColors.white,
-                      size: 25,
-                    ),
-                    SizedBox(width: 20),
-                    BasicText.subtitleLight(
-                      'Ulubione zwierzaki',
-                      color: BasicColors.white,
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.pets,
-                      color: BasicColors.white,
-                      size: 25,
-                    ),
-                    SizedBox(width: 20),
-                    BasicText.subtitleLight(
-                      'Adopcja',
-                      color: BasicColors.white,
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.account_box,
-                      color: BasicColors.white,
-                      size: 25,
-                    ),
-                    SizedBox(width: 20),
-                    BasicText.subtitleLight(
-                      'Moje zwierzaki',
-                      color: BasicColors.white,
-                    )
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 45),
-                  child: Container(
-                    width: 150,
-                    height: 1,
-                    color: BasicColors.white,
-                  ),
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.add_box,
-                      color: BasicColors.white,
-                      size: 25,
-                    ),
-                    SizedBox(width: 20),
-                    BasicText.subtitleLight(
-                      'Zgłoszenia',
-                      color: BasicColors.white,
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.house,
-                      color: BasicColors.white,
-                      size: 25,
-                    ),
-                    SizedBox(width: 20),
-                    BasicText.subtitleLight(
-                      'Zaginięte zwirzaki',
-                      color: BasicColors.white,
-                    )
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 45),
-                  child: Container(
-                    width: 150,
-                    height: 1,
-                    color: BasicColors.white,
-                  ),
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.volunteer_activism,
-                      color: BasicColors.white,
-                      size: 25,
-                    ),
-                    SizedBox(width: 20),
-                    BasicText.subtitleLight(
-                      'Wolontariat',
-                      color: BasicColors.white,
-                    )
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 45),
-                  child: Container(
-                    width: 150,
-                    height: 1,
-                    color: BasicColors.white,
-                  ),
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.settings,
-                      color: BasicColors.white,
-                      size: 25,
-                    ),
-                    SizedBox(width: 20),
-                    BasicText.subtitleLight(
-                      'Ustawienia',
-                      color: BasicColors.white,
-                    )
-                  ],
-                ),
+                _avatarBuilder(),
+                _buildMenuItem(
+                    widget: context
+                        .read<MenuProvider>()
+                        .screens[Screens.AdoptPageList]!,
+                    name: 'Wiadomości',
+                    icon: Icons.mail),
+                _buildMenuItem(
+                    widget: context
+                        .read<MenuProvider>()
+                        .screens[Screens.AdoptPageList]!,
+                    name: 'Ulubione zwierzaki',
+                    icon: Icons.favorite),
+                _buildMenuItem(
+                    widget: context
+                        .read<MenuProvider>()
+                        .screens[Screens.AdoptPageList]!,
+                    name: 'Adopcja',
+                    icon: Icons.pets),
+                _buildMenuItem(
+                    widget: context
+                        .read<MenuProvider>()
+                        .screens[Screens.AdoptPageList]!,
+                    name: 'Moje zwierzaki',
+                    icon: Icons.account_box),
+                _smallLineSpacer(),
+                _buildMenuItem(
+                    widget: context
+                        .read<MenuProvider>()
+                        .screens[Screens.AdoptPageList]!,
+                    name: 'Zgłoszenia',
+                    icon: Icons.add_box),
+                _buildMenuItem(
+                    widget: context
+                        .read<MenuProvider>()
+                        .screens[Screens.AdoptPageList]!,
+                    name: 'Zaginięte zwirzaki',
+                    icon: Icons.house),
+                _smallLineSpacer(),
+                _buildMenuItem(
+                    widget: context
+                        .read<MenuProvider>()
+                        .screens[Screens.AdoptPageList]!,
+                    name: 'Wolontariat',
+                    icon: Icons.volunteer_activism),
+                _smallLineSpacer(),
+                _buildMenuItem(
+                    widget: context
+                        .read<MenuProvider>()
+                        .screens[Screens.AdoptPageList]!,
+                    name: 'Ustawienia',
+                    icon: Icons.settings),
                 Container(),
-                Container(
-                  width: 195,
-                  height: 1,
-                  color: BasicColors.white,
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.logout,
-                      color: BasicColors.white,
-                      size: 25,
-                    ),
-                    SizedBox(width: 20),
-                    BasicText.subtitleLight(
-                      'Wyloguj się',
-                      color: BasicColors.white,
-                    )
-                  ],
-                ),
+                _bigLineSpacer(),
+                _buildMenuItem(
+                    widget: context
+                        .read<MenuProvider>()
+                        .screens[Screens.AdoptPageList]!,
+                    name: 'Wyloguj się',
+                    icon: Icons.logout),
                 Container()
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Container _bigLineSpacer() {
+    return Container(
+      width: 195,
+      height: 1,
+      color: BasicColors.white,
+    );
+  }
+
+  Padding _smallLineSpacer() {
+    return Padding(
+      padding: EdgeInsets.only(left: 45),
+      child: Container(
+        width: 150,
+        height: 1,
+        color: BasicColors.white,
+      ),
+    );
+  }
+
+  Row _avatarBuilder() {
+    return Row(
+      children: [
+        DottedBorder(
+            borderType: BorderType.Circle,
+            color: BasicColors.white,
+            dashPattern: [7, 5],
+            padding: EdgeInsets.all(4),
+            child: CircleAvatar(
+              radius: 33,
+              backgroundColor: BasicColors.darkGrey,
+            )),
+        SizedBox(
+          width: 14,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            BasicText.overlineLight(
+              'email@gmail.com',
+              color: BasicColors.white,
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.place,
+                  color: BasicColors.white,
+                  size: 10,
+                ),
+                BasicText.captionLight(
+                  'Example',
+                  color: BasicColors.white,
+                ),
+              ],
+            )
+          ],
+        )
+      ],
     );
   }
 }

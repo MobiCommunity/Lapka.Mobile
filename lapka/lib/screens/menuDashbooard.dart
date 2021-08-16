@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/cancelButton.dart';
+import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/screens/adoptPet/adoptPetDetails.dart';
 import 'package:lapka/screens/adoptPet/adoptPetListPage.dart';
 import 'package:lapka/screens/dasboard.dart';
 import 'package:lapka/settings/colors.dart';
 import 'menu.dart';
+import 'package:provider/provider.dart';
 
 final Color backgroundColor = Color(0xFF4A4A58);
 
 class MenuDashboardLayout extends StatefulWidget {
+  final Widget initialPage;
+  MenuDashboardLayout(this.initialPage);
+
   @override
   _MenuDashboardLayoutState createState() => _MenuDashboardLayoutState();
 }
@@ -22,10 +28,14 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
   late Animation<double> _scaleAnimation;
   late Animation<double> _menuScaleAnimation;
   late Animation<Offset> _slideAnimation;
+  late Widget current;
+  List<Widget> list = [AdoptPetListPage(), Scaffold(appBar: CustomAppBar(),)];
 
   @override
   void initState() {
     super.initState();
+    current = widget.initialPage;
+    context.read<MenuProvider>().onMenuClick = onMenuTap;
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
     _menuScaleAnimation =
@@ -51,7 +61,8 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
     });
   }
 
-  void onMenuItemClicked() {
+  void onMenuItemClicked(Widget newWidget) {
+    current = newWidget;
     setState(() {
       _controller.reverse();
     });
@@ -65,24 +76,32 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
     screenHeight = size.height;
     screenWidth = size.width;
 
-    return Scaffold(
-      backgroundColor: BasicColors.lightGreen,
-      body: Stack(
-        children: [
-          Menu(
-              slideAnimation: _slideAnimation,
-              menuAnimation: _menuScaleAnimation,
-              selectedIndex: findSelectedIndex(),
-              onMenuItemClicked: onMenuItemClicked),
-          Dashboard(
-              duration: duration,
-              onMenuTap: onMenuTap,
-              scaleAnimation: _scaleAnimation,
-              isCollapsed: isCollapsed,
-              screenWidth: screenWidth,
-              child: AdoptPetListPage()),
-          CancelButton(onPressed: onMenuTap)
-        ],
+    return GestureDetector(
+      onPanUpdate: (details){
+                  if (details.delta.dx < -15 && !isCollapsed) {
+                        onMenuTap();
+                  }
+            },
+      child: Scaffold(
+        backgroundColor: BasicColors.lightGreen,
+        body: Stack(
+          children: [
+            Menu(
+                slideAnimation: _slideAnimation,
+                menuAnimation: _menuScaleAnimation,
+                selectedIndex: findSelectedIndex(),
+                onMenuItemClicked: onMenuItemClicked),
+            Dashboard(
+                duration: duration,
+                onMenuTap: onMenuTap,
+                scaleAnimation: _scaleAnimation,
+                isCollapsed: isCollapsed,
+                screenWidth: screenWidth,
+                child: IgnorePointer(
+                  ignoring: !isCollapsed,
+                  child: current)),
+          ],
+        ),
       ),
     );
   }
