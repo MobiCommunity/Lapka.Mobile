@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/loadingIndicator.dart';
+import 'package:lapka/components/screens/adoptPet/inputFilter.dart';
 import 'package:lapka/components/screens/floatingBarScaffold.dart';
-import 'package:lapka/components/screens/petCard.dart';
-import 'package:lapka/components/screens/speciesSelector.dart';
+import 'package:lapka/components/screens/adoptPet/petCard.dart';
+import 'package:lapka/components/screens/adoptPet/speciesSelector.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/adoptPetProvider.dart';
 import 'package:lapka/providers/locationProvider.dart';
@@ -50,7 +51,11 @@ class _AdoptPetListPageState extends State<AdoptPetListPage> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SizedBox(height: 33,),
+                        SizedBox(height:33,),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 32,left: 20, right: 20),
+                          child: InputFliter(controller: TextEditingController()),
+                        ),
                         SpeciesSelector(selected: context.watch<AdoptPetProvider>().speciesFilter,)
                       ],
                     ),

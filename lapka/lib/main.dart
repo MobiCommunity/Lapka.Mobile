@@ -10,6 +10,7 @@ import 'package:lapka/providers/locationProvider.dart';
 import 'package:lapka/providers/loginProvider.dart';
 import 'package:lapka/screens/adoptPet/adoptPetListPage.dart';
 import 'package:lapka/screens/login/loginPage.dart';
+import 'package:lapka/screens/menuDashbooard.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -70,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     print('build');
     return context.watch<LocationProvider>().status != LocationStatus.New
-        ? AdoptPetListPage()
+        ? MenuDashboardLayout()
         : Scaffold(
             body: Center(
               child: LoadingIndicator(),
