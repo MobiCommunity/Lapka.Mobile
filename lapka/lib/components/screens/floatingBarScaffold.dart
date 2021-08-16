@@ -25,7 +25,7 @@ class FloatingBarScaffold extends StatelessWidget {
             return <Widget>[
               SliverAppBar(
                 floating: true,
-                toolbarHeight: 156,
+                toolbarHeight: 236,
                 backgroundColor: Colors.transparent,
                 flexibleSpace: headerSliver
               ),

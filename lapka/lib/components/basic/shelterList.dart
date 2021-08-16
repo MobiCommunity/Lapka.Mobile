@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/settings/colors.dart';
-import 'package:lapka/components/basic/shelterComp.dart';
+import 'package:lapka/components/screens/adoptPet/shelterComp.dart';
 
 class ShelterList extends StatelessWidget{
 

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/components/basic/imageButton.dart';
-import 'package:lapka/components/basic/basicPetInfoRow.dart';
+import 'package:lapka/components/screens/adoptPet/basicPetInfoRow.dart';
 import 'package:lapka/components/basic/loadingIndicator.dart';
 import 'package:lapka/components/basic/roundedImage.dart';
 import 'package:lapka/components/dialogs/basicDialog.dart';

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basicText.dart';
+import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -30,8 +32,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     Navigator.pop(context);
   }
 
-  _openDrawer(context){
-    Scaffold.of(context).openDrawer();
+  _openDrawer(BuildContext context){
+    context.read<MenuProvider>().onMenuClick();
   }
 
   _openAccount(){

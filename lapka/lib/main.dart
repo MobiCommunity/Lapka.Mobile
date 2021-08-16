@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/loadingIndicator.dart';
@@ -8,8 +9,10 @@ import 'package:lapka/components/dialogs/noInternetDialog.dart';
 import 'package:lapka/providers/adoptPetProvider.dart';
 import 'package:lapka/providers/locationProvider.dart';
 import 'package:lapka/providers/loginProvider.dart';
+import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/screens/adoptPet/adoptPetListPage.dart';
 import 'package:lapka/screens/login/loginPage.dart';
+import 'package:lapka/screens/menuDashbooard.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -24,6 +27,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => LoginProvider()),
           ChangeNotifierProvider(create: (_) => LocationProvider()),
           ChangeNotifierProvider(create: (_) => AdoptPetProvider()),
+          ChangeNotifierProvider(create: (_) => MenuProvider()),
         ],
         child: MaterialApp(
             theme: ThemeData(
@@ -48,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   initState() {
     super.initState();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     _internetListenerInit();
     _getLocation();
   }
@@ -70,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     print('build');
     return context.watch<LocationProvider>().status != LocationStatus.New
-        ? AdoptPetListPage()
+        ? MenuDashboardLayout(AdoptPetListPage())
         : Scaffold(
             body: Center(
               child: LoadingIndicator(),
