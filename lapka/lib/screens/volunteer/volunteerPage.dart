@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
+import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/components/basic/loadingIndicator.dart';
 import 'package:lapka/components/screens/adoptPet/shelterComp.dart';
 import 'package:lapka/models/shelter.dart';
@@ -18,8 +19,7 @@ class VolunteerPage extends StatefulWidget {
 }
 
 class _VolunteerPageState extends State<VolunteerPage> {
-
-@override
+  @override
   void initState() {
     context.read<ShelterProvider>().getAllShelters();
     super.initState();
@@ -28,13 +28,12 @@ class _VolunteerPageState extends State<VolunteerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
         appBar: CustomAppBar(
           title: 'Wolontariat',
           fade: true,
         ),
-        body: context.watch<ShelterProvider>().status == ShelterStatus.Done ? CustomScrollView(
+        body: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: Padding(
@@ -49,18 +48,35 @@ class _VolunteerPageState extends State<VolunteerPage> {
                 ),
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-                Shelter shelter = context.watch<ShelterProvider>().shelters[index];
-                return Container(
-                  color: BasicColors.grey,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(bottom: 16, left: 20, right: 20),
-                    child: InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>VolunteerDetailsPage()));
-                      },
+            _body(context, context.watch<ShelterProvider>().status),
+          ],
+        ));
+  }
+
+  Widget _body(BuildContext context, ShelterStatus status) {
+    switch (status) {
+      case ShelterStatus.Done:
+        return SliverList(
+          delegate: SliverChildBuilderDelegate((context, index) {
+            Shelter shelter = context.watch<ShelterProvider>().shelters[index];
+            return Container(
+              color: BasicColors.grey,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 16, left: 20, right: 20),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => VolunteerDetailsPage(data: shelter,)));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(14)),
+                      color: BasicColors.white
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
                       child: ShelterComp(
                           shelterName: shelter.name!,
                           logoWidget: Container(
@@ -69,14 +85,30 @@ class _VolunteerPageState extends State<VolunteerPage> {
                               decoration: BoxDecoration(
                                 color: BasicColors.lightGrey,
                               )),
-                          upperText: '(' +LocationHelper.getDistance(context.read<LocationProvider>().position, shelter.address!.geoLocation!).toStringAsFixed(1)+'km) ${shelter.address!.city}',
+                          upperText: '(' +
+                              LocationHelper.getDistance(
+                                      context.read<LocationProvider>().position,
+                                      shelter.address!.geoLocation!)
+                                  .toStringAsFixed(1) +
+                              'km) ${shelter.address!.city}',
                           lowerText: 'ul. ' + shelter.address!.street!),
                     ),
                   ),
-                );
-              }, childCount: context.watch<ShelterProvider>().shelters.length),
-            ),
-          ],
-        ): LoadingIndicator());
+                ),
+              ),
+            );
+          }, childCount: context.watch<ShelterProvider>().shelters.length),
+        );
+      case ShelterStatus.Loading:
+        return SliverToBoxAdapter(child: LoadingIndicator());
+      case ShelterStatus.Error:
+        return SliverToBoxAdapter(
+          child: Center(
+            child: BasicText.body14('Wystąpił błąd...'),
+          ),
+        );
+      case ShelterStatus.New:
+        return SliverToBoxAdapter(child: LoadingIndicator());
+    }
   }
 }

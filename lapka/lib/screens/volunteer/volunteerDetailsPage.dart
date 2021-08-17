@@ -4,10 +4,15 @@ import 'package:lapka/components/basic/basicButton.dart';
 import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/components/screens/adoptPet/shelterComp.dart';
 import 'package:lapka/components/screens/volunteer/suportShelterCard.dart';
+import 'package:lapka/models/shelter.dart';
+import 'package:lapka/providers/locationProvider.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/utils/locationHelper.dart';
+import 'package:provider/provider.dart';
 
 class VolunteerDetailsPage extends StatelessWidget {
-  const VolunteerDetailsPage({Key? key}) : super(key: key);
+  final Shelter data;
+  const VolunteerDetailsPage({Key? key, required this.data}) : super(key: key);
 
   Widget _smallLineSpacer() {
     return Container(
@@ -45,15 +50,18 @@ class VolunteerDetailsPage extends StatelessWidget {
                 child: Column(
                   children: [
                     ShelterComp(
-                        shelterName: 'Psiaki Adopciaki z Psiej Wioski',
+                        shelterName: data.name!,
                         logoWidget: Container(
                             width: 60,
                             height: 65,
                             decoration: BoxDecoration(
                               color: BasicColors.lightGrey,
                             )),
-                        upperText: '(2.5 km) Rzeszów',
-                        lowerText: 'ul. Krakowska 12'),
+                        upperText: '('+LocationHelper.getDistance(
+                                      context.read<LocationProvider>().position,
+                                      data.address!.geoLocation!)
+                                  .toStringAsFixed(1)+' km) ${data.address!.city}',
+                        lowerText: 'ul. ${data.address!.street}'),
                     SizedBox(
                       height: 20,
                     ),

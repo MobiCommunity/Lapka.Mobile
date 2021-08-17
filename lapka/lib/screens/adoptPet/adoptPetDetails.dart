@@ -63,7 +63,7 @@ class AdoptPetDetails extends StatelessWidget {
               return LoadingIndicator();
             } else if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasError) {
-                return Text('Error');
+                return Center(child: BasicText.body14('Wystąpił błąd...'),);
               } else if (snapshot.hasData) {
                 return Column(
                   children: [
@@ -264,10 +264,10 @@ class AdoptPetDetails extends StatelessWidget {
                   ],
                 );
               } else {
-                return const Text('Empty data');
+                return Center(child: BasicText.body14('Wystąpił błąd...'),);
               }
             } else {
-              return Text('');
+              return Center(child: BasicText.body14('Wystąpił błąd...'),);
             }
           }),
     );
