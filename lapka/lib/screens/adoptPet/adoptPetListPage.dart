@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/loadingIndicator.dart';
 import 'package:lapka/components/screens/adoptPet/inputFilter.dart';
-import 'package:lapka/components/screens/floatingBarScaffold.dart';
+import 'package:lapka/components/basic/floatingBarScaffold.dart';
 import 'package:lapka/components/screens/adoptPet/petCard.dart';
 import 'package:lapka/components/screens/adoptPet/speciesSelector.dart';
 import 'package:lapka/models/pet.dart';

@@ -8,14 +8,12 @@ import 'package:provider/provider.dart';
 class Menu extends StatelessWidget {
   final Animation<Offset> slideAnimation;
   final Animation<double> menuAnimation;
-  final int selectedIndex;
   final Function onMenuItemClicked;
 
   const Menu(
       {Key? key,
       required this.slideAnimation,
       required this.menuAnimation,
-      required this.selectedIndex,
       required this.onMenuItemClicked})
       : super(key: key);
 

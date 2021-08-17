@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
+import 'package:lapka/components/basic/basicButton.dart';
+import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/components/screens/adoptPet/shelterComp.dart';
+import 'package:lapka/components/screens/volunteer/suportShelterCard.dart';
 import 'package:lapka/settings/colors.dart';
 
 class VolunteerDetailsPage extends StatelessWidget {
@@ -58,12 +61,15 @@ class VolunteerDetailsPage extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 33,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(33)),
-                          color: BasicColors.white),
+                    SupportSchelterCard(),
+                    SizedBox(
+                      height: 16,
                     ),
+                    SupportSchelterCard(),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    SupportSchelterCard(),
                   ],
                 ),
               ),
