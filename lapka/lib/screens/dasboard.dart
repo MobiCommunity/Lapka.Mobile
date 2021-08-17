@@ -6,7 +6,6 @@ class Dashboard extends StatelessWidget {
   final double screenWidth;
   final Duration duration;
   final Animation<double> scaleAnimation;
-  final Function onMenuTap;
   final Widget child;
 
   const Dashboard({
@@ -15,7 +14,6 @@ class Dashboard extends StatelessWidget {
     required this.screenWidth,
     required this.duration,
     required this.scaleAnimation,
-    required this.onMenuTap,
     required this.child
   }) : super(key: key);
 

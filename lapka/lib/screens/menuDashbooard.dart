@@ -89,11 +89,9 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
             Menu(
                 slideAnimation: _slideAnimation,
                 menuAnimation: _menuScaleAnimation,
-                selectedIndex: findSelectedIndex(),
                 onMenuItemClicked: onMenuItemClicked),
             Dashboard(
                 duration: duration,
-                onMenuTap: onMenuTap,
                 scaleAnimation: _scaleAnimation,
                 isCollapsed: isCollapsed,
                 screenWidth: screenWidth,
@@ -104,18 +102,5 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
         ),
       ),
     );
-  }
-
-  int findSelectedIndex(/*NavigationStates navigationState*/) {
-    return 1;
-    // if (navigationState is MyCardsPage) {
-    //   return 0;
-    // } else if (navigationState is MessagesPage) {
-    //   return 1;
-    // } else if (navigationState is UtilityBillsPage) {
-    //   return 2;
-    // } else {
-    //   return 0;
-    // }
   }
 }

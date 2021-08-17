@@ -28,7 +28,6 @@ class AdoptPetProvider with ChangeNotifier{
     if(res.statusCode ==200){
       if(res.body != ''){
         pets = List<Pet>.from(json.decode(res.body).map((model)=> Pet.fromJson(model)));
-        print('pets list lenght: '+pets.length.toString());
         status = AdoptPetStatus.Done;
         notifyListeners();
         return;
