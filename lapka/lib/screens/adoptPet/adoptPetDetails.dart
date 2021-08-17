@@ -8,6 +8,7 @@ import 'package:lapka/components/basic/loadingIndicator.dart';
 import 'package:lapka/components/basic/roundedImage.dart';
 import 'package:lapka/components/dialogs/basicDialog.dart';
 import 'package:lapka/components/basic/imageCarusel.dart';
+import 'package:lapka/components/dialogs/helpDialog.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/adoptPetProvider.dart';
 import 'package:lapka/providers/locationProvider.dart';
@@ -229,7 +230,7 @@ class AdoptPetDetails extends StatelessWidget {
                               children: [
                                 ImageButton(
                                   onPressed: () {
-                                    print('ADOPTUJ');
+                                    BasicDialog.showDialog(context, HelpDialog(accountNumber: '1122223333444455556666'));
                                   },
                                   trailling: Padding(
                                       padding: const EdgeInsets.all(16.0),

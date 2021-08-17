@@ -15,35 +15,32 @@ class ShelterComp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(14),color: BasicColors.white,),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            logoWidget,
-            SizedBox(height: 1, width: 11,),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                BasicText.body14Bold(shelterName),
-                SizedBox(height: 7, width: 1,),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SvgPicture.asset('lib/assets/geo-sign.svg'),
-                    SizedBox(height: 1, width: 4,),
-                    Column(
-                      children: [
-                        SizedBox(height: 1, width: 1,),
-                        BasicText.body14Light(upperText),
-                        BasicText.body14Bold(lowerText)
-                      ],
-                    )
-                  ],
-                )
-              ],
-            )
-          ],
-        ),
+      child: Row(
+        children: [
+          logoWidget,
+          SizedBox(height: 1, width: 11,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BasicText.body14Bold(shelterName),
+              SizedBox(height: 7, width: 1,),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SvgPicture.asset('lib/assets/geo-sign.svg'),
+                  SizedBox(height: 1, width: 4,),
+                  Column(
+                    children: [
+                      SizedBox(height: 1, width: 1,),
+                      BasicText.body14Light(upperText),
+                      BasicText.body14Bold(lowerText)
+                    ],
+                  )
+                ],
+              )
+            ],
+          )
+        ],
       ),
     );
   }
