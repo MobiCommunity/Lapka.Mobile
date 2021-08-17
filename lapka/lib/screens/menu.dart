@@ -86,7 +86,7 @@ class Menu extends StatelessWidget {
                 _buildMenuItem(
                     widget: context
                         .read<MenuProvider>()
-                        .screens[Screens.AdoptPageList]!,
+                        .screens[Screens.ReportPage]!,
                     name: 'Zgłoszenia',
                     icon: Icons.add_box),
                 _buildMenuItem(

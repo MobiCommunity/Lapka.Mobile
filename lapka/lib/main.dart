@@ -10,6 +10,7 @@ import 'package:lapka/providers/adoptPetProvider.dart';
 import 'package:lapka/providers/locationProvider.dart';
 import 'package:lapka/providers/loginProvider.dart';
 import 'package:lapka/providers/menuProvider.dart';
+import 'package:lapka/providers/shelterProvider.dart';
 import 'package:lapka/screens/adoptPet/adoptPetListPage.dart';
 import 'package:lapka/screens/login/loginPage.dart';
 import 'package:lapka/screens/menuDashbooard.dart';
@@ -28,12 +29,14 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => LocationProvider()),
           ChangeNotifierProvider(create: (_) => AdoptPetProvider()),
           ChangeNotifierProvider(create: (_) => MenuProvider()),
+          ChangeNotifierProvider(create: (_) => ShelterProvider()),
         ],
         child: MaterialApp(
             theme: ThemeData(
               textTheme: GoogleFonts.ubuntuTextTheme(
                 Theme.of(context).textTheme,
               ),
+            scaffoldBackgroundColor: Colors.white
             ),
             home: MyHomePage()));
   }

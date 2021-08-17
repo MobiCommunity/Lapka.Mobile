@@ -1,21 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
+import 'package:lapka/components/basic/loadingIndicator.dart';
 import 'package:lapka/components/screens/adoptPet/shelterComp.dart';
+import 'package:lapka/models/shelter.dart';
+import 'package:lapka/providers/locationProvider.dart';
+import 'package:lapka/providers/shelterProvider.dart';
 import 'package:lapka/screens/volunteer/volunteerDetailsPage.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/utils/locationHelper.dart';
+import 'package:provider/provider.dart';
 
-class VolunteerPage extends StatelessWidget {
+class VolunteerPage extends StatefulWidget {
   VolunteerPage({Key? key}) : super(key: key);
+
+  @override
+  _VolunteerPageState createState() => _VolunteerPageState();
+}
+
+class _VolunteerPageState extends State<VolunteerPage> {
+
+@override
+  void initState() {
+    context.read<ShelterProvider>().getAllShelters();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
         appBar: CustomAppBar(
           title: 'Wolontariat',
           fade: true,
         ),
-        body: CustomScrollView(
+        body: context.watch<ShelterProvider>().status == ShelterStatus.Done ? CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: Padding(
@@ -32,6 +51,7 @@ class VolunteerPage extends StatelessWidget {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
+                Shelter shelter = context.watch<ShelterProvider>().shelters[index];
                 return Container(
                   color: BasicColors.grey,
                   child: Padding(
@@ -42,21 +62,21 @@ class VolunteerPage extends StatelessWidget {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>VolunteerDetailsPage()));
                       },
                       child: ShelterComp(
-                          shelterName: 'Psiaki Adopciaki z Psiej Wioski',
+                          shelterName: shelter.name!,
                           logoWidget: Container(
                               width: 60,
                               height: 65,
                               decoration: BoxDecoration(
                                 color: BasicColors.lightGrey,
                               )),
-                          upperText: '(2.5 km) Rzeszów',
-                          lowerText: 'ul. Krakowska 12'),
+                          upperText: '(' +LocationHelper.getDistance(context.read<LocationProvider>().position, shelter.address!.geoLocation!).toStringAsFixed(1)+'km) ${shelter.address!.city}',
+                          lowerText: 'ul. ' + shelter.address!.street!),
                     ),
                   ),
                 );
-              }, childCount: 20),
+              }, childCount: context.watch<ShelterProvider>().shelters.length),
             ),
           ],
-        ));
+        ): LoadingIndicator());
   }
 }

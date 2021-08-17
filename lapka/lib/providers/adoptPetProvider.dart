@@ -6,28 +6,32 @@ import 'package:lapka/models/pet.dart';
 import 'package:lapka/requests/requests.dart';
 import 'package:lapka/settings/requestSettings.dart';
 
-enum AdoptPetStatus{Loading, Done,Error,New}
-enum Species{All, Dogs, Cats, Rabbits, Parots}
+enum AdoptPetStatus { Loading, Done, Error, New }
+enum Species { All, Dogs, Cats, Rabbits, Parots }
 
-class AdoptPetProvider with ChangeNotifier{
+class AdoptPetProvider with ChangeNotifier {
   AdoptPetStatus status = AdoptPetStatus.New;
   List<Pet> pets = [];
 
   Species _speciesFilter = Species.All;
+  String filterPhrase = '';
 
   set speciesFilter(Species value) {
     _speciesFilter = value;
     notifyListeners();
   }
+
   Species get speciesFilter => _speciesFilter;
-  
-  getAllPets()async {
+
+  getAllPets() async {
     pets = [];
     status = AdoptPetStatus.Loading;
-    Response res = await Requests.sendRequest(baseUrl + 'api/pet', null, Type.get);
-    if(res.statusCode ==200){
-      if(res.body != ''){
-        pets = List<Pet>.from(json.decode(res.body).map((model)=> Pet.fromJson(model)));
+    Response res =
+        await Requests.sendRequest(baseUrl + 'api/pet', null, Type.get);
+    if (res.statusCode == 200) {
+      if (res.body != '') {
+        pets = List<Pet>.from(
+            json.decode(res.body).map((model) => Pet.fromJson(model)));
         status = AdoptPetStatus.Done;
         notifyListeners();
         return;
@@ -36,13 +40,35 @@ class AdoptPetProvider with ChangeNotifier{
     status = AdoptPetStatus.Error;
   }
 
-  Future<Pet> getPetDetails(String id)async{
-    Response res = await Requests.sendRequest(baseUrl + 'api/pet/$id', null, Type.get);
-    if(res.statusCode ==200){
-      if(res.body != ''){
+  Future<Pet> getPetDetails(String id) async {
+    Response res =
+        await Requests.sendRequest(baseUrl + 'api/pet/$id', null, Type.get);
+    if (res.statusCode == 200) {
+      if (res.body != '') {
         return Pet.fromJson(json.decode(res.body));
       }
     }
     throw NullThrownError;
+  }
+
+  getFilteredPets(String phrase) async {
+    if (phrase.length == 0) getAllPets();
+
+    if (phrase.length > 3) {
+      pets = [];
+      status = AdoptPetStatus.Loading;
+      Response res = await Requests.sendRequest(
+          baseUrl + 'api/pet/$phrase', null, Type.get);
+      if (res.statusCode == 200) {
+        if (res.body != '') {
+          pets = List<Pet>.from(
+              json.decode(res.body).map((model) => Pet.fromJson(model)));
+          status = AdoptPetStatus.Done;
+          notifyListeners();
+          return;
+        }
+      }
+      status = AdoptPetStatus.Error;
+    }
   }
 }

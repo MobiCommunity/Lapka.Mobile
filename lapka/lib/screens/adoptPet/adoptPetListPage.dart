@@ -21,10 +21,13 @@ class AdoptPetListPage extends StatefulWidget {
 }
 
 class _AdoptPetListPageState extends State<AdoptPetListPage> {
-  final GlobalKey key = GlobalKey();
+  TextEditingController _filterController = TextEditingController();
   @override
   void initState() {
     context.read<AdoptPetProvider>().getAllPets();
+    _filterController.addListener(() { 
+        context.read<AdoptPetProvider>().getFilteredPets(_filterController.text);
+    });
     super.initState();
   }
 
@@ -54,7 +57,7 @@ class _AdoptPetListPageState extends State<AdoptPetListPage> {
                         SizedBox(height:33,),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 32,left: 20, right: 20),
-                          child: InputFliter(controller: TextEditingController()),
+                          child: InputFliter(controller: _filterController),
                         ),
                         SpeciesSelector(selected: context.watch<AdoptPetProvider>().speciesFilter,)
                       ],

@@ -37,7 +37,7 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
     current = widget.initialPage;
     context.read<MenuProvider>().onMenuClick = onMenuTap;
     _controller = AnimationController(vsync: this, duration: duration);
-    _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
+    _scaleAnimation = Tween<double>(begin: 1, end: 0.9).animate(_controller);
     _menuScaleAnimation =
         Tween<double>(begin: 0.5, end: 1).animate(_controller);
     _slideAnimation = Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0))
