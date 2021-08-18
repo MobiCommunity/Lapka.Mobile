@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basicButton.dart';
-import 'package:lapka/components/basic/basicFormField.dart';
+import 'package:lapka/components/basic/loginFormField.dart';
 import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/components/dialogs/basicDialog.dart';
 import 'package:lapka/settings/colors.dart';
@@ -19,42 +20,49 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
 
   _login() {
-    BasicDialog.showDialog(context,
-      Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical : 24.0),
-          child: Stack(
-            children: [
-              
-              Column(
-                mainAxisSize: MainAxisSize.min,
+    BasicDialog.showDialog(
+        context,
+        Container(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24.0),
+              child: Stack(
                 children: [
-                  BasicText.heading2Bold('Uppps'),
-                  SizedBox(height: 6),
-                  Container(height: 90,width: 90,color: Colors.grey,),
-                  SizedBox(height: 24,),
-                  BasicText.subtitle('Zaloguj się lub załóż konto'),
-                  SizedBox(height:4),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: BasicText.body14Light(
-                      'Aby skorzystać z tej możliwości musisz się zalogować! Jeśli nie posiadasz jeszcze konta załóż je już teraz. Rejestracja potrwa jedynie kilka chwil. :)',
-                      center: true,
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      BasicText.heading2Bold('Uppps'),
+                      SizedBox(height: 6),
+                      Container(
+                        height: 90,
+                        width: 90,
+                        color: Colors.grey,
                       ),
-                  )
+                      SizedBox(
+                        height: 24,
+                      ),
+                      BasicText.subtitle('Zaloguj się lub załóż konto'),
+                      SizedBox(height: 4),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: BasicText.body14Light(
+                          'Aby skorzystać z tej możliwości musisz się zalogować! Jeśli nie posiadasz jeszcze konta załóż je już teraz. Rejestracja potrwa jedynie kilka chwil. :)',
+                          center: true,
+                        ),
+                      )
+                    ],
+                  ),
+                  Container(
+                    height: 100,
+                    width: 150,
+                    color: Colors.red,
+                  ),
                 ],
               ),
-              Container(height: 100, width:150, color: Colors.red,),
-            ],
-          ),
-        ),
-        color: BasicColors.white
-      )
-    );
+            ),
+            color: BasicColors.white));
   }
 
-  _moveToRegister() async{
-
+  _moveToRegister() async {
     InternetConectivity.check(context);
   }
 
@@ -66,8 +74,21 @@ class _LoginPageState extends State<LoginPage> {
     throw UnimplementedError();
   }
 
-  _loginFacebook() {
-    throw UnimplementedError();
+  _loginFacebook() async {
+    final facebookLogin = FacebookLogin();
+    final result = await facebookLogin.logIn();
+    switch (result.status) {
+      case FacebookLoginStatus.success:
+        print(result.accessToken);
+        facebookLogin.getUserProfile();
+        break;
+      case FacebookLoginStatus.cancel:
+        print('canceled');
+        break;
+      case FacebookLoginStatus.error:
+        print('error');
+        break;
+    }
   }
 
   @override
@@ -83,10 +104,11 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(top: 55),
                 child: Container(
                   height: 170,
-                  child: SvgPicture.asset('lib/assets/login-cat.svg',
-                      color: Colors.white.withOpacity(0.7),
-                      fit: BoxFit.fitHeight,
-                      ),
+                  child: SvgPicture.asset(
+                    'lib/assets/login-cat.svg',
+                    color: Colors.white.withOpacity(0.7),
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
               ),
               Padding(
@@ -94,12 +116,16 @@ class _LoginPageState extends State<LoginPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BasicText.heading2Bold('Zaloguj się', color: BasicColors.white),
+                    BasicText.heading2Bold('Zaloguj się',
+                        color: BasicColors.white),
                     InkWell(
                       onTap: _moveToRegister,
                       child: Row(
                         children: [
-                          BasicText.subtitleLight('Zajerestruj się', color: BasicColors.white.withOpacity(0.7),),
+                          BasicText.subtitleLight(
+                            'Zajerestruj się',
+                            color: BasicColors.white.withOpacity(0.7),
+                          ),
                           SizedBox(
                             width: 16,
                           ),
@@ -113,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              BasicFormField(
+              LoginFormField(
                   leading: Icon(
                     Icons.perm_identity,
                     color: BasicColors.white,
@@ -121,8 +147,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   controller: TextEditingController()),
               SizedBox(height: 25),
-              BasicFormField(
-                password: true,
+              LoginFormField(
+                  password: true,
                   leading: Icon(
                     Icons.lock_open,
                     color: BasicColors.white,
@@ -157,7 +183,10 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  BasicText.subtitleLight('Lub zaloguj się przez', color: BasicColors.white,),
+                  BasicText.subtitleLight(
+                    'Lub zaloguj się przez',
+                    color: BasicColors.white,
+                  ),
                   Row(
                     children: [
                       InkWell(

@@ -8,5 +8,6 @@ class BasicColors{
   static const Color lightGrey = Color(0xFFCCCCCC);
   static const Color white = Color(0xFFFFFFFF);
   static const Color shadow = Color(0x485F5526);
+  static const Color greyOutlineBorder = Color(0xFFE0E0E0);
 
 }

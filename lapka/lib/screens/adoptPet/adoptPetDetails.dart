@@ -27,8 +27,8 @@ class AdoptPetDetails extends StatelessWidget {
     throw UnimplementedError();
   }
 
-  _like() {
-    throw UnimplementedError();
+  _like(BuildContext context) {
+    BasicDialog.showDialog(context, HelpDialog(accountNumber: '1122223333444455556666'));
   }
 
   _adopt(context) {
@@ -230,15 +230,13 @@ class AdoptPetDetails extends StatelessWidget {
                               children: [
                                 ImageButton(
                                   onPressed: () {
-                                    BasicDialog.showDialog(context, HelpDialog(accountNumber: '1122223333444455556666'));
+                                    _like(context);
                                   },
                                   trailling: Padding(
                                       padding: const EdgeInsets.all(16.0),
-                                      child: InkWell(
-                                          onTap: _like,
-                                          child: SvgPicture.asset(
-                                              'lib/assets/heart-icon.svg',
-                                              color: BasicColors.white))),
+                                      child: SvgPicture.asset(
+                                          'lib/assets/heart-icon.svg',
+                                          color: BasicColors.white)),
                                 ),
                                 SizedBox(
                                   width: 20,

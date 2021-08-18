@@ -5,16 +5,16 @@ import 'package:lapka/settings/textStyles.dart';
 class BasicFormField extends StatefulWidget {
   final TextEditingController controller;
   final String placeholder;
-  final Widget? leading;
-  final bool password;
+  final Widget? trailling;
+  final int maxLines;
 
 
   BasicFormField({
     Key? key,
     required this.controller,
     this.placeholder = '',
-    this.leading,
-    this.password = false,
+    this.trailling,
+    this.maxLines = 1
   }) : super(key: key,);
 
   @override
@@ -22,56 +22,40 @@ class BasicFormField extends StatefulWidget {
 }
 
 class _BasicFormFieldState extends State<BasicFormField> {
-  late bool _visibility;
   final circularBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
   );
-  @override
-  void initState() {
-    _visibility = widget.password;
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.controller,
-      style: subtitleLight.copyWith(color: BasicColors.white),
-      obscureText: _visibility,
-      cursorColor: BasicColors.white,
+      style: body14Light.copyWith(color: BasicColors.darkGrey),
+      cursorColor: BasicColors.darkGrey,
+      maxLines: widget.maxLines,
       decoration: InputDecoration(
         hintText: widget.placeholder,
+        hintStyle: body14.copyWith(color: BasicColors.darkGrey.withOpacity(0.3)),
         contentPadding:
         const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         filled: true,
-        fillColor: Colors.transparent,
-        prefixIcon: widget.leading,
-        suffixIcon: widget.password
-            ? GestureDetector(
-          onTap: (){
-            setState(() {
-              _visibility = !_visibility;
-            });
-            
-          },
-          child: Icon(
-                    Icons.visibility,
-                    color: BasicColors.white,
-                    size: 22,
-                  ),
-        )
-            : null,
+        fillColor: Colors.white,
+        suffixIcon: Padding(
+          padding: const EdgeInsets.only(right :20.0),
+          child: widget.trailling,
+        ),
         border: circularBorder.copyWith(
-          borderSide: BorderSide(color: BasicColors.white),
+         borderSide: BorderSide(color: BasicColors.greyOutlineBorder),
         ),
         errorBorder: circularBorder.copyWith(
           borderSide: BorderSide(color: Colors.red),
         ),
         focusedBorder: circularBorder.copyWith(
-          borderSide: BorderSide(color: BasicColors.white),
+          borderSide: BorderSide(color: BasicColors.greyOutlineBorder),
         ),
         enabledBorder: circularBorder.copyWith(
-          borderSide: BorderSide(color: BasicColors.white),
+          borderSide: BorderSide(color: BasicColors.greyOutlineBorder),
         ),
       ),
     );

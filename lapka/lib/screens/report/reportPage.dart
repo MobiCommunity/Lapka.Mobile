@@ -1,7 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/basicText.dart';
+import 'package:lapka/screens/report/homelessReport.dart';
 import 'package:lapka/settings/colors.dart';
 
 class ReportPage extends StatelessWidget {
@@ -40,14 +42,18 @@ class ReportPage extends StatelessWidget {
                       title: 'Błąkające się zwierzęta',
                       body: 'Zgłoszenia lokalizacji błąkających się zwierzaków',
                       assetSvg: 'lib/assets/dog-face.svg',
-                      onPressCallback: () {},
+                      onPressCallback: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReport()));
+                      },
                     ),
                     SizedBox(height: 16,),
                     ReportCard(
                       title: 'Wymagające sterylizacji',
                       body: 'Zgłoszenia lokalizacji zwierzaków do sterylizacji',
                       assetSvg: 'lib/assets/scissors.svg',
-                      onPressCallback: () {},
+                      onPressCallback: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReport()));
+                      },
                     ),
                     SizedBox(height: 16,),
                     ReportCard(
