@@ -19,7 +19,7 @@ class NoInternetDialog extends StatelessWidget {
               children: [
                 Icon(
                   Icons.wifi_off,
-                  color: BasicColors.lightGreen,
+                  color: BasicColors.darkGreen,
                   size: 50,
                 ),
                 SizedBox(height: 16),

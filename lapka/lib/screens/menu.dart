@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/settings/colors.dart';
@@ -18,7 +19,7 @@ class Menu extends StatelessWidget {
       : super(key: key);
 
   _buildMenuItem(
-      {required Widget widget, required String name, required IconData icon}) {
+      {required Widget widget, required String name, required String icon}) {
     return InkWell(
       onTap: () {
         onMenuItemClicked(widget);
@@ -26,15 +27,17 @@ class Menu extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
+          SvgPicture.asset(
             icon,
             color: BasicColors.white,
-            size: 25,
+            height: 25,
+            width: 325,
           ),
           SizedBox(width: 20),
           BasicText.subtitleLight(
             name,
             color: BasicColors.white,
+            
           )
         ],
       ),
@@ -63,52 +66,52 @@ class Menu extends StatelessWidget {
                         .read<MenuProvider>()
                         .screens[Screens.AdoptPageList]!,
                     name: 'Wiadomości',
-                    icon: Icons.mail),
+                    icon: 'lib/assets/messages-icon.svg',),
                 _buildMenuItem(
                     widget: context
                         .read<MenuProvider>()
                         .screens[Screens.AdoptPageList]!,
                     name: 'Ulubione zwierzaki',
-                    icon: Icons.favorite),
+                    icon: 'lib/assets/paw-symbol.svg',),
                 _buildMenuItem(
                     widget: context
                         .read<MenuProvider>()
                         .screens[Screens.AdoptPageList]!,
                     name: 'Adopcja',
-                    icon: Icons.pets),
+                    icon: 'lib/assets/favourite-icon.svg',),
                 _buildMenuItem(
                     widget: context
                         .read<MenuProvider>()
                         .screens[Screens.AdoptPageList]!,
                     name: 'Moje zwierzaki',
-                    icon: Icons.account_box),
+                    icon: 'lib/assets/my-pets-icon.svg',),
                 _smallLineSpacer(),
                 _buildMenuItem(
                     widget: context
                         .read<MenuProvider>()
                         .screens[Screens.ReportPage]!,
                     name: 'Zgłoszenia',
-                    icon: Icons.add_box),
+                    icon: 'lib/assets/report-icon.svg',),
                 _buildMenuItem(
                     widget: context
                         .read<MenuProvider>()
                         .screens[Screens.AdoptPageList]!,
                     name: 'Zaginione zwierzaki',
-                    icon: Icons.house),
+                    icon: 'lib/assets/missing-pets.svg',),
                 _smallLineSpacer(),
                 _buildMenuItem(
                     widget: context
                         .read<MenuProvider>()
                         .screens[Screens.VolunteerPage]!,
                     name: 'Wolontariat',
-                    icon: Icons.volunteer_activism),
+                    icon: 'lib/assets/volunteer-icon.svg',),
                 _smallLineSpacer(),
                 _buildMenuItem(
                     widget: context
                         .read<MenuProvider>()
                         .screens[Screens.AdoptPageList]!,
                     name: 'Ustawienia',
-                    icon: Icons.settings),
+                    icon: 'lib/assets/settings-icon.svg',),
                 Container(),
                 _bigLineSpacer(),
                 _buildMenuItem(
@@ -116,7 +119,7 @@ class Menu extends StatelessWidget {
                         .read<MenuProvider>()
                         .screens[Screens.AdoptPageList]!,
                     name: 'Wyloguj się',
-                    icon: Icons.logout),
+                    icon: 'lib/assets/logout-icon.svg',),
                 Container()
               ],
             ),

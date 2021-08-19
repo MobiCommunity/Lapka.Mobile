@@ -12,7 +12,7 @@ class MsgOwnerButton extends StatelessWidget {
   const MsgOwnerButton({
     Key? key,
     this.text,
-    this.color = BasicColors.lightGreen,
+    this.color = BasicColors.darkGreen,
     this.textColor,
     required this.onPressed,
   }) : super(key: key);

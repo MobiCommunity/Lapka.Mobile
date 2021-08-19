@@ -9,7 +9,6 @@ import 'package:lapka/settings/colors.dart';
 import 'menu.dart';
 import 'package:provider/provider.dart';
 
-final Color backgroundColor = Color(0xFF4A4A58);
 
 class MenuDashboardLayout extends StatefulWidget {
   final Widget initialPage;
@@ -83,7 +82,7 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
                   }
             },
       child: Scaffold(
-        backgroundColor: BasicColors.lightGreen,
+        backgroundColor: BasicColors.darkGreen,
         body: Stack(
           children: [
             Menu(

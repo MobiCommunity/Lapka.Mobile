@@ -33,7 +33,7 @@ class SpeciesSelector extends StatelessWidget {
               ),
               SpeciesButton(
                   title: 'Wszystkie',
-                  asset: 'lib/assets/paw-symbol.svg',
+                  asset: 'lib/assets/paw-icon.svg',
                   selected: selected == Species.All,
                   onTapCallback: () {
                     _onTap(context, Species.All);
@@ -43,7 +43,7 @@ class SpeciesSelector extends StatelessWidget {
               ),
               SpeciesButton(
                   title: 'Psy',
-                  asset: 'lib/assets/paw-symbol.svg',
+                  asset: 'lib/assets/dog-icon.svg',
                   selected: selected == Species.Dogs,
                   onTapCallback: () {
                     _onTap(context, Species.Dogs);
@@ -53,7 +53,7 @@ class SpeciesSelector extends StatelessWidget {
               ),
               SpeciesButton(
                   title: 'Koty',
-                  asset: 'lib/assets/paw-symbol.svg',
+                  asset: 'lib/assets/cat-icon.svg',
                   selected: selected == Species.Cats,
                   onTapCallback: () {
                     _onTap(context, Species.Cats);
@@ -63,7 +63,7 @@ class SpeciesSelector extends StatelessWidget {
               ),
               SpeciesButton(
                   title: 'Papugi',
-                  asset: 'lib/assets/paw-symbol.svg',
+                  asset: 'lib/assets/parrot-icon.svg',
                   selected: selected == Species.Parots,
                   onTapCallback: () {
                     _onTap(context, Species.Parots);
@@ -73,7 +73,7 @@ class SpeciesSelector extends StatelessWidget {
               ),
               SpeciesButton(
                   title: 'Króliki',
-                  asset: 'lib/assets/paw-symbol.svg',
+                  asset: 'lib/assets/rabbit-icon.svg',
                   selected: selected == Species.Rabbits,
                   onTapCallback: () {
                     _onTap(context, Species.Rabbits);
@@ -114,6 +114,8 @@ class SpeciesButton extends StatelessWidget {
             height: 16,
           ),
           Container(
+            height: 66,
+            width: 66,
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -123,11 +125,11 @@ class SpeciesButton extends StatelessWidget {
                     offset: Offset(2, 3),
                   )
                 ],
-                color: selected ? BasicColors.darkGreen : BasicColors.white,
+                color: selected ? BasicColors.lightGreen : BasicColors.white,
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             child: Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.all(12),
+                
                 child: SvgPicture.asset(
                   asset,
                   color: selected

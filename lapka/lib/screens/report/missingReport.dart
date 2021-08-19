@@ -55,7 +55,7 @@ class _MissingReportPageState extends State<MissingReportPage> {
       ),
       body: Stack(
         children: [
-          Container(margin: EdgeInsets.only(top: 133), color: BasicColors.grey,),
+          Container(margin: EdgeInsets.only(top: 133), color: BasicColors.lightGrey,),
           SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -66,7 +66,7 @@ class _MissingReportPageState extends State<MissingReportPage> {
                 Container(
                   height: 33,
                   decoration: BoxDecoration(
-                      color: BasicColors.grey,
+                      color: BasicColors.lightGrey,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(33),
                           topRight: Radius.circular(33))),
@@ -74,7 +74,7 @@ class _MissingReportPageState extends State<MissingReportPage> {
                 Form(
                   key: formKey,
                   child: Container(
-                    color: BasicColors.grey,
+                    color: BasicColors.lightGrey,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
@@ -101,7 +101,7 @@ class _MissingReportPageState extends State<MissingReportPage> {
                             placeholder: 'Podaj potencjalną lokalizację zwierząt',
                             trailling: Icon(
                               Icons.near_me,
-                              color: BasicColors.lightGreen.withOpacity(0.5),
+                              color: BasicColors.darkGreen.withOpacity(0.5),
                               size: 30,
                             ),
                           ),
@@ -248,7 +248,7 @@ class _MissingReportPageState extends State<MissingReportPage> {
                           BasicButton(
                             onPressed: _validate,
                             text: "DODAJ ZGŁOSZENIE",
-                            color: BasicColors.darkGreen,
+                            color: BasicColors.lightGreen,
                           ),
                           SizedBox(
                             height: 16,

@@ -43,7 +43,7 @@ class _AdoptPetListPageState extends State<AdoptPetListPage> {
               padding: const EdgeInsets.only(top: 100),
               child: Container(
                 decoration: BoxDecoration(
-                  color: BasicColors.grey,
+                  color: BasicColors.lightGrey,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(33),
                       topRight: Radius.circular(33)),

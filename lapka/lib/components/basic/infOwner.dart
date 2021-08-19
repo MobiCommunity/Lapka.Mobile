@@ -67,7 +67,7 @@ class _InfOwnerState extends State<InfOwner> {
                       ],
                     ),
                     SizedBox(height: 22, width: 0),
-                    Container(height: 1, width: double.infinity, color: BasicColors.lightGrey,),
+                    Container(height: 1, width: double.infinity, color: BasicColors.grey,),
                     SizedBox(height: 22, width: 0),
                     BasicText.body14Bold('Kontakt do właściciela'),
                     SizedBox(height: 4, width: 0),

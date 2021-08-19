@@ -29,7 +29,7 @@ class _LoadingIndicatorState extends State<LoadingIndicator>
     return Center(
       child: CircularProgressIndicator(
         valueColor: animationController!
-            .drive(ColorTween(begin: BasicColors.darkGreen, end: BasicColors.lightGreen)),
+            .drive(ColorTween(begin: BasicColors.lightGreen, end: BasicColors.darkGreen)),
       ),
     );
   }

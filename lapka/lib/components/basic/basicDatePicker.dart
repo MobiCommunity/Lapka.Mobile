@@ -28,9 +28,24 @@ class _BasicDatePickerState extends State<BasicDatePicker> {
 Future _selectDate() async {
    DateTime? picked = await showDatePicker(
        context: context,
-       initialDate: controller.text == ''? widget.initialDate: Jiffy(controller.text, 'dd/MM/yyyy').local()  ,
+       initialDate: controller.text == ''? widget.initialDate: Jiffy(controller.text, 'dd/MM/yyyy').local(),
        firstDate: widget.firsDate,
-       lastDate: widget.lastDate);
+       lastDate: widget.lastDate,
+       builder: (BuildContext context, Widget? child) {
+      return Theme(
+        data: ThemeData.light().copyWith(
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: BasicColors.DarkGreenPallete,
+            primaryColorDark: BasicColors.DarkGreenPallete,
+            accentColor: BasicColors.DarkGreenPallete,
+            
+          ),
+        dialogBackgroundColor:Colors.white,
+      ),
+      child: child!,
+   );}
+       );
+       
    if (picked != null){
      Jiffy jiffy = Jiffy(picked);
       controller.text = jiffy.format('dd/MM/yyyy');

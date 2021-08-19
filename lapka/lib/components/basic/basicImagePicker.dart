@@ -72,7 +72,7 @@ class _BasicImagePickerState extends State<BasicImagePicker> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 20),
-                    child: Icon(Icons.photo_camera_outlined, color: BasicColors.lightGreen.withOpacity(0.5),size: 25,),
+                    child: Icon(Icons.photo_camera_outlined, color: BasicColors.darkGreen.withOpacity(0.5),size: 25,),
                   )
                 ],
               ),

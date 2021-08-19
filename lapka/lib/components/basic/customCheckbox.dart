@@ -34,7 +34,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
                 color: Colors.white,
                 border: Border.all(
                   color: widget.isChecked
-                      ? BasicColors.lightGreen
+                      ? BasicColors.darkGreen
                       : BasicColors.darkGrey,
                 )),
             width: widget.size,
@@ -42,7 +42,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
             child: widget.isChecked
                 ? Icon(
                     Icons.brightness_1_rounded,
-                    color: BasicColors.lightGreen,
+                    color: BasicColors.darkGreen,
                     size: widget.iconSize,
                   )
                 : null,

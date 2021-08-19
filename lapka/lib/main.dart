@@ -38,7 +38,12 @@ class MyApp extends StatelessWidget {
                   Theme.of(context).textTheme,
                 ),
                 scaffoldBackgroundColor: Colors.white),
-            home: MyHomePage()));
+            home: NotificationListener<OverscrollIndicatorNotification>(
+                onNotification: (overscroll) {
+                  overscroll.disallowGlow();
+                  return true;
+                },
+                child: MyHomePage())));
   }
 }
 

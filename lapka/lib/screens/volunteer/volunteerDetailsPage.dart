@@ -17,7 +17,7 @@ class VolunteerDetailsPage extends StatelessWidget {
   Widget _smallLineSpacer() {
     return Container(
       height: 1,
-      color: BasicColors.lightGrey,
+      color: BasicColors.grey,
     );
   }
 
@@ -42,10 +42,10 @@ class VolunteerDetailsPage extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(33),
                         topLeft: Radius.circular(33)),
-                    color: BasicColors.grey),
+                    color: BasicColors.lightGrey),
               ),
               Container(
-                color: BasicColors.grey,
+                color: BasicColors.lightGrey,
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
@@ -55,7 +55,7 @@ class VolunteerDetailsPage extends StatelessWidget {
                             width: 60,
                             height: 65,
                             decoration: BoxDecoration(
-                              color: BasicColors.lightGrey,
+                              color: BasicColors.grey,
                             )),
                         upperText: '('+LocationHelper.getDistance(
                                       context.read<LocationProvider>().position,
@@ -78,6 +78,7 @@ class VolunteerDetailsPage extends StatelessWidget {
                       height: 16,
                     ),
                     SupportSchelterCard(),
+                    SizedBox(height: 16,)
                   ],
                 ),
               ),

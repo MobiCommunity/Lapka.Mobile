@@ -61,13 +61,13 @@ class PetCard extends StatelessWidget {
                     pet.sex == true
                         ? SvgPicture.asset(
                             'lib/assets/famale-symbol.svg',
-                            color: BasicColors.darkGreen,
+                            color: BasicColors.lightGreen,
                             width: 30,
                             height: 30,
                           )
                         : SvgPicture.asset(
                             'lib/assets/male-symbol.svg',
-                            color: BasicColors.darkGreen,
+                            color: BasicColors.lightGreen,
                             width: 30,
                             height: 30,
                           )
@@ -83,7 +83,7 @@ class PetCard extends StatelessWidget {
                 Row(
                   children: [
                     Icon(Icons.date_range,
-                        size: 14, color: BasicColors.darkGreen),
+                        size: 14, color: BasicColors.lightGreen),
                     SizedBox(
                       width: 8,
                     ),
@@ -94,7 +94,7 @@ class PetCard extends StatelessWidget {
                 Row(
                   children: [
                     Icon(Icons.location_on,
-                        size: 14, color: BasicColors.darkGreen),
+                        size: 14, color: BasicColors.lightGreen),
                     SizedBox(
                       width: 8,
                     ),
@@ -112,7 +112,7 @@ class PetCard extends StatelessWidget {
           Container(
             height: 42,
             decoration: BoxDecoration(
-                color: BasicColors.lightGreen,
+                color: BasicColors.darkGreen,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(14),
                     bottomRight: Radius.circular(14))),

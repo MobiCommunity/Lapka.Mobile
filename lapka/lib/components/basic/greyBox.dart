@@ -13,7 +13,7 @@ class GreyBox extends StatelessWidget{
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: BasicColors.lightGrey)
+            border: Border.all(color: BasicColors.grey)
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: padding),

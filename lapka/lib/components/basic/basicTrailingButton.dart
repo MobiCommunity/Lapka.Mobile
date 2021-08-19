@@ -12,7 +12,7 @@ class BasicTrailingButton extends StatelessWidget {
   const BasicTrailingButton({ 
     Key? key,
     this.text= "",
-    this.color = BasicColors.lightGreen,
+    this.color = BasicColors.darkGreen,
     this.iconColor= BasicColors.white,
     required this.onPressed ,
     required this.icon

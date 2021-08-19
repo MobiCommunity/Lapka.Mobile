@@ -76,14 +76,14 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                       children: [
                         BasicText.body14(
                           'Lokalizacja',
-                          color: BasicColors.lightGrey,
+                          color: BasicColors.grey,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.place,
-                              color: BasicColors.lightGreen,
+                              color: BasicColors.darkGreen,
                             ),
                             BasicText.body14Bold(localization),
                           ],
@@ -96,7 +96,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                       children: [
                         BasicText.body14(
                           title,
-                          color: BasicColors.lightGrey,
+                          color: BasicColors.grey,
                         ),
                       ],
                     ),
@@ -105,7 +105,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   : InkWell(
                       onTap: _openAccount,
                       child: CircleAvatar(
-                        backgroundColor: BasicColors.lightGrey,
+                        backgroundColor: BasicColors.grey,
                       ),
                       radius: 20,
                     ),

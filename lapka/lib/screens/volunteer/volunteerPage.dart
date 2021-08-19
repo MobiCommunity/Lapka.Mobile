@@ -35,7 +35,7 @@ class _VolunteerPageState extends State<VolunteerPage> {
         ),
         body: Stack(
           children: [
-            Container(margin: EdgeInsets.only(top: 133), color: BasicColors.grey,),
+            Container(margin: EdgeInsets.only(top: 133), color: BasicColors.lightGrey,),
             CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
@@ -47,7 +47,7 @@ class _VolunteerPageState extends State<VolunteerPage> {
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(33),
                               topLeft: Radius.circular(33)),
-                          color: BasicColors.grey),
+                          color: BasicColors.lightGrey),
                     ),
                   ),
                 ),
@@ -65,7 +65,7 @@ class _VolunteerPageState extends State<VolunteerPage> {
           delegate: SliverChildBuilderDelegate((context, index) {
             Shelter shelter = context.watch<ShelterProvider>().shelters[index];
             return Container(
-              color: BasicColors.grey,
+              color: BasicColors.lightGrey,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16, left: 20, right: 20),
                 child: InkWell(
@@ -88,7 +88,7 @@ class _VolunteerPageState extends State<VolunteerPage> {
                               width: 60,
                               height: 65,
                               decoration: BoxDecoration(
-                                color: BasicColors.lightGrey,
+                                color: BasicColors.grey,
                               )),
                           upperText: '(' +
                               LocationHelper.getDistance(

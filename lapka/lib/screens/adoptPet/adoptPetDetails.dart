@@ -148,13 +148,13 @@ class AdoptPetDetails extends StatelessWidget {
                                   child: snapshot.data!.sex == false
                                       ? SvgPicture.asset(
                                           'lib/assets/male-symbol.svg',
-                                          color: BasicColors.darkGreen,
+                                          color: BasicColors.lightGreen,
                                           width: 55,
                                           height: 55,
                                         )
                                       : SvgPicture.asset(
                                           'lib/assets/famale-symbol.svg',
-                                          color: BasicColors.darkGreen,
+                                          color: BasicColors.lightGreen,
                                           width: 55,
                                           height: 55,
                                         ),
@@ -244,6 +244,7 @@ class AdoptPetDetails extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: ImageButton(
+                                      color: BasicColors.lightGreen,
                                       onPressed: () {
                                         _adopt(context);
                                       },
@@ -253,7 +254,7 @@ class AdoptPetDetails extends StatelessWidget {
                                           child: SvgPicture.asset(
                                               'lib/assets/paw-symbol.svg',
                                               color: BasicColors.white)),
-                                      text: 'Adoptuj'),
+                                      text: 'ADOPTUJ'),
                                 ),
                               ],
                             )

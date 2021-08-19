@@ -34,7 +34,7 @@ class FloatingBarScaffold extends StatelessWidget {
           body: Stack(
             children: [
               Container(
-                color: BasicColors.grey,
+                color: BasicColors.lightGrey,
                 child: body
               ),
               Container(
@@ -44,7 +44,7 @@ class FloatingBarScaffold extends StatelessWidget {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                      BasicColors.grey,
+                      BasicColors.lightGrey,
                       BasicColors.white.withOpacity(0)
                     ])),
               ),

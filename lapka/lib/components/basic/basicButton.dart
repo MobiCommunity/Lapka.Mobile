@@ -12,7 +12,7 @@ class BasicButton extends StatelessWidget {
   const BasicButton({ 
     Key? key,
     this.text,
-    this.color = BasicColors.lightGreen,
+    this.color = BasicColors.darkGreen,
     this.textColor,
     required this.onPressed 
     }) : super(key: key);

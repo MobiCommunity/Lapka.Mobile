@@ -32,7 +32,7 @@ class HelpDialog extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ShelterComp(shelterName: 'Psiaki Adopciaki z Psiej Wioski', logoWidget: Container(height: 32, width: 30, color: BasicColors.lightGrey), upperText: '(2.5 km) Rzeszów,', lowerText: 'ul. Krakowska 12'),
+                    ShelterComp(shelterName: 'Psiaki Adopciaki z Psiej Wioski', logoWidget: Container(height: 32, width: 30, color: BasicColors.grey), upperText: '(2.5 km) Rzeszów,', lowerText: 'ul. Krakowska 12'),
                     SizedBox(height: 1, width: 11,),
                     Padding(
                       padding: const EdgeInsets.only(left: 40),
@@ -41,7 +41,7 @@ class HelpDialog extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SizedBox(height: 16, width: 0),
-                          Container(height: 1, color: BasicColors.lightGrey,),
+                          Container(height: 1, color: BasicColors.grey,),
                           SizedBox(height: 17, width: 0),
                           BasicText.body14Light('Rodzaj pomocy: Wyjdź na spacer! '),
                           SizedBox(height: 11, width: 0),
@@ -56,7 +56,7 @@ class HelpDialog extends StatelessWidget {
                           SizedBox(width: 0, height: 9),
                           Row(
                             children: [
-                              Icon(Icons.mail, color: BasicColors.darkGreen, size: 14),
+                              Icon(Icons.mail, color: BasicColors.lightGreen, size: 14),
                               SizedBox(width: 3, height: 0),
                               BasicText.body14Light('mail@mail.com'),
                             ],),
@@ -92,13 +92,13 @@ class HelpDialog extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 21, width: 0),
-                    Container(height: 1, color: BasicColors.lightGrey,),
+                    Container(height: 1, color: BasicColors.grey,),
                     SizedBox(height: 24, width: 0),
                     BasicText.body14Light('Chcesz wesprzeć schronisko finansowo? Skopiuj poniższy numer konta i wykonaj przelew korzystając z aplikacji swojego banku.'),
                     SizedBox(height: 12, width: 0),
                     Container(
                       height: 40,
-                      decoration: BoxDecoration(color: BasicColors.grey, borderRadius: BorderRadius.circular(14)),
+                      decoration: BoxDecoration(color: BasicColors.lightGrey, borderRadius: BorderRadius.circular(14)),
                       child: Padding(
                         padding: const EdgeInsets.only(top: 8, bottom: 8, left: 15, right: 11),
                         child: Row(

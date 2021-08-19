@@ -6,11 +6,13 @@ class ImageButton extends StatelessWidget{
   final Function() onPressed;
   final Widget trailling;
   final String text;
+  final Color color;
 
   const ImageButton({
     required this.onPressed,
     required this.trailling,
     this.text = '',
+    this.color = BasicColors.darkGreen
   });
 
   @override
@@ -18,7 +20,7 @@ class ImageButton extends StatelessWidget{
     return InkWell(
       onTap: onPressed,
       child: Container(
-        decoration: BoxDecoration(color: BasicColors.lightGreen, borderRadius: BorderRadius.circular(16),),
+        decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(16),),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

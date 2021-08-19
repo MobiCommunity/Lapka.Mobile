@@ -44,6 +44,7 @@ class _LoginFormFieldState extends State<LoginFormField> {
       cursorColor: BasicColors.white,
       decoration: InputDecoration(
         hintText: widget.placeholder,
+        hintStyle: body14.copyWith(color: BasicColors.white.withOpacity(0.6)),
         contentPadding:
         const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         filled: true,

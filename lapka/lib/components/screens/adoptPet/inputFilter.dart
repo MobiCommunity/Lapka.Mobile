@@ -20,16 +20,16 @@ class InputFliter extends StatelessWidget {
     return TextField(
       controller: controller,
       style: body14Light.copyWith(color: BasicColors.darkGrey),
-      cursorColor: BasicColors.lightGrey,
+      cursorColor: BasicColors.grey,
       decoration: InputDecoration(
-        hintStyle: body14Light.copyWith(color: BasicColors.lightGrey),
+        hintStyle: body14Light.copyWith(color: BasicColors.grey),
         hintText: 'Szukaj...',
         contentPadding:
         const EdgeInsets.all(16),
         filled: true,
         fillColor: BasicColors.white,
-        prefixIcon: Icon(Icons.search, color: BasicColors.lightGrey,size: 17,),
-        suffixIcon: Icon(Icons.tune, color: BasicColors.darkGreen,size: 17,),
+        prefixIcon: Icon(Icons.search, color: BasicColors.grey,size: 17,),
+        suffixIcon: Icon(Icons.tune, color: BasicColors.lightGreen,size: 17,),
         focusedBorder: border,
         border: border,
         enabledBorder: border,

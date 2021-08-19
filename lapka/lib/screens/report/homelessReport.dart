@@ -34,7 +34,7 @@ class HomelessReportPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Container(margin: EdgeInsets.only(top: 133), color: BasicColors.grey,),
+          Container(margin: EdgeInsets.only(top: 133), color: BasicColors.lightGrey,),
           SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -45,20 +45,20 @@ class HomelessReportPage extends StatelessWidget {
                 Container(
                   height: 33,
                   decoration: BoxDecoration(
-                      color: BasicColors.grey,
+                      color: BasicColors.lightGrey,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(33),
                           topRight: Radius.circular(33))),
                 ),
                 Container(
-                  color: BasicColors.grey,
+                  color: BasicColors.lightGrey,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                          BasicFormField(controller: localizationController,placeholder: 'Podaj potencjalną lokalizację zwierząt',trailling: Icon(Icons.near_me, color: BasicColors.lightGreen.withOpacity(0.5),size: 30,),),
+                          BasicFormField(controller: localizationController,placeholder: 'Podaj potencjalną lokalizację zwierząt',trailling: Icon(Icons.near_me, color: BasicColors.darkGreen.withOpacity(0.5),size: 30,),),
                           SizedBox(height: 16,),
                           BasicImagePicker(onListChange: _listCallback),
                           SizedBox(height: 16,),
@@ -70,7 +70,7 @@ class HomelessReportPage extends StatelessWidget {
                           SizedBox(height: 16,),
                           BasicFormField(controller: phoneController,placeholder: 'Wpisz numer telefonu'),
                           SizedBox(height: 16,),
-                          BasicButton(onPressed: (){}, text: "POWIADOM SCHRONISKO",color: BasicColors.darkGreen,),
+                          BasicButton(onPressed: (){}, text: "POWIADOM SCHRONISKO",color: BasicColors.lightGreen,),
                           SizedBox(height: 16,)
                       ],
                     ),

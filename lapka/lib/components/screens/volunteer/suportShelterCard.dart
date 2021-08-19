@@ -24,7 +24,7 @@ class SupportSchelterCard extends StatelessWidget {
             SizedBox(height: 6,),
             BasicText.body14Light('Wybierz dowolną kwotę i wesprzyj nasze schronisko. Twoja wpłata pozwoli nam zakupić najpilniejsze rzeczy.', color: BasicColors.darkGrey.withOpacity(0.8),),
             SizedBox(height: 14,),
-            BasicButton(onPressed: (){},text: "WESPRZYJ SCHRONISKO",color: BasicColors.darkGreen,)
+            BasicButton(onPressed: (){},text: "WESPRZYJ SCHRONISKO",color: BasicColors.lightGreen,)
           ],),
         ),
     );
