@@ -18,59 +18,65 @@ class ReportPage extends StatelessWidget {
         fade: true,
         title: "Zgłoszenia",
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-            Container(
-              height: 33,
-              decoration: BoxDecoration(
-                  color: BasicColors.grey,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(33),
-                      topRight: Radius.circular(33))),
-            ),
-            Container(
-              color: BasicColors.grey,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    ReportCard(
-                      title: 'Błąkające się zwierzęta',
-                      body: 'Zgłoszenia lokalizacji błąkających się zwierzaków',
-                      assetSvg: 'lib/assets/dog-face.svg',
-                      onPressCallback: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReportPage()));
-                      },
-                    ),
-                    SizedBox(height: 16,),
-                    ReportCard(
-                      title: 'Wymagające sterylizacji',
-                      body: 'Zgłoszenia lokalizacji zwierzaków do sterylizacji',
-                      assetSvg: 'lib/assets/scissors.svg',
-                      onPressCallback: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReportPage()));
-                      },
-                    ),
-                    SizedBox(height: 16,),
-                    ReportCard(
-                      title: 'Zgłoszenia zaginięcia',
-                      body: 'Zgłoszenia zaginięcia wraz z potencjalną lokalizacją',
-                      assetSvg: 'lib/assets/megaphone.svg',
-                      onPressCallback: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MissingReportPage()));
-                      },
-                    ),
-                  ],
+      body: Stack(
+        children: [
+          Container(margin: EdgeInsets.only(top: 133), color: BasicColors.grey,),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 100,
                 ),
-              ),
-            )
-          ],
-        ),
+                Container(
+                  height: 33,
+                  decoration: BoxDecoration(
+                      color: BasicColors.grey,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(33),
+                          topRight: Radius.circular(33))),
+                ),
+                Container(
+                  color: BasicColors.grey,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        ReportCard(
+                          title: 'Błąkające się zwierzęta',
+                          body: 'Zgłoszenia lokalizacji błąkających się zwierzaków',
+                          assetSvg: 'lib/assets/dog-face.svg',
+                          onPressCallback: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReportPage()));
+                          },
+                        ),
+                        SizedBox(height: 16,),
+                        ReportCard(
+                          title: 'Wymagające sterylizacji',
+                          body: 'Zgłoszenia lokalizacji zwierzaków do sterylizacji',
+                          assetSvg: 'lib/assets/scissors.svg',
+                          onPressCallback: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReportPage()));
+                          },
+                        ),
+                        SizedBox(height: 16,),
+                        ReportCard(
+                          title: 'Zgłoszenia zaginięcia',
+                          body: 'Zgłoszenia zaginięcia wraz z potencjalną lokalizacją',
+                          assetSvg: 'lib/assets/megaphone.svg',
+                          onPressCallback: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> MissingReportPage()));
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

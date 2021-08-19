@@ -93,7 +93,7 @@ class Menu extends StatelessWidget {
                     widget: context
                         .read<MenuProvider>()
                         .screens[Screens.AdoptPageList]!,
-                    name: 'Zaginięte zwirzaki',
+                    name: 'Zaginione zwierzaki',
                     icon: Icons.house),
                 _smallLineSpacer(),
                 _buildMenuItem(

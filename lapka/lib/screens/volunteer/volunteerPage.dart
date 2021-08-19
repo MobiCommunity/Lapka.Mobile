@@ -33,22 +33,27 @@ class _VolunteerPageState extends State<VolunteerPage> {
           title: 'Wolontariat',
           fade: true,
         ),
-        body: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 100),
-                child: Container(
-                  height: 33,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(33),
-                          topLeft: Radius.circular(33)),
-                      color: BasicColors.grey),
+        body: Stack(
+          children: [
+            Container(margin: EdgeInsets.only(top: 133), color: BasicColors.grey,),
+            CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 100),
+                    child: Container(
+                      height: 33,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(33),
+                              topLeft: Radius.circular(33)),
+                          color: BasicColors.grey),
+                    ),
+                  ),
                 ),
-              ),
+                _body(context, context.watch<ShelterProvider>().status),
+              ],
             ),
-            _body(context, context.watch<ShelterProvider>().status),
           ],
         ));
   }
