@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/screens/report/homelessReport.dart';
+import 'package:lapka/screens/report/missingReport.dart';
 import 'package:lapka/settings/colors.dart';
 
 class ReportPage extends StatelessWidget {
@@ -43,7 +44,7 @@ class ReportPage extends StatelessWidget {
                       body: 'Zgłoszenia lokalizacji błąkających się zwierzaków',
                       assetSvg: 'lib/assets/dog-face.svg',
                       onPressCallback: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReport()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReportPage()));
                       },
                     ),
                     SizedBox(height: 16,),
@@ -52,7 +53,7 @@ class ReportPage extends StatelessWidget {
                       body: 'Zgłoszenia lokalizacji zwierzaków do sterylizacji',
                       assetSvg: 'lib/assets/scissors.svg',
                       onPressCallback: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReport()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReportPage()));
                       },
                     ),
                     SizedBox(height: 16,),
@@ -60,7 +61,9 @@ class ReportPage extends StatelessWidget {
                       title: 'Zgłoszenia zaginięcia',
                       body: 'Zgłoszenia zaginięcia wraz z potencjalną lokalizacją',
                       assetSvg: 'lib/assets/megaphone.svg',
-                      onPressCallback: () {},
+                      onPressCallback: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MissingReportPage()));
+                      },
                     ),
                   ],
                 ),

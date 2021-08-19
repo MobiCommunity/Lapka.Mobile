@@ -7,12 +7,14 @@ class BasicFormField extends StatefulWidget {
   final String placeholder;
   final Widget? trailling;
   final int maxLines;
+  final bool enabled;
 
 
   BasicFormField({
     Key? key,
     required this.controller,
     this.placeholder = '',
+    this.enabled = true,
     this.trailling,
     this.maxLines = 1
   }) : super(key: key,);
@@ -34,6 +36,7 @@ class _BasicFormFieldState extends State<BasicFormField> {
       style: body14Light.copyWith(color: BasicColors.darkGrey),
       cursorColor: BasicColors.darkGrey,
       maxLines: widget.maxLines,
+      enabled: widget.enabled,
       decoration: InputDecoration(
         hintText: widget.placeholder,
         hintStyle: body14.copyWith(color: BasicColors.darkGrey.withOpacity(0.3)),
