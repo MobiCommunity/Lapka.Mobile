@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lapka/components/appBar/customAppBar.dart';
 import 'package:lapka/components/basic/loadingIndicator.dart';
 import 'package:lapka/components/dialogs/basicDialog.dart';
+import 'package:lapka/components/dialogs/exitDialog.dart';
 import 'package:lapka/components/dialogs/noInternetDialog.dart';
 import 'package:lapka/providers/adoptPetProvider.dart';
 import 'package:lapka/providers/locationProvider.dart';
@@ -33,11 +34,10 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
             theme: ThemeData(
-              textTheme: GoogleFonts.ubuntuTextTheme(
-                Theme.of(context).textTheme,
-              ),
-            scaffoldBackgroundColor: Colors.white
-            ),
+                textTheme: GoogleFonts.ubuntuTextTheme(
+                  Theme.of(context).textTheme,
+                ),
+                scaffoldBackgroundColor: Colors.white),
             home: MyHomePage()));
   }
 }
@@ -55,7 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   initState() {
     super.initState();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     _internetListenerInit();
     _getLocation();
   }
@@ -65,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
       if (result == ConnectivityResult.none) {
-        BasicDialog.showDialog(context, NoInternetDialog());
+        BasicDialog.showDialogCustom(context, NoInternetDialog());
       }
     });
   }
@@ -78,7 +79,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     print('build');
     return context.watch<LocationProvider>().status != LocationStatus.New
-        ? WillPopScope(onWillPop: ()async{return false;}, child: MenuDashboardLayout(AdoptPetListPage()))
+        ? WillPopScope(
+            onWillPop: () async {
+              return await BasicDialog.showDialogCustom(context, ExitDialog());
+            },
+            child: MenuDashboardLayout(AdoptPetListPage()))
         : Scaffold(
             body: Center(
               child: LoadingIndicator(),

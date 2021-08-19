@@ -6,7 +6,7 @@ class InternetConectivity {
   static Future<bool> check(context) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
-      BasicDialog.showDialog(context, NoInternetDialog());
+      BasicDialog.showDialogCustom(context, NoInternetDialog());
       return false;
     } 
     return true;

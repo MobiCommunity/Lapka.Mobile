@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BasicDialog {
-  final bool dismissible;
-
-  BasicDialog.showDialog(BuildContext context, Widget modal,{this.dismissible = true}) {
-    showDialog(
+  static Future<dynamic>showDialogCustom(BuildContext context, Widget modal,{dismissible = true}) {
+    return showDialog(
         barrierDismissible: dismissible,
         context: context,
         builder: (BuildContext context) {

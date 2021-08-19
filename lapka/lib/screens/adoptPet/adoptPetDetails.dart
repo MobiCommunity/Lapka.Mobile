@@ -28,12 +28,12 @@ class AdoptPetDetails extends StatelessWidget {
   }
 
   _like(BuildContext context) {
-    BasicDialog.showDialog(context, HelpDialog(accountNumber: '1122223333444455556666'));
+    BasicDialog.showDialogCustom(context, HelpDialog(accountNumber: '1122223333444455556666'));
   }
 
   _adopt(context) {
 
-    BasicDialog.showDialog(context, LoginDialog(onExit: () {
+    BasicDialog.showDialogCustom(context, LoginDialog(onExit: () {
       Navigator.pop(context);
     }, onLogin: () {
     Navigator.push(
