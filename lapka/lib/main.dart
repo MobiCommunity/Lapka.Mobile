@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     print('build');
     return context.watch<LocationProvider>().status != LocationStatus.New
-        ? MenuDashboardLayout(AdoptPetListPage())
+        ? WillPopScope(onWillPop: ()async{return false;}, child: MenuDashboardLayout(AdoptPetListPage()))
         : Scaffold(
             body: Center(
               child: LoadingIndicator(),

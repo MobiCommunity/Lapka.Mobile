@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/settings/textStyles.dart';
+import 'package:lapka/utils/validators.dart';
 
 class LoginFormField extends StatefulWidget {
   final TextEditingController controller;
   final String placeholder;
   final Widget? leading;
   final bool password;
-
+  final Function validator;
 
   LoginFormField({
     Key? key,
@@ -15,6 +16,7 @@ class LoginFormField extends StatefulWidget {
     this.placeholder = '',
     this.leading,
     this.password = false,
+    this.validator = Validators.defaultValidator,
   }) : super(key: key,);
 
   @override
@@ -34,7 +36,8 @@ class _LoginFormFieldState extends State<LoginFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (text) => widget.validator(text),
       controller: widget.controller,
       style: subtitleLight.copyWith(color: BasicColors.white),
       obscureText: _visibility,
@@ -65,7 +68,8 @@ class _LoginFormFieldState extends State<LoginFormField> {
           borderSide: BorderSide(color: BasicColors.white),
         ),
         errorBorder: circularBorder.copyWith(
-          borderSide: BorderSide(color: Colors.red),
+          
+          borderSide: BorderSide(color: Colors.red,),
         ),
         focusedBorder: circularBorder.copyWith(
           borderSide: BorderSide(color: BasicColors.white),

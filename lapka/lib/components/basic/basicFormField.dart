@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/settings/textStyles.dart';
+import 'package:lapka/utils/validators.dart';
 
 class BasicFormField extends StatefulWidget {
   final TextEditingController controller;
@@ -8,7 +11,8 @@ class BasicFormField extends StatefulWidget {
   final Widget? trailling;
   final int maxLines;
   final bool enabled;
-
+  final Function validator;
+  final TextInputType textInputType;
 
   BasicFormField({
     Key? key,
@@ -16,7 +20,9 @@ class BasicFormField extends StatefulWidget {
     this.placeholder = '',
     this.enabled = true,
     this.trailling,
-    this.maxLines = 1
+    this.maxLines = 1,
+    this.validator = Validators.defaultValidator,
+    this.textInputType = TextInputType.text
   }) : super(key: key,);
 
   @override
@@ -31,12 +37,14 @@ class _BasicFormFieldState extends State<BasicFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (text) => widget.validator(text),
       controller: widget.controller,
       style: body14Light.copyWith(color: BasicColors.darkGrey),
       cursorColor: BasicColors.darkGrey,
       maxLines: widget.maxLines,
       enabled: widget.enabled,
+      keyboardType: widget.textInputType,
       decoration: InputDecoration(
         hintText: widget.placeholder,
         hintStyle: body14.copyWith(color: BasicColors.darkGrey.withOpacity(0.3)),

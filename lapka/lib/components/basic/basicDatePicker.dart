@@ -2,14 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:lapka/components/basic/basicFormField.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/utils/validators.dart';
 
 class BasicDatePicker extends StatefulWidget {
   final Function() onChangeCallback;
   final String placeholder;
-  const BasicDatePicker({
+  final Function validator;
+  final DateTime lastDate, firsDate, initialDate;
+  BasicDatePicker({
     required this.onChangeCallback,
     this.placeholder = '',
-    Key? key }) : super(key: key);
+    this.validator = Validators.defaultValidator,
+    required this.firsDate,
+    required this.lastDate,
+    required this.initialDate,
+    Key? key }): super(key: key);
 
   @override
   _BasicDatePickerState createState() => _BasicDatePickerState();
@@ -19,13 +26,11 @@ class _BasicDatePickerState extends State<BasicDatePicker> {
   TextEditingController controller = TextEditingController();
 
 Future _selectDate() async {
-  DateTime now = DateTime.now();
-  
    DateTime? picked = await showDatePicker(
        context: context,
-       initialDate: now,
-       firstDate: DateTime.now().subtract(Duration(days: 30)),
-       lastDate: now);
+       initialDate: controller.text == ''? widget.initialDate: Jiffy(controller.text, 'dd/MM/yyyy').local()  ,
+       firstDate: widget.firsDate,
+       lastDate: widget.lastDate);
    if (picked != null){
      Jiffy jiffy = Jiffy(picked);
       controller.text = jiffy.format('dd/MM/yyyy');
@@ -39,8 +44,9 @@ Future _selectDate() async {
       onTap: _selectDate,
       child: BasicFormField(
         controller: controller,
+        validator: widget.validator,
         enabled: false,
-        placeholder: 'Data zaginięcia',
+        placeholder: widget.placeholder,
         trailling: Icon(Icons.calendar_today_outlined ,
         color: BasicColors.darkGrey.withOpacity(0.3),size: 30,),),
     );

@@ -7,6 +7,7 @@ import 'package:lapka/components/basic/basicText.dart';
 import 'package:lapka/components/dialogs/basicDialog.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/utils/checkConectivity.dart';
+import 'package:lapka/utils/validators.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,48 +19,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController loginController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   _login() {
-    BasicDialog.showDialog(
-        context,
-        Container(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24.0),
-              child: Stack(
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      BasicText.heading2Bold('Uppps'),
-                      SizedBox(height: 6),
-                      Container(
-                        height: 90,
-                        width: 90,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        height: 24,
-                      ),
-                      BasicText.subtitle('Zaloguj się lub załóż konto'),
-                      SizedBox(height: 4),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: BasicText.body14Light(
-                          'Aby skorzystać z tej możliwości musisz się zalogować! Jeśli nie posiadasz jeszcze konta załóż je już teraz. Rejestracja potrwa jedynie kilka chwil. :)',
-                          center: true,
-                        ),
-                      )
-                    ],
-                  ),
-                  Container(
-                    height: 100,
-                    width: 150,
-                    color: Colors.red,
-                  ),
-                ],
-              ),
-            ),
-            color: BasicColors.white));
+    formKey.currentState!.validate();
   }
 
   _moveToRegister() async {
@@ -98,117 +61,132 @@ class _LoginPageState extends State<LoginPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 55),
-                child: Container(
-                  height: 170,
-                  child: SvgPicture.asset(
-                    'lib/assets/login-cat.svg',
-                    color: Colors.white.withOpacity(0.7),
-                    fit: BoxFit.fitHeight,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0, bottom: 50),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    BasicText.heading2Bold('Zaloguj się',
-                        color: BasicColors.white),
-                    InkWell(
-                      onTap: _moveToRegister,
-                      child: Row(
-                        children: [
-                          BasicText.subtitleLight(
-                            'Zajerestruj się',
-                            color: BasicColors.white.withOpacity(0.7),
-                          ),
-                          SizedBox(
-                            width: 16,
-                          ),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: BasicColors.white.withOpacity(0.7),
-                          )
-                        ],
-                      ),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 55),
+                  child: Container(
+                    height: 170,
+                    child: SvgPicture.asset(
+                      'lib/assets/login-cat.svg',
+                      color: Colors.white.withOpacity(0.7),
+                      fit: BoxFit.fitHeight,
                     ),
-                  ],
-                ),
-              ),
-              LoginFormField(
-                  leading: Icon(
-                    Icons.perm_identity,
-                    color: BasicColors.white,
-                    size: 22,
-                  ),
-                  controller: TextEditingController()),
-              SizedBox(height: 25),
-              LoginFormField(
-                  password: true,
-                  leading: Icon(
-                    Icons.lock_open,
-                    color: BasicColors.white,
-                    size: 22,
-                  ),
-                  controller: TextEditingController()),
-              SizedBox(
-                height: 16,
-              ),
-              Container(
-                alignment: Alignment.topRight,
-                child: InkWell(
-                  onTap: _forgotPassword,
-                  child: BasicText.subtitleLight(
-                    "Zapomniałeś hasła?",
-                    color: BasicColors.white.withOpacity(0.5),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              BasicButton(
-                onPressed: _login,
-                color: BasicColors.white,
-                textColor: BasicColors.lightGreen,
-                text: "ZALOGUJ SIĘ",
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  BasicText.subtitleLight(
-                    'Lub zaloguj się przez',
-                    color: BasicColors.white,
-                  ),
-                  Row(
+                Padding(
+                  padding: const EdgeInsets.only(top: 30.0, bottom: 50),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      BasicText.heading2Bold('Zaloguj się',
+                          color: BasicColors.white),
                       InkWell(
-                          onTap: _loginGoogle,
-                          child: SvgPicture.asset(
-                            'lib/assets/google.svg',
-                            color: BasicColors.white,
-                            height: 36,
-                          )),
-                      SizedBox(
-                        width: 25,
+                        onTap: _moveToRegister,
+                        child: Row(
+                          children: [
+                            BasicText.subtitleLight(
+                              'Zajerestruj się',
+                              color: BasicColors.white.withOpacity(0.7),
+                            ),
+                            SizedBox(
+                              width: 16,
+                            ),
+                            Icon(
+                              Icons.arrow_forward,
+                              color: BasicColors.white.withOpacity(0.7),
+                            )
+                          ],
+                        ),
                       ),
-                      InkWell(
-                          onTap: _loginFacebook,
-                          child: SvgPicture.asset(
-                              'lib/assets/facebook-logo.svg',
-                              height: 36)),
                     ],
                   ),
-                ],
-              )
-            ],
+                ),
+                LoginFormField(
+                  validator: (text) => Validators.multiValidator([
+                                VaidatorModel(
+                                    Validators.notEmpty, 'Musisz podać email'),
+                                VaidatorModel(
+                                    Validators.email, 'Nieprawidłowy mail'),
+                              ], text),
+                    leading: Icon(
+                      Icons.perm_identity,
+                      color: BasicColors.white,
+                      size: 22,
+                    ),
+                    controller: TextEditingController()),
+                SizedBox(height: 25),
+                LoginFormField(
+                    password: true,
+                    validator: (text) => Validators.multiValidator([
+                                VaidatorModel(
+                                    Validators.notEmpty, 'Musisz podać hasło'),
+                                VaidatorModel(
+                                    Validators.min8Chars, 'Hasło musi mieć 8 znaków'),
+                              ], text),
+                    leading: Icon(
+                      Icons.lock_open,
+                      color: BasicColors.white,
+                      size: 22,
+                    ),
+                    controller: TextEditingController()),
+                SizedBox(
+                  height: 16,
+                ),
+                Container(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: _forgotPassword,
+                    child: BasicText.subtitleLight(
+                      "Zapomniałeś hasła?",
+                      color: BasicColors.white.withOpacity(0.5),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                BasicButton(
+                  onPressed: _login,
+                  color: BasicColors.white,
+                  textColor: BasicColors.lightGreen,
+                  text: "ZALOGUJ SIĘ",
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    BasicText.subtitleLight(
+                      'Lub zaloguj się przez',
+                      color: BasicColors.white,
+                    ),
+                    Row(
+                      children: [
+                        InkWell(
+                            onTap: _loginGoogle,
+                            child: SvgPicture.asset(
+                              'lib/assets/google.svg',
+                              color: BasicColors.white,
+                              height: 36,
+                            )),
+                        SizedBox(
+                          width: 25,
+                        ),
+                        InkWell(
+                            onTap: _loginFacebook,
+                            child: SvgPicture.asset(
+                                'lib/assets/facebook-logo.svg',
+                                height: 36)),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
