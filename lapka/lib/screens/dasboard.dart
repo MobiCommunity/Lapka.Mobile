@@ -24,7 +24,7 @@ class Dashboard extends StatelessWidget {
       top: 0,
       bottom: 0,
       left: isCollapsed ? 0 : 0.6 * screenWidth,
-      right: isCollapsed ? 0 : -0.4 * screenWidth,
+      right: isCollapsed ? 0 : -0.6 * screenWidth,
       child: ScaleTransition(
         scale: scaleAnimation,
         child: Stack(

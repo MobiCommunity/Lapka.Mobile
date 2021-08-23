@@ -135,6 +135,7 @@ class ReportCard extends StatelessWidget {
                 flex: 2,
                 child: SvgPicture.asset(
                   assetSvg,
+                  fit : BoxFit.fitWidth,
                 ))
           ],
         ),

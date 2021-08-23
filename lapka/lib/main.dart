@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     print('build');
-    return context.watch<LocationProvider>().status != LocationStatus.New
+    return context.watch<LocationProvider>().status != LocationStatus.New || context.watch<LocationProvider>().status != LocationStatus.NoLocation 
         ? WillPopScope(
             onWillPop: () async {
               return await BasicDialog.showDialogCustom(context, ExitDialog());
