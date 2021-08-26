@@ -1,22 +1,23 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lapka/components/appBar/customAppBar.dart';
-import 'package:lapka/components/basic/loadingIndicator.dart';
-import 'package:lapka/components/dialogs/basicDialog.dart';
-import 'package:lapka/components/dialogs/exitDialog.dart';
-import 'package:lapka/components/dialogs/noInternetDialog.dart';
-import 'package:lapka/providers/adoptPetProvider.dart';
-import 'package:lapka/providers/locationProvider.dart';
+import 'package:lapka/components/dialogs/basic_dialog.dart';
+import 'package:lapka/components/dialogs/exit_dialog.dart';
+import 'package:lapka/components/dialogs/no_internet_dialog.dart';
+import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/providers/loginProvider.dart';
 import 'package:lapka/providers/menuProvider.dart';
-import 'package:lapka/providers/myPetsProvider.dart';
-import 'package:lapka/providers/shelterProvider.dart';
-import 'package:lapka/screens/adoptPet/adoptPetListPage.dart';
-import 'package:lapka/screens/login/loginPage.dart';
-import 'package:lapka/screens/menuDashbooard.dart';
+import 'package:lapka/providers/shelter/bloc/shelter_list_bloc.dart';
+import 'package:lapka/repository/adopt_pet_repository.dart';
+import 'package:lapka/repository/location_repository.dart';
+import 'package:lapka/repository/shelter_repository.dart';
+import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
+import 'package:lapka/screens/menu_dashbooard.dart';
 import 'package:provider/provider.dart';
+
+import 'providers/adopt_pet/bloc/adopt_pet_list_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,24 +29,21 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => LoginProvider()),
-          ChangeNotifierProvider(create: (_) => LocationProvider()),
-          ChangeNotifierProvider(create: (_) => AdoptPetProvider()),
           ChangeNotifierProvider(create: (_) => MenuProvider()),
-          ChangeNotifierProvider(create: (_) => ShelterProvider()),
-          ChangeNotifierProvider(create: (_) => MyPetsProvider()),
         ],
         child: MaterialApp(
-            theme: ThemeData(
-                textTheme: GoogleFonts.ubuntuTextTheme(
-                  Theme.of(context).textTheme,
-                ),
-                scaffoldBackgroundColor: Colors.white),
-            home: NotificationListener<OverscrollIndicatorNotification>(
-                onNotification: (overscroll) {
-                  overscroll.disallowGlow();
-                  return true;
-                },
-                child: MyHomePage())));
+          theme: ThemeData(
+              textTheme: GoogleFonts.ubuntuTextTheme(
+                Theme.of(context).textTheme,
+              ),
+              scaffoldBackgroundColor: Colors.white),
+          home: NotificationListener<OverscrollIndicatorNotification>(
+              onNotification: (overscroll) {
+                overscroll.disallowGlow();
+                return true;
+              },
+              child: MyHomePage()),
+        ));
   }
 }
 
@@ -65,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     _internetListenerInit();
-    _getLocation();
   }
 
   _internetListenerInit() {
@@ -78,24 +75,24 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  _getLocation() {
-    context.read<LocationProvider>().getLocation();
-  }
-
   @override
   Widget build(BuildContext context) {
     print('build');
-    return context.watch<LocationProvider>().status != LocationStatus.New || context.watch<LocationProvider>().status != LocationStatus.NoLocation 
-        ? WillPopScope(
-            onWillPop: () async {
-              return await BasicDialog.showDialogCustom(context, ExitDialog());
-            },
-            child: MenuDashboardLayout(AdoptPetListPage()))
-        : Scaffold(
-            body: Center(
-              child: LoadingIndicator(),
-            ),
-          );
+    return WillPopScope(
+        onWillPop: () async {
+          return await BasicDialog.showDialogCustom(context, ExitDialog());
+        },
+        child: MultiBlocProvider(providers: [
+          BlocProvider(
+            create: (context) => AdoptPetListBloc(AdoptPetRepositoryApi()),
+          ),
+          BlocProvider(
+            create: (context) => ShelterListBloc(ShelterRepositoryApi()),
+          ),
+          BlocProvider(
+            create: (context) => LocationBloc(LocationRepository()),
+          ),
+        ], child: MenuDashboardLayout(AdoptPetListPage())));
   }
 
   @override

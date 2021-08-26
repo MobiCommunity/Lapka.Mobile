@@ -43,10 +43,18 @@ dependencies:
   dotted_border: ^2.0.0+1
   image_picker: ^0.8.3+2
   flutter_login_facebook: ^1.0.0-nullsafety.1
+  sliding_up_panel: ^2.0.0+1
+  meta:
+  flutter_bloc:
+  freezed_annotation:
+  json_annotation:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: 
+  freezed: 
+  json_serializable: 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

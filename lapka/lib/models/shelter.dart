@@ -1,37 +1,38 @@
-import 'package:lapka/models/geoLocation.dart';
-import 'package:lapka/models/shelterAdress.dart';
+import 'package:lapka/models/geo_location.dart';
+import 'package:lapka/models/shelter_adress.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Shelter {
-  String? id;
-  String? name;
-  ShelterAddress? address;
-  String? phoneNumber;
-  String? email;
+part 'shelter.freezed.dart';
+part 'shelter.g.dart';
 
-  Shelter({this.id, this.name, this.address, this.phoneNumber, this.email});
+@freezed
+class Shelter with _$Shelter{
 
-  Shelter.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    address = json['address'] != null
-        ? new ShelterAddress.fromJson(json['address'])
-        : null;
-    address!.geoLocation = json['geoLocation'] != null
-        ? new GeoLocation.fromJson(json['geoLocation'])
-        : null;
-    phoneNumber = json['phoneNumber'];
-    email = json['email'];
-  }
+  const factory Shelter({String? id , String? name, ShelterAddress? address, String? phoneNumber, String? email}) = _Shelter;
+  factory Shelter.fromJson(Map<String, dynamic> json) => _$ShelterFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    if (this.address != null) {
-      data['address'] = this.address!.toJson();
-    }
-    data['phoneNumber'] = this.phoneNumber;
-    data['email'] = this.email;
-    return data;
-  }
+  // Shelter.fromJson(Map<String, dynamic> json) {
+  //   id = json['id'];
+  //   name = json['name'];
+  //   address = json['address'] != null
+  //       ? new ShelterAddress.fromJson(json['address'])
+  //       : null;
+  //   address!.geoLocation = json['geoLocation'] != null
+  //       ? new GeoLocation.fromJson(json['geoLocation'])
+  //       : null;
+  //   phoneNumber = json['phoneNumber'];
+  //   email = json['email'];
+  // }
+
+  // Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> data = new Map<String, dynamic>();
+  //   data['id'] = this.id;
+  //   data['name'] = this.name;
+  //   if (this.address != null) {
+  //     data['address'] = this.address!.toJson();
+  //   }
+  //   data['phoneNumber'] = this.phoneNumber;
+  //   data['email'] = this.email;
+  //   return data;
+  // }
 }
