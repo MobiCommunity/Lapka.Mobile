@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/requests/requests.dart';
-import 'package:lapka/settings/requestSettings.dart';
+import 'package:lapka/settings/request_settings.dart';
 
 enum MyPetsStatus { Loading, Done, Error, New }
 

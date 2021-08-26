@@ -1,39 +1,71 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:lapka/components/basic/basicButton.dart';
+import 'package:lapka/components/basic/basic_button.dart';
+import 'package:lapka/components/dialogs/basic_dialog.dart';
+import 'package:lapka/components/dialogs/confirm_pos_dialog.dart';
 
 
-class GoogleMapView extends StatefulWidget {
+class MapScreen extends StatefulWidget {
   @override
-  _GoogleMapState createState() => _GoogleMapState();
+  _MapScreenState createState() => _MapScreenState();
 }
 
-class _GoogleMapState extends State<GoogleMapView> {
-  Completer<GoogleMapController> _controller = Completer();
+class _MapScreenState extends State<MapScreen> {
+  static const _initialCameraPosition = CameraPosition(
+    target: LatLng(52.237049, 21.017532),
+    zoom: 11.0,
+    );
 
-  static const LatLng _center = const LatLng(45.521563, -122.677433);
-
-  void _onMapCreated(GoogleMapController controller) {
-    _controller.complete(controller);
-  }
+  List<Marker> place = [];
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: _center,
-                zoom: 11.0,
-              ),
-            ),
-        Container(
-          alignment: Alignment.bottomCenter,
-            child: BasicButton(onPressed: (){print('ravioli ravioli give me the formuoli');}, text: 'ZAMKNIJ')
-        ),
-      ],
+    return Scaffold(
+      body: Stack(
+        children: [
+          GoogleMap(
+            initialCameraPosition: _initialCameraPosition,
+            myLocationButtonEnabled: false,
+            zoomControlsEnabled: false,
+            markers: Set.from(place),
+            onTap: _addMarker,
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 100, bottom: 10, right: 100),
+                child: place.isEmpty ?
+                  BasicButton(onPressed: (){Navigator.pop(context);}, text: 'ZAMKNIJ') :
+                  BasicButton(onPressed: (){
+                    setState(() {
+                    BasicDialog.showDialogCustom(
+                        context,
+                        ConfirmPosDialog(
+                          onExit: () {Navigator.pop(context);},
+                          onLogin: () {Navigator.pop(context);},
+                        )
+                    );
+                  });}, text: 'ZATWIERDŹ')
+              )
+          ),
+        ],
+      ),
     );
   }
+
+  _addMarker(LatLng pos){
+    setState(() {
+
+      print(pos);
+      place = [];
+      place.add(
+          Marker(
+            markerId: MarkerId('Miejsce'),
+            position: pos,
+          )
+      );
+    });
+  }
+
 }

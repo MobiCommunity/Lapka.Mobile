@@ -9,6 +9,7 @@ import 'package:lapka/components/dialogs/no_internet_dialog.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/providers/loginProvider.dart';
 import 'package:lapka/providers/menuProvider.dart';
+import 'package:lapka/providers/myPetsProvider.dart';
 import 'package:lapka/providers/shelter/bloc/shelter_list_bloc.dart';
 import 'package:lapka/repository/adopt_pet_repository.dart';
 import 'package:lapka/repository/location_repository.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => LoginProvider()),
           ChangeNotifierProvider(create: (_) => MenuProvider()),
+          ChangeNotifierProvider(create: (_) => MyPetsProvider()),
         ],
         child: MaterialApp(
           theme: ThemeData(

@@ -11,6 +11,8 @@ import 'package:lapka/components/basic/basic_image_picker.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/settings/colors.dart';
 
+import '../googleMap.dart';
+
 class HomelessReportPage extends StatelessWidget {
    HomelessReportPage({ Key? key }) : super(key: key);
 
@@ -58,7 +60,14 @@ class HomelessReportPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                          BasicFormField(controller: localizationController,placeholder: 'Podaj potencjalną lokalizację zwierząt',trailling: Icon(Icons.near_me, color: BasicColors.darkGreen.withOpacity(0.5),size: 30,),),
+                          InkWell(
+                              onTap: () async{
+                                await Navigator.push(context, MaterialPageRoute(builder: (context) => MapScreen()));
+                              },
+                              child: BasicFormField(
+                                enabled: false,
+                                controller: localizationController,placeholder: 'Podaj potencjalną lokalizację zwierząt',trailling: Icon(Icons.near_me, color: BasicColors.darkGreen.withOpacity(0.5),size: 30,),)
+                          ),
                           SizedBox(height: 16,),
                           BasicImagePicker(onListChange: _listCallback),
                           SizedBox(height: 16,),

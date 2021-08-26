@@ -38,8 +38,6 @@
               android:resource="@style/NormalTheme"
               />
 
-            <meta-data android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyDXRz3DZYHDIPrYPK0RNFvhKaXW1QekvSE"/>
 
             <!-- Displays an Android View that continues showing the launch screen
                  Drawable until Flutter paints its first frame, then this splash
@@ -80,5 +78,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyDXRz3DZYHDIPrYPK0RNFvhKaXW1QekvSE"/>
     </application>
 </manifest>

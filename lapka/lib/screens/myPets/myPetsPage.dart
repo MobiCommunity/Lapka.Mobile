@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lapka/components/appBar/customAppBar.dart';
-import 'package:lapka/components/basic/basicText.dart';
-import 'package:lapka/components/basic/loadingIndicator.dart';
+import 'package:lapka/components/app_bar/custom_app_bar.dart';
+import 'package:lapka/components/basic/basic_text.dart';
+import 'package:lapka/components/basic/loading_indicator.dart';
 import 'package:lapka/components/screens/myPets/myPetComp.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/myPetsProvider.dart';

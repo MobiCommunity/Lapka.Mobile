@@ -1,12 +1,12 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import 'package:lapka/components/basic/basicText.dart';
-import 'package:lapka/components/basic/roundedImage.dart';
+import 'package:lapka/components/basic/basic_text.dart';
+import 'package:lapka/components/basic/rounded_image.dart';
 import 'package:lapka/components/basic/textButton.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/settings/colors.dart';
-import 'package:lapka/settings/requestSettings.dart';
-import 'package:lapka/utils/dateHelper.dart';
+import 'package:lapka/settings/request_settings.dart';
+import 'package:lapka/utils/date_helper.dart';
 
 class MyPetComp extends StatelessWidget {
   Pet pet;
