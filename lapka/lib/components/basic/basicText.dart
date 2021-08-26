@@ -8,6 +8,7 @@ class BasicText extends StatelessWidget {
   final bool center;
   final Color color;
 
+  const BasicText.heading20Bold(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading20Bold;
   const BasicText.heading1(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading1;
   const BasicText.heading1Light(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading1Light;
   const BasicText.heading1Bold(this.text, {this.center = false, this.color = BasicColors.darkGrey}) : style = heading1Bold;

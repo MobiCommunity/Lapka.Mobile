@@ -9,6 +9,7 @@ import 'package:lapka/components/basic/basicButton.dart';
 import 'package:lapka/components/basic/basicFormField.dart';
 import 'package:lapka/components/basic/basicImagePicker.dart';
 import 'package:lapka/components/basic/basicText.dart';
+import 'package:lapka/screens/googleMap.dart';
 import 'package:lapka/settings/colors.dart';
 
 class HomelessReportPage extends StatelessWidget {

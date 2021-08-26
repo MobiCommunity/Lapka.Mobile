@@ -77,8 +77,8 @@ class _VolunteerPageState extends State<VolunteerPage> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(14)),
-                      color: BasicColors.white
+                        borderRadius: BorderRadius.all(Radius.circular(14)),
+                        color: BasicColors.white
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -92,8 +92,8 @@ class _VolunteerPageState extends State<VolunteerPage> {
                               )),
                           upperText: '(' +
                               LocationHelper.getDistance(
-                                      context.read<LocationProvider>().position,
-                                      shelter.address!.geoLocation!)
+                                  context.read<LocationProvider>().position,
+                                  shelter.address!.geoLocation!)
                                   .toStringAsFixed(1) +
                               'km) ${shelter.address!.city}',
                           lowerText: 'ul. ' + shelter.address!.street!),

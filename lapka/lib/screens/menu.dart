@@ -82,7 +82,7 @@ class Menu extends StatelessWidget {
                 _buildMenuItem(
                     widget: context
                         .read<MenuProvider>()
-                        .screens[Screens.AdoptPageList]!,
+                        .screens[Screens.MyPetsPage]!,
                     name: 'Moje zwierzaki',
                     icon: 'lib/assets/my-pets-icon.svg',),
                 _smallLineSpacer(),

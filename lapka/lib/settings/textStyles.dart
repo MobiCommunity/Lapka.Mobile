@@ -45,6 +45,11 @@ const TextStyle heading3Bold = TextStyle(
   fontWeight: FontWeight.w700,
 );
 
+const TextStyle heading20Bold = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w700,
+);
+
 const TextStyle subtitleBig = TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w500,
