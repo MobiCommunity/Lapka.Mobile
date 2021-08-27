@@ -50,10 +50,6 @@ class MyPetsRepositoryFake with MyPetsRepository {
     return Future.delayed(
       Duration(seconds: 1),
       (){
-        final random = Random();
-        if(random.nextBool()){
-          throw Exception();
-        }
         return 'exampleID';
       }
     );

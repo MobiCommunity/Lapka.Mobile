@@ -6,4 +6,5 @@ class EditMyPetsEvent with _$EditMyPetsEvent {
   const factory EditMyPetsEvent.create(Pet pet) = _Create;
   const factory EditMyPetsEvent.delete(String id) = _Delete;
   const factory EditMyPetsEvent.read(String id) = _Read;
+  const factory EditMyPetsEvent.reset() = _Reset;
 }
