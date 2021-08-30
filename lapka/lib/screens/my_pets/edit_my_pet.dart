@@ -12,6 +12,7 @@ import 'package:lapka/components/basic/loading_indicator.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/my_pets/bloc/edit_my_pets_bloc.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/utils/species.dart';
 import 'package:lapka/utils/validators.dart';
 
@@ -24,11 +25,8 @@ class EditMyPetPage extends StatefulWidget {
   DateTime? birthDate;
 
   final TextEditingController petNameController = TextEditingController();
-
   final TextEditingController raceController = TextEditingController();
-
   final TextEditingController colorController = TextEditingController();
-
   final TextEditingController weightController = TextEditingController();
 
   EditMyPetPage({Key? key, this.pet, this.creation = false}) {
@@ -192,7 +190,7 @@ class _EditMyPetPageState extends State<EditMyPetPage> {
             initial: () => _addButtonBuilder(context),
             loading: () => Center(child: LoadingIndicator()),
             edited: () {
-              Navigator.pop(context);
+              NavigatorHelper.pop(context);
               context.read<EditMyPetsBloc>().add(EditMyPetsEvent.reset());
               return _addButtonBuilder(context);
             },
@@ -211,7 +209,7 @@ class _EditMyPetPageState extends State<EditMyPetPage> {
             },
             loading: () => Center(child: LoadingIndicator()),
             edited: () {
-              Navigator.pop(context);
+              NavigatorHelper.pop(context);
               context.read<EditMyPetsBloc>().add(EditMyPetsEvent.reset());
               return _editRowBuilder(context);
             },

@@ -16,6 +16,7 @@ import 'package:lapka/components/dialogs/login_dialog.dart';
 import 'package:lapka/repository/adopt_pet_repository.dart';
 import 'package:lapka/screens/login/login_page.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/settings/request_settings.dart';
 
 class AdoptPetDetails extends StatelessWidget {
@@ -34,10 +35,7 @@ class AdoptPetDetails extends StatelessWidget {
         LoginDialog(onExit: () {
           Navigator.pop(context);
         }, onLogin: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => LoginPage()),
-          );
+          NavigatorHelper.push(context, LoginPage());
         }));
   }
 

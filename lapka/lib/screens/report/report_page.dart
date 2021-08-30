@@ -6,6 +6,7 @@ import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/screens/report/homeless_report.dart';
 import 'package:lapka/screens/report/missing_report.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 
 class ReportPage extends StatelessWidget {
   const ReportPage({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class ReportPage extends StatelessWidget {
                           body: 'Zgłoszenia lokalizacji błąkających się zwierzaków',
                           assetSvg: 'lib/assets/dog-face.svg',
                           onPressCallback: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReportPage()));
+                            NavigatorHelper.push(context, HomelessReportPage());
                           },
                         ),
                         SizedBox(height: 16,),
@@ -57,7 +58,7 @@ class ReportPage extends StatelessWidget {
                           body: 'Zgłoszenia lokalizacji zwierzaków do sterylizacji',
                           assetSvg: 'lib/assets/scissors.svg',
                           onPressCallback: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> HomelessReportPage()));
+                            NavigatorHelper.push(context, HomelessReportPage());
                           },
                         ),
                         SizedBox(height: 16,),
@@ -66,7 +67,7 @@ class ReportPage extends StatelessWidget {
                           body: 'Zgłoszenia zaginięcia wraz z potencjalną lokalizacją',
                           assetSvg: 'lib/assets/megaphone.svg',
                           onPressCallback: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> MissingReportPage()));
+                            NavigatorHelper.push(context, MissingReportPage());
                           },
                         ),
                       ],

@@ -181,7 +181,7 @@ class HelpDialog extends StatelessWidget {
             alignment: Alignment.topRight,
             child: CancelButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.of(context,rootNavigator: false).pop();
               },
             ),
           )

@@ -10,6 +10,7 @@ import 'package:lapka/providers/myPetsProvider.dart';
 import 'package:lapka/providers/my_pets/bloc/my_pets_bloc.dart';
 import 'package:lapka/screens/my_pets/edit_my_pet.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:provider/provider.dart';
 
 class MyPetsPage extends StatelessWidget {
@@ -65,10 +66,10 @@ class MyPetsPage extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               padding: EdgeInsets.all(20),
               child: BasicButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> EditMyPetPage(
+                NavigatorHelper.push(context, EditMyPetPage(
                   creation: true,
                   //pet: Pet(name: 'name', race: 'race1', color: 'Color1', weight: 12.6, species: 1 ,sex: true, birthDay: DateTime.now(),sterilization: true),
-                )));
+                ));
               }, text: 'DODAJ ZWIERZAKA',))
           ],
         ));
