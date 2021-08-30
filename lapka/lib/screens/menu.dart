@@ -1,9 +1,16 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/providers/menuProvider.dart';
+import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
+import 'package:lapka/screens/my_pets/my_pets_page.dart';
+import 'package:lapka/screens/report/report_page.dart';
+import 'package:lapka/screens/volunteer/volunteer_page.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:provider/provider.dart';
 
 class Menu extends StatelessWidget {
@@ -18,11 +25,12 @@ class Menu extends StatelessWidget {
       required this.onMenuItemClicked})
       : super(key: key);
 
-  _buildMenuItem(
+  _buildMenuItem(context, 
       {required Widget widget, required String name, required String icon}) {
     return InkWell(
       onTap: () {
-        onMenuItemClicked(widget);
+        NavigatorHelper.changeRoot(context, widget);
+        onMenuItemClicked();
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -62,62 +70,53 @@ class Menu extends StatelessWidget {
                 Container(),
                 _avatarBuilder(),
                 _buildMenuItem(
-                    widget: context
-                        .read<MenuProvider>()
-                        .screens[Screens.AdoptPageList]!,
+                    context,
+                    widget: AdoptPetListPage(),
                     name: 'Wiadomości',
                     icon: 'lib/assets/messages-icon.svg',),
                 _buildMenuItem(
-                    widget: context
-                        .read<MenuProvider>()
-                        .screens[Screens.AdoptPageList]!,
+                  context,
+                    widget: AdoptPetListPage(),
                     name: 'Ulubione zwierzaki',
                     icon: 'lib/assets/paw-symbol.svg',),
                 _buildMenuItem(
-                    widget: context
-                        .read<MenuProvider>()
-                        .screens[Screens.AdoptPageList]!,
+                  context,
+                    widget: AdoptPetListPage(),
                     name: 'Adopcja',
                     icon: 'lib/assets/favourite-icon.svg',),
                 _buildMenuItem(
-                    widget: context
-                        .read<MenuProvider>()
-                        .screens[Screens.MyPetsPage]!,
+                  context,
+                    widget: MyPetsPage(),
                     name: 'Moje zwierzaki',
                     icon: 'lib/assets/my-pets-icon.svg',),
                 _smallLineSpacer(),
                 _buildMenuItem(
-                    widget: context
-                        .read<MenuProvider>()
-                        .screens[Screens.ReportPage]!,
+                  context,
+                    widget: ReportPage(),
                     name: 'Zgłoszenia',
                     icon: 'lib/assets/report-icon.svg',),
                 _buildMenuItem(
-                    widget: context
-                        .read<MenuProvider>()
-                        .screens[Screens.AdoptPageList]!,
+                  context,
+                    widget: AdoptPetListPage(),
                     name: 'Zaginione zwierzaki',
                     icon: 'lib/assets/missing-pets.svg',),
                 _smallLineSpacer(),
                 _buildMenuItem(
-                    widget: context
-                        .read<MenuProvider>()
-                        .screens[Screens.VolunteerPage]!,
+                  context,
+                    widget: VolunteerPage(),
                     name: 'Wolontariat',
                     icon: 'lib/assets/volunteer-icon.svg',),
                 _smallLineSpacer(),
                 _buildMenuItem(
-                    widget: context
-                        .read<MenuProvider>()
-                        .screens[Screens.AdoptPageList]!,
+                  context,
+                    widget: AdoptPetListPage(),
                     name: 'Ustawienia',
                     icon: 'lib/assets/settings-icon.svg',),
                 Container(),
                 _bigLineSpacer(),
                 _buildMenuItem(
-                    widget: context
-                        .read<MenuProvider>()
-                        .screens[Screens.AdoptPageList]!,
+                  context,
+                    widget: AdoptPetListPage(),
                     name: 'Wyloguj się',
                     icon: 'lib/assets/logout-icon.svg',),
                 Container()

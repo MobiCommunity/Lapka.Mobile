@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lapka/components/basic/basic_button.dart';
-import 'package:lapka/components/dialogs/basic_dialog.dart';
-import 'package:lapka/components/dialogs/confirm_pos_dialog.dart';
 
 
 class MapScreen extends StatefulWidget {

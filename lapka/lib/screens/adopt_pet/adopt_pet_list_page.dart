@@ -12,6 +12,7 @@ import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/adopt_pet/bloc/adopt_pet_list_bloc.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/utils/species.dart';
 import 'package:lapka/utils/location_helper.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';

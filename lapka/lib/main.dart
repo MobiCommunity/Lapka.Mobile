@@ -9,13 +9,18 @@ import 'package:lapka/components/dialogs/no_internet_dialog.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/providers/loginProvider.dart';
 import 'package:lapka/providers/menuProvider.dart';
-import 'package:lapka/providers/myPetsProvider.dart';
+import 'package:lapka/providers/my_pets/bloc/edit_my_pets_bloc.dart';
+import 'package:lapka/providers/my_pets/bloc/my_pets_bloc.dart';
 import 'package:lapka/providers/shelter/bloc/shelter_list_bloc.dart';
 import 'package:lapka/repository/adopt_pet_repository.dart';
 import 'package:lapka/repository/location_repository.dart';
+import 'package:lapka/repository/my_pets_repository.dart';
 import 'package:lapka/repository/shelter_repository.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
 import 'package:lapka/screens/menu_dashbooard.dart';
+import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
+import 'package:lapka/settings/naviagtion/my_router_delegate.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/adopt_pet/bloc/adopt_pet_list_bloc.dart';
@@ -25,27 +30,51 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final myPetsBloc = MyPetsBloc(MyPetsRepositoryFake());
+  //final editMyPetsBloc = EditMyPetsBloc(MyPetsRepositoryFake(), myPetsBloc);
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => LoginProvider()),
-          ChangeNotifierProvider(create: (_) => MenuProvider()),
-          ChangeNotifierProvider(create: (_) => MyPetsProvider()),
-        ],
-        child: MaterialApp(
-          theme: ThemeData(
-              textTheme: GoogleFonts.ubuntuTextTheme(
-                Theme.of(context).textTheme,
-              ),
-              scaffoldBackgroundColor: Colors.white),
-          home: NotificationListener<OverscrollIndicatorNotification>(
-              onNotification: (overscroll) {
-                overscroll.disallowGlow();
-                return true;
-              },
-              child: MyHomePage()),
-        ));
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AdoptPetListBloc(AdoptPetRepositoryApi()),
+        ),
+        BlocProvider(
+          create: (context) => ShelterListBloc(ShelterRepositoryApi()),
+        ),
+        BlocProvider(
+          create: (context) => LocationBloc(LocationRepository()),
+        ),
+        BlocProvider(
+          create: (context) => myPetsBloc,
+        ),
+        BlocProvider(
+          create: (context) =>
+              EditMyPetsBloc(MyPetsRepositoryFake(), myPetsBloc),
+        ),
+        BlocProvider(
+          create: (context) => NavigatorBloc(),
+        ),
+      ],
+      child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_) => LoginProvider()),
+            ChangeNotifierProvider(create: (_) => MenuProvider()),
+          ],
+          child: MaterialApp(
+            theme: ThemeData(
+                textTheme: GoogleFonts.ubuntuTextTheme(
+                  Theme.of(context).textTheme,
+                ),
+                scaffoldBackgroundColor: Colors.white),
+            home: NotificationListener<OverscrollIndicatorNotification>(
+                onNotification: (overscroll) {
+                  overscroll.disallowGlow();
+                  return true;
+                },
+                child: MyHomePage()),
+          )),
+    );
   }
 }
 
@@ -79,22 +108,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print('build');
     return WillPopScope(
         onWillPop: () async {
-          return await BasicDialog.showDialogCustom(context, ExitDialog());
+          NavigatorHelper.pop(context);
+          return false;
         },
-        child: MultiBlocProvider(providers: [
-          BlocProvider(
-            create: (context) => AdoptPetListBloc(AdoptPetRepositoryApi()),
-          ),
-          BlocProvider(
-            create: (context) => ShelterListBloc(ShelterRepositoryApi()),
-          ),
-          BlocProvider(
-            create: (context) => LocationBloc(LocationRepository()),
-          ),
-        ], child: MenuDashboardLayout(AdoptPetListPage())));
+        child:
+            MenuDashboardLayout(Router(routerDelegate: MyAppRouterDelegate())));
   }
 
   @override

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/utils/species.dart';
 import 'package:provider/provider.dart';
-
-enum Species{All, Dogs, Cats, Rabbits, Parrots,}
 
 class SpeciesSelector extends StatelessWidget {
   final Species selected;

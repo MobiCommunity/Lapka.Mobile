@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_button.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/basic/cancel_button.dart';
 import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 
 class ExitDialog extends StatelessWidget {
   // final Function() onCancel;
@@ -49,8 +52,7 @@ class ExitDialog extends StatelessWidget {
                                   color: BasicColors.white,
                                   textColor: BasicColors.darkGrey.withOpacity(0.8),
                                   text: 'Pozostań',
-                                  onPressed: () =>
-                                      Navigator.pop(context, false)),
+                                  onPressed: () => Navigator.of(context, rootNavigator: true).pop(false)),
                             ),
                           ),
                           SizedBox(
@@ -60,8 +62,8 @@ class ExitDialog extends StatelessWidget {
                             child: Container(
                               child: BasicButton(
                                   text: 'Wyjdź',
-                                  onPressed: () =>
-                                      Navigator.pop(context, true)),
+                                  onPressed: () => Navigator.of(context, rootNavigator: true).pop(true)
+                                      ),
                             ),
                           ),
                         ],
@@ -75,7 +77,7 @@ class ExitDialog extends StatelessWidget {
           Container(
             height: 44,
             alignment: Alignment.topRight,
-            child: CancelButton(onPressed: () => Navigator.pop(context, false)),
+            child: CancelButton(onPressed: () => Navigator.of(context, rootNavigator: true).pop(false)),
           )
         ],
       ),

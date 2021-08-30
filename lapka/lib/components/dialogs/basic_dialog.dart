@@ -5,6 +5,7 @@ class BasicDialog {
     return showDialog(
         barrierDismissible: dismissible,
         context: context,
+        useRootNavigator: false,
         builder: (BuildContext context) {
           return Dialog(
             insetPadding: EdgeInsets.all(0),

@@ -8,6 +8,7 @@ import 'package:lapka/models/shelter.dart';
 import 'package:lapka/providers/shelter/bloc/shelter_list_bloc.dart';
 import 'package:lapka/screens/volunteer/volunteer_details_page.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/utils/location_helper.dart';
 import 'package:provider/provider.dart';
 
@@ -63,10 +64,8 @@ class VolunteerPage extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 16, left: 20, right: 20),
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => VolunteerDetailsPage(id: shelters[index].id!,)));
+                    NavigatorHelper.push(context, VolunteerDetailsPage(id: shelters[index].id!,));
+                    
                   },
                   child: Container(
                     decoration: BoxDecoration(

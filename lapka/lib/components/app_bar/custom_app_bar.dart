@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -28,8 +31,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       : preferredSize = const Size.fromHeight(75.0),
         super(key: key);
 
-  _back(context){
-    Navigator.pop(context);
+  _back(BuildContext context){
+    NavigatorHelper.pop(context);
   }
 
   _openDrawer(BuildContext context){

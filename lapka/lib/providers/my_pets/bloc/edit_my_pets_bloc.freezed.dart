@@ -39,6 +39,10 @@ class _$EditMyPetsEventTearOff {
       id,
     );
   }
+
+  _Reset reset() {
+    return const _Reset();
+  }
 }
 
 /// @nodoc
@@ -52,6 +56,7 @@ mixin _$EditMyPetsEvent {
     required TResult Function(Pet pet) create,
     required TResult Function(String id) delete,
     required TResult Function(String id) read,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +65,7 @@ mixin _$EditMyPetsEvent {
     TResult Function(Pet pet)? create,
     TResult Function(String id)? delete,
     TResult Function(String id)? read,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,6 +75,7 @@ mixin _$EditMyPetsEvent {
     required TResult Function(_Create value) create,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Read value) read,
+    required TResult Function(_Reset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +84,7 @@ mixin _$EditMyPetsEvent {
     TResult Function(_Create value)? create,
     TResult Function(_Delete value)? delete,
     TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -174,6 +182,7 @@ class _$_Update implements _Update {
     required TResult Function(Pet pet) create,
     required TResult Function(String id) delete,
     required TResult Function(String id) read,
+    required TResult Function() reset,
   }) {
     return update(pet);
   }
@@ -185,6 +194,7 @@ class _$_Update implements _Update {
     TResult Function(Pet pet)? create,
     TResult Function(String id)? delete,
     TResult Function(String id)? read,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -200,6 +210,7 @@ class _$_Update implements _Update {
     required TResult Function(_Create value) create,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Read value) read,
+    required TResult Function(_Reset value) reset,
   }) {
     return update(this);
   }
@@ -211,6 +222,7 @@ class _$_Update implements _Update {
     TResult Function(_Create value)? create,
     TResult Function(_Delete value)? delete,
     TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -303,6 +315,7 @@ class _$_Create implements _Create {
     required TResult Function(Pet pet) create,
     required TResult Function(String id) delete,
     required TResult Function(String id) read,
+    required TResult Function() reset,
   }) {
     return create(pet);
   }
@@ -314,6 +327,7 @@ class _$_Create implements _Create {
     TResult Function(Pet pet)? create,
     TResult Function(String id)? delete,
     TResult Function(String id)? read,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -329,6 +343,7 @@ class _$_Create implements _Create {
     required TResult Function(_Create value) create,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Read value) read,
+    required TResult Function(_Reset value) reset,
   }) {
     return create(this);
   }
@@ -340,6 +355,7 @@ class _$_Create implements _Create {
     TResult Function(_Create value)? create,
     TResult Function(_Delete value)? delete,
     TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -423,6 +439,7 @@ class _$_Delete implements _Delete {
     required TResult Function(Pet pet) create,
     required TResult Function(String id) delete,
     required TResult Function(String id) read,
+    required TResult Function() reset,
   }) {
     return delete(id);
   }
@@ -434,6 +451,7 @@ class _$_Delete implements _Delete {
     TResult Function(Pet pet)? create,
     TResult Function(String id)? delete,
     TResult Function(String id)? read,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -449,6 +467,7 @@ class _$_Delete implements _Delete {
     required TResult Function(_Create value) create,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Read value) read,
+    required TResult Function(_Reset value) reset,
   }) {
     return delete(this);
   }
@@ -460,6 +479,7 @@ class _$_Delete implements _Delete {
     TResult Function(_Create value)? create,
     TResult Function(_Delete value)? delete,
     TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -543,6 +563,7 @@ class _$_Read implements _Read {
     required TResult Function(Pet pet) create,
     required TResult Function(String id) delete,
     required TResult Function(String id) read,
+    required TResult Function() reset,
   }) {
     return read(id);
   }
@@ -554,6 +575,7 @@ class _$_Read implements _Read {
     TResult Function(Pet pet)? create,
     TResult Function(String id)? delete,
     TResult Function(String id)? read,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (read != null) {
@@ -569,6 +591,7 @@ class _$_Read implements _Read {
     required TResult Function(_Create value) create,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Read value) read,
+    required TResult Function(_Reset value) reset,
   }) {
     return read(this);
   }
@@ -580,6 +603,7 @@ class _$_Read implements _Read {
     TResult Function(_Create value)? create,
     TResult Function(_Delete value)? delete,
     TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (read != null) {
@@ -595,6 +619,101 @@ abstract class _Read implements EditMyPetsEvent {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ReadCopyWith<_Read> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ResetCopyWith<$Res> {
+  factory _$ResetCopyWith(_Reset value, $Res Function(_Reset) then) =
+      __$ResetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ResetCopyWithImpl<$Res> extends _$EditMyPetsEventCopyWithImpl<$Res>
+    implements _$ResetCopyWith<$Res> {
+  __$ResetCopyWithImpl(_Reset _value, $Res Function(_Reset) _then)
+      : super(_value, (v) => _then(v as _Reset));
+
+  @override
+  _Reset get _value => super._value as _Reset;
+}
+
+/// @nodoc
+
+class _$_Reset implements _Reset {
+  const _$_Reset();
+
+  @override
+  String toString() {
+    return 'EditMyPetsEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Reset);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Pet pet) update,
+    required TResult Function(Pet pet) create,
+    required TResult Function(String id) delete,
+    required TResult Function(String id) read,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Pet pet)? update,
+    TResult Function(Pet pet)? create,
+    TResult Function(String id)? delete,
+    TResult Function(String id)? read,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Update value) update,
+    required TResult Function(_Create value) create,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Read value) read,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Update value)? update,
+    TResult Function(_Create value)? create,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements EditMyPetsEvent {
+  const factory _Reset() = _$_Reset;
 }
 
 /// @nodoc
@@ -620,6 +739,10 @@ class _$EditMyPetsStateTearOff {
       message,
     );
   }
+
+  _Edited edited() {
+    return const _Edited();
+  }
 }
 
 /// @nodoc
@@ -633,6 +756,7 @@ mixin _$EditMyPetsState {
     required TResult Function() loading,
     required TResult Function(Pet pet) loaded,
     required TResult Function(String message) error,
+    required TResult Function() edited,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -641,6 +765,7 @@ mixin _$EditMyPetsState {
     TResult Function()? loading,
     TResult Function(Pet pet)? loaded,
     TResult Function(String message)? error,
+    TResult Function()? edited,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -650,6 +775,7 @@ mixin _$EditMyPetsState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_Edited value) edited,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -658,6 +784,7 @@ mixin _$EditMyPetsState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -721,6 +848,7 @@ class _$_Initial implements _Initial {
     required TResult Function() loading,
     required TResult Function(Pet pet) loaded,
     required TResult Function(String message) error,
+    required TResult Function() edited,
   }) {
     return initial();
   }
@@ -732,6 +860,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loading,
     TResult Function(Pet pet)? loaded,
     TResult Function(String message)? error,
+    TResult Function()? edited,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -747,6 +876,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_Edited value) edited,
   }) {
     return initial(this);
   }
@@ -758,6 +888,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -812,6 +943,7 @@ class _$_Loading implements _Loading {
     required TResult Function() loading,
     required TResult Function(Pet pet) loaded,
     required TResult Function(String message) error,
+    required TResult Function() edited,
   }) {
     return loading();
   }
@@ -823,6 +955,7 @@ class _$_Loading implements _Loading {
     TResult Function()? loading,
     TResult Function(Pet pet)? loaded,
     TResult Function(String message)? error,
+    TResult Function()? edited,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -838,6 +971,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_Edited value) edited,
   }) {
     return loading(this);
   }
@@ -849,6 +983,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -937,6 +1072,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function() loading,
     required TResult Function(Pet pet) loaded,
     required TResult Function(String message) error,
+    required TResult Function() edited,
   }) {
     return loaded(pet);
   }
@@ -948,6 +1084,7 @@ class _$_Loaded implements _Loaded {
     TResult Function()? loading,
     TResult Function(Pet pet)? loaded,
     TResult Function(String message)? error,
+    TResult Function()? edited,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -963,6 +1100,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_Edited value) edited,
   }) {
     return loaded(this);
   }
@@ -974,6 +1112,7 @@ class _$_Loaded implements _Loaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1057,6 +1196,7 @@ class _$_Error implements _Error {
     required TResult Function() loading,
     required TResult Function(Pet pet) loaded,
     required TResult Function(String message) error,
+    required TResult Function() edited,
   }) {
     return error(message);
   }
@@ -1068,6 +1208,7 @@ class _$_Error implements _Error {
     TResult Function()? loading,
     TResult Function(Pet pet)? loaded,
     TResult Function(String message)? error,
+    TResult Function()? edited,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1083,6 +1224,7 @@ class _$_Error implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_Edited value) edited,
   }) {
     return error(this);
   }
@@ -1094,6 +1236,7 @@ class _$_Error implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1109,4 +1252,99 @@ abstract class _Error implements EditMyPetsState {
   String get message => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$EditedCopyWith<$Res> {
+  factory _$EditedCopyWith(_Edited value, $Res Function(_Edited) then) =
+      __$EditedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$EditedCopyWithImpl<$Res> extends _$EditMyPetsStateCopyWithImpl<$Res>
+    implements _$EditedCopyWith<$Res> {
+  __$EditedCopyWithImpl(_Edited _value, $Res Function(_Edited) _then)
+      : super(_value, (v) => _then(v as _Edited));
+
+  @override
+  _Edited get _value => super._value as _Edited;
+}
+
+/// @nodoc
+
+class _$_Edited implements _Edited {
+  const _$_Edited();
+
+  @override
+  String toString() {
+    return 'EditMyPetsState.edited()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Edited);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Pet pet) loaded,
+    required TResult Function(String message) error,
+    required TResult Function() edited,
+  }) {
+    return edited();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Pet pet)? loaded,
+    TResult Function(String message)? error,
+    TResult Function()? edited,
+    required TResult orElse(),
+  }) {
+    if (edited != null) {
+      return edited();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Edited value) edited,
+  }) {
+    return edited(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
+    required TResult orElse(),
+  }) {
+    if (edited != null) {
+      return edited(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Edited implements EditMyPetsState {
+  const factory _Edited() = _$_Edited;
 }

@@ -7,6 +7,7 @@ import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/screens/login/register_page.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/utils/check_conectivity.dart';
 import 'package:lapka/utils/validators.dart';
 
@@ -27,7 +28,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _moveToRegister() async {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> RegisterPage()));
+    NavigatorHelper.push(context, RegisterPage());
+    
   }
 
   _forgotPassword() {

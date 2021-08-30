@@ -8,10 +8,10 @@ import 'package:lapka/settings/colors.dart';
 import 'menu.dart';
 import 'package:provider/provider.dart';
 
-
 class MenuDashboardLayout extends StatefulWidget {
-  final Widget initialPage;
-  MenuDashboardLayout(this.initialPage);
+  final Router router;
+
+  MenuDashboardLayout(this.router);
 
   @override
   _MenuDashboardLayoutState createState() => _MenuDashboardLayoutState();
@@ -26,14 +26,17 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
   late Animation<double> _scaleAnimation;
   late Animation<double> _menuScaleAnimation;
   late Animation<Offset> _slideAnimation;
-  late Widget current;
-  List<Widget> list = [AdoptPetListPage(), Scaffold(appBar: CustomAppBar(),)];
+  List<Widget> list = [
+    AdoptPetListPage(),
+    Scaffold(
+      appBar: CustomAppBar(),
+    )
+  ];
 
   @override
   void initState() {
     super.initState();
     context.read<LocationBloc>().add(LocationEvent.determinePosition());
-    current = widget.initialPage;
     context.read<MenuProvider>().onMenuClick = onMenuTap;
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.9).animate(_controller);
@@ -60,12 +63,10 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
     });
   }
 
-  void onMenuItemClicked(Widget newWidget) {
-    current = newWidget;
+  void onMenuItemClicked() {
     setState(() {
       _controller.reverse();
     });
-
     isCollapsed = !isCollapsed;
   }
 
@@ -75,34 +76,30 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
     screenHeight = size.height;
     screenWidth = size.width;
     return GestureDetector(
-      onPanUpdate: (details){
-                  if (details.delta.dx < -15 && !isCollapsed) {
-                        onMenuTap();
-                  }
-            },
+      onPanUpdate: (details) {
+        if (details.delta.dx < -15 && !isCollapsed) {
+          onMenuTap();
+        }
+      },
       child: Scaffold(
         backgroundColor: BasicColors.darkGreen,
-        body: stackBody(),
-      ),
-    );
-  }
-
-  Stack stackBody() {
-    return Stack(
-        children: [
-          Menu(
-              slideAnimation: _slideAnimation,
-              menuAnimation: _menuScaleAnimation,
-              onMenuItemClicked: onMenuItemClicked),
-          Dashboard(
+        body: Stack(
+          children: [
+            Menu(
+                slideAnimation: _slideAnimation,
+                menuAnimation: _menuScaleAnimation,
+                onMenuItemClicked: onMenuItemClicked),
+            Dashboard(
               duration: duration,
               scaleAnimation: _scaleAnimation,
               isCollapsed: isCollapsed,
               screenWidth: screenWidth,
-              child: IgnorePointer(
-                ignoring: !isCollapsed,
-                child: current)),
-        ],
-      );
+              child:
+                  IgnorePointer(ignoring: !isCollapsed, child: widget.router),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

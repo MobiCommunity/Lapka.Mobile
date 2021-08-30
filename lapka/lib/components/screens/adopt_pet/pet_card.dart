@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/basic/rounded_image.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_details.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/settings/request_settings.dart';
 import 'package:lapka/utils/check_conectivity.dart';
 import 'package:lapka/utils/date_helper.dart';
@@ -116,12 +119,9 @@ class PetCard extends StatelessWidget {
                     bottomRight: Radius.circular(14))),
             child: InkWell(
               onTap: () async{
-                if(await InternetConectivity.check(context))
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => AdoptPetDetails(id: pet.id!)),
-                );
+                if(await InternetConectivity.check(context)){
+                  NavigatorHelper.push(context, AdoptPetDetails(id: pet.id!)); 
+                }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

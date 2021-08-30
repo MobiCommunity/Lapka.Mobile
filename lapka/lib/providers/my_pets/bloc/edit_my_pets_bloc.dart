@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:lapka/components/basic/basic_button.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/my_pets/bloc/my_pets_bloc.dart';
 import 'package:lapka/repository/my_pets_repository.dart';
@@ -25,7 +26,7 @@ class EditMyPetsBloc extends Bloc<EditMyPetsEvent, EditMyPetsState> {
       try{
         String id = await _repository.createMyPet(event.pet);
         myPetsBloc.add(MyPetsEvent.getMyPets());
-        this.add(EditMyPetsEvent.read(id));
+        yield EditMyPetsState.edited();
       }catch(e){
         yield EditMyPetsState.error("Error adding");
       }
@@ -35,7 +36,7 @@ class EditMyPetsBloc extends Bloc<EditMyPetsEvent, EditMyPetsState> {
       try{
         await _repository.editMyPet(event.pet);
         myPetsBloc.add(MyPetsEvent.getMyPets());
-        this.add(EditMyPetsEvent.read(event.pet.id!));
+        yield EditMyPetsState.edited();
       }catch(e){
         yield EditMyPetsState.error("Error updating");
       }
@@ -45,7 +46,7 @@ class EditMyPetsBloc extends Bloc<EditMyPetsEvent, EditMyPetsState> {
       try{
         await _repository.deleteMyPet(event.id);
         myPetsBloc.add(MyPetsEvent.getMyPets());
-        yield EditMyPetsState.initial();
+       yield EditMyPetsState.edited();
       }catch(e){
         yield EditMyPetsState.error("Error delete");
       }
@@ -58,6 +59,9 @@ class EditMyPetsBloc extends Bloc<EditMyPetsEvent, EditMyPetsState> {
       }catch(e){
         yield EditMyPetsState.error("Error laoding");
       }
+    }
+    else if(event is _Reset){
+      yield EditMyPetsState.initial();
     }
   }
 }

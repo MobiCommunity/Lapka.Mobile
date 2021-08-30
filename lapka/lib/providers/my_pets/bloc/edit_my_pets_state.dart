@@ -6,4 +6,5 @@ class EditMyPetsState with _$EditMyPetsState {
   const factory EditMyPetsState.loading() = _Loading;
   const factory EditMyPetsState.loaded(Pet pet) = _Loaded;
   const factory EditMyPetsState.error(String message) = _Error;
+  const factory EditMyPetsState.edited() = _Edited;
 }
