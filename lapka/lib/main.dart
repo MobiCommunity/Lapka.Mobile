@@ -88,6 +88,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   var subscription;
+  final Router router= Router(routerDelegate: MyAppRouterDelegate());
   @override
   initState() {
     super.initState();
@@ -114,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return false;
         },
         child:
-            MenuDashboardLayout(Router(routerDelegate: MyAppRouterDelegate())));
+            MenuDashboardLayout(router));
   }
 
   @override

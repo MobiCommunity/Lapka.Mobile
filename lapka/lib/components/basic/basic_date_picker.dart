@@ -5,7 +5,7 @@ import 'package:lapka/settings/colors.dart';
 import 'package:lapka/utils/validators.dart';
 
 class BasicDatePicker extends StatefulWidget {
-  final Function() onChangeCallback;
+  final Function(DateTime date) onChangeCallback;
   final String placeholder;
   final Function validator;
   final DateTime lastDate, firsDate, initialDate;
@@ -49,7 +49,7 @@ Future _selectDate() async {
    if (picked != null){
      Jiffy jiffy = Jiffy(picked);
       controller.text = jiffy.format('dd/MM/yyyy');
-      widget.onChangeCallback();
+      widget.onChangeCallback(picked);
    }
      
  }

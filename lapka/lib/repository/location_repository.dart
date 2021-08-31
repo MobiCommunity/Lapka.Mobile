@@ -34,7 +34,7 @@ class LocationRepository{
     }catch(e){
       throw Exception();
     }
-    Placemark? placemark = await LocationHelper.getAddressFromLatLng(position!);
+    Placemark? placemark = await LocationHelper.getAddressFromPosition(position!);
     city = placemark!.locality;
   }
  }

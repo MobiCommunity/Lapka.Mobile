@@ -73,6 +73,7 @@ class MyAppRouterDelegate extends RouterDelegate
           key: navigatorKey,
           pages: stack,
           onPopPage: (route, result) {
+            print('onPopDelegat');
             if (!route.didPop(result)) return false;
             return false;
           },

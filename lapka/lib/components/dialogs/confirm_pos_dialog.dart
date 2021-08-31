@@ -6,9 +6,9 @@ import 'package:lapka/screens/report/homeless_report.dart';
 import 'package:lapka/settings/colors.dart';
 
 class ConfirmPosDialog extends StatelessWidget {
-  const ConfirmPosDialog({Key? key, required this.onExit, required this.onLogin}) : super(key: key);
-  final Function() onLogin;
-  final Function() onExit;
+  const ConfirmPosDialog({Key? key, required this.onAccept, required this.onCancel}) : super(key: key);
+  final Function() onCancel;
+  final Function() onAccept;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,13 +22,42 @@ class ConfirmPosDialog extends StatelessWidget {
                   color: BasicColors.white,
                   borderRadius: BorderRadius.all(Radius.circular(12.0))),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                padding: const EdgeInsets.symmetric(vertical: 24.0,),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    BasicText.heading2('Czy chcesz zatwierdzić tę lokację?'),
-                    BasicButton(onPressed: (){}, text: 'Tak',),
-                    SizedBox(height: 15,),
-                    BasicButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => HomelessReportPage()));}, text: 'WYJDŹ')
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: BasicText.heading2('Czy chcesz zatwierdzić tę lokacje?',center: true,),
+                    ),
+                    SizedBox(height: 16),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: Container(
+                                child: BasicButton(
+                                    color: BasicColors.white,
+                                    textColor: BasicColors.darkGrey.withOpacity(0.8),
+                                    text: 'Usuń',
+                                    onPressed: () {onCancel();}),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Expanded(
+                              child: Container(
+                                child: BasicButton(
+                                    text: 'Zatwierdź',
+                                    onPressed: () {onAccept();}
+                                        ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),     
                   ]
                 )
               ),
@@ -38,7 +67,7 @@ class ConfirmPosDialog extends StatelessWidget {
             height: 44,
             alignment: Alignment.topRight,
             child: CancelButton(
-                onPressed: onExit
+                onPressed: () => Navigator.of(context, rootNavigator: false).pop()
             ),
           )
         ],

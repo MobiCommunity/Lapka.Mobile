@@ -309,7 +309,9 @@ class _EditMyPetPageState extends State<EditMyPetPage> {
       validator: (text) => Validators.multiValidator([
         VaidatorModel(Validators.notEmpty, 'Musisz podać datę'),
       ], text),
-      onChangeCallback: () {},
+      onChangeCallback: (DateTime date) {
+        
+      },
     );
   }
 

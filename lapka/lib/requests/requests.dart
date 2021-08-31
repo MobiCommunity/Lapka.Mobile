@@ -10,7 +10,6 @@ class Requests {
     Uri url = Uri.parse(urlArgument);
 
     header = {"Content-type": "application/json"};
-
     try{
       Response? response;
       if(type == Type.post)

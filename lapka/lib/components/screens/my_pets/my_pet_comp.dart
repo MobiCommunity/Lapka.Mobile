@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/basic/rounded_image.dart';
 import 'package:lapka/components/basic/textButton.dart';
+import 'package:lapka/components/dialogs/basic_dialog.dart';
+import 'package:lapka/components/dialogs/visit_dialog.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/screens/my_pets/edit_my_pet.dart';
 import 'package:lapka/settings/colors.dart';
@@ -38,9 +40,14 @@ class MyPetComp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BasicText.heading20Bold(pet.name!),
-                    SvgPicture.asset(
-                      'lib/assets/three-dots.svg',
-                      color: BasicColors.darkGrey,
+                    InkWell(
+                      onTap: (){
+                        BasicDialog.showDialogCustom(context, VisitDialog((){}));
+                      },
+                      child: SvgPicture.asset(
+                        'lib/assets/three-dots.svg',
+                        color: BasicColors.darkGrey,
+                      ),
                     )
                   ],
                 ),

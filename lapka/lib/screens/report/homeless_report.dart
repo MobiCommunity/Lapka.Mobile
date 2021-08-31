@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lapka/components/app_bar/custom_app_bar.dart';
 import 'package:lapka/components/basic/basic_button.dart';
@@ -10,13 +12,16 @@ import 'package:lapka/components/basic/basic_form_field.dart';
 import 'package:lapka/components/basic/basic_image_picker.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
+import 'package:lapka/utils/location_helper.dart';
 
-import '../googleMap.dart';
+import '../../components/basic/google_map.dart';
 
 class HomelessReportPage extends StatelessWidget {
    HomelessReportPage({ Key? key }) : super(key: key);
-
+  
   final TextEditingController localizationController = TextEditingController();
+  final TextEditingController tmpLocalizationController = TextEditingController();
   final TextEditingController infoController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -62,7 +67,14 @@ class HomelessReportPage extends StatelessWidget {
                       children: [
                           InkWell(
                               onTap: () async{
-                                await Navigator.push(context, MaterialPageRoute(builder: (context) => MapScreen()));
+                                NavigatorHelper.push(context, MapScreen((LatLng position)async{
+                                  if(position != null){
+                                    print(position);
+                                    tmpLocalizationController.text = position.toString();
+                                    Placemark? place = await LocationHelper.getAddressFromLatLng(position);
+                                    localizationController.text = place.toString();
+                                  }
+                                }));
                               },
                               child: BasicFormField(
                                 enabled: false,

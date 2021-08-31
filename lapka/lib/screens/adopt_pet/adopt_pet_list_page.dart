@@ -73,6 +73,7 @@ class AdoptPetListPage extends StatelessWidget {
                     onPressed: () {
                       _panelController.open();
                     },
+                    shadow: true,
                     trailling: Icon(Icons.tune, color: BasicColors.white),
                   ),
                 ),

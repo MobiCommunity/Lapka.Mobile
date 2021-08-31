@@ -91,7 +91,7 @@ class _MissingReportPageState extends State<MissingReportPage> {
                                         Validators.notEmpty, 'Musisz podać datę'),
                                     
                                   ], text),
-                            onChangeCallback: () {},
+                            onChangeCallback: (DateTime date) {},
                           ),
                           SizedBox(
                             height: 16,
