@@ -9,6 +9,10 @@ abstract class MyPetsRepository {
   Future<String> createMyPet(Pet pet);
   Future<bool> editMyPet(Pet pet);
   Future<bool> deleteMyPet(String id);
+  Future<Pet> getPetCardDetails(String id);
+  Future<bool> addVisit(dynamic object);
+  Future<bool> editVisitInformation(dynamic object);
+  Future<bool> addVisitInformation(dynamic object);
 }
 
 class MyPetsRepositoryFake with MyPetsRepository {
@@ -81,6 +85,63 @@ class MyPetsRepositoryFake with MyPetsRepository {
           throw Exception();
         }
         return random.nextBool();
+      }
+    );
+  }
+
+  @override
+  Future<bool> addVisit(object) {
+    return Future.delayed(
+      Duration(seconds: 1),
+      (){
+        final random = Random();
+        if(random.nextBool()){
+          throw Exception();
+        }
+        return random.nextBool();
+      }
+    );
+  }
+
+  @override
+  Future<bool> addVisitInformation(object) {
+    return Future.delayed(
+      Duration(seconds: 1),
+      (){
+        final random = Random();
+        if(random.nextBool()){
+          throw Exception();
+        }
+        return random.nextBool();
+      }
+    );
+  }
+
+  @override
+  Future<bool> editVisitInformation(object) {
+    return Future.delayed(
+      Duration(seconds: 1),
+      (){
+        final random = Random();
+        if(random.nextBool()){
+          throw Exception();
+        }
+        return random.nextBool();
+      }
+    );
+  }
+
+  @override
+  Future<Pet> getPetCardDetails(String id) {
+    String fakeRes = '{ "id": "06359d3a-0736-4d77-98b5-28b9ca691545", "name": "Kaczor", "sex": 0, "mainPhotoPath": "5958b2e147e549da94034619b8a60023.jpeg", "race": "Groźny", "birthDay": "2009-12-09T00:00:00Z", "shelterAddress": { "name": "Zoo", "city": "Rzeszów", "street": "Kopytko", "geoLocation": { "latitude": "12", "longitude": "43" } } }';
+    return Future.delayed(
+      Duration(seconds: 1),
+      (){
+        final random = Random();
+        if(random.nextBool()){
+          throw Exception();
+        }
+        return Pet.fromJson(json.decode(fakeRes));
       }
     );
   }

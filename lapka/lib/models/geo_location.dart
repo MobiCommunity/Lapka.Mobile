@@ -4,9 +4,9 @@ import 'package:json_annotation/json_annotation.dart';
 part 'geo_location.freezed.dart';
 part 'geo_location.g.dart';
 
-_doubleFromString(String? value) {
+_doubleFromString(dynamic? value) {
   if (value == null) return null;
-  double.tryParse(value);
+  double.tryParse(value.toString());
 }
 
 @freezed

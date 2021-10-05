@@ -6,14 +6,16 @@ import 'package:lapka/components/basic/textButton.dart';
 import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/components/dialogs/visit_dialog.dart';
 import 'package:lapka/models/pet.dart';
-import 'package:lapka/screens/my_pets/edit_my_pet.dart';
+import 'package:lapka/providers/my_pets/bloc/details_my_pets_bloc.dart';
+import 'package:lapka/screens/my_pets/details_my_pet_page.dart';
+import 'package:lapka/screens/my_pets/edit_my_pet_page.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/settings/request_settings.dart';
 import 'package:lapka/utils/date_helper.dart';
 
 class MyPetComp extends StatelessWidget {
-  Pet pet;
+  final Pet pet;
 
   MyPetComp({required this.pet});
 
@@ -107,7 +109,7 @@ class MyPetComp extends StatelessWidget {
                               ),
                               BasicTextButton(
                                   onPressed: () {
-                                    NavigatorHelper.push(context, EditMyPetPage(pet: pet,));
+                                    NavigatorHelper.push(context, DetailsMyPets(pet: pet,));
                                   },
                                   text: 'Książeczka zdrowia',
                                   underline: true)

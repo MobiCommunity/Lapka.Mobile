@@ -2,10 +2,12 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/components/dialogs/exit_dialog.dart';
 import 'package:lapka/components/dialogs/no_internet_dialog.dart';
+import 'package:lapka/providers/authentication/bloc/authentication_bloc.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/providers/loginProvider.dart';
 import 'package:lapka/providers/menuProvider.dart';
@@ -13,6 +15,7 @@ import 'package:lapka/providers/my_pets/bloc/edit_my_pets_bloc.dart';
 import 'package:lapka/providers/my_pets/bloc/my_pets_bloc.dart';
 import 'package:lapka/providers/shelter/bloc/shelter_list_bloc.dart';
 import 'package:lapka/repository/adopt_pet_repository.dart';
+import 'package:lapka/repository/authentication_repository.dart';
 import 'package:lapka/repository/location_repository.dart';
 import 'package:lapka/repository/my_pets_repository.dart';
 import 'package:lapka/repository/shelter_repository.dart';
@@ -55,6 +58,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => NavigatorBloc(),
         ),
+        BlocProvider(
+          create: (context) { 
+            final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
+            final  AuthenticationRepositoryApi _authenticationRepository= AuthenticationRepositoryApi(_secureStorage);
+            return AuthenticationBloc(_authenticationRepository);},
+        ),
       ],
       child: MultiProvider(
           providers: [
@@ -86,12 +95,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  
+  
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   var subscription;
   final Router router= Router(routerDelegate: MyAppRouterDelegate());
+
   @override
   initState() {
     super.initState();
+    context.read<AuthenticationBloc>().add(AuthenticationEvent.autoLogin());
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     _internetListenerInit();

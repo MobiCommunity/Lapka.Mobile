@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
+import 'package:lapka/providers/authentication/bloc/authentication_bloc.dart';
 import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
 import 'package:lapka/screens/my_pets/my_pets_page.dart';
@@ -25,7 +26,7 @@ class Menu extends StatelessWidget {
       required this.onMenuItemClicked})
       : super(key: key);
 
-  _buildMenuItem(context, 
+  _buildMenuItem(context,
       {required Widget widget, required String name, required String icon}) {
     return InkWell(
       onTap: () {
@@ -45,7 +46,6 @@ class Menu extends StatelessWidget {
           BasicText.subtitleLight(
             name,
             color: BasicColors.white,
-            
           )
         ],
       ),
@@ -68,57 +68,76 @@ class Menu extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(),
-                _avatarBuilder(),
-                _buildMenuItem(
-                    context,
-                    widget: AdoptPetListPage(),
-                    name: 'Wiadomości',
-                    icon: 'lib/assets/messages-icon.svg',),
-                _buildMenuItem(
-                  context,
-                    widget: AdoptPetListPage(),
-                    name: 'Ulubione zwierzaki',
-                    icon: 'lib/assets/paw-symbol.svg',),
-                _buildMenuItem(
-                  context,
-                    widget: AdoptPetListPage(),
-                    name: 'Adopcja',
-                    icon: 'lib/assets/favourite-icon.svg',),
+                BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                  builder: (context, state) {
+                    return state.when(
+                        unauthenticated: () => Container(
+                              child: BasicText.body14Bold('Zaloguj się'),
+                            ),
+                        authenticated: (val) {
+                          return _avatarBuilder();
+                        });
+                  },
+                ),
                 _buildMenuItem(
                   context,
-                    widget: MyPetsPage(),
-                    name: 'Moje zwierzaki',
-                    icon: 'lib/assets/my-pets-icon.svg',),
+                  widget: AdoptPetListPage(),
+                  name: 'Wiadomości',
+                  icon: 'lib/assets/messages-icon.svg',
+                ),
+                _buildMenuItem(
+                  context,
+                  widget: AdoptPetListPage(),
+                  name: 'Ulubione zwierzaki',
+                  icon: 'lib/assets/paw-symbol.svg',
+                ),
+                _buildMenuItem(
+                  context,
+                  widget: AdoptPetListPage(),
+                  name: 'Adopcja',
+                  icon: 'lib/assets/favourite-icon.svg',
+                ),
+                _buildMenuItem(
+                  context,
+                  widget: MyPetsPage(),
+                  name: 'Moje zwierzaki',
+                  icon: 'lib/assets/my-pets-icon.svg',
+                ),
                 _smallLineSpacer(),
                 _buildMenuItem(
                   context,
-                    widget: ReportPage(),
-                    name: 'Zgłoszenia',
-                    icon: 'lib/assets/report-icon.svg',),
+                  widget: ReportPage(),
+                  name: 'Zgłoszenia',
+                  icon: 'lib/assets/report-icon.svg',
+                ),
                 _buildMenuItem(
                   context,
-                    widget: AdoptPetListPage(),
-                    name: 'Zaginione zwierzaki',
-                    icon: 'lib/assets/missing-pets.svg',),
+                  widget: AdoptPetListPage(),
+                  name: 'Zaginione zwierzaki',
+                  icon: 'lib/assets/missing-pets.svg',
+                ),
                 _smallLineSpacer(),
                 _buildMenuItem(
                   context,
-                    widget: VolunteerPage(),
-                    name: 'Wolontariat',
-                    icon: 'lib/assets/volunteer-icon.svg',),
+                  widget: VolunteerPage(),
+                  name: 'Wolontariat',
+                  icon: 'lib/assets/volunteer-icon.svg',
+                ),
                 _smallLineSpacer(),
                 _buildMenuItem(
                   context,
-                    widget: AdoptPetListPage(),
-                    name: 'Ustawienia',
-                    icon: 'lib/assets/settings-icon.svg',),
+                  widget: AdoptPetListPage(),
+                  name: 'Ustawienia',
+                  icon: 'lib/assets/settings-icon.svg',
+                ),
                 Container(),
                 _bigLineSpacer(),
                 _buildMenuItem(
                   context,
-                    widget: AdoptPetListPage(),
-                    name: 'Wyloguj się',
-                    icon: 'lib/assets/logout-icon.svg',),
+                  widget: AdoptPetListPage(),
+                  name: 'Wyloguj się',
+                  icon: 'lib/assets/logout-icon.svg',
+                ),
                 Container()
               ],
             ),
