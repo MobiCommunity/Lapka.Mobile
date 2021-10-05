@@ -15,7 +15,7 @@ class ShelterRepositoryApi with ShelterRepository {
   Future<List<Shelter>> getAllShelters() async {
     try {
       Response res = await Requests.sendRequest(
-          identityUrl + 'api/shelter', null, Type.get);
+          identityUrl + 'api/identity/shelter', null, Type.get);
       return List<Shelter>.from(
           json.decode(res.body).map((model) => Shelter.fromJson(model)));
     } catch (e) {
@@ -27,7 +27,7 @@ class ShelterRepositoryApi with ShelterRepository {
   Future<Shelter> getShelterDetails(String id) async {
     try {
       Response res = await Requests.sendRequest(
-          identityUrl + 'api/shelter/$id', null, Type.get);
+          identityUrl + 'api/identity/shelter/$id', null, Type.get);
       return Shelter.fromJson(json.decode(res.body));
     } catch (e) {
       throw Exception('Wystąpił błąd');

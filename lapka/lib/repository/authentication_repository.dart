@@ -34,7 +34,7 @@ class AuthenticationRepositoryApi extends AuthenticationRepository {
   Future<Token> refreshToken(String refreshToken) async {
     try {
       Response res = await Requests.sendRequest(
-          identityUrl + 'api/auth/use', {'token': refreshToken}, Type.post);
+          identityUrl + 'api/identity/auth/use', {'token': refreshToken}, Type.post);
       if (res.statusCode == 200) {
         return Token.fromJson(json.decode(res.body));
       } else {
@@ -51,7 +51,7 @@ class AuthenticationRepositoryApi extends AuthenticationRepository {
       String email, String password) async {
     try {
       Response res = await Requests.sendRequest(
-          identityUrl + 'api/auth/singin',
+          identityUrl + 'api/identity/auth/signin',
           {
             'username': username,
             'firstName': firstName,
@@ -71,7 +71,7 @@ class AuthenticationRepositoryApi extends AuthenticationRepository {
   @override
   Future<Token> singIn(String email, String password) async {
     try {
-      Response res = await Requests.sendRequest(identityUrl + 'api/auth/singin',
+      Response res = await Requests.sendRequest(identityUrl + 'api/identity/auth/signin',
           {'email': email, 'password': password}, Type.post);
       if (res.statusCode == 200) {
         return Token.fromJson(json.decode(res.body));
@@ -87,7 +87,7 @@ class AuthenticationRepositoryApi extends AuthenticationRepository {
   Future<Token> singInFb(String token) async {
     try {
       Response res = await Requests.sendRequest(
-          identityUrl + 'api/auth/singin-facebook',
+          identityUrl + 'api/identity/auth/signin-facebook',
           {'token': token},
           Type.post);
       if (res.statusCode == 200) {
@@ -104,7 +104,7 @@ class AuthenticationRepositoryApi extends AuthenticationRepository {
   Future<Token> singInGoogle(String token) async {
     try {
       Response res = await Requests.sendRequest(
-          identityUrl + 'api/auth/singin-google', {'token': token}, Type.post);
+          identityUrl + 'api/identity/auth/signin-google', {'token': token}, Type.post);
       if (res.statusCode == 200) {
         return Token.fromJson(json.decode(res.body));
       } else {
@@ -119,7 +119,7 @@ class AuthenticationRepositoryApi extends AuthenticationRepository {
   Future<void> revokeRefreshToken(String refreshToken) async {
      try {
       Response res = await Requests.sendRequest(
-          identityUrl + 'api/auth/revoke', {'token': refreshToken}, Type.post);
+          identityUrl + 'api/identity/auth/revoke', {'token': refreshToken}, Type.post);
       if (res.statusCode != 204) {
         throw Exception();
       } 
