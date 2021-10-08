@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'edit_my_pets_bloc.dart';
 
@@ -60,6 +61,15 @@ mixin _$EditMyPetsEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Pet pet)? update,
+    TResult Function(Pet pet)? create,
+    TResult Function(String id)? delete,
+    TResult Function(String id)? read,
+    TResult Function()? reset,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Pet pet)? update,
     TResult Function(Pet pet)? create,
@@ -76,6 +86,15 @@ mixin _$EditMyPetsEvent {
     required TResult Function(_Delete value) delete,
     required TResult Function(_Read value) read,
     required TResult Function(_Reset value) reset,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Update value)? update,
+    TResult Function(_Create value)? create,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -189,6 +208,18 @@ class _$_Update implements _Update {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Pet pet)? update,
+    TResult Function(Pet pet)? create,
+    TResult Function(String id)? delete,
+    TResult Function(String id)? read,
+    TResult Function()? reset,
+  }) {
+    return update?.call(pet);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Pet pet)? update,
     TResult Function(Pet pet)? create,
@@ -213,6 +244,18 @@ class _$_Update implements _Update {
     required TResult Function(_Reset value) reset,
   }) {
     return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Update value)? update,
+    TResult Function(_Create value)? create,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
+  }) {
+    return update?.call(this);
   }
 
   @override
@@ -322,6 +365,18 @@ class _$_Create implements _Create {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Pet pet)? update,
+    TResult Function(Pet pet)? create,
+    TResult Function(String id)? delete,
+    TResult Function(String id)? read,
+    TResult Function()? reset,
+  }) {
+    return create?.call(pet);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Pet pet)? update,
     TResult Function(Pet pet)? create,
@@ -346,6 +401,18 @@ class _$_Create implements _Create {
     required TResult Function(_Reset value) reset,
   }) {
     return create(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Update value)? update,
+    TResult Function(_Create value)? create,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
+  }) {
+    return create?.call(this);
   }
 
   @override
@@ -446,6 +513,18 @@ class _$_Delete implements _Delete {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Pet pet)? update,
+    TResult Function(Pet pet)? create,
+    TResult Function(String id)? delete,
+    TResult Function(String id)? read,
+    TResult Function()? reset,
+  }) {
+    return delete?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Pet pet)? update,
     TResult Function(Pet pet)? create,
@@ -470,6 +549,18 @@ class _$_Delete implements _Delete {
     required TResult Function(_Reset value) reset,
   }) {
     return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Update value)? update,
+    TResult Function(_Create value)? create,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
+  }) {
+    return delete?.call(this);
   }
 
   @override
@@ -570,6 +661,18 @@ class _$_Read implements _Read {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Pet pet)? update,
+    TResult Function(Pet pet)? create,
+    TResult Function(String id)? delete,
+    TResult Function(String id)? read,
+    TResult Function()? reset,
+  }) {
+    return read?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Pet pet)? update,
     TResult Function(Pet pet)? create,
@@ -594,6 +697,18 @@ class _$_Read implements _Read {
     required TResult Function(_Reset value) reset,
   }) {
     return read(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Update value)? update,
+    TResult Function(_Create value)? create,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
+  }) {
+    return read?.call(this);
   }
 
   @override
@@ -669,6 +784,18 @@ class _$_Reset implements _Reset {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Pet pet)? update,
+    TResult Function(Pet pet)? create,
+    TResult Function(String id)? delete,
+    TResult Function(String id)? read,
+    TResult Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Pet pet)? update,
     TResult Function(Pet pet)? create,
@@ -693,6 +820,18 @@ class _$_Reset implements _Reset {
     required TResult Function(_Reset value) reset,
   }) {
     return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Update value)? update,
+    TResult Function(_Create value)? create,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Read value)? read,
+    TResult Function(_Reset value)? reset,
+  }) {
+    return reset?.call(this);
   }
 
   @override
@@ -760,6 +899,15 @@ mixin _$EditMyPetsState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Pet pet)? loaded,
+    TResult Function(String message)? error,
+    TResult Function()? edited,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -776,6 +924,15 @@ mixin _$EditMyPetsState {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_Edited value) edited,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -855,6 +1012,18 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Pet pet)? loaded,
+    TResult Function(String message)? error,
+    TResult Function()? edited,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -879,6 +1048,18 @@ class _$_Initial implements _Initial {
     required TResult Function(_Edited value) edited,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -950,6 +1131,18 @@ class _$_Loading implements _Loading {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Pet pet)? loaded,
+    TResult Function(String message)? error,
+    TResult Function()? edited,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -974,6 +1167,18 @@ class _$_Loading implements _Loading {
     required TResult Function(_Edited value) edited,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -1079,6 +1284,18 @@ class _$_Loaded implements _Loaded {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Pet pet)? loaded,
+    TResult Function(String message)? error,
+    TResult Function()? edited,
+  }) {
+    return loaded?.call(pet);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -1103,6 +1320,18 @@ class _$_Loaded implements _Loaded {
     required TResult Function(_Edited value) edited,
   }) {
     return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
+  }) {
+    return loaded?.call(this);
   }
 
   @override
@@ -1203,6 +1432,18 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Pet pet)? loaded,
+    TResult Function(String message)? error,
+    TResult Function()? edited,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -1227,6 +1468,18 @@ class _$_Error implements _Error {
     required TResult Function(_Edited value) edited,
   }) {
     return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
+  }) {
+    return error?.call(this);
   }
 
   @override
@@ -1302,6 +1555,18 @@ class _$_Edited implements _Edited {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Pet pet)? loaded,
+    TResult Function(String message)? error,
+    TResult Function()? edited,
+  }) {
+    return edited?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -1326,6 +1591,18 @@ class _$_Edited implements _Edited {
     required TResult Function(_Edited value) edited,
   }) {
     return edited(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Edited value)? edited,
+  }) {
+    return edited?.call(this);
   }
 
   @override

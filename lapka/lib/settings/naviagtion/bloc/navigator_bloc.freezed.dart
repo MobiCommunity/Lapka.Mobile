@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'navigator_bloc.dart';
 
@@ -48,6 +49,13 @@ mixin _$NavigatorEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Widget page)? pushPage,
+    TResult Function(bool force)? popPage,
+    TResult Function(Widget page)? pushReplace,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Widget page)? pushPage,
     TResult Function(bool force)? popPage,
@@ -60,6 +68,13 @@ mixin _$NavigatorEvent {
     required TResult Function(_PushPage value) pushPage,
     required TResult Function(_PopPage value) popPage,
     required TResult Function(_PushReplacePage value) pushReplace,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PushPage value)? pushPage,
+    TResult Function(_PopPage value)? popPage,
+    TResult Function(_PushReplacePage value)? pushReplace,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -160,6 +175,16 @@ class _$_PushPage implements _PushPage {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Widget page)? pushPage,
+    TResult Function(bool force)? popPage,
+    TResult Function(Widget page)? pushReplace,
+  }) {
+    return pushPage?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Widget page)? pushPage,
     TResult Function(bool force)? popPage,
@@ -180,6 +205,16 @@ class _$_PushPage implements _PushPage {
     required TResult Function(_PushReplacePage value) pushReplace,
   }) {
     return pushPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PushPage value)? pushPage,
+    TResult Function(_PopPage value)? popPage,
+    TResult Function(_PushReplacePage value)? pushReplace,
+  }) {
+    return pushPage?.call(this);
   }
 
   @override
@@ -277,6 +312,16 @@ class _$_PopPage implements _PopPage {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Widget page)? pushPage,
+    TResult Function(bool force)? popPage,
+    TResult Function(Widget page)? pushReplace,
+  }) {
+    return popPage?.call(force);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Widget page)? pushPage,
     TResult Function(bool force)? popPage,
@@ -297,6 +342,16 @@ class _$_PopPage implements _PopPage {
     required TResult Function(_PushReplacePage value) pushReplace,
   }) {
     return popPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PushPage value)? pushPage,
+    TResult Function(_PopPage value)? popPage,
+    TResult Function(_PushReplacePage value)? pushReplace,
+  }) {
+    return popPage?.call(this);
   }
 
   @override
@@ -397,6 +452,16 @@ class _$_PushReplacePage implements _PushReplacePage {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Widget page)? pushPage,
+    TResult Function(bool force)? popPage,
+    TResult Function(Widget page)? pushReplace,
+  }) {
+    return pushReplace?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Widget page)? pushPage,
     TResult Function(bool force)? popPage,
@@ -417,6 +482,16 @@ class _$_PushReplacePage implements _PushReplacePage {
     required TResult Function(_PushReplacePage value) pushReplace,
   }) {
     return pushReplace(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PushPage value)? pushPage,
+    TResult Function(_PopPage value)? popPage,
+    TResult Function(_PushReplacePage value)? pushReplace,
+  }) {
+    return pushReplace?.call(this);
   }
 
   @override
@@ -484,6 +559,14 @@ mixin _$NavigatorMyState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(MaterialPage<dynamic> page)? push,
+    TResult Function(MaterialPage<dynamic> page)? pushReplace,
+    TResult Function(bool force)? pop,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(MaterialPage<dynamic> page)? push,
@@ -498,6 +581,14 @@ mixin _$NavigatorMyState {
     required TResult Function(_Push value) push,
     required TResult Function(_PushReplace value) pushReplace,
     required TResult Function(_Pop value) pop,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Push value)? push,
+    TResult Function(_PushReplace value)? pushReplace,
+    TResult Function(_Pop value)? pop,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -575,6 +666,17 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(MaterialPage<dynamic> page)? push,
+    TResult Function(MaterialPage<dynamic> page)? pushReplace,
+    TResult Function(bool force)? pop,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(MaterialPage<dynamic> page)? push,
@@ -597,6 +699,17 @@ class _$_Initial implements _Initial {
     required TResult Function(_Pop value) pop,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Push value)? push,
+    TResult Function(_PushReplace value)? pushReplace,
+    TResult Function(_Pop value)? pop,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -691,6 +804,17 @@ class _$_Push implements _Push {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(MaterialPage<dynamic> page)? push,
+    TResult Function(MaterialPage<dynamic> page)? pushReplace,
+    TResult Function(bool force)? pop,
+  }) {
+    return push?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(MaterialPage<dynamic> page)? push,
@@ -713,6 +837,17 @@ class _$_Push implements _Push {
     required TResult Function(_Pop value) pop,
   }) {
     return push(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Push value)? push,
+    TResult Function(_PushReplace value)? pushReplace,
+    TResult Function(_Pop value)? pop,
+  }) {
+    return push?.call(this);
   }
 
   @override
@@ -814,6 +949,17 @@ class _$_PushReplace implements _PushReplace {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(MaterialPage<dynamic> page)? push,
+    TResult Function(MaterialPage<dynamic> page)? pushReplace,
+    TResult Function(bool force)? pop,
+  }) {
+    return pushReplace?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(MaterialPage<dynamic> page)? push,
@@ -836,6 +982,17 @@ class _$_PushReplace implements _PushReplace {
     required TResult Function(_Pop value) pop,
   }) {
     return pushReplace(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Push value)? push,
+    TResult Function(_PushReplace value)? pushReplace,
+    TResult Function(_Pop value)? pop,
+  }) {
+    return pushReplace?.call(this);
   }
 
   @override
@@ -935,6 +1092,17 @@ class _$_Pop implements _Pop {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(MaterialPage<dynamic> page)? push,
+    TResult Function(MaterialPage<dynamic> page)? pushReplace,
+    TResult Function(bool force)? pop,
+  }) {
+    return pop?.call(force);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(MaterialPage<dynamic> page)? push,
@@ -957,6 +1125,17 @@ class _$_Pop implements _Pop {
     required TResult Function(_Pop value) pop,
   }) {
     return pop(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Push value)? push,
+    TResult Function(_PushReplace value)? pushReplace,
+    TResult Function(_Pop value)? pop,
+  }) {
+    return pop?.call(this);
   }
 
   @override

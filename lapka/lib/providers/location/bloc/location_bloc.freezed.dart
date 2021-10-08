@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'location_bloc.dart';
 
@@ -37,6 +38,12 @@ mixin _$LocationEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? determinePosition,
+    TResult Function()? getPosition,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? determinePosition,
     TResult Function()? getPosition,
@@ -47,6 +54,12 @@ mixin _$LocationEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_DeterminePosition value) determinePosition,
     required TResult Function(_GetPosition value) getPosition,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_DeterminePosition value)? determinePosition,
+    TResult Function(_GetPosition value)? getPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -123,6 +136,15 @@ class _$_DeterminePosition implements _DeterminePosition {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? determinePosition,
+    TResult Function()? getPosition,
+  }) {
+    return determinePosition?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? determinePosition,
     TResult Function()? getPosition,
@@ -141,6 +163,15 @@ class _$_DeterminePosition implements _DeterminePosition {
     required TResult Function(_GetPosition value) getPosition,
   }) {
     return determinePosition(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_DeterminePosition value)? determinePosition,
+    TResult Function(_GetPosition value)? getPosition,
+  }) {
+    return determinePosition?.call(this);
   }
 
   @override
@@ -208,6 +239,15 @@ class _$_GetPosition implements _GetPosition {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? determinePosition,
+    TResult Function()? getPosition,
+  }) {
+    return getPosition?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? determinePosition,
     TResult Function()? getPosition,
@@ -226,6 +266,15 @@ class _$_GetPosition implements _GetPosition {
     required TResult Function(_GetPosition value) getPosition,
   }) {
     return getPosition(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_DeterminePosition value)? determinePosition,
+    TResult Function(_GetPosition value)? getPosition,
+  }) {
+    return getPosition?.call(this);
   }
 
   @override
@@ -290,6 +339,15 @@ mixin _$LocationState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(LocationRepository repo)? determined,
+    TResult Function()? noPermission,
+    TResult Function(String message)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -306,6 +364,15 @@ mixin _$LocationState {
     required TResult Function(_Determined value) determined,
     required TResult Function(_NoPermission value) noPermission,
     required TResult Function(_Error value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Determined value)? determined,
+    TResult Function(_NoPermission value)? noPermission,
+    TResult Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -385,6 +452,18 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(LocationRepository repo)? determined,
+    TResult Function()? noPermission,
+    TResult Function(String message)? error,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -409,6 +488,18 @@ class _$_Initial implements _Initial {
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Determined value)? determined,
+    TResult Function(_NoPermission value)? noPermission,
+    TResult Function(_Error value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -480,6 +571,18 @@ class _$_Loading implements _Loading {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(LocationRepository repo)? determined,
+    TResult Function()? noPermission,
+    TResult Function(String message)? error,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -504,6 +607,18 @@ class _$_Loading implements _Loading {
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Determined value)? determined,
+    TResult Function(_NoPermission value)? noPermission,
+    TResult Function(_Error value)? error,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -602,6 +717,18 @@ class _$_Determined implements _Determined {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(LocationRepository repo)? determined,
+    TResult Function()? noPermission,
+    TResult Function(String message)? error,
+  }) {
+    return determined?.call(repo);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -626,6 +753,18 @@ class _$_Determined implements _Determined {
     required TResult Function(_Error value) error,
   }) {
     return determined(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Determined value)? determined,
+    TResult Function(_NoPermission value)? noPermission,
+    TResult Function(_Error value)? error,
+  }) {
+    return determined?.call(this);
   }
 
   @override
@@ -705,6 +844,18 @@ class _$_NoPermission implements _NoPermission {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(LocationRepository repo)? determined,
+    TResult Function()? noPermission,
+    TResult Function(String message)? error,
+  }) {
+    return noPermission?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -729,6 +880,18 @@ class _$_NoPermission implements _NoPermission {
     required TResult Function(_Error value) error,
   }) {
     return noPermission(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Determined value)? determined,
+    TResult Function(_NoPermission value)? noPermission,
+    TResult Function(_Error value)? error,
+  }) {
+    return noPermission?.call(this);
   }
 
   @override
@@ -825,6 +988,18 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(LocationRepository repo)? determined,
+    TResult Function()? noPermission,
+    TResult Function(String message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -849,6 +1024,18 @@ class _$_Error implements _Error {
     required TResult Function(_Error value) error,
   }) {
     return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Determined value)? determined,
+    TResult Function(_NoPermission value)? noPermission,
+    TResult Function(_Error value)? error,
+  }) {
+    return error?.call(this);
   }
 
   @override

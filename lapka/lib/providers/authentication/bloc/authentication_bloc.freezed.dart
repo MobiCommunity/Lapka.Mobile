@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'authentication_bloc.dart';
 
@@ -73,6 +74,18 @@ mixin _$AuthenticationEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String name, String password)? singIn,
+    TResult Function(String accessToken)? singInGoogle,
+    TResult Function(String accessToken)? singInFb,
+    TResult Function(String username, String firstName, String lastName,
+            String email, String password)?
+        signUp,
+    TResult Function()? logOut,
+    TResult Function()? autoLogin,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
@@ -93,6 +106,16 @@ mixin _$AuthenticationEvent {
     required TResult Function(_SingUp value) signUp,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_AutoLogin value) autoLogin,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SingIn value)? singIn,
+    TResult Function(_SingInGoogle value)? singInGoogle,
+    TResult Function(_SingInFb value)? singInFb,
+    TResult Function(_SingUp value)? signUp,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_AutoLogin value)? autoLogin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -214,6 +237,21 @@ class _$_SingIn implements _SingIn {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String name, String password)? singIn,
+    TResult Function(String accessToken)? singInGoogle,
+    TResult Function(String accessToken)? singInFb,
+    TResult Function(String username, String firstName, String lastName,
+            String email, String password)?
+        signUp,
+    TResult Function()? logOut,
+    TResult Function()? autoLogin,
+  }) {
+    return singIn?.call(name, password);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
@@ -242,6 +280,19 @@ class _$_SingIn implements _SingIn {
     required TResult Function(_AutoLogin value) autoLogin,
   }) {
     return singIn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SingIn value)? singIn,
+    TResult Function(_SingInGoogle value)? singInGoogle,
+    TResult Function(_SingInFb value)? singInFb,
+    TResult Function(_SingUp value)? signUp,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_AutoLogin value)? autoLogin,
+  }) {
+    return singIn?.call(this);
   }
 
   @override
@@ -351,6 +402,21 @@ class _$_SingInGoogle implements _SingInGoogle {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String name, String password)? singIn,
+    TResult Function(String accessToken)? singInGoogle,
+    TResult Function(String accessToken)? singInFb,
+    TResult Function(String username, String firstName, String lastName,
+            String email, String password)?
+        signUp,
+    TResult Function()? logOut,
+    TResult Function()? autoLogin,
+  }) {
+    return singInGoogle?.call(accessToken);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
@@ -379,6 +445,19 @@ class _$_SingInGoogle implements _SingInGoogle {
     required TResult Function(_AutoLogin value) autoLogin,
   }) {
     return singInGoogle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SingIn value)? singIn,
+    TResult Function(_SingInGoogle value)? singInGoogle,
+    TResult Function(_SingInFb value)? singInFb,
+    TResult Function(_SingUp value)? signUp,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_AutoLogin value)? autoLogin,
+  }) {
+    return singInGoogle?.call(this);
   }
 
   @override
@@ -486,6 +565,21 @@ class _$_SingInFb implements _SingInFb {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String name, String password)? singIn,
+    TResult Function(String accessToken)? singInGoogle,
+    TResult Function(String accessToken)? singInFb,
+    TResult Function(String username, String firstName, String lastName,
+            String email, String password)?
+        signUp,
+    TResult Function()? logOut,
+    TResult Function()? autoLogin,
+  }) {
+    return singInFb?.call(accessToken);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
@@ -514,6 +608,19 @@ class _$_SingInFb implements _SingInFb {
     required TResult Function(_AutoLogin value) autoLogin,
   }) {
     return singInFb(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SingIn value)? singIn,
+    TResult Function(_SingInGoogle value)? singInGoogle,
+    TResult Function(_SingInFb value)? singInFb,
+    TResult Function(_SingUp value)? signUp,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_AutoLogin value)? autoLogin,
+  }) {
+    return singInFb?.call(this);
   }
 
   @override
@@ -671,6 +778,21 @@ class _$_SingUp implements _SingUp {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String name, String password)? singIn,
+    TResult Function(String accessToken)? singInGoogle,
+    TResult Function(String accessToken)? singInFb,
+    TResult Function(String username, String firstName, String lastName,
+            String email, String password)?
+        signUp,
+    TResult Function()? logOut,
+    TResult Function()? autoLogin,
+  }) {
+    return signUp?.call(username, firstName, lastName, email, password);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
@@ -699,6 +821,19 @@ class _$_SingUp implements _SingUp {
     required TResult Function(_AutoLogin value) autoLogin,
   }) {
     return signUp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SingIn value)? singIn,
+    TResult Function(_SingInGoogle value)? singInGoogle,
+    TResult Function(_SingInFb value)? singInFb,
+    TResult Function(_SingUp value)? signUp,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_AutoLogin value)? autoLogin,
+  }) {
+    return signUp?.call(this);
   }
 
   @override
@@ -784,6 +919,21 @@ class _$_LogOut implements _LogOut {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String name, String password)? singIn,
+    TResult Function(String accessToken)? singInGoogle,
+    TResult Function(String accessToken)? singInFb,
+    TResult Function(String username, String firstName, String lastName,
+            String email, String password)?
+        signUp,
+    TResult Function()? logOut,
+    TResult Function()? autoLogin,
+  }) {
+    return logOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
@@ -812,6 +962,19 @@ class _$_LogOut implements _LogOut {
     required TResult Function(_AutoLogin value) autoLogin,
   }) {
     return logOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SingIn value)? singIn,
+    TResult Function(_SingInGoogle value)? singInGoogle,
+    TResult Function(_SingInFb value)? singInFb,
+    TResult Function(_SingUp value)? signUp,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_AutoLogin value)? autoLogin,
+  }) {
+    return logOut?.call(this);
   }
 
   @override
@@ -889,6 +1052,21 @@ class _$_AutoLogin implements _AutoLogin {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String name, String password)? singIn,
+    TResult Function(String accessToken)? singInGoogle,
+    TResult Function(String accessToken)? singInFb,
+    TResult Function(String username, String firstName, String lastName,
+            String email, String password)?
+        signUp,
+    TResult Function()? logOut,
+    TResult Function()? autoLogin,
+  }) {
+    return autoLogin?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
@@ -921,6 +1099,19 @@ class _$_AutoLogin implements _AutoLogin {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SingIn value)? singIn,
+    TResult Function(_SingInGoogle value)? singInGoogle,
+    TResult Function(_SingInFb value)? singInFb,
+    TResult Function(_SingUp value)? signUp,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_AutoLogin value)? autoLogin,
+  }) {
+    return autoLogin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
@@ -945,8 +1136,10 @@ abstract class _AutoLogin implements AuthenticationEvent {
 class _$AuthenticationStateTearOff {
   const _$AuthenticationStateTearOff();
 
-  _Unauthenticated unauthenticated() {
-    return const _Unauthenticated();
+  _Unauthenticated unauthenticated({NetworkExceptions? exception}) {
+    return _Unauthenticated(
+      exception: exception,
+    );
   }
 
   _Authenticated authenticated(String token) {
@@ -963,13 +1156,19 @@ const $AuthenticationState = _$AuthenticationStateTearOff();
 mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() unauthenticated,
+    required TResult Function(NetworkExceptions? exception) unauthenticated,
     required TResult Function(String token) authenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(NetworkExceptions? exception)? unauthenticated,
+    TResult Function(String token)? authenticated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unauthenticated,
+    TResult Function(NetworkExceptions? exception)? unauthenticated,
     TResult Function(String token)? authenticated,
     required TResult orElse(),
   }) =>
@@ -978,6 +1177,12 @@ mixin _$AuthenticationState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Authenticated value)? authenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1011,6 +1216,9 @@ abstract class _$UnauthenticatedCopyWith<$Res> {
   factory _$UnauthenticatedCopyWith(
           _Unauthenticated value, $Res Function(_Unauthenticated) then) =
       __$UnauthenticatedCopyWithImpl<$Res>;
+  $Res call({NetworkExceptions? exception});
+
+  $NetworkExceptionsCopyWith<$Res>? get exception;
 }
 
 /// @nodoc
@@ -1023,44 +1231,89 @@ class __$UnauthenticatedCopyWithImpl<$Res>
 
   @override
   _Unauthenticated get _value => super._value as _Unauthenticated;
+
+  @override
+  $Res call({
+    Object? exception = freezed,
+  }) {
+    return _then(_Unauthenticated(
+      exception: exception == freezed
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as NetworkExceptions?,
+    ));
+  }
+
+  @override
+  $NetworkExceptionsCopyWith<$Res>? get exception {
+    if (_value.exception == null) {
+      return null;
+    }
+
+    return $NetworkExceptionsCopyWith<$Res>(_value.exception!, (value) {
+      return _then(_value.copyWith(exception: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_Unauthenticated implements _Unauthenticated {
-  const _$_Unauthenticated();
+  const _$_Unauthenticated({this.exception});
+
+  @override
+  final NetworkExceptions? exception;
 
   @override
   String toString() {
-    return 'AuthenticationState.unauthenticated()';
+    return 'AuthenticationState.unauthenticated(exception: $exception)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Unauthenticated);
+    return identical(this, other) ||
+        (other is _Unauthenticated &&
+            (identical(other.exception, exception) ||
+                const DeepCollectionEquality()
+                    .equals(other.exception, exception)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exception);
+
+  @JsonKey(ignore: true)
+  @override
+  _$UnauthenticatedCopyWith<_Unauthenticated> get copyWith =>
+      __$UnauthenticatedCopyWithImpl<_Unauthenticated>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() unauthenticated,
+    required TResult Function(NetworkExceptions? exception) unauthenticated,
     required TResult Function(String token) authenticated,
   }) {
-    return unauthenticated();
+    return unauthenticated(exception);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(NetworkExceptions? exception)? unauthenticated,
+    TResult Function(String token)? authenticated,
+  }) {
+    return unauthenticated?.call(exception);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unauthenticated,
+    TResult Function(NetworkExceptions? exception)? unauthenticated,
     TResult Function(String token)? authenticated,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
-      return unauthenticated();
+      return unauthenticated(exception);
     }
     return orElse();
   }
@@ -1072,6 +1325,15 @@ class _$_Unauthenticated implements _Unauthenticated {
     required TResult Function(_Authenticated value) authenticated,
   }) {
     return unauthenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Authenticated value)? authenticated,
+  }) {
+    return unauthenticated?.call(this);
   }
 
   @override
@@ -1089,7 +1351,13 @@ class _$_Unauthenticated implements _Unauthenticated {
 }
 
 abstract class _Unauthenticated implements AuthenticationState {
-  const factory _Unauthenticated() = _$_Unauthenticated;
+  const factory _Unauthenticated({NetworkExceptions? exception}) =
+      _$_Unauthenticated;
+
+  NetworkExceptions? get exception => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$UnauthenticatedCopyWith<_Unauthenticated> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1157,7 +1425,7 @@ class _$_Authenticated implements _Authenticated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() unauthenticated,
+    required TResult Function(NetworkExceptions? exception) unauthenticated,
     required TResult Function(String token) authenticated,
   }) {
     return authenticated(token);
@@ -1165,8 +1433,17 @@ class _$_Authenticated implements _Authenticated {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(NetworkExceptions? exception)? unauthenticated,
+    TResult Function(String token)? authenticated,
+  }) {
+    return authenticated?.call(token);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unauthenticated,
+    TResult Function(NetworkExceptions? exception)? unauthenticated,
     TResult Function(String token)? authenticated,
     required TResult orElse(),
   }) {
@@ -1183,6 +1460,15 @@ class _$_Authenticated implements _Authenticated {
     required TResult Function(_Authenticated value) authenticated,
   }) {
     return authenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Authenticated value)? authenticated,
+  }) {
+    return authenticated?.call(this);
   }
 
   @override

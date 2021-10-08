@@ -71,7 +71,7 @@ class Menu extends StatelessWidget {
                 BlocBuilder<AuthenticationBloc, AuthenticationState>(
                   builder: (context, state) {
                     return state.when(
-                        unauthenticated: () => Container(
+                        unauthenticated: (exception) => Container(
                               child: BasicText.body14Bold('Zaloguj się'),
                             ),
                         authenticated: (val) {
