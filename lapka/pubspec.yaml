@@ -50,12 +50,13 @@ dependencies:
   json_annotation:
   flutter_secure_storage: ^4.2.1
   jwt_decoder: ^2.0.1
+  flutter_portal: ^0.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: 
-  freezed: 
+  build_runner:
+  freezed:
   json_serializable: 
 
 # For information on the generic Dart part of this file, see the
