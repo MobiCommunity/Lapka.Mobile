@@ -1,6 +1,8 @@
 import 'package:glutton/glutton.dart';
 import 'package:injectable/injectable.dart';
+import 'package:lapka/models/token.dart';
 import 'package:lapka/repository/user/auth_user_store.dart';
+import 'package:lapka/utils/extensions.dart';
 
 const tokenKey = 'token';
 const refreshTokenKey = 'refresh_token';
@@ -9,59 +11,45 @@ const usernameKey = 'username';
 
 @LazySingleton(as: AuthUserStore)
 class AuthUserStoreImpl implements AuthUserStore {
-  Future<void> _save(String token, String? refreshToken, int? expires,
-      // String? username
-
-      ) async {
+  Future<void> _save(
+    String token,
+    String? refreshToken,
+    int? expires,
+  ) async {
     List<Future<bool>> _futuresArray = [
       Glutton.eat(tokenKey, token),
       Glutton.eat(expiresKey, expires),
     ];
 
     if (refreshToken != null) {
-      _futuresArray.add(
-          Glutton.eat(refreshTokenKey, refreshToken));
+      _futuresArray.add(Glutton.eat(refreshTokenKey, refreshToken));
     }
-
-    // if (username != null) {
-    //   _futuresArray
-    //       .add(Glutton.eat(usernameKey, username));
-    // }
 
     await Future.wait(_futuresArray);
   }
 
   @override
   Future<void> save(
-    String token,
-    String? refreshToken,
-    int? expires,
-    // String? username,
+    Token token,
   ) {
     return _save(
-      token,
-      refreshToken,
-      expires,
+      token.accessToken,
+      token.refreshToken,
+      token.expires,
       // username,
     );
   }
 
   @override
   Future<String?> getToken() async {
-    final String token = await Glutton.vomit(tokenKey);
-    return token.isEmpty ? null : token;
+    final String? token = await Glutton.vomit(tokenKey);
+    return token.isNullOrEmpty() ? null : token;
   }
 
   @override
   Future<String?> getRefreshToken() async {
-    final String refreshToken =
-        await Glutton.vomit(refreshTokenKey);
-    return refreshToken.isEmpty ? null : refreshToken;
-  }
-
-  @override
-  Future<String> getUsername() async {
-    return await Glutton.vomit(usernameKey);
+    final String refreshToken = await Glutton.vomit(refreshTokenKey);
+    return refreshToken.isNullOrEmpty() ? null : refreshToken;
   }
 
   @override
@@ -72,7 +60,7 @@ class AuthUserStoreImpl implements AuthUserStore {
         Glutton.vomit(expiresKey),
       ]);
 
-      if (tokenInfo[0].isNotEmpty && tokenInfo[1].isNotEmpty) {
+      if (!tokenInfo[0].isNullOrEmpty() && !tokenInfo[1].isNullOrEmpty()) {
         return true;
       }
 
@@ -88,8 +76,7 @@ class AuthUserStoreImpl implements AuthUserStore {
       return false;
     }
 
-    String expiresDateTime =
-        await Glutton.vomit(expiresKey);
+    String expiresDateTime = await Glutton.vomit(expiresKey);
     DateTime expireInDate;
 
     try {

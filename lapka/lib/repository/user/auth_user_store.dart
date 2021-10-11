@@ -1,16 +1,14 @@
+import 'package:lapka/models/token.dart';
+
 abstract class AuthUserStore {
   Future<void> save(
-    String token,
-    String? refreshToken,
-    int? expires,
-    // String? username,
+    Token token,
+
   );
 
   Future<String?> getToken();
 
   Future<String?> getRefreshToken();
-
-  // Future<String> getUsername();
 
   Future<bool> isTokenStored();
 

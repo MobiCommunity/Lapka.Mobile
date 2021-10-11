@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
           create: (context) => NavigatorBloc(),
         ),
         BlocProvider(
-          create: (context) => GlobalLoaderCubit(),
+          create: (context) => getIt.get<GlobalLoaderCubit>(),
         ),
         BlocProvider(
           create: (context) {

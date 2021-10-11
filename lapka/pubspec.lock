@@ -401,6 +401,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.14.2"
+  fresh:
+    dependency: transitive
+    description:
+      name: fresh
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
+  fresh_dio:
+    dependency: "direct main"
+    description:
+      name: fresh_dio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.1"
   frontend_server_client:
     dependency: transitive
     description:

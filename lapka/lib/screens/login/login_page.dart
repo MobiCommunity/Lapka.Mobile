@@ -6,6 +6,7 @@ import 'package:lapka/components/basic/basic_button.dart';
 import 'package:lapka/components/basic/login_form_field.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/dialogs/basic_dialog.dart';
+import 'package:lapka/injector.dart';
 import 'package:lapka/providers/authentication/bloc/authentication_bloc.dart';
 import 'package:lapka/providers/global_loader/global_loader_cubit.dart';
 import 'package:lapka/repository/network_exceptions.dart';
@@ -30,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
 
   _login() {
     if (formKey.currentState!.validate()) {
-      context.read<GlobalLoaderCubit>().setBusy();
+      getIt.get<GlobalLoaderCubit>().setBusy();
       context.read<AuthenticationBloc>().add(
             AuthenticationEvent.singIn(
               loginController.text,
@@ -42,6 +43,10 @@ class _LoginPageState extends State<LoginPage> {
 
   _moveToRegister() async {
     NavigatorHelper.push(context, RegisterPage());
+  }
+
+  _backToPetAdopt(){
+    NavigatorHelper.pop(context);
   }
 
   _forgotPassword() {
@@ -75,13 +80,18 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: BasicColors.darkGreen,
       body: BlocListener<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) {
-          print('error From listener');
-          context.read<GlobalLoaderCubit>().setIdle();
           state.maybeWhen(
-              unauthenticated: (exception) => _errorSnackBar(
-                    context,
-                    NetworkExceptions.getErrorMessage(exception),
-                  ),
+              unauthenticated: (exception) {
+                getIt.get<GlobalLoaderCubit>().setIdle();
+                _errorSnackBar(
+                  context,
+                  NetworkExceptions.getErrorMessage(exception),
+                );
+              },
+              authenticated: (_) {
+                getIt.get<GlobalLoaderCubit>().setIdle();
+                _backToPetAdopt();
+              },
               orElse: () => {});
         },
         child: Padding(
@@ -224,6 +234,7 @@ class _LoginPageState extends State<LoginPage> {
 
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _errorSnackBar(
       BuildContext context, String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         elevation: 0,
         backgroundColor: Colors.transparent,

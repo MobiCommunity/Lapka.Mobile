@@ -185,7 +185,7 @@ class __$SingInCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SingIn implements _SingIn {
+class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
   const _$_SingIn(this.name, this.password);
 
   @override
@@ -194,8 +194,17 @@ class _$_SingIn implements _SingIn {
   final String password;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthenticationEvent.singIn(name: $name, password: $password)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.singIn'))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('password', password));
   }
 
   @override
@@ -356,15 +365,23 @@ class __$SingInGoogleCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SingInGoogle implements _SingInGoogle {
+class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
   const _$_SingInGoogle(this.accessToken);
 
   @override
   final String accessToken;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthenticationEvent.singInGoogle(accessToken: $accessToken)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.singInGoogle'))
+      ..add(DiagnosticsProperty('accessToken', accessToken));
   }
 
   @override
@@ -519,15 +536,23 @@ class __$SingInFbCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SingInFb implements _SingInFb {
+class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
   const _$_SingInFb(this.accessToken);
 
   @override
   final String accessToken;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthenticationEvent.singInFb(accessToken: $accessToken)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.singInFb'))
+      ..add(DiagnosticsProperty('accessToken', accessToken));
   }
 
   @override
@@ -707,7 +732,7 @@ class __$SingUpCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SingUp implements _SingUp {
+class _$_SingUp with DiagnosticableTreeMixin implements _SingUp {
   const _$_SingUp(
       this.username, this.firstName, this.lastName, this.email, this.password);
 
@@ -723,8 +748,20 @@ class _$_SingUp implements _SingUp {
   final String password;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthenticationEvent.signUp(username: $username, firstName: $firstName, lastName: $lastName, email: $email, password: $password)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.signUp'))
+      ..add(DiagnosticsProperty('username', username))
+      ..add(DiagnosticsProperty('firstName', firstName))
+      ..add(DiagnosticsProperty('lastName', lastName))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('password', password));
   }
 
   @override
@@ -886,12 +923,18 @@ class __$LogOutCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LogOut implements _LogOut {
+class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
   const _$_LogOut();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthenticationEvent.logOut()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthenticationEvent.logOut'));
   }
 
   @override
@@ -1019,12 +1062,19 @@ class __$AutoLoginCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AutoLogin implements _AutoLogin {
+class _$_AutoLogin with DiagnosticableTreeMixin implements _AutoLogin {
   const _$_AutoLogin();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthenticationEvent.autoLogin()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.autoLogin'));
   }
 
   @override
@@ -1147,6 +1197,10 @@ class _$AuthenticationStateTearOff {
       token,
     );
   }
+
+  _Unknown unknown() {
+    return const _Unknown();
+  }
 }
 
 /// @nodoc
@@ -1158,18 +1212,21 @@ mixin _$AuthenticationState {
   TResult when<TResult extends Object?>({
     required TResult Function(NetworkExceptions? exception) unauthenticated,
     required TResult Function(String token) authenticated,
+    required TResult Function() unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(NetworkExceptions? exception)? unauthenticated,
     TResult Function(String token)? authenticated,
+    TResult Function()? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(NetworkExceptions? exception)? unauthenticated,
     TResult Function(String token)? authenticated,
+    TResult Function()? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1177,18 +1234,21 @@ mixin _$AuthenticationState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unknown value) unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unknown value)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unknown value)? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1258,15 +1318,25 @@ class __$UnauthenticatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Unauthenticated implements _Unauthenticated {
+class _$_Unauthenticated
+    with DiagnosticableTreeMixin
+    implements _Unauthenticated {
   const _$_Unauthenticated({this.exception});
 
   @override
   final NetworkExceptions? exception;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthenticationState.unauthenticated(exception: $exception)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthenticationState.unauthenticated'))
+      ..add(DiagnosticsProperty('exception', exception));
   }
 
   @override
@@ -1292,6 +1362,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   TResult when<TResult extends Object?>({
     required TResult Function(NetworkExceptions? exception) unauthenticated,
     required TResult Function(String token) authenticated,
+    required TResult Function() unknown,
   }) {
     return unauthenticated(exception);
   }
@@ -1301,6 +1372,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(NetworkExceptions? exception)? unauthenticated,
     TResult Function(String token)? authenticated,
+    TResult Function()? unknown,
   }) {
     return unauthenticated?.call(exception);
   }
@@ -1310,6 +1382,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(NetworkExceptions? exception)? unauthenticated,
     TResult Function(String token)? authenticated,
+    TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -1323,6 +1396,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unknown value) unknown,
   }) {
     return unauthenticated(this);
   }
@@ -1332,6 +1406,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unknown value)? unknown,
   }) {
     return unauthenticated?.call(this);
   }
@@ -1341,6 +1416,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unknown value)? unknown,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -1394,15 +1470,23 @@ class __$AuthenticatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Authenticated implements _Authenticated {
+class _$_Authenticated with DiagnosticableTreeMixin implements _Authenticated {
   const _$_Authenticated(this.token);
 
   @override
   final String token;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthenticationState.authenticated(token: $token)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthenticationState.authenticated'))
+      ..add(DiagnosticsProperty('token', token));
   }
 
   @override
@@ -1427,6 +1511,7 @@ class _$_Authenticated implements _Authenticated {
   TResult when<TResult extends Object?>({
     required TResult Function(NetworkExceptions? exception) unauthenticated,
     required TResult Function(String token) authenticated,
+    required TResult Function() unknown,
   }) {
     return authenticated(token);
   }
@@ -1436,6 +1521,7 @@ class _$_Authenticated implements _Authenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(NetworkExceptions? exception)? unauthenticated,
     TResult Function(String token)? authenticated,
+    TResult Function()? unknown,
   }) {
     return authenticated?.call(token);
   }
@@ -1445,6 +1531,7 @@ class _$_Authenticated implements _Authenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(NetworkExceptions? exception)? unauthenticated,
     TResult Function(String token)? authenticated,
+    TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -1458,6 +1545,7 @@ class _$_Authenticated implements _Authenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unknown value) unknown,
   }) {
     return authenticated(this);
   }
@@ -1467,6 +1555,7 @@ class _$_Authenticated implements _Authenticated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unknown value)? unknown,
   }) {
     return authenticated?.call(this);
   }
@@ -1476,6 +1565,7 @@ class _$_Authenticated implements _Authenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unknown value)? unknown,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -1492,4 +1582,118 @@ abstract class _Authenticated implements AuthenticationState {
   @JsonKey(ignore: true)
   _$AuthenticatedCopyWith<_Authenticated> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UnknownCopyWith<$Res> {
+  factory _$UnknownCopyWith(_Unknown value, $Res Function(_Unknown) then) =
+      __$UnknownCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UnknownCopyWithImpl<$Res>
+    extends _$AuthenticationStateCopyWithImpl<$Res>
+    implements _$UnknownCopyWith<$Res> {
+  __$UnknownCopyWithImpl(_Unknown _value, $Res Function(_Unknown) _then)
+      : super(_value, (v) => _then(v as _Unknown));
+
+  @override
+  _Unknown get _value => super._value as _Unknown;
+}
+
+/// @nodoc
+
+class _$_Unknown with DiagnosticableTreeMixin implements _Unknown {
+  const _$_Unknown();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthenticationState.unknown()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthenticationState.unknown'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Unknown);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(NetworkExceptions? exception) unauthenticated,
+    required TResult Function(String token) authenticated,
+    required TResult Function() unknown,
+  }) {
+    return unknown();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(NetworkExceptions? exception)? unauthenticated,
+    TResult Function(String token)? authenticated,
+    TResult Function()? unknown,
+  }) {
+    return unknown?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(NetworkExceptions? exception)? unauthenticated,
+    TResult Function(String token)? authenticated,
+    TResult Function()? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unknown value) unknown,
+  }) {
+    return unknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unknown value)? unknown,
+  }) {
+    return unknown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Unknown implements AuthenticationState {
+  const factory _Unknown() = _$_Unknown;
 }

@@ -70,13 +70,15 @@ class Menu extends StatelessWidget {
                 Container(),
                 BlocBuilder<AuthenticationBloc, AuthenticationState>(
                   builder: (context, state) {
-                    return state.when(
-                        unauthenticated: (exception) => Container(
-                              child: BasicText.body14Bold('Zaloguj się'),
-                            ),
-                        authenticated: (val) {
-                          return _avatarBuilder();
-                        });
+                    return state.whenOrNull(
+                          unauthenticated: (exception) => Container(
+                            child: BasicText.body14Bold('Zaloguj się'),
+                          ),
+                          authenticated: (val) {
+                            return _avatarBuilder();
+                          },
+                        ) ??
+                        const SizedBox();
                   },
                 ),
                 _buildMenuItem(
