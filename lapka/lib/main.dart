@@ -29,11 +29,12 @@ import 'package:lapka/screens/menu_dashbooard.dart';
 import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
 import 'package:lapka/settings/naviagtion/my_router_delegate.dart';
 import 'package:lapka/settings/naviagtion/navigator_helper.dart';
+import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/adopt_pet/bloc/adopt_pet_list_bloc.dart';
 
-void main() async{
+void main() async {
   initInjection(Environment.dev);
   runApp(MyApp());
 }
@@ -117,7 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   initState() {
     super.initState();
-    context.read<AuthenticationBloc>().add(AuthenticationEvent.autoLogin());
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     _internetListenerInit();

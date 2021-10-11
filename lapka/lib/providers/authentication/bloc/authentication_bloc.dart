@@ -28,7 +28,9 @@ class AuthenticationBloc
 
   AuthenticationBloc(
       this._repository, this._authUserStore, this._authBroadcaster)
-      : super(_Idle());
+      : super(_Idle()) {
+    checkToken();
+  }
 
   @override
   Stream<AuthenticationState> mapEventToState(
@@ -46,22 +48,6 @@ class AuthenticationBloc
     } else if (event is _LogOut) {
       yield* _handleLogOut();
     } else if (event is _AutoLogin) {
-      // try {
-      //   print('xd');
-      //   String? refreshToken = await _repository.getRefreshToken();
-      //   if (refreshToken == null) {
-      //     yield AuthenticationState.unauthenticated();
-      //   } else {
-      //     Token token = await _repository.refreshToken(refreshToken);
-      //     String userId = JwtDecoder.decode(token.accessToken)['unique_name'];
-      //     print(userId);
-      //     await _repository.putToken(token.accessToken, token.accessToken);
-      //     yield AuthenticationState.authenticated(
-      //         (await _repository.getToken())!);
-      //   }
-      // } catch (e) {
-      //   yield AuthenticationState.unauthenticated();
-      // }
     }
   }
 
@@ -178,4 +164,32 @@ class AuthenticationBloc
 //     }
 //   }
 // }
+
+  Future<void> checkToken() async {
+    if (await _shouldRefreshToken()) {
+      final ApiResult<Token> response = await _repository
+          .refreshToken((await _authUserStore.getRefreshToken())!);
+
+      try {
+        await response.when(
+          success: (token) async => await _authUserStore.save(token!),
+          failure: (_) async => this.add(AuthenticationEvent.logOut()),
+        );
+      } catch (exp) {
+        this..add(AuthenticationEvent.logOut());
+      }
+    }
+  }
+
+  Future<bool> _shouldRefreshToken() async {
+    AuthUserStore _authUserStore = getIt.get<AuthUserStore>();
+    if (await _authUserStore.isTokenValid()) {
+      return false;
+    } else if (await _authUserStore.isTokenStored() &&
+        !(await _authUserStore.isTokenValid())) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

@@ -20,7 +20,7 @@ class AuthInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    await checkToken();
+    await getIt.get<AuthenticationBloc>().checkToken();
     final _token = await getIt.get<AuthUserStore>().getToken();
 
     if (_token != null && _token.isNotEmpty) {
@@ -36,40 +36,6 @@ class AuthInterceptor extends Interceptor {
     AuthenticationBloc _authenticationBloc = getIt.get<AuthenticationBloc>();
     if (response.statusCode == 401) {
       _authenticationBloc.add(AuthenticationEvent.logOut());
-    }
-  }
-
-  Future<void> checkToken() async {
-    AuthenticationRepository _authenticationRepository =
-        getIt.get<AuthenticationRepository>();
-    AuthUserStore _authUserStore = getIt.get<AuthUserStore>();
-    AuthenticationBloc _authenticationBloc = getIt.get<AuthenticationBloc>();
-
-    if (await _shouldRefreshToken()) {
-      final ApiResult<Token> response = await _authenticationRepository
-          .refreshToken((await _authUserStore.getRefreshToken())!);
-
-      try {
-        await response.when(
-          success: (token) async => await _authUserStore.save(token!),
-          failure: (_) async =>
-              _authenticationBloc.add(AuthenticationEvent.logOut()),
-        );
-      } catch (exp) {
-        _authenticationBloc.add(AuthenticationEvent.logOut());
-      }
-    }
-  }
-
-  Future<bool> _shouldRefreshToken() async {
-    AuthUserStore _authUserStore = getIt.get<AuthUserStore>();
-    if (await _authUserStore.isTokenValid()) {
-      return false;
-    } else if (await _authUserStore.isTokenStored() &&
-        !(await _authUserStore.isTokenValid())) {
-      return true;
-    } else {
-      return false;
     }
   }
 }
