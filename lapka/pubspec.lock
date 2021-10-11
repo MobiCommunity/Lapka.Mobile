@@ -821,6 +821,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
+  regexpattern:
+    dependency: "direct main"
+    description:
+      name: regexpattern
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   retrofit:
     dependency: "direct main"
     description:
