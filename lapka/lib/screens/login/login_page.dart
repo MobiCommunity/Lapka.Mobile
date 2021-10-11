@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
     NavigatorHelper.push(context, RegisterPage());
   }
 
-  _backToPetAdopt(){
+  _backToPetAdopt() {
     NavigatorHelper.pop(context);
   }
 
@@ -80,19 +80,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: BasicColors.darkGreen,
       body: BlocListener<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) {
-          state.maybeWhen(
-              unauthenticated: (exception) {
-                getIt.get<GlobalLoaderCubit>().setIdle();
-                _errorSnackBar(
-                  context,
-                  NetworkExceptions.getErrorMessage(exception),
-                );
-              },
-              authenticated: (_) {
-                getIt.get<GlobalLoaderCubit>().setIdle();
-                _backToPetAdopt();
-              },
-              orElse: () => {});
+          _listenLoginStateChange(state, context);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -229,6 +217,24 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  void _listenLoginStateChange(AuthenticationState state, BuildContext context) {
+       state.when(
+        idle: () => getIt.get<GlobalLoaderCubit>().setIdle(),
+        processing: () => getIt.get<GlobalLoaderCubit>().setBusy(),
+        error: (exp) {
+          getIt.get<GlobalLoaderCubit>().setIdle();
+          _errorSnackBar(
+            context,
+            NetworkExceptions.getErrorMessage(exp),
+          );
+        },
+      success: () {
+        getIt.get<GlobalLoaderCubit>().setIdle();
+        _backToPetAdopt();
+      }
     );
   }
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
+import 'package:lapka/injector.dart';
 import 'package:lapka/providers/authentication/bloc/authentication_bloc.dart';
 import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
@@ -12,6 +13,7 @@ import 'package:lapka/screens/volunteer/volunteer_page.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
 import 'package:lapka/settings/naviagtion/navigator_helper.dart';
+import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 import 'package:provider/provider.dart';
 
 class Menu extends StatelessWidget {
@@ -68,19 +70,19 @@ class Menu extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(),
-                BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                  builder: (context, state) {
-                    return state.whenOrNull(
-                          unauthenticated: (exception) => Container(
-                            child: BasicText.body14Bold('Zaloguj się'),
-                          ),
-                          authenticated: (val) {
-                            return _avatarBuilder();
-                          },
-                        ) ??
-                        const SizedBox();
-                  },
-                ),
+                StreamBuilder(
+                    stream: getIt.get<AuthBroadcaster>().state,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<AuthState> snapshot) {
+                      return snapshot.data?.when(
+                        authenticated: () => _avatarBuilder(),
+                        unauthenticated: () => Container(
+                          child: BasicText.body14Bold('Zaloguj się'),
+                        ),
+                      ) ?? Container(
+                        child: BasicText.body14Bold('Zaloguj się'),
+                      );
+                    }),
                 _buildMenuItem(
                   context,
                   widget: AdoptPetListPage(),

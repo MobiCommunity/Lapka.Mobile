@@ -7,6 +7,7 @@ import 'package:lapka/components/basic/login_form_field.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/providers/authentication/bloc/authentication_bloc.dart';
 import 'package:lapka/providers/global_loader/global_loader_cubit.dart';
+import 'package:lapka/repository/network_exceptions.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/utils/validators.dart';
 
@@ -26,9 +27,28 @@ class _RegisterPageState extends State<RegisterPage> {
     Navigator.pop(context);
   }
 
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _errorSnackBar(
+      BuildContext context, String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        padding: EdgeInsets.zero,
+        content: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+            child: Container(
+              padding: EdgeInsets.all(16),
+              color: BasicColors.white,
+              child: BasicText.body14(message),
+            ),
+          ),
+        )));
+  }
+
   _register() {
     if (formKey.currentState!.validate()) {
-      getIt.get<GlobalLoaderCubit>().setBusy();
       getIt.get<AuthenticationBloc>().add(
             AuthenticationEvent.signUp(
               _registerFieldTextControllers.name,
@@ -47,12 +67,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener(
-      listener: (context, AuthenticationState state) => state.when(
-        unauthenticated: unauthenticated,
-        authenticated: authenticated,
-        unknown: unknown,
-      ),
+    return BlocListener<AuthenticationBloc, AuthenticationState>(
+      listener: (context, state) {
+        _listenRegisterState(state, context);
+      },
       child: Scaffold(
         backgroundColor: BasicColors.darkGreen,
         body: Padding(
@@ -224,6 +242,23 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
       ),
+    );
+  }
+
+  void _listenRegisterState(AuthenticationState state, BuildContext context) {
+    state.when(
+      idle: () => getIt.get<GlobalLoaderCubit>().setIdle(),
+      processing: () => getIt.get<GlobalLoaderCubit>().setBusy(),
+      error: (exp) {
+        getIt.get<GlobalLoaderCubit>().setIdle();
+        _errorSnackBar(
+          context,
+          NetworkExceptions.getErrorMessage(exp),
+        );
+      },
+      success: () {
+        getIt.get<GlobalLoaderCubit>().setIdle();
+      },
     );
   }
 

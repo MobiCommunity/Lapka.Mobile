@@ -3,12 +3,15 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:lapka/injector.dart';
 import 'package:lapka/models/new_user_data.dart';
 import 'package:lapka/models/token.dart';
+import 'package:lapka/providers/my_pets/bloc/my_pets_bloc.dart';
 import 'package:lapka/repository/api_result.dart';
 import 'package:lapka/repository/identity_api/authentication/authentication_repository.dart';
 import 'package:lapka/repository/network_exceptions.dart';
 import 'package:lapka/repository/user/auth_user_store.dart';
+import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 
 part 'authentication_bloc.freezed.dart';
 
@@ -21,15 +24,17 @@ class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationRepository _repository;
   AuthUserStore _authUserStore;
+  AuthBroadcaster _authBroadcaster;
 
-  AuthenticationBloc(this._repository, this._authUserStore)
-      : super(_Unauthenticated());
+  AuthenticationBloc(
+      this._repository, this._authUserStore, this._authBroadcaster)
+      : super(_Idle());
 
   @override
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
   ) async* {
-    yield AuthenticationState.unknown();
+    yield _Processing();
     if (event is _SingIn) {
       yield* _handleSingIn(event);
     } else if (event is _SingInFb) {
@@ -69,23 +74,26 @@ class AuthenticationBloc
       //TODO
       result.when(success: (_) {}, failure: (_) {});
     }
-    yield AuthenticationState.unauthenticated();
+    _authBroadcaster.updateState(AuthState.unauthenticated());
   }
 
   Stream<AuthenticationState> _handleSignUp(_SingUp event) async* {
-    final ApiResult<void> result = await _repository.signUp(NewUserData(
+    final ApiResult<void> result = await _repository.signUp(
+      NewUserData(
         username: event.username,
         firstName: event.firstName,
         lastName: event.lastName,
         email: event.email,
-        password: event.password));
+        password: event.password,
+      ),
+    );
 
-    result.when(
-        success: (_) =>
-            this.add(AuthenticationEvent.singIn(event.email, event.password)),
-        failure: (NetworkExceptions error) async* {
-          yield* _handleFailure(error);
-        });
+    yield* result.when(success: (_) async* {
+      this.add(AuthenticationEvent.singIn(event.email, event.password));
+      yield _Success();
+    }, failure: (NetworkExceptions error) async* {
+      yield* _handleFailure(error);
+    });
   }
 
   Stream<AuthenticationState> _handleSignInGoogle(_SingInGoogle event) async* {
@@ -125,7 +133,7 @@ class AuthenticationBloc
   }
 
   Stream<AuthenticationState> _handleFailure(NetworkExceptions error) async* {
-    yield AuthenticationState.unauthenticated(exception: error);
+    yield _Error(error);
   }
 
   Stream<AuthenticationState> _handleSuccessSignIn(Token token) async* {
@@ -133,14 +141,12 @@ class AuthenticationBloc
       await _saveToken(token);
       // String userId = JwtDecoder.decode(token!.accessToken)['unique_name'];
       // print(userId);
-      yield (AuthenticationState.authenticated(
-        // (await _repository.getToken())!
-        token.accessToken,
-      ));
+      yield _Success();
+      _authBroadcaster.updateState(AuthState.authenticated());
     } catch (e) {
-      yield (AuthenticationState.unauthenticated(
-        exception: NetworkExceptions.unexpectedError(exception: e as Exception),
-      ));
+      yield _Error(
+          NetworkExceptions.unexpectedError(exception: e as Exception));
+      _authBroadcaster.updateState(AuthState.unauthenticated());
     }
   }
 
@@ -152,24 +158,24 @@ class AuthenticationBloc
         token);
   }
 
-  // Future<void> checkToken() async {
-  //   if (await _authUserStore.isTokenValid()) {
-  //     return;
-  //   }
-  //
-  //   if (await _authUserStore.isTokenStored() &&
-  //       !(await _authUserStore.isTokenValid())) {
-  //     final ApiResult<Token> response = await _repository
-  //         .refreshToken((await _authUserStore.getRefreshToken())!);
-  //
-  //     try {
-  //       response.when(
-  //         success: (token) => _saveToken(token!),
-  //         failure: (_) async => await _authUserStore.deleteAllUserData(),
-  //       );
-  //     } catch (exp) {
-  //       await _authUserStore.deleteAllUserData();
-  //     }
-  //   }
-  // }
+// Future<void> checkToken() async {
+//   if (await _authUserStore.isTokenValid()) {
+//     return;
+//   }
+//
+//   if (await _authUserStore.isTokenStored() &&
+//       !(await _authUserStore.isTokenValid())) {
+//     final ApiResult<Token> response = await _repository
+//         .refreshToken((await _authUserStore.getRefreshToken())!);
+//
+//     try {
+//       response.when(
+//         success: (token) => _saveToken(token!),
+//         failure: (_) async => await _authUserStore.deleteAllUserData(),
+//       );
+//     } catch (exp) {
+//       await _authUserStore.deleteAllUserData();
+//     }
+//   }
+// }
 }

@@ -1186,20 +1186,22 @@ abstract class _AutoLogin implements AuthenticationEvent {
 class _$AuthenticationStateTearOff {
   const _$AuthenticationStateTearOff();
 
-  _Unauthenticated unauthenticated({NetworkExceptions? exception}) {
-    return _Unauthenticated(
-      exception: exception,
-    );
+  _Idle idle() {
+    return const _Idle();
   }
 
-  _Authenticated authenticated(String token) {
-    return _Authenticated(
-      token,
-    );
+  _Processing processing() {
+    return const _Processing();
   }
 
-  _Unknown unknown() {
-    return const _Unknown();
+  _Success success() {
+    return const _Success();
+  }
+
+  _Error error(NetworkExceptions exception) {
+    return _Error(
+      exception,
+    );
   }
 }
 
@@ -1210,45 +1212,51 @@ const $AuthenticationState = _$AuthenticationStateTearOff();
 mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NetworkExceptions? exception) unauthenticated,
-    required TResult Function(String token) authenticated,
-    required TResult Function() unknown,
+    required TResult Function() idle,
+    required TResult Function() processing,
+    required TResult Function() success,
+    required TResult Function(NetworkExceptions exception) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(NetworkExceptions? exception)? unauthenticated,
-    TResult Function(String token)? authenticated,
-    TResult Function()? unknown,
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NetworkExceptions? exception)? unauthenticated,
-    TResult Function(String token)? authenticated,
-    TResult Function()? unknown,
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_Idle value) idle,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unknown value)? unknown,
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unknown value)? unknown,
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1272,45 +1280,400 @@ class _$AuthenticationStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UnauthenticatedCopyWith<$Res> {
-  factory _$UnauthenticatedCopyWith(
-          _Unauthenticated value, $Res Function(_Unauthenticated) then) =
-      __$UnauthenticatedCopyWithImpl<$Res>;
-  $Res call({NetworkExceptions? exception});
-
-  $NetworkExceptionsCopyWith<$Res>? get exception;
+abstract class _$IdleCopyWith<$Res> {
+  factory _$IdleCopyWith(_Idle value, $Res Function(_Idle) then) =
+      __$IdleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnauthenticatedCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res>
-    implements _$UnauthenticatedCopyWith<$Res> {
-  __$UnauthenticatedCopyWithImpl(
-      _Unauthenticated _value, $Res Function(_Unauthenticated) _then)
-      : super(_value, (v) => _then(v as _Unauthenticated));
+class __$IdleCopyWithImpl<$Res> extends _$AuthenticationStateCopyWithImpl<$Res>
+    implements _$IdleCopyWith<$Res> {
+  __$IdleCopyWithImpl(_Idle _value, $Res Function(_Idle) _then)
+      : super(_value, (v) => _then(v as _Idle));
 
   @override
-  _Unauthenticated get _value => super._value as _Unauthenticated;
+  _Idle get _value => super._value as _Idle;
+}
+
+/// @nodoc
+
+class _$_Idle with DiagnosticableTreeMixin implements _Idle {
+  const _$_Idle();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthenticationState.idle()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthenticationState.idle'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Idle);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() idle,
+    required TResult Function() processing,
+    required TResult Function() success,
+    required TResult Function(NetworkExceptions exception) error,
+  }) {
+    return idle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
+  }) {
+    return idle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
+    required TResult orElse(),
+  }) {
+    if (idle != null) {
+      return idle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Idle value) idle,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return idle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+  }) {
+    return idle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (idle != null) {
+      return idle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Idle implements AuthenticationState {
+  const factory _Idle() = _$_Idle;
+}
+
+/// @nodoc
+abstract class _$ProcessingCopyWith<$Res> {
+  factory _$ProcessingCopyWith(
+          _Processing value, $Res Function(_Processing) then) =
+      __$ProcessingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ProcessingCopyWithImpl<$Res>
+    extends _$AuthenticationStateCopyWithImpl<$Res>
+    implements _$ProcessingCopyWith<$Res> {
+  __$ProcessingCopyWithImpl(
+      _Processing _value, $Res Function(_Processing) _then)
+      : super(_value, (v) => _then(v as _Processing));
+
+  @override
+  _Processing get _value => super._value as _Processing;
+}
+
+/// @nodoc
+
+class _$_Processing with DiagnosticableTreeMixin implements _Processing {
+  const _$_Processing();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthenticationState.processing()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthenticationState.processing'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Processing);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() idle,
+    required TResult Function() processing,
+    required TResult Function() success,
+    required TResult Function(NetworkExceptions exception) error,
+  }) {
+    return processing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
+  }) {
+    return processing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
+    required TResult orElse(),
+  }) {
+    if (processing != null) {
+      return processing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Idle value) idle,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return processing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+  }) {
+    return processing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (processing != null) {
+      return processing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Processing implements AuthenticationState {
+  const factory _Processing() = _$_Processing;
+}
+
+/// @nodoc
+abstract class _$SuccessCopyWith<$Res> {
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
+      __$SuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SuccessCopyWithImpl<$Res>
+    extends _$AuthenticationStateCopyWithImpl<$Res>
+    implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
+      : super(_value, (v) => _then(v as _Success));
+
+  @override
+  _Success get _value => super._value as _Success;
+}
+
+/// @nodoc
+
+class _$_Success with DiagnosticableTreeMixin implements _Success {
+  const _$_Success();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthenticationState.success()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthenticationState.success'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Success);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() idle,
+    required TResult Function() processing,
+    required TResult Function() success,
+    required TResult Function(NetworkExceptions exception) error,
+  }) {
+    return success();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
+  }) {
+    return success?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Idle value) idle,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Success implements AuthenticationState {
+  const factory _Success() = _$_Success;
+}
+
+/// @nodoc
+abstract class _$ErrorCopyWith<$Res> {
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
+      __$ErrorCopyWithImpl<$Res>;
+  $Res call({NetworkExceptions exception});
+
+  $NetworkExceptionsCopyWith<$Res> get exception;
+}
+
+/// @nodoc
+class __$ErrorCopyWithImpl<$Res> extends _$AuthenticationStateCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
+      : super(_value, (v) => _then(v as _Error));
+
+  @override
+  _Error get _value => super._value as _Error;
 
   @override
   $Res call({
     Object? exception = freezed,
   }) {
-    return _then(_Unauthenticated(
-      exception: exception == freezed
+    return _then(_Error(
+      exception == freezed
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
-              as NetworkExceptions?,
+              as NetworkExceptions,
     ));
   }
 
   @override
-  $NetworkExceptionsCopyWith<$Res>? get exception {
-    if (_value.exception == null) {
-      return null;
-    }
-
-    return $NetworkExceptionsCopyWith<$Res>(_value.exception!, (value) {
+  $NetworkExceptionsCopyWith<$Res> get exception {
+    return $NetworkExceptionsCopyWith<$Res>(_value.exception, (value) {
       return _then(_value.copyWith(exception: value));
     });
   }
@@ -1318,31 +1681,29 @@ class __$UnauthenticatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Unauthenticated
-    with DiagnosticableTreeMixin
-    implements _Unauthenticated {
-  const _$_Unauthenticated({this.exception});
+class _$_Error with DiagnosticableTreeMixin implements _Error {
+  const _$_Error(this.exception);
 
   @override
-  final NetworkExceptions? exception;
+  final NetworkExceptions exception;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationState.unauthenticated(exception: $exception)';
+    return 'AuthenticationState.error(exception: $exception)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AuthenticationState.unauthenticated'))
+      ..add(DiagnosticsProperty('type', 'AuthenticationState.error'))
       ..add(DiagnosticsProperty('exception', exception));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Unauthenticated &&
+        (other is _Error &&
             (identical(other.exception, exception) ||
                 const DeepCollectionEquality()
                     .equals(other.exception, exception)));
@@ -1354,39 +1715,42 @@ class _$_Unauthenticated
 
   @JsonKey(ignore: true)
   @override
-  _$UnauthenticatedCopyWith<_Unauthenticated> get copyWith =>
-      __$UnauthenticatedCopyWithImpl<_Unauthenticated>(this, _$identity);
+  _$ErrorCopyWith<_Error> get copyWith =>
+      __$ErrorCopyWithImpl<_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NetworkExceptions? exception) unauthenticated,
-    required TResult Function(String token) authenticated,
-    required TResult Function() unknown,
+    required TResult Function() idle,
+    required TResult Function() processing,
+    required TResult Function() success,
+    required TResult Function(NetworkExceptions exception) error,
   }) {
-    return unauthenticated(exception);
+    return error(exception);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(NetworkExceptions? exception)? unauthenticated,
-    TResult Function(String token)? authenticated,
-    TResult Function()? unknown,
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
   }) {
-    return unauthenticated?.call(exception);
+    return error?.call(exception);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NetworkExceptions? exception)? unauthenticated,
-    TResult Function(String token)? authenticated,
-    TResult Function()? unknown,
+    TResult Function()? idle,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function(NetworkExceptions exception)? error,
     required TResult orElse(),
   }) {
-    if (unauthenticated != null) {
-      return unauthenticated(exception);
+    if (error != null) {
+      return error(exception);
     }
     return orElse();
   }
@@ -1394,306 +1758,45 @@ class _$_Unauthenticated
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_Idle value) idle,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
   }) {
-    return unauthenticated(this);
+    return error(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unknown value)? unknown,
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
   }) {
-    return unauthenticated?.call(this);
+    return error?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unknown value)? unknown,
+    TResult Function(_Idle value)? idle,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (unauthenticated != null) {
-      return unauthenticated(this);
+    if (error != null) {
+      return error(this);
     }
     return orElse();
   }
 }
 
-abstract class _Unauthenticated implements AuthenticationState {
-  const factory _Unauthenticated({NetworkExceptions? exception}) =
-      _$_Unauthenticated;
+abstract class _Error implements AuthenticationState {
+  const factory _Error(NetworkExceptions exception) = _$_Error;
 
-  NetworkExceptions? get exception => throw _privateConstructorUsedError;
+  NetworkExceptions get exception => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$UnauthenticatedCopyWith<_Unauthenticated> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$AuthenticatedCopyWith<$Res> {
-  factory _$AuthenticatedCopyWith(
-          _Authenticated value, $Res Function(_Authenticated) then) =
-      __$AuthenticatedCopyWithImpl<$Res>;
-  $Res call({String token});
-}
-
-/// @nodoc
-class __$AuthenticatedCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res>
-    implements _$AuthenticatedCopyWith<$Res> {
-  __$AuthenticatedCopyWithImpl(
-      _Authenticated _value, $Res Function(_Authenticated) _then)
-      : super(_value, (v) => _then(v as _Authenticated));
-
-  @override
-  _Authenticated get _value => super._value as _Authenticated;
-
-  @override
-  $Res call({
-    Object? token = freezed,
-  }) {
-    return _then(_Authenticated(
-      token == freezed
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_Authenticated with DiagnosticableTreeMixin implements _Authenticated {
-  const _$_Authenticated(this.token);
-
-  @override
-  final String token;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationState.authenticated(token: $token)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthenticationState.authenticated'))
-      ..add(DiagnosticsProperty('token', token));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _Authenticated &&
-            (identical(other.token, token) ||
-                const DeepCollectionEquality().equals(other.token, token)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(token);
-
-  @JsonKey(ignore: true)
-  @override
-  _$AuthenticatedCopyWith<_Authenticated> get copyWith =>
-      __$AuthenticatedCopyWithImpl<_Authenticated>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(NetworkExceptions? exception) unauthenticated,
-    required TResult Function(String token) authenticated,
-    required TResult Function() unknown,
-  }) {
-    return authenticated(token);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(NetworkExceptions? exception)? unauthenticated,
-    TResult Function(String token)? authenticated,
-    TResult Function()? unknown,
-  }) {
-    return authenticated?.call(token);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NetworkExceptions? exception)? unauthenticated,
-    TResult Function(String token)? authenticated,
-    TResult Function()? unknown,
-    required TResult orElse(),
-  }) {
-    if (authenticated != null) {
-      return authenticated(token);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(_Unknown value) unknown,
-  }) {
-    return authenticated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unknown value)? unknown,
-  }) {
-    return authenticated?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unknown value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (authenticated != null) {
-      return authenticated(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Authenticated implements AuthenticationState {
-  const factory _Authenticated(String token) = _$_Authenticated;
-
-  String get token => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$AuthenticatedCopyWith<_Authenticated> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$UnknownCopyWith<$Res> {
-  factory _$UnknownCopyWith(_Unknown value, $Res Function(_Unknown) then) =
-      __$UnknownCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$UnknownCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res>
-    implements _$UnknownCopyWith<$Res> {
-  __$UnknownCopyWithImpl(_Unknown _value, $Res Function(_Unknown) _then)
-      : super(_value, (v) => _then(v as _Unknown));
-
-  @override
-  _Unknown get _value => super._value as _Unknown;
-}
-
-/// @nodoc
-
-class _$_Unknown with DiagnosticableTreeMixin implements _Unknown {
-  const _$_Unknown();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationState.unknown()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AuthenticationState.unknown'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Unknown);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(NetworkExceptions? exception) unauthenticated,
-    required TResult Function(String token) authenticated,
-    required TResult Function() unknown,
-  }) {
-    return unknown();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(NetworkExceptions? exception)? unauthenticated,
-    TResult Function(String token)? authenticated,
-    TResult Function()? unknown,
-  }) {
-    return unknown?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NetworkExceptions? exception)? unauthenticated,
-    TResult Function(String token)? authenticated,
-    TResult Function()? unknown,
-    required TResult orElse(),
-  }) {
-    if (unknown != null) {
-      return unknown();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(_Unknown value) unknown,
-  }) {
-    return unknown(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unknown value)? unknown,
-  }) {
-    return unknown?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Unknown value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (unknown != null) {
-      return unknown(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Unknown implements AuthenticationState {
-  const factory _Unknown() = _$_Unknown;
+  _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }
