@@ -50,6 +50,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       await _remoteDataSource.signUp(newUser);
       return ApiResult.success();
     } catch (exp) {
+
       return ApiResult.failure(error: NetworkExceptions.getDioException(exp));
     }
   }

@@ -28,7 +28,7 @@ abstract class AuthenticationDataSourceImpl extends AuthenticationDataSource {
 
   @override
   @POST('/auth/revoke')
-  Future<Token> revokeRefreshToken(@Field('token') String refreshToken);
+  Future<void> revokeRefreshToken(@Field('token') String refreshToken);
 
   @override
   @POST('/auth/signin-google')

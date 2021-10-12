@@ -93,19 +93,20 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Stream<LoginState> _handleLogOut() async* {
-    await _authUserStore.deleteAllUserData();
     final refreshToken = await _authUserStore.getRefreshToken();
+
     if (refreshToken != null) {
       final ApiResult<void> result =
           await _repository.revokeRefreshToken(refreshToken);
-      //TODO
+      //TODO if needed
       result.when(success: (_) {}, failure: (_) {});
     }
+    await _authUserStore.deleteAllUserData();
     _authBroadcaster.updateState(AuthState.unauthenticated());
   }
 
   Future<void> _saveToken(Token token) async {
-    _authUserStore.save(
+    await _authUserStore.save(
       token,
     );
   }

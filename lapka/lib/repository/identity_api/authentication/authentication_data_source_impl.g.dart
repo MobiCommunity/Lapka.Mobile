@@ -58,18 +58,16 @@ class _AuthenticationDataSourceImpl implements AuthenticationDataSourceImpl {
   }
 
   @override
-  Future<Token> revokeRefreshToken(refreshToken) async {
+  Future<void> revokeRefreshToken(refreshToken) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = {'token': refreshToken};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Token>(
-            Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/auth/revoke',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Token.fromJson(_result.data!);
-    return value;
+    await _dio.fetch<void>(_setStreamType<void>(
+        Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
+            .compose(_dio.options, '/auth/revoke',
+                queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    return null;
   }
 
   @override
