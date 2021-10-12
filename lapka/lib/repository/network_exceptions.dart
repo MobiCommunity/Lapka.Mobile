@@ -2,42 +2,57 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:lapka/models/errors/base_error.dart';
 
 part 'network_exceptions.freezed.dart';
 
 @freezed
 class NetworkExceptions with _$NetworkExceptions {
-  const factory NetworkExceptions.requestCancelled() = RequestCancelled;
+  const factory NetworkExceptions.requestCancelled({DioError? exception}) =
+      RequestCancelled;
 
-  const factory NetworkExceptions.unauthorisedRequest() = UnauthorisedRequest;
+  const factory NetworkExceptions.unauthorisedRequest({DioError? exception}) =
+      UnauthorisedRequest;
 
-  const factory NetworkExceptions.badRequest() = BadRequest;
+  const factory NetworkExceptions.badRequest({Exception? exception}) =
+      BadRequest;
 
-  const factory NetworkExceptions.notFound(String reason) = NotFound;
+  const factory NetworkExceptions.notFound({DioError? exception}) = NotFound;
 
-  const factory NetworkExceptions.methodNotAllowed() = MethodNotAllowed;
+  const factory NetworkExceptions.methodNotAllowed({Exception? exception}) =
+      MethodNotAllowed;
 
-  const factory NetworkExceptions.notAcceptable() = NotAcceptable;
+  const factory NetworkExceptions.notAcceptable({Exception? exception}) =
+      NotAcceptable;
 
-  const factory NetworkExceptions.requestTimeout() = RequestTimeout;
+  const factory NetworkExceptions.requestTimeout({DioError? exception}) =
+      RequestTimeout;
 
-  const factory NetworkExceptions.sendTimeout() = SendTimeout;
+  const factory NetworkExceptions.sendTimeout({DioError? exception}) =
+      SendTimeout;
 
-  const factory NetworkExceptions.conflict() = Conflict;
+  const factory NetworkExceptions.conflict({DioError? exception}) = Conflict;
 
-  const factory NetworkExceptions.internalServerError() = InternalServerError;
+  const factory NetworkExceptions.internalServerError({DioError? exception}) =
+      InternalServerError;
 
-  const factory NetworkExceptions.notImplemented() = NotImplemented;
+  const factory NetworkExceptions.notImplemented({Exception? exception}) =
+      NotImplemented;
 
-  const factory NetworkExceptions.serviceUnavailable() = ServiceUnavailable;
+  const factory NetworkExceptions.serviceUnavailable({DioError? exception}) =
+      ServiceUnavailable;
 
-  const factory NetworkExceptions.noInternetConnection() = NoInternetConnection;
+  const factory NetworkExceptions.noInternetConnection({Exception? exception}) =
+      NoInternetConnection;
 
-  const factory NetworkExceptions.formatException() = FormatException;
+  const factory NetworkExceptions.formatException({Exception? exception}) =
+      FormatException;
 
-  const factory NetworkExceptions.unableToProcess() = UnableToProcess;
+  const factory NetworkExceptions.unableToProcess({Exception? exception}) =
+      UnableToProcess;
 
-  const factory NetworkExceptions.defaultError(String error) = DefaultError;
+  const factory NetworkExceptions.defaultError({DioError? exception}) =
+      DefaultError;
 
   const factory NetworkExceptions.unexpectedError({Exception? exception}) =
       UnexpectedError;
@@ -49,56 +64,68 @@ class NetworkExceptions with _$NetworkExceptions {
         if (error is DioError) {
           switch (error.type) {
             case DioErrorType.cancel:
-              networkExceptions = NetworkExceptions.requestCancelled();
+              networkExceptions =
+                  NetworkExceptions.requestCancelled(exception: error);
               break;
             case DioErrorType.connectTimeout:
-              networkExceptions = NetworkExceptions.requestTimeout();
+              networkExceptions =
+                  NetworkExceptions.requestTimeout(exception: error);
               break;
             case DioErrorType.other:
-              networkExceptions = NetworkExceptions.noInternetConnection();
+              networkExceptions =
+                  NetworkExceptions.noInternetConnection(exception: error);
               break;
             case DioErrorType.receiveTimeout:
-              networkExceptions = NetworkExceptions.sendTimeout();
+              networkExceptions =
+                  NetworkExceptions.sendTimeout(exception: error);
               break;
             case DioErrorType.response:
               switch (error.response?.statusCode) {
                 case 400:
-                  networkExceptions = NetworkExceptions.unauthorisedRequest();
+                  networkExceptions =
+                      NetworkExceptions.unauthorisedRequest(exception: error);
                   break;
                 case 401:
-                  networkExceptions = NetworkExceptions.unauthorisedRequest();
+                  networkExceptions =
+                      NetworkExceptions.unauthorisedRequest(exception: error);
                   break;
                 case 403:
-                  networkExceptions = NetworkExceptions.unauthorisedRequest();
+                  networkExceptions =
+                      NetworkExceptions.unauthorisedRequest(exception: error);
                   break;
                 case 404:
-                  networkExceptions = NetworkExceptions.notFound("Not found");
+                  networkExceptions =
+                      NetworkExceptions.notFound(exception: error);
                   break;
                 case 409:
-                  networkExceptions = NetworkExceptions.conflict();
+                  networkExceptions =
+                      NetworkExceptions.conflict(exception: error);
                   break;
                 case 408:
-                  networkExceptions = NetworkExceptions.requestTimeout();
+                  networkExceptions =
+                      NetworkExceptions.requestTimeout(exception: error);
                   break;
                 case 500:
-                  networkExceptions = NetworkExceptions.internalServerError();
+                  networkExceptions =
+                      NetworkExceptions.internalServerError(exception: error);
                   break;
                 case 503:
-                  networkExceptions = NetworkExceptions.serviceUnavailable();
+                  networkExceptions =
+                      NetworkExceptions.serviceUnavailable(exception: error);
                   break;
                 default:
-                  var responseCode = error.response?.statusCode;
-                  networkExceptions = NetworkExceptions.defaultError(
-                    "Received invalid status code: $responseCode",
-                  );
+                  networkExceptions =
+                      NetworkExceptions.defaultError(exception: error);
               }
               break;
             case DioErrorType.sendTimeout:
-              networkExceptions = NetworkExceptions.sendTimeout();
+              networkExceptions =
+                  NetworkExceptions.sendTimeout(exception: error);
               break;
           }
         } else if (error is SocketException) {
-          networkExceptions = NetworkExceptions.noInternetConnection();
+          networkExceptions =
+              NetworkExceptions.noInternetConnection(exception: error);
         } else {
           networkExceptions =
               NetworkExceptions.unexpectedError(exception: error);
@@ -120,57 +147,59 @@ class NetworkExceptions with _$NetworkExceptions {
   }
 
   static String getErrorMessage(NetworkExceptions? networkExceptions) {
-    var errorMessage = "";
+    String errorMessage = "";
+    BaseError _baseAppError;
+
     networkExceptions?.when(
-      notImplemented: () {
+      notImplemented: (exception) {
         errorMessage = "Not Implemented";
       },
-      requestCancelled: () {
+      requestCancelled: (exception) {
         errorMessage = "Request Cancelled";
       },
-      internalServerError: () {
+      internalServerError: (exception) {
         errorMessage = "Internal Server Error";
       },
-      notFound: (String reason) {
-        errorMessage = reason;
+      notFound: (exception) {
+        errorMessage = "Something went wrong";
       },
-      serviceUnavailable: () {
+      serviceUnavailable: (exception) {
         errorMessage = "Service unavailable";
       },
-      methodNotAllowed: () {
+      methodNotAllowed: (exception) {
         errorMessage = "Method Allowed";
       },
-      badRequest: () {
+      badRequest: (exception) {
         errorMessage = "Bad request";
       },
-      unauthorisedRequest: () {
-        errorMessage = "Unauthorised request";
+      unauthorisedRequest: (exception) {
+        errorMessage = BaseError.fromJson(exception?.response?.data).reason ?? "Unauthorised request";
       },
       unexpectedError: (Exception? exp) {
         errorMessage = "Unexpected error occurred";
       },
-      requestTimeout: () {
+      requestTimeout: (exception) {
         errorMessage = "Connection request timeout";
       },
-      noInternetConnection: () {
+      noInternetConnection: (exception) {
         errorMessage = "No internet connection";
       },
-      conflict: () {
+      conflict: (exception) {
         errorMessage = "Error due to a conflict";
       },
-      sendTimeout: () {
+      sendTimeout: (exception) {
         errorMessage = "Send timeout in connection with API server";
       },
-      unableToProcess: () {
+      unableToProcess: (exception) {
         errorMessage = "Unable to process the data";
       },
-      defaultError: (String error) {
-        errorMessage = error;
+      defaultError: (exception) {
+        errorMessage = "Something went wrong";
       },
-      formatException: () {
+      formatException: (exception) {
         errorMessage = "Unexpected error occurred";
       },
-      notAcceptable: () {
+      notAcceptable: (exception) {
         errorMessage = "Not acceptable";
       },
     );

@@ -204,10 +204,12 @@ class _LoginPageState extends State<LoginPage> {
                             width: 25,
                           ),
                           InkWell(
-                              onTap: _loginFacebook,
-                              child: SvgPicture.asset(
-                                  'lib/assets/facebook-logo.svg',
-                                  height: 36)),
+                            onTap: _loginFacebook,
+                            child: SvgPicture.asset(
+                              'lib/assets/facebook-logo.svg',
+                              height: 36,
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -221,8 +223,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _listenLoginStateChange(
-      LoginState state, BuildContext context) {
+  void _listenLoginStateChange(LoginState state, BuildContext context) {
     state.when(
         idle: () => getIt.get<GlobalLoaderCubit>().setIdle(),
         signingIn: () => getIt.get<GlobalLoaderCubit>().setBusy(),
@@ -230,6 +231,7 @@ class _LoginPageState extends State<LoginPage> {
           getIt.get<GlobalLoaderCubit>().setIdle();
           _errorSnackBar(
             context,
+
             NetworkExceptions.getErrorMessage(exp),
           );
         },
@@ -242,11 +244,14 @@ class _LoginPageState extends State<LoginPage> {
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _errorSnackBar(
       BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    return ScaffoldMessenger.of(context).showSnackBar(LapkaSnackBar.error(message: message));
+    return ScaffoldMessenger.of(context)
+        .showSnackBar(LapkaSnackBar.error(message: message));
   }
+
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _successSnackBar(
       BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    return ScaffoldMessenger.of(context).showSnackBar(LapkaSnackBar(message: message));
+    return ScaffoldMessenger.of(context)
+        .showSnackBar(LapkaSnackBar(message: message));
   }
 }
