@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_button.dart';
+import 'package:lapka/components/basic/lapka_snackbar.dart';
 import 'package:lapka/components/basic/login_form_field.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/injector.dart';
-import 'package:lapka/providers/authentication/bloc/authentication_bloc.dart';
 import 'package:lapka/providers/global_loader/global_loader_cubit.dart';
+import 'package:lapka/providers/login/bloc/login_bloc.dart';
 import 'package:lapka/repository/network_exceptions.dart';
 import 'package:lapka/screens/login/register_page.dart';
 import 'package:lapka/settings/colors.dart';
@@ -32,8 +33,8 @@ class _LoginPageState extends State<LoginPage> {
   _login() {
     if (formKey.currentState!.validate()) {
       getIt.get<GlobalLoaderCubit>().setBusy();
-      context.read<AuthenticationBloc>().add(
-            AuthenticationEvent.singIn(
+      context.read<LoginBloc>().add(
+            LoginEvent.singIn(
               loginController.text,
               passwordController.text,
             ),
@@ -78,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BasicColors.darkGreen,
-      body: BlocListener<AuthenticationBloc, AuthenticationState>(
+      body: BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
           _listenLoginStateChange(state, context);
         },
@@ -220,10 +221,11 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _listenLoginStateChange(AuthenticationState state, BuildContext context) {
-       state.when(
+  void _listenLoginStateChange(
+      LoginState state, BuildContext context) {
+    state.when(
         idle: () => getIt.get<GlobalLoaderCubit>().setIdle(),
-        processing: () => getIt.get<GlobalLoaderCubit>().setBusy(),
+        signingIn: () => getIt.get<GlobalLoaderCubit>().setBusy(),
         error: (exp) {
           getIt.get<GlobalLoaderCubit>().setIdle();
           _errorSnackBar(
@@ -231,30 +233,20 @@ class _LoginPageState extends State<LoginPage> {
             NetworkExceptions.getErrorMessage(exp),
           );
         },
-      success: () {
-        getIt.get<GlobalLoaderCubit>().setIdle();
-        _backToPetAdopt();
-      }
-    );
+        success: () {
+          getIt.get<GlobalLoaderCubit>().setIdle();
+          _backToPetAdopt();
+        });
   }
 
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _errorSnackBar(
       BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        padding: EdgeInsets.zero,
-        content: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-            child: Container(
-              padding: EdgeInsets.all(16),
-              color: BasicColors.white,
-              child: BasicText.body14(message),
-            ),
-          ),
-        )));
+    return ScaffoldMessenger.of(context).showSnackBar(LapkaSnackBar.error(message: message));
+  }
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _successSnackBar(
+      BuildContext context, String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    return ScaffoldMessenger.of(context).showSnackBar(LapkaSnackBar(message: message));
   }
 }

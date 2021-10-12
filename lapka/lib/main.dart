@@ -11,7 +11,8 @@ import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/components/dialogs/exit_dialog.dart';
 import 'package:lapka/components/dialogs/no_internet_dialog.dart';
 import 'package:lapka/injector.dart';
-import 'package:lapka/providers/authentication/bloc/authentication_bloc.dart';
+import 'package:lapka/providers/login/bloc/login_bloc.dart';
+import 'package:lapka/providers/register/register_bloc.dart';
 import 'package:lapka/providers/global_loader/global_loader_cubit.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/providers/loginProvider.dart';
@@ -71,10 +72,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) {
-            final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
-            // final AuthenticationRepositoryApi _authenticationRepository =
-            //     AuthenticationRepositoryApi(_secureStorage);
-            return getIt.get<AuthenticationBloc>();
+            return getIt.get<RegisterBloc>();
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            return getIt.get<LoginBloc>();
           },
         ),
       ],

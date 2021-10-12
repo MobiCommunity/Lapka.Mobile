@@ -3,9 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_button.dart';
 import 'package:lapka/components/basic/basic_text.dart';
+import 'package:lapka/components/basic/lapka_snackbar.dart';
 import 'package:lapka/components/basic/login_form_field.dart';
 import 'package:lapka/injector.dart';
-import 'package:lapka/providers/authentication/bloc/authentication_bloc.dart';
+import 'package:lapka/providers/register/register_bloc.dart';
 import 'package:lapka/providers/global_loader/global_loader_cubit.dart';
 import 'package:lapka/repository/network_exceptions.dart';
 import 'package:lapka/settings/colors.dart';
@@ -30,30 +31,21 @@ class _RegisterPageState extends State<RegisterPage> {
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _errorSnackBar(
       BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        padding: EdgeInsets.zero,
-        content: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-            child: Container(
-              padding: EdgeInsets.all(16),
-              color: BasicColors.white,
-              child: BasicText.body14(message),
-            ),
-          ),
-        )));
+    return ScaffoldMessenger.of(context).showSnackBar(LapkaSnackBar.error(message: message));
+  }
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _successSnackBar(
+      BuildContext context, String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    return ScaffoldMessenger.of(context).showSnackBar(LapkaSnackBar(message: message));
   }
 
   _register() {
     if (formKey.currentState!.validate()) {
-      getIt.get<AuthenticationBloc>().add(
-            AuthenticationEvent.signUp(
+      context.read<RegisterBloc>().add(
+            RegisterEvent.signUp(
               _registerFieldTextControllers.name,
               _registerFieldTextControllers.name,
-              '',
+              'LastName',
               _registerFieldTextControllers.email,
               _registerFieldTextControllers.password,
             ),
@@ -67,13 +59,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthenticationBloc, AuthenticationState>(
-      listener: (context, state) {
-        _listenRegisterState(state, context);
-      },
-      child: Scaffold(
-        backgroundColor: BasicColors.darkGreen,
-        body: Padding(
+    return Scaffold(
+      backgroundColor: BasicColors.darkGreen,
+      body: BlocListener<RegisterBloc, RegisterState>(
+        listener: (context, state) {
+          _listenRegisterState(state, context);
+        },
+        child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: SingleChildScrollView(
             child: Form(
@@ -245,10 +237,12 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void _listenRegisterState(AuthenticationState state, BuildContext context) {
+  void _listenRegisterState(RegisterState state, BuildContext context) {
     state.when(
       idle: () => getIt.get<GlobalLoaderCubit>().setIdle(),
-      processing: () => getIt.get<GlobalLoaderCubit>().setBusy(),
+      signingUp: () {
+        getIt.get<GlobalLoaderCubit>().setBusy();
+      },
       error: (exp) {
         getIt.get<GlobalLoaderCubit>().setIdle();
         _errorSnackBar(
@@ -258,6 +252,7 @@ class _RegisterPageState extends State<RegisterPage> {
       },
       success: () {
         getIt.get<GlobalLoaderCubit>().setIdle();
+        _successSnackBar(context, "Successfully Created Account");
       },
     );
   }

@@ -3,7 +3,7 @@ import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/models/token.dart';
-import 'package:lapka/providers/authentication/bloc/authentication_bloc.dart';
+import 'package:lapka/providers/login/bloc/login_bloc.dart';
 import 'package:lapka/repository/api_result.dart';
 import 'package:lapka/repository/identity_api/authentication/authentication_data_source_impl.dart';
 import 'package:lapka/repository/identity_api/authentication/authentication_repository.dart';
@@ -20,7 +20,7 @@ class AuthInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    await getIt.get<AuthenticationBloc>().checkToken();
+    await getIt.get<LoginBloc>().checkToken();
     final _token = await getIt.get<AuthUserStore>().getToken();
 
     if (_token != null && _token.isNotEmpty) {
@@ -33,9 +33,10 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    AuthenticationBloc _authenticationBloc = getIt.get<AuthenticationBloc>();
+    LoginBloc _authenticationBloc = getIt.get<LoginBloc>();
     if (response.statusCode == 401) {
-      _authenticationBloc.add(AuthenticationEvent.logOut());
+      _authenticationBloc.add(LoginEvent.logOut());
     }
+    handler.next(response);
   }
 }

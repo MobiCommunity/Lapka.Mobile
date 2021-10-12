@@ -48,7 +48,7 @@ class AuthUserStoreImpl implements AuthUserStore {
 
   @override
   Future<String?> getRefreshToken() async {
-    final String refreshToken = await Glutton.vomit(refreshTokenKey);
+    final String? refreshToken = await Glutton.vomit(refreshTokenKey);
     return refreshToken.isNullOrEmpty() ? null : refreshToken;
   }
 

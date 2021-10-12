@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'authentication_bloc.dart';
+part of 'login_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,8 +14,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$AuthenticationEventTearOff {
-  const _$AuthenticationEventTearOff();
+class _$LoginEventTearOff {
+  const _$LoginEventTearOff();
 
   _SingIn singIn(String name, String password) {
     return _SingIn(
@@ -36,41 +36,22 @@ class _$AuthenticationEventTearOff {
     );
   }
 
-  _SingUp signUp(String username, String firstName, String lastName,
-      String email, String password) {
-    return _SingUp(
-      username,
-      firstName,
-      lastName,
-      email,
-      password,
-    );
-  }
-
   _LogOut logOut() {
     return const _LogOut();
-  }
-
-  _AutoLogin autoLogin() {
-    return const _AutoLogin();
   }
 }
 
 /// @nodoc
-const $AuthenticationEvent = _$AuthenticationEventTearOff();
+const $LoginEvent = _$LoginEventTearOff();
 
 /// @nodoc
-mixin _$AuthenticationEvent {
+mixin _$LoginEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String name, String password) singIn,
     required TResult Function(String accessToken) singInGoogle,
     required TResult Function(String accessToken) singInFb,
-    required TResult Function(String username, String firstName,
-            String lastName, String email, String password)
-        signUp,
     required TResult Function() logOut,
-    required TResult Function() autoLogin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,11 +59,7 @@ mixin _$AuthenticationEvent {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,11 +67,7 @@ mixin _$AuthenticationEvent {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -103,9 +76,7 @@ mixin _$AuthenticationEvent {
     required TResult Function(_SingIn value) singIn,
     required TResult Function(_SingInGoogle value) singInGoogle,
     required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_SingUp value) signUp,
     required TResult Function(_LogOut value) logOut,
-    required TResult Function(_AutoLogin value) autoLogin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -113,9 +84,7 @@ mixin _$AuthenticationEvent {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -123,29 +92,26 @@ mixin _$AuthenticationEvent {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AuthenticationEventCopyWith<$Res> {
-  factory $AuthenticationEventCopyWith(
-          AuthenticationEvent value, $Res Function(AuthenticationEvent) then) =
-      _$AuthenticationEventCopyWithImpl<$Res>;
+abstract class $LoginEventCopyWith<$Res> {
+  factory $LoginEventCopyWith(
+          LoginEvent value, $Res Function(LoginEvent) then) =
+      _$LoginEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AuthenticationEventCopyWithImpl<$Res>
-    implements $AuthenticationEventCopyWith<$Res> {
-  _$AuthenticationEventCopyWithImpl(this._value, this._then);
+class _$LoginEventCopyWithImpl<$Res> implements $LoginEventCopyWith<$Res> {
+  _$LoginEventCopyWithImpl(this._value, this._then);
 
-  final AuthenticationEvent _value;
+  final LoginEvent _value;
   // ignore: unused_field
-  final $Res Function(AuthenticationEvent) _then;
+  final $Res Function(LoginEvent) _then;
 }
 
 /// @nodoc
@@ -156,8 +122,7 @@ abstract class _$SingInCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SingInCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res>
+class __$SingInCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
     implements _$SingInCopyWith<$Res> {
   __$SingInCopyWithImpl(_SingIn _value, $Res Function(_SingIn) _then)
       : super(_value, (v) => _then(v as _SingIn));
@@ -195,14 +160,14 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationEvent.singIn(name: $name, password: $password)';
+    return 'LoginEvent.singIn(name: $name, password: $password)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.singIn'))
+      ..add(DiagnosticsProperty('type', 'LoginEvent.singIn'))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('password', password));
   }
@@ -235,11 +200,7 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     required TResult Function(String name, String password) singIn,
     required TResult Function(String accessToken) singInGoogle,
     required TResult Function(String accessToken) singInFb,
-    required TResult Function(String username, String firstName,
-            String lastName, String email, String password)
-        signUp,
     required TResult Function() logOut,
-    required TResult Function() autoLogin,
   }) {
     return singIn(name, password);
   }
@@ -250,11 +211,7 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
   }) {
     return singIn?.call(name, password);
   }
@@ -265,11 +222,7 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
     required TResult orElse(),
   }) {
     if (singIn != null) {
@@ -284,9 +237,7 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     required TResult Function(_SingIn value) singIn,
     required TResult Function(_SingInGoogle value) singInGoogle,
     required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_SingUp value) signUp,
     required TResult Function(_LogOut value) logOut,
-    required TResult Function(_AutoLogin value) autoLogin,
   }) {
     return singIn(this);
   }
@@ -297,9 +248,7 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
   }) {
     return singIn?.call(this);
   }
@@ -310,9 +259,7 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
     required TResult orElse(),
   }) {
     if (singIn != null) {
@@ -322,7 +269,7 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
   }
 }
 
-abstract class _SingIn implements AuthenticationEvent {
+abstract class _SingIn implements LoginEvent {
   const factory _SingIn(String name, String password) = _$_SingIn;
 
   String get name => throw _privateConstructorUsedError;
@@ -340,8 +287,7 @@ abstract class _$SingInGoogleCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SingInGoogleCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res>
+class __$SingInGoogleCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
     implements _$SingInGoogleCopyWith<$Res> {
   __$SingInGoogleCopyWithImpl(
       _SingInGoogle _value, $Res Function(_SingInGoogle) _then)
@@ -373,14 +319,14 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationEvent.singInGoogle(accessToken: $accessToken)';
+    return 'LoginEvent.singInGoogle(accessToken: $accessToken)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.singInGoogle'))
+      ..add(DiagnosticsProperty('type', 'LoginEvent.singInGoogle'))
       ..add(DiagnosticsProperty('accessToken', accessToken));
   }
 
@@ -408,11 +354,7 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     required TResult Function(String name, String password) singIn,
     required TResult Function(String accessToken) singInGoogle,
     required TResult Function(String accessToken) singInFb,
-    required TResult Function(String username, String firstName,
-            String lastName, String email, String password)
-        signUp,
     required TResult Function() logOut,
-    required TResult Function() autoLogin,
   }) {
     return singInGoogle(accessToken);
   }
@@ -423,11 +365,7 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
   }) {
     return singInGoogle?.call(accessToken);
   }
@@ -438,11 +376,7 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
     required TResult orElse(),
   }) {
     if (singInGoogle != null) {
@@ -457,9 +391,7 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     required TResult Function(_SingIn value) singIn,
     required TResult Function(_SingInGoogle value) singInGoogle,
     required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_SingUp value) signUp,
     required TResult Function(_LogOut value) logOut,
-    required TResult Function(_AutoLogin value) autoLogin,
   }) {
     return singInGoogle(this);
   }
@@ -470,9 +402,7 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
   }) {
     return singInGoogle?.call(this);
   }
@@ -483,9 +413,7 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
     required TResult orElse(),
   }) {
     if (singInGoogle != null) {
@@ -495,7 +423,7 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
   }
 }
 
-abstract class _SingInGoogle implements AuthenticationEvent {
+abstract class _SingInGoogle implements LoginEvent {
   const factory _SingInGoogle(String accessToken) = _$_SingInGoogle;
 
   String get accessToken => throw _privateConstructorUsedError;
@@ -512,8 +440,7 @@ abstract class _$SingInFbCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SingInFbCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res>
+class __$SingInFbCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
     implements _$SingInFbCopyWith<$Res> {
   __$SingInFbCopyWithImpl(_SingInFb _value, $Res Function(_SingInFb) _then)
       : super(_value, (v) => _then(v as _SingInFb));
@@ -544,14 +471,14 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationEvent.singInFb(accessToken: $accessToken)';
+    return 'LoginEvent.singInFb(accessToken: $accessToken)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.singInFb'))
+      ..add(DiagnosticsProperty('type', 'LoginEvent.singInFb'))
       ..add(DiagnosticsProperty('accessToken', accessToken));
   }
 
@@ -579,11 +506,7 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     required TResult Function(String name, String password) singIn,
     required TResult Function(String accessToken) singInGoogle,
     required TResult Function(String accessToken) singInFb,
-    required TResult Function(String username, String firstName,
-            String lastName, String email, String password)
-        signUp,
     required TResult Function() logOut,
-    required TResult Function() autoLogin,
   }) {
     return singInFb(accessToken);
   }
@@ -594,11 +517,7 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
   }) {
     return singInFb?.call(accessToken);
   }
@@ -609,11 +528,7 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
     required TResult orElse(),
   }) {
     if (singInFb != null) {
@@ -628,9 +543,7 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     required TResult Function(_SingIn value) singIn,
     required TResult Function(_SingInGoogle value) singInGoogle,
     required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_SingUp value) signUp,
     required TResult Function(_LogOut value) logOut,
-    required TResult Function(_AutoLogin value) autoLogin,
   }) {
     return singInFb(this);
   }
@@ -641,9 +554,7 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
   }) {
     return singInFb?.call(this);
   }
@@ -654,9 +565,7 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
     required TResult orElse(),
   }) {
     if (singInFb != null) {
@@ -666,7 +575,7 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
   }
 }
 
-abstract class _SingInFb implements AuthenticationEvent {
+abstract class _SingInFb implements LoginEvent {
   const factory _SingInFb(String accessToken) = _$_SingInFb;
 
   String get accessToken => throw _privateConstructorUsedError;
@@ -676,243 +585,13 @@ abstract class _SingInFb implements AuthenticationEvent {
 }
 
 /// @nodoc
-abstract class _$SingUpCopyWith<$Res> {
-  factory _$SingUpCopyWith(_SingUp value, $Res Function(_SingUp) then) =
-      __$SingUpCopyWithImpl<$Res>;
-  $Res call(
-      {String username,
-      String firstName,
-      String lastName,
-      String email,
-      String password});
-}
-
-/// @nodoc
-class __$SingUpCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res>
-    implements _$SingUpCopyWith<$Res> {
-  __$SingUpCopyWithImpl(_SingUp _value, $Res Function(_SingUp) _then)
-      : super(_value, (v) => _then(v as _SingUp));
-
-  @override
-  _SingUp get _value => super._value as _SingUp;
-
-  @override
-  $Res call({
-    Object? username = freezed,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? email = freezed,
-    Object? password = freezed,
-  }) {
-    return _then(_SingUp(
-      username == freezed
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      firstName == freezed
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName == freezed
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password == freezed
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_SingUp with DiagnosticableTreeMixin implements _SingUp {
-  const _$_SingUp(
-      this.username, this.firstName, this.lastName, this.email, this.password);
-
-  @override
-  final String username;
-  @override
-  final String firstName;
-  @override
-  final String lastName;
-  @override
-  final String email;
-  @override
-  final String password;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationEvent.signUp(username: $username, firstName: $firstName, lastName: $lastName, email: $email, password: $password)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.signUp'))
-      ..add(DiagnosticsProperty('username', username))
-      ..add(DiagnosticsProperty('firstName', firstName))
-      ..add(DiagnosticsProperty('lastName', lastName))
-      ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('password', password));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _SingUp &&
-            (identical(other.username, username) ||
-                const DeepCollectionEquality()
-                    .equals(other.username, username)) &&
-            (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
-            (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(username) ^
-      const DeepCollectionEquality().hash(firstName) ^
-      const DeepCollectionEquality().hash(lastName) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(password);
-
-  @JsonKey(ignore: true)
-  @override
-  _$SingUpCopyWith<_SingUp> get copyWith =>
-      __$SingUpCopyWithImpl<_SingUp>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String name, String password) singIn,
-    required TResult Function(String accessToken) singInGoogle,
-    required TResult Function(String accessToken) singInFb,
-    required TResult Function(String username, String firstName,
-            String lastName, String email, String password)
-        signUp,
-    required TResult Function() logOut,
-    required TResult Function() autoLogin,
-  }) {
-    return signUp(username, firstName, lastName, email, password);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
-    TResult Function()? logOut,
-    TResult Function()? autoLogin,
-  }) {
-    return signUp?.call(username, firstName, lastName, email, password);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
-    TResult Function()? logOut,
-    TResult Function()? autoLogin,
-    required TResult orElse(),
-  }) {
-    if (signUp != null) {
-      return signUp(username, firstName, lastName, email, password);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SingIn value) singIn,
-    required TResult Function(_SingInGoogle value) singInGoogle,
-    required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_SingUp value) signUp,
-    required TResult Function(_LogOut value) logOut,
-    required TResult Function(_AutoLogin value) autoLogin,
-  }) {
-    return signUp(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SingIn value)? singIn,
-    TResult Function(_SingInGoogle value)? singInGoogle,
-    TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
-    TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
-  }) {
-    return signUp?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SingIn value)? singIn,
-    TResult Function(_SingInGoogle value)? singInGoogle,
-    TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
-    TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
-    required TResult orElse(),
-  }) {
-    if (signUp != null) {
-      return signUp(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SingUp implements AuthenticationEvent {
-  const factory _SingUp(String username, String firstName, String lastName,
-      String email, String password) = _$_SingUp;
-
-  String get username => throw _privateConstructorUsedError;
-  String get firstName => throw _privateConstructorUsedError;
-  String get lastName => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$SingUpCopyWith<_SingUp> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$LogOutCopyWith<$Res> {
   factory _$LogOutCopyWith(_LogOut value, $Res Function(_LogOut) then) =
       __$LogOutCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LogOutCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res>
+class __$LogOutCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
     implements _$LogOutCopyWith<$Res> {
   __$LogOutCopyWithImpl(_LogOut _value, $Res Function(_LogOut) _then)
       : super(_value, (v) => _then(v as _LogOut));
@@ -928,13 +607,13 @@ class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationEvent.logOut()';
+    return 'LoginEvent.logOut()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AuthenticationEvent.logOut'));
+    properties..add(DiagnosticsProperty('type', 'LoginEvent.logOut'));
   }
 
   @override
@@ -951,11 +630,7 @@ class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
     required TResult Function(String name, String password) singIn,
     required TResult Function(String accessToken) singInGoogle,
     required TResult Function(String accessToken) singInFb,
-    required TResult Function(String username, String firstName,
-            String lastName, String email, String password)
-        signUp,
     required TResult Function() logOut,
-    required TResult Function() autoLogin,
   }) {
     return logOut();
   }
@@ -966,11 +641,7 @@ class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
   }) {
     return logOut?.call();
   }
@@ -981,11 +652,7 @@ class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
     TResult Function()? logOut,
-    TResult Function()? autoLogin,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -1000,9 +667,7 @@ class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
     required TResult Function(_SingIn value) singIn,
     required TResult Function(_SingInGoogle value) singInGoogle,
     required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_SingUp value) signUp,
     required TResult Function(_LogOut value) logOut,
-    required TResult Function(_AutoLogin value) autoLogin,
   }) {
     return logOut(this);
   }
@@ -1013,9 +678,7 @@ class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
   }) {
     return logOut?.call(this);
   }
@@ -1026,9 +689,7 @@ class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
     TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -1038,160 +699,20 @@ class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
   }
 }
 
-abstract class _LogOut implements AuthenticationEvent {
+abstract class _LogOut implements LoginEvent {
   const factory _LogOut() = _$_LogOut;
 }
 
 /// @nodoc
-abstract class _$AutoLoginCopyWith<$Res> {
-  factory _$AutoLoginCopyWith(
-          _AutoLogin value, $Res Function(_AutoLogin) then) =
-      __$AutoLoginCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$AutoLoginCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res>
-    implements _$AutoLoginCopyWith<$Res> {
-  __$AutoLoginCopyWithImpl(_AutoLogin _value, $Res Function(_AutoLogin) _then)
-      : super(_value, (v) => _then(v as _AutoLogin));
-
-  @override
-  _AutoLogin get _value => super._value as _AutoLogin;
-}
-
-/// @nodoc
-
-class _$_AutoLogin with DiagnosticableTreeMixin implements _AutoLogin {
-  const _$_AutoLogin();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationEvent.autoLogin()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthenticationEvent.autoLogin'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _AutoLogin);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String name, String password) singIn,
-    required TResult Function(String accessToken) singInGoogle,
-    required TResult Function(String accessToken) singInFb,
-    required TResult Function(String username, String firstName,
-            String lastName, String email, String password)
-        signUp,
-    required TResult Function() logOut,
-    required TResult Function() autoLogin,
-  }) {
-    return autoLogin();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
-    TResult Function()? logOut,
-    TResult Function()? autoLogin,
-  }) {
-    return autoLogin?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
-    TResult Function(String username, String firstName, String lastName,
-            String email, String password)?
-        signUp,
-    TResult Function()? logOut,
-    TResult Function()? autoLogin,
-    required TResult orElse(),
-  }) {
-    if (autoLogin != null) {
-      return autoLogin();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SingIn value) singIn,
-    required TResult Function(_SingInGoogle value) singInGoogle,
-    required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_SingUp value) signUp,
-    required TResult Function(_LogOut value) logOut,
-    required TResult Function(_AutoLogin value) autoLogin,
-  }) {
-    return autoLogin(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SingIn value)? singIn,
-    TResult Function(_SingInGoogle value)? singInGoogle,
-    TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
-    TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
-  }) {
-    return autoLogin?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SingIn value)? singIn,
-    TResult Function(_SingInGoogle value)? singInGoogle,
-    TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_SingUp value)? signUp,
-    TResult Function(_LogOut value)? logOut,
-    TResult Function(_AutoLogin value)? autoLogin,
-    required TResult orElse(),
-  }) {
-    if (autoLogin != null) {
-      return autoLogin(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AutoLogin implements AuthenticationEvent {
-  const factory _AutoLogin() = _$_AutoLogin;
-}
-
-/// @nodoc
-class _$AuthenticationStateTearOff {
-  const _$AuthenticationStateTearOff();
+class _$LoginStateTearOff {
+  const _$LoginStateTearOff();
 
   _Idle idle() {
     return const _Idle();
   }
 
-  _Processing processing() {
-    return const _Processing();
+  _SigningIn signingIn() {
+    return const _SigningIn();
   }
 
   _Success success() {
@@ -1206,14 +727,14 @@ class _$AuthenticationStateTearOff {
 }
 
 /// @nodoc
-const $AuthenticationState = _$AuthenticationStateTearOff();
+const $LoginState = _$LoginStateTearOff();
 
 /// @nodoc
-mixin _$AuthenticationState {
+mixin _$LoginState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
-    required TResult Function() processing,
+    required TResult Function() signingIn,
     required TResult Function() success,
     required TResult Function(NetworkExceptions exception) error,
   }) =>
@@ -1221,7 +742,7 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
   }) =>
@@ -1229,7 +750,7 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
     required TResult orElse(),
@@ -1238,7 +759,7 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Idle value) idle,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_SigningIn value) signingIn,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) =>
@@ -1246,7 +767,7 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
   }) =>
@@ -1254,7 +775,7 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1263,20 +784,19 @@ mixin _$AuthenticationState {
 }
 
 /// @nodoc
-abstract class $AuthenticationStateCopyWith<$Res> {
-  factory $AuthenticationStateCopyWith(
-          AuthenticationState value, $Res Function(AuthenticationState) then) =
-      _$AuthenticationStateCopyWithImpl<$Res>;
+abstract class $LoginStateCopyWith<$Res> {
+  factory $LoginStateCopyWith(
+          LoginState value, $Res Function(LoginState) then) =
+      _$LoginStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AuthenticationStateCopyWithImpl<$Res>
-    implements $AuthenticationStateCopyWith<$Res> {
-  _$AuthenticationStateCopyWithImpl(this._value, this._then);
+class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
+  _$LoginStateCopyWithImpl(this._value, this._then);
 
-  final AuthenticationState _value;
+  final LoginState _value;
   // ignore: unused_field
-  final $Res Function(AuthenticationState) _then;
+  final $Res Function(LoginState) _then;
 }
 
 /// @nodoc
@@ -1286,7 +806,7 @@ abstract class _$IdleCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$IdleCopyWithImpl<$Res> extends _$AuthenticationStateCopyWithImpl<$Res>
+class __$IdleCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
     implements _$IdleCopyWith<$Res> {
   __$IdleCopyWithImpl(_Idle _value, $Res Function(_Idle) _then)
       : super(_value, (v) => _then(v as _Idle));
@@ -1302,13 +822,13 @@ class _$_Idle with DiagnosticableTreeMixin implements _Idle {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationState.idle()';
+    return 'LoginState.idle()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AuthenticationState.idle'));
+    properties..add(DiagnosticsProperty('type', 'LoginState.idle'));
   }
 
   @override
@@ -1323,7 +843,7 @@ class _$_Idle with DiagnosticableTreeMixin implements _Idle {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
-    required TResult Function() processing,
+    required TResult Function() signingIn,
     required TResult Function() success,
     required TResult Function(NetworkExceptions exception) error,
   }) {
@@ -1334,7 +854,7 @@ class _$_Idle with DiagnosticableTreeMixin implements _Idle {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
   }) {
@@ -1345,7 +865,7 @@ class _$_Idle with DiagnosticableTreeMixin implements _Idle {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
     required TResult orElse(),
@@ -1360,7 +880,7 @@ class _$_Idle with DiagnosticableTreeMixin implements _Idle {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Idle value) idle,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_SigningIn value) signingIn,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
@@ -1371,7 +891,7 @@ class _$_Idle with DiagnosticableTreeMixin implements _Idle {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
   }) {
@@ -1382,7 +902,7 @@ class _$_Idle with DiagnosticableTreeMixin implements _Idle {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1394,49 +914,46 @@ class _$_Idle with DiagnosticableTreeMixin implements _Idle {
   }
 }
 
-abstract class _Idle implements AuthenticationState {
+abstract class _Idle implements LoginState {
   const factory _Idle() = _$_Idle;
 }
 
 /// @nodoc
-abstract class _$ProcessingCopyWith<$Res> {
-  factory _$ProcessingCopyWith(
-          _Processing value, $Res Function(_Processing) then) =
-      __$ProcessingCopyWithImpl<$Res>;
+abstract class _$SigningInCopyWith<$Res> {
+  factory _$SigningInCopyWith(
+          _SigningIn value, $Res Function(_SigningIn) then) =
+      __$SigningInCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProcessingCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res>
-    implements _$ProcessingCopyWith<$Res> {
-  __$ProcessingCopyWithImpl(
-      _Processing _value, $Res Function(_Processing) _then)
-      : super(_value, (v) => _then(v as _Processing));
+class __$SigningInCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
+    implements _$SigningInCopyWith<$Res> {
+  __$SigningInCopyWithImpl(_SigningIn _value, $Res Function(_SigningIn) _then)
+      : super(_value, (v) => _then(v as _SigningIn));
 
   @override
-  _Processing get _value => super._value as _Processing;
+  _SigningIn get _value => super._value as _SigningIn;
 }
 
 /// @nodoc
 
-class _$_Processing with DiagnosticableTreeMixin implements _Processing {
-  const _$_Processing();
+class _$_SigningIn with DiagnosticableTreeMixin implements _SigningIn {
+  const _$_SigningIn();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationState.processing()';
+    return 'LoginState.signingIn()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthenticationState.processing'));
+    properties..add(DiagnosticsProperty('type', 'LoginState.signingIn'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Processing);
+    return identical(this, other) || (other is _SigningIn);
   }
 
   @override
@@ -1446,35 +963,35 @@ class _$_Processing with DiagnosticableTreeMixin implements _Processing {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
-    required TResult Function() processing,
+    required TResult Function() signingIn,
     required TResult Function() success,
     required TResult Function(NetworkExceptions exception) error,
   }) {
-    return processing();
+    return signingIn();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
   }) {
-    return processing?.call();
+    return signingIn?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
     required TResult orElse(),
   }) {
-    if (processing != null) {
-      return processing();
+    if (signingIn != null) {
+      return signingIn();
     }
     return orElse();
   }
@@ -1483,42 +1000,42 @@ class _$_Processing with DiagnosticableTreeMixin implements _Processing {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Idle value) idle,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_SigningIn value) signingIn,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
-    return processing(this);
+    return signingIn(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
   }) {
-    return processing?.call(this);
+    return signingIn?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (processing != null) {
-      return processing(this);
+    if (signingIn != null) {
+      return signingIn(this);
     }
     return orElse();
   }
 }
 
-abstract class _Processing implements AuthenticationState {
-  const factory _Processing() = _$_Processing;
+abstract class _SigningIn implements LoginState {
+  const factory _SigningIn() = _$_SigningIn;
 }
 
 /// @nodoc
@@ -1528,8 +1045,7 @@ abstract class _$SuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res>
+class __$SuccessCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
     implements _$SuccessCopyWith<$Res> {
   __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
       : super(_value, (v) => _then(v as _Success));
@@ -1545,13 +1061,13 @@ class _$_Success with DiagnosticableTreeMixin implements _Success {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationState.success()';
+    return 'LoginState.success()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AuthenticationState.success'));
+    properties..add(DiagnosticsProperty('type', 'LoginState.success'));
   }
 
   @override
@@ -1566,7 +1082,7 @@ class _$_Success with DiagnosticableTreeMixin implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
-    required TResult Function() processing,
+    required TResult Function() signingIn,
     required TResult Function() success,
     required TResult Function(NetworkExceptions exception) error,
   }) {
@@ -1577,7 +1093,7 @@ class _$_Success with DiagnosticableTreeMixin implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
   }) {
@@ -1588,7 +1104,7 @@ class _$_Success with DiagnosticableTreeMixin implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
     required TResult orElse(),
@@ -1603,7 +1119,7 @@ class _$_Success with DiagnosticableTreeMixin implements _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Idle value) idle,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_SigningIn value) signingIn,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
@@ -1614,7 +1130,7 @@ class _$_Success with DiagnosticableTreeMixin implements _Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
   }) {
@@ -1625,7 +1141,7 @@ class _$_Success with DiagnosticableTreeMixin implements _Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1637,7 +1153,7 @@ class _$_Success with DiagnosticableTreeMixin implements _Success {
   }
 }
 
-abstract class _Success implements AuthenticationState {
+abstract class _Success implements LoginState {
   const factory _Success() = _$_Success;
 }
 
@@ -1651,7 +1167,7 @@ abstract class _$ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$AuthenticationStateCopyWithImpl<$Res>
+class __$ErrorCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -1689,14 +1205,14 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationState.error(exception: $exception)';
+    return 'LoginState.error(exception: $exception)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AuthenticationState.error'))
+      ..add(DiagnosticsProperty('type', 'LoginState.error'))
       ..add(DiagnosticsProperty('exception', exception));
   }
 
@@ -1722,7 +1238,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
-    required TResult Function() processing,
+    required TResult Function() signingIn,
     required TResult Function() success,
     required TResult Function(NetworkExceptions exception) error,
   }) {
@@ -1733,7 +1249,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
   }) {
@@ -1744,7 +1260,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
-    TResult Function()? processing,
+    TResult Function()? signingIn,
     TResult Function()? success,
     TResult Function(NetworkExceptions exception)? error,
     required TResult orElse(),
@@ -1759,7 +1275,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Idle value) idle,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_SigningIn value) signingIn,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
@@ -1770,7 +1286,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
   }) {
@@ -1781,7 +1297,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_SigningIn value)? signingIn,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1793,7 +1309,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   }
 }
 
-abstract class _Error implements AuthenticationState {
+abstract class _Error implements LoginState {
   const factory _Error(NetworkExceptions exception) = _$_Error;
 
   NetworkExceptions get exception => throw _privateConstructorUsedError;

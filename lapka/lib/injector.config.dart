@@ -8,9 +8,10 @@ import 'package:dio/dio.dart' as _i7;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'injector.dart' as _i14;
-import 'providers/authentication/bloc/authentication_bloc.dart' as _i13;
+import 'injector.dart' as _i15;
 import 'providers/global_loader/global_loader_cubit.dart' as _i8;
+import 'providers/login/bloc/login_bloc.dart' as _i13;
+import 'providers/register/register_bloc.dart' as _i14;
 import 'repository/identity_api/authentication/authentication_data_source.dart'
     as _i9;
 import 'repository/identity_api/authentication/authentication_data_source_impl.dart'
@@ -44,11 +45,15 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
           get<_i7.Dio>(instanceName: 'Identity')));
   gh.factory<_i11.AuthenticationRepository>(() =>
       _i12.AuthenticationRepositoryImpl(get<_i9.AuthenticationDataSource>()));
-  gh.lazySingleton<_i13.AuthenticationBloc>(() => _i13.AuthenticationBloc(
+  gh.lazySingleton<_i13.LoginBloc>(() => _i13.LoginBloc(
+      get<_i11.AuthenticationRepository>(),
+      get<_i5.AuthUserStore>(),
+      get<_i3.AuthBroadcaster>()));
+  gh.factory<_i14.RegisterBloc>(() => _i14.RegisterBloc(
       get<_i11.AuthenticationRepository>(),
       get<_i5.AuthUserStore>(),
       get<_i3.AuthBroadcaster>()));
   return get;
 }
 
-class _$RegisterModule extends _i14.RegisterModule {}
+class _$RegisterModule extends _i15.RegisterModule {}
