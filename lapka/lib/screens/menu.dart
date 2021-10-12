@@ -7,6 +7,7 @@ import 'package:lapka/injector.dart';
 import 'package:lapka/providers/login/bloc/login_bloc.dart';
 import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
+import 'package:lapka/screens/login/login_page.dart';
 import 'package:lapka/screens/my_pets/my_pets_page.dart';
 import 'package:lapka/screens/report/report_page.dart';
 import 'package:lapka/screens/volunteer/volunteer_page.dart';
@@ -32,12 +33,15 @@ class Menu extends StatelessWidget {
       {Widget? widget,
       required String name,
       required String icon,
+      bool isRoot = true,
       Function? onTap}) {
     return InkWell(
       onTap: () {
         onTap?.call();
-        if (widget != null) {
+        if (widget != null && isRoot) {
           NavigatorHelper.changeRoot(context, widget);
+        } else if (widget != null) {
+          NavigatorHelper.push(context, widget);
         }
         onMenuItemClicked();
       },
@@ -82,13 +86,9 @@ class Menu extends StatelessWidget {
                       Container(),
                       snapshot.data?.when(
                             authenticated: () => _avatarBuilder(),
-                            unauthenticated: () => Container(
-                              child: BasicText.body14Bold('Zaloguj się'),
-                            ),
+                            unauthenticated: () => _buildLoginMenuItem(context),
                           ) ??
-                          Container(
-                            child: BasicText.body14Bold('Zaloguj się'),
-                          ),
+                          _buildLoginMenuItem(context),
                       _buildMenuItem(
                         context,
                         widget: AdoptPetListPage(),
@@ -163,6 +163,16 @@ class Menu extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildLoginMenuItem(BuildContext context) {
+    return _buildMenuItem(
+      context,
+      widget: LoginPage(),
+      name: 'Zaloguj się',
+      icon: 'lib/assets/paw-symbol.svg',
+      isRoot: false,
     );
   }
 
