@@ -10,6 +10,7 @@ import 'package:lapka/providers/register/register_bloc.dart';
 import 'package:lapka/providers/global_loader/global_loader_cubit.dart';
 import 'package:lapka/repository/network_exceptions.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/utils/validators.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -31,12 +32,15 @@ class _RegisterPageState extends State<RegisterPage> {
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _errorSnackBar(
       BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    return ScaffoldMessenger.of(context).showSnackBar(LapkaSnackBar.error(message: message));
+    return ScaffoldMessenger.of(context)
+        .showSnackBar(LapkaSnackBar.error(message: message));
   }
+
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _successSnackBar(
       BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    return ScaffoldMessenger.of(context).showSnackBar(LapkaSnackBar(message: message));
+    return ScaffoldMessenger.of(context)
+        .showSnackBar(LapkaSnackBar(message: message));
   }
 
   _register() {
@@ -253,6 +257,7 @@ class _RegisterPageState extends State<RegisterPage> {
       success: () {
         getIt.get<GlobalLoaderCubit>().setIdle();
         _successSnackBar(context, "Successfully Created Account");
+        NavigatorHelper.pop(context);
       },
     );
   }

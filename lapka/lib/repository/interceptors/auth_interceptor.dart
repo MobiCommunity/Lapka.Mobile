@@ -2,12 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lapka/injector.dart';
-import 'package:lapka/models/token.dart';
-import 'package:lapka/providers/login/bloc/login_bloc.dart';
 import 'package:lapka/providers/user/user_bloc.dart';
-import 'package:lapka/repository/api_result.dart';
-import 'package:lapka/repository/identity_api/authentication/authentication_data_source_impl.dart';
-import 'package:lapka/repository/identity_api/authentication/authentication_repository.dart';
 import 'package:lapka/repository/user/auth_user_store.dart';
 import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 
@@ -21,8 +16,7 @@ const TOKEN_KEY_NAME = "Authorization";
 class AuthInterceptor extends Interceptor {
   AuthBroadcaster _authBroadcaster;
 
-
-  AuthInterceptor( this._authBroadcaster);
+  AuthInterceptor(this._authBroadcaster);
 
   @override
   void onRequest(
@@ -41,7 +35,7 @@ class AuthInterceptor extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     if (response.statusCode == 401) {
-      _authBroadcaster.updateState(AuthState.unauthenticated());
+      getIt.get<UserBloc>().add(UserEvent.logOut());
     }
     handler.next(response);
   }

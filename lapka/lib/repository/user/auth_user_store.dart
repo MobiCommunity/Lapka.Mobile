@@ -16,7 +16,7 @@ abstract class AuthUserStore {
 
   Future<void> deleteAllUserData();
 
-  bool isUserStored();
+  Future<bool> isUserStored();
 
   Future<String?> getUserId();
 

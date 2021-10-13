@@ -27,7 +27,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       : super(_Idle());
 
   @override
-  Stream<LoginState> mapEventToState(LoginEvent event,) async* {
+  Stream<LoginState> mapEventToState(
+    LoginEvent event,
+  ) async* {
     yield _SigningIn();
     if (event is _SingIn) {
       yield* _handleSingIn(event);
@@ -40,7 +42,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _handleSignInGoogle(_SingInGoogle event) async* {
     ApiResult<Token> tokenResult =
-    await _repository.singInGoogle(event.accessToken);
+        await _repository.singInGoogle(event.accessToken);
 
     yield* tokenResult.when(success: (token) async* {
       yield* _handleSuccessSignIn(token!);
@@ -51,7 +53,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _handleSignInFb(_SingInFb event) async* {
     ApiResult<Token> tokenResult =
-    await _repository.singInFb(event.accessToken);
+        await _repository.singInFb(event.accessToken);
 
     yield* tokenResult.when(success: (token) async* {
       yield* _handleSuccessSignIn(token!);
@@ -62,7 +64,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _handleSingIn(_SingIn event) async* {
     ApiResult<Token> tokenResult =
-    await _repository.singIn(event.name, event.password);
+        await _repository.singIn(event.name, event.password);
 
     yield* tokenResult.when(
       success: (token) async* {
@@ -83,7 +85,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     } catch (e) {
       yield _Error(
           NetworkExceptions.unexpectedError(exception: e as Exception));
-      _authBroadcaster.updateState(AuthState.unauthenticated());
     }
   }
 

@@ -100,7 +100,7 @@ class AuthUserStoreImpl implements AuthUserStore {
   }
 
   @override
-  bool isUserStored() => currentUser != null;
+  Future<bool> isUserStored() async => (await getUser()) != null;
 
   @override
   Future<String?> getUserId() async {

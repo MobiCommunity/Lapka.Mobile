@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/injector.dart';
+import 'package:lapka/models/user.dart';
 import 'package:lapka/providers/login/bloc/login_bloc.dart';
 import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/providers/user/user_bloc.dart';
@@ -77,7 +78,6 @@ class Menu extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: BlocBuilder<UserBloc, UserState>(
                 builder: (BuildContext context, UserState state) {
-print('state123: $state');
               return Column(
                 //mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -85,7 +85,7 @@ print('state123: $state');
                 children: <Widget>[
                   Container(),
                   state.when(
-                        fetched: (_) => _avatarBuilder(),
+                        fetched: (user) => _avatarBuilder(user),
                         unfetched: () => _buildLoginMenuItem(context),
                       ) ??
                       _buildLoginMenuItem(context),
@@ -142,11 +142,11 @@ print('state123: $state');
                   ),
                   Container(),
                   Visibility(
-                    visible: state is Unfetched,
+                    visible: state is Fetched,
                     child: _bigLineSpacer(),
                   ),
                   Visibility(
-                    visible: state is Unfetched,
+                    visible: state is Fetched,
                     child: _buildMenuItem(
                       context,
                       name: 'Wyloguj się',
@@ -194,7 +194,7 @@ print('state123: $state');
     );
   }
 
-  Row _avatarBuilder() {
+  Row _avatarBuilder(User user) {
     return Row(
       children: [
         DottedBorder(
@@ -213,7 +213,7 @@ print('state123: $state');
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BasicText.overlineLight(
-              'email@gmail.com',
+              user.email ?? '',
               color: BasicColors.white,
             ),
             SizedBox(
@@ -228,7 +228,7 @@ print('state123: $state');
                   size: 10,
                 ),
                 BasicText.captionLight(
-                  'Example',
+                  user.firstName ?? '',
                   color: BasicColors.white,
                 ),
               ],

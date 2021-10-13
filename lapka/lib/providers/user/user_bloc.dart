@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lapka/models/token.dart';
 import 'package:lapka/models/user.dart';
 import 'package:lapka/repository/api_result.dart';
+import 'package:lapka/repository/identity_api/authentication/authentication_repository.dart';
 import 'package:lapka/repository/identity_api/user/user_repository.dart';
 import 'package:lapka/repository/user/auth_user_store.dart';
 import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
-import 'package:lapka/repository/identity_api/authentication/authentication_repository.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_bloc.freezed.dart';
 
@@ -15,7 +15,7 @@ part 'user_event.dart';
 
 part 'user_state.dart';
 
-@injectable
+@lazySingleton
 class UserBloc extends Bloc<UserEvent, UserState> {
   AuthenticationRepository _repository;
   AuthUserStore _authUserStore;
@@ -26,21 +26,22 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       this._userRepository)
       : super(UserState.unfetched()) {
     _init();
-    _authBroadcaster.state.listen((event) {
-      event.when(
+    _authBroadcaster.state.listen((state) {
+      state.whenOrNull(
         authenticated: (String userId) => add(
           _UserChanged(userId),
         ),
-        unauthenticated: () => add(
-          _LogOut(),
-        ),
+        // unauthenticated: () => add(
+        //   _LogOut(),
+        // ),
       );
     });
   }
 
   Future<void> _init() async {
+    print(_authUserStore.isUserStored());
     await checkToken();
-    emit(_authUserStore.isUserStored()
+    emit(await _authUserStore.isUserStored()
         ? UserState.fetched((await _authUserStore.getUser())!)
         : UserState.unfetched());
   }
@@ -50,7 +51,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     if (event is _UserChanged) {
       yield* _fetchUserData(event.userId);
     } else if (event is _LogOut) {
-      _handleLogOut();
+      yield* _handleLogOut();
     }
   }
 
@@ -70,8 +71,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     if (refreshToken != null) {
       await _repository.revokeRefreshToken(refreshToken);
     }
+
     await _authUserStore.deleteAllUserData();
     _authBroadcaster.updateState(AuthState.unauthenticated());
+    yield Unfetched();
   }
 
   Future<void> checkToken() async {
@@ -91,10 +94,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
               _authBroadcaster.updateState(
                   AuthState.authenticated((await _authUserStore.getUserId())!));
             },
-            failure: (_) async =>
-                _authBroadcaster.updateState(AuthState.unauthenticated()));
+            failure: (_) async => add(UserEvent.logOut()));
       } catch (exp) {
-        _authBroadcaster.updateState(AuthState.unauthenticated());
+        add(UserEvent.logOut());
       }
     }
   }

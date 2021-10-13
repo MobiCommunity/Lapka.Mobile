@@ -6,8 +6,6 @@ import 'package:lapka/injector.config.dart';
 import 'package:lapka/repository/interceptors/auth_interceptor.dart';
 import 'package:lapka/repository/network_configuration.dart';
 
-import 'models/token.dart';
-
 const _dirs = ["lib", "test"];
 const _baseUrlName = "BaseUrl";
 
@@ -24,12 +22,13 @@ abstract class RegisterModule {
   String get _identityDioBaseUrl =>
       getIt.get<String>(instanceName: _baseUrlName);
 
-   AuthInterceptor get _authInterceptor => getIt.get<AuthInterceptor>();
+  AuthInterceptor get _authInterceptor => getIt.get<AuthInterceptor>();
 
   final LogInterceptor _logInterceptor = LogInterceptor(
     requestBody: true,
     responseBody: true,
   );
+
   //
   // final Fresh _fresh = Fresh<Token>(
   //     tokenHeader: (Token token) =>
@@ -39,17 +38,20 @@ abstract class RegisterModule {
   //     }, tokenStorage: InMemoryTokenStorage<Token>(), refreshToken: );
   //
 
-
   @Named("Identity")
   @lazySingleton
   Dio identityDio() {
-    final _dio = Dio(BaseOptions(baseUrl: _identityDioBaseUrl));
-    // AuthInterceptor _authInterceptor = getIt.get<AuthInterceptor>();
+    final _dio = Dio(
+      BaseOptions(
+        baseUrl: _identityDioBaseUrl,
+        connectTimeout: 30 * 1000, // 60 seconds
+        receiveTimeout: 30 * 1000,
+      ),
+    );
     _dio.interceptors.addAll([
       _authInterceptor,
       _logInterceptor,
     ]);
     return _dio;
   }
-
 }
