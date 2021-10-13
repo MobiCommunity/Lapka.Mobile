@@ -6,6 +6,7 @@ import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/providers/login/bloc/login_bloc.dart';
 import 'package:lapka/providers/menuProvider.dart';
+import 'package:lapka/providers/user/user_bloc.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
 import 'package:lapka/screens/login/login_page.dart';
 import 'package:lapka/screens/my_pets/my_pets_page.dart';
@@ -74,92 +75,90 @@ class Menu extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20.0),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: StreamBuilder(
-                stream: getIt.get<AuthBroadcaster>().state,
-                builder:
-                    (BuildContext context, AsyncSnapshot<AuthState> snapshot) {
-                  return Column(
-                    //mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(),
-                      snapshot.data?.when(
-                            authenticated: () => _avatarBuilder(),
-                            unauthenticated: () => _buildLoginMenuItem(context),
-                          ) ??
-                          _buildLoginMenuItem(context),
-                      _buildMenuItem(
-                        context,
-                        widget: AdoptPetListPage(),
-                        name: 'Wiadomości',
-                        icon: 'lib/assets/messages-icon.svg',
-                      ),
-                      _buildMenuItem(
-                        context,
-                        widget: AdoptPetListPage(),
-                        name: 'Ulubione zwierzaki',
-                        icon: 'lib/assets/paw-symbol.svg',
-                      ),
-                      _buildMenuItem(
-                        context,
-                        widget: AdoptPetListPage(),
-                        name: 'Adopcja',
-                        icon: 'lib/assets/favourite-icon.svg',
-                      ),
-                      _buildMenuItem(
-                        context,
-                        widget: MyPetsPage(),
-                        name: 'Moje zwierzaki',
-                        icon: 'lib/assets/my-pets-icon.svg',
-                      ),
-                      _smallLineSpacer(),
-                      _buildMenuItem(
-                        context,
-                        widget: ReportPage(),
-                        name: 'Zgłoszenia',
-                        icon: 'lib/assets/report-icon.svg',
-                      ),
-                      _buildMenuItem(
-                        context,
-                        widget: AdoptPetListPage(),
-                        name: 'Zaginione zwierzaki',
-                        icon: 'lib/assets/missing-pets.svg',
-                      ),
-                      _smallLineSpacer(),
-                      _buildMenuItem(
-                        context,
-                        widget: VolunteerPage(),
-                        name: 'Wolontariat',
-                        icon: 'lib/assets/volunteer-icon.svg',
-                      ),
-                      _smallLineSpacer(),
-                      _buildMenuItem(
-                        context,
-                        widget: AdoptPetListPage(),
-                        name: 'Ustawienia',
-                        icon: 'lib/assets/settings-icon.svg',
-                      ),
-                      Container(),
-                      Visibility(
-                        visible: snapshot.data == AuthState.authenticated(),
-                        child: _bigLineSpacer(),
-                      ),
-                      Visibility(
-                        visible: snapshot.data == AuthState.authenticated(),
-                        child: _buildMenuItem(
-                          context,
-                          name: 'Wyloguj się',
-                          icon: 'lib/assets/logout-icon.svg',
-                          onTap: () => context
-                              .read<LoginBloc>()
-                              .add(LoginEvent.logOut()),
-                        ),
-                      ),
-                      Container()
-                    ],
-                  );
-                }),
+            child: BlocBuilder<UserBloc, UserState>(
+                builder: (BuildContext context, UserState state) {
+print('state123: $state');
+              return Column(
+                //mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(),
+                  state.when(
+                        fetched: (_) => _avatarBuilder(),
+                        unfetched: () => _buildLoginMenuItem(context),
+                      ) ??
+                      _buildLoginMenuItem(context),
+                  _buildMenuItem(
+                    context,
+                    widget: AdoptPetListPage(),
+                    name: 'Wiadomości',
+                    icon: 'lib/assets/messages-icon.svg',
+                  ),
+                  _buildMenuItem(
+                    context,
+                    widget: AdoptPetListPage(),
+                    name: 'Ulubione zwierzaki',
+                    icon: 'lib/assets/paw-symbol.svg',
+                  ),
+                  _buildMenuItem(
+                    context,
+                    widget: AdoptPetListPage(),
+                    name: 'Adopcja',
+                    icon: 'lib/assets/favourite-icon.svg',
+                  ),
+                  _buildMenuItem(
+                    context,
+                    widget: MyPetsPage(),
+                    name: 'Moje zwierzaki',
+                    icon: 'lib/assets/my-pets-icon.svg',
+                  ),
+                  _smallLineSpacer(),
+                  _buildMenuItem(
+                    context,
+                    widget: ReportPage(),
+                    name: 'Zgłoszenia',
+                    icon: 'lib/assets/report-icon.svg',
+                  ),
+                  _buildMenuItem(
+                    context,
+                    widget: AdoptPetListPage(),
+                    name: 'Zaginione zwierzaki',
+                    icon: 'lib/assets/missing-pets.svg',
+                  ),
+                  _smallLineSpacer(),
+                  _buildMenuItem(
+                    context,
+                    widget: VolunteerPage(),
+                    name: 'Wolontariat',
+                    icon: 'lib/assets/volunteer-icon.svg',
+                  ),
+                  _smallLineSpacer(),
+                  _buildMenuItem(
+                    context,
+                    widget: AdoptPetListPage(),
+                    name: 'Ustawienia',
+                    icon: 'lib/assets/settings-icon.svg',
+                  ),
+                  Container(),
+                  Visibility(
+                    visible: state is Unfetched,
+                    child: _bigLineSpacer(),
+                  ),
+                  Visibility(
+                    visible: state is Unfetched,
+                    child: _buildMenuItem(
+                      context,
+                      name: 'Wyloguj się',
+                      icon: 'lib/assets/logout-icon.svg',
+                      onTap: () =>
+                          context.read<UserBloc>().add(UserEvent.logOut()),
+                    ),
+                  ),
+                  Container()
+                ],
+              );
+            }),
           ),
         ),
       ),

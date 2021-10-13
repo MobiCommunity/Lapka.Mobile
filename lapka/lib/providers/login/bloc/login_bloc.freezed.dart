@@ -35,10 +35,6 @@ class _$LoginEventTearOff {
       accessToken,
     );
   }
-
-  _LogOut logOut() {
-    return const _LogOut();
-  }
 }
 
 /// @nodoc
@@ -51,7 +47,6 @@ mixin _$LoginEvent {
     required TResult Function(String name, String password) singIn,
     required TResult Function(String accessToken) singInGoogle,
     required TResult Function(String accessToken) singInFb,
-    required TResult Function() logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,7 +54,6 @@ mixin _$LoginEvent {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,7 +61,6 @@ mixin _$LoginEvent {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -76,7 +69,6 @@ mixin _$LoginEvent {
     required TResult Function(_SingIn value) singIn,
     required TResult Function(_SingInGoogle value) singInGoogle,
     required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_LogOut value) logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,7 +76,6 @@ mixin _$LoginEvent {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,7 +83,6 @@ mixin _$LoginEvent {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -200,7 +190,6 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     required TResult Function(String name, String password) singIn,
     required TResult Function(String accessToken) singInGoogle,
     required TResult Function(String accessToken) singInFb,
-    required TResult Function() logOut,
   }) {
     return singIn(name, password);
   }
@@ -211,7 +200,6 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
   }) {
     return singIn?.call(name, password);
   }
@@ -222,7 +210,6 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (singIn != null) {
@@ -237,7 +224,6 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     required TResult Function(_SingIn value) singIn,
     required TResult Function(_SingInGoogle value) singInGoogle,
     required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_LogOut value) logOut,
   }) {
     return singIn(this);
   }
@@ -248,7 +234,6 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
   }) {
     return singIn?.call(this);
   }
@@ -259,7 +244,6 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) {
     if (singIn != null) {
@@ -354,7 +338,6 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     required TResult Function(String name, String password) singIn,
     required TResult Function(String accessToken) singInGoogle,
     required TResult Function(String accessToken) singInFb,
-    required TResult Function() logOut,
   }) {
     return singInGoogle(accessToken);
   }
@@ -365,7 +348,6 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
   }) {
     return singInGoogle?.call(accessToken);
   }
@@ -376,7 +358,6 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (singInGoogle != null) {
@@ -391,7 +372,6 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     required TResult Function(_SingIn value) singIn,
     required TResult Function(_SingInGoogle value) singInGoogle,
     required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_LogOut value) logOut,
   }) {
     return singInGoogle(this);
   }
@@ -402,7 +382,6 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
   }) {
     return singInGoogle?.call(this);
   }
@@ -413,7 +392,6 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) {
     if (singInGoogle != null) {
@@ -506,7 +484,6 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     required TResult Function(String name, String password) singIn,
     required TResult Function(String accessToken) singInGoogle,
     required TResult Function(String accessToken) singInFb,
-    required TResult Function() logOut,
   }) {
     return singInFb(accessToken);
   }
@@ -517,7 +494,6 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
   }) {
     return singInFb?.call(accessToken);
   }
@@ -528,7 +504,6 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     TResult Function(String name, String password)? singIn,
     TResult Function(String accessToken)? singInGoogle,
     TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (singInFb != null) {
@@ -543,7 +518,6 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     required TResult Function(_SingIn value) singIn,
     required TResult Function(_SingInGoogle value) singInGoogle,
     required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_LogOut value) logOut,
   }) {
     return singInFb(this);
   }
@@ -554,7 +528,6 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
   }) {
     return singInFb?.call(this);
   }
@@ -565,7 +538,6 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
     TResult Function(_SingIn value)? singIn,
     TResult Function(_SingInGoogle value)? singInGoogle,
     TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) {
     if (singInFb != null) {
@@ -582,125 +554,6 @@ abstract class _SingInFb implements LoginEvent {
   @JsonKey(ignore: true)
   _$SingInFbCopyWith<_SingInFb> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$LogOutCopyWith<$Res> {
-  factory _$LogOutCopyWith(_LogOut value, $Res Function(_LogOut) then) =
-      __$LogOutCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$LogOutCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$LogOutCopyWith<$Res> {
-  __$LogOutCopyWithImpl(_LogOut _value, $Res Function(_LogOut) _then)
-      : super(_value, (v) => _then(v as _LogOut));
-
-  @override
-  _LogOut get _value => super._value as _LogOut;
-}
-
-/// @nodoc
-
-class _$_LogOut with DiagnosticableTreeMixin implements _LogOut {
-  const _$_LogOut();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LoginEvent.logOut()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'LoginEvent.logOut'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _LogOut);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String name, String password) singIn,
-    required TResult Function(String accessToken) singInGoogle,
-    required TResult Function(String accessToken) singInFb,
-    required TResult Function() logOut,
-  }) {
-    return logOut();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
-  }) {
-    return logOut?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
-    TResult Function()? logOut,
-    required TResult orElse(),
-  }) {
-    if (logOut != null) {
-      return logOut();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SingIn value) singIn,
-    required TResult Function(_SingInGoogle value) singInGoogle,
-    required TResult Function(_SingInFb value) singInFb,
-    required TResult Function(_LogOut value) logOut,
-  }) {
-    return logOut(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SingIn value)? singIn,
-    TResult Function(_SingInGoogle value)? singInGoogle,
-    TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
-  }) {
-    return logOut?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SingIn value)? singIn,
-    TResult Function(_SingInGoogle value)? singInGoogle,
-    TResult Function(_SingInFb value)? singInFb,
-    TResult Function(_LogOut value)? logOut,
-    required TResult orElse(),
-  }) {
-    if (logOut != null) {
-      return logOut(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LogOut implements LoginEvent {
-  const factory _LogOut() = _$_LogOut;
 }
 
 /// @nodoc

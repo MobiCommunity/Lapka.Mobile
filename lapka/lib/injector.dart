@@ -24,7 +24,7 @@ abstract class RegisterModule {
   String get _identityDioBaseUrl =>
       getIt.get<String>(instanceName: _baseUrlName);
 
-  final AuthInterceptor  _authInterceptor = AuthInterceptor();
+   AuthInterceptor get _authInterceptor => getIt.get<AuthInterceptor>();
 
   final LogInterceptor _logInterceptor = LogInterceptor(
     requestBody: true,
@@ -44,7 +44,7 @@ abstract class RegisterModule {
   @lazySingleton
   Dio identityDio() {
     final _dio = Dio(BaseOptions(baseUrl: _identityDioBaseUrl));
-    AuthInterceptor _authInterceptor = getIt.get<AuthInterceptor>();
+    // AuthInterceptor _authInterceptor = getIt.get<AuthInterceptor>();
     _dio.interceptors.addAll([
       _authInterceptor,
       _logInterceptor,

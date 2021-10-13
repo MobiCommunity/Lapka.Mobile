@@ -20,6 +20,7 @@ import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/providers/my_pets/bloc/edit_my_pets_bloc.dart';
 import 'package:lapka/providers/my_pets/bloc/my_pets_bloc.dart';
 import 'package:lapka/providers/shelter/bloc/shelter_list_bloc.dart';
+import 'package:lapka/providers/user/user_bloc.dart';
 import 'package:lapka/repository/adopt_pet_repository.dart';
 import 'package:lapka/repository/identity_api/authentication/authentication_data_source.dart';
 import 'package:lapka/repository/location_repository.dart';
@@ -78,6 +79,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) {
             return getIt.get<LoginBloc>();
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            return getIt.get<UserBloc>();
           },
         ),
       ],

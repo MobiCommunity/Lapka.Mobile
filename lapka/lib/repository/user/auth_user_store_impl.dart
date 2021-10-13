@@ -1,6 +1,8 @@
 import 'package:glutton/glutton.dart';
 import 'package:injectable/injectable.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:lapka/models/token.dart';
+import 'package:lapka/models/user.dart';
 import 'package:lapka/repository/user/auth_user_store.dart';
 import 'package:lapka/utils/extensions.dart';
 
@@ -11,6 +13,8 @@ const usernameKey = 'username';
 
 @LazySingleton(as: AuthUserStore)
 class AuthUserStoreImpl implements AuthUserStore {
+  User? currentUser;
+
   Future<void> _save(
     String token,
     String? refreshToken,
@@ -29,7 +33,7 @@ class AuthUserStoreImpl implements AuthUserStore {
   }
 
   @override
-  Future<void> save(
+  Future<void> saveToken(
     Token token,
   ) {
     return _save(
@@ -90,6 +94,26 @@ class AuthUserStoreImpl implements AuthUserStore {
 
   @override
   Future<void> deleteAllUserData() async {
+    currentUser = null;
     await Glutton.flush();
   }
+
+  @override
+  bool isUserStored() => currentUser != null;
+
+  @override
+  Future<String?> getUserId() async {
+    if (await isTokenStored()) {
+      return JwtDecoder.decode((await getToken())!)['unique_name'];
+    }
+    return null;
+  }
+
+  @override
+  void setUser(User user) {
+    currentUser = user;
+  }
+
+  @override
+  User? getUser() => currentUser;
 }

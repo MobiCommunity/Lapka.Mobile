@@ -138,7 +138,7 @@ class NetworkExceptions with _$NetworkExceptions {
         return NetworkExceptions.unexpectedError(exception: error);
       }
     } else {
-      if (error.toString().contains("is not a subtype of")) {
+      if (error.toString().contains('is not a subtype of')) {
         return NetworkExceptions.unableToProcess();
       } else {
         return NetworkExceptions.unexpectedError(exception: error);
@@ -147,60 +147,58 @@ class NetworkExceptions with _$NetworkExceptions {
   }
 
   static String getErrorMessage(NetworkExceptions? networkExceptions) {
-    String errorMessage = "";
-    BaseError _baseAppError;
-
+    String errorMessage = '';
     networkExceptions?.when(
       notImplemented: (exception) {
-        errorMessage = "Not Implemented";
+        errorMessage = 'Not Implemented';
       },
       requestCancelled: (exception) {
-        errorMessage = "Request Cancelled";
+        errorMessage = 'Request Cancelled';
       },
       internalServerError: (exception) {
-        errorMessage = "Internal Server Error";
+        errorMessage = 'Internal Server Error';
       },
       notFound: (exception) {
-        errorMessage = "Something went wrong";
+        errorMessage = 'Something went wrong';
       },
       serviceUnavailable: (exception) {
-        errorMessage = "Service unavailable";
+        errorMessage = 'Service unavailable';
       },
       methodNotAllowed: (exception) {
-        errorMessage = "Method Allowed";
+        errorMessage = 'Method Allowed';
       },
       badRequest: (exception) {
-        errorMessage = "Bad request";
+        errorMessage = 'Bad request';
       },
       unauthorisedRequest: (exception) {
-        errorMessage = BaseError.fromJson(exception?.response?.data).reason ?? "Unauthorised request";
+        errorMessage = BaseError.fromJson(exception?.response?.data).reason ?? 'Unauthorised request';
       },
       unexpectedError: (Exception? exp) {
-        errorMessage = "Unexpected error occurred";
+        errorMessage = 'Unexpected error occurred';
       },
       requestTimeout: (exception) {
-        errorMessage = "Connection request timeout";
+        errorMessage = 'Connection request timeout';
       },
       noInternetConnection: (exception) {
-        errorMessage = "No internet connection";
+        errorMessage = 'No internet connection';
       },
       conflict: (exception) {
-        errorMessage = "Error due to a conflict";
+        errorMessage = 'Error due to a conflict';
       },
       sendTimeout: (exception) {
-        errorMessage = "Send timeout in connection with API server";
+        errorMessage = 'Send timeout in connection with API server';
       },
       unableToProcess: (exception) {
-        errorMessage = "Unable to process the data";
+        errorMessage = 'Unable to process the data';
       },
       defaultError: (exception) {
-        errorMessage = "Something went wrong";
+        errorMessage = 'Something went wrong';
       },
       formatException: (exception) {
-        errorMessage = "Unexpected error occurred";
+        errorMessage = 'Unexpected error occurred';
       },
       notAcceptable: (exception) {
-        errorMessage = "Not acceptable";
+        errorMessage = 'Not acceptable';
       },
     );
     return errorMessage;

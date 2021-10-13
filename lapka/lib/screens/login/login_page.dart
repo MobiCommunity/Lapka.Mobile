@@ -63,8 +63,11 @@ class _LoginPageState extends State<LoginPage> {
     final result = await facebookLogin.logIn();
     switch (result.status) {
       case FacebookLoginStatus.success:
-        print(result.accessToken);
-        facebookLogin.getUserProfile();
+        if (result.accessToken != null) {
+          context
+              .read<LoginBloc>()
+              .add(LoginEvent.singInFb(result.accessToken!.token));
+        }
         break;
       case FacebookLoginStatus.cancel:
         print('canceled');
@@ -231,7 +234,6 @@ class _LoginPageState extends State<LoginPage> {
           getIt.get<GlobalLoaderCubit>().setIdle();
           _errorSnackBar(
             context,
-
             NetworkExceptions.getErrorMessage(exp),
           );
         },
