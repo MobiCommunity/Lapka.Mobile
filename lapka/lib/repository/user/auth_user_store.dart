@@ -20,7 +20,7 @@ abstract class AuthUserStore {
 
   Future<String?> getUserId();
 
-  void setUser(User user);
+  Future<void> setUser(User user);
 
-  User? getUser();
+  Future<User?> getUser();
 }

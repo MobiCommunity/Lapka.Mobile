@@ -24,9 +24,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   UserBloc(this._repository, this._authUserStore, this._authBroadcaster,
       this._userRepository)
-      : super(_authUserStore.isUserStored()
-            ? UserState.fetched((_authUserStore.getUser())!)
-            : UserState.unfetched()) {
+      : super(UserState.unfetched()) {
     _init();
     _authBroadcaster.state.listen((event) {
       event.when(
@@ -40,8 +38,11 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     });
   }
 
-  void _init(){
-    checkToken();
+  Future<void> _init() async {
+    await checkToken();
+    emit(_authUserStore.isUserStored()
+        ? UserState.fetched((await _authUserStore.getUser())!)
+        : UserState.unfetched());
   }
 
   @override
@@ -56,7 +57,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Stream<UserState> _fetchUserData(String userId) async* {
     final response = await _userRepository.getUserData(userId);
     yield* response.when(success: (user) async* {
-      yield Fetched(user!);
+      _authUserStore.setUser(user!);
+      yield Fetched(user);
     }, failure: (exp) async* {
       yield Unfetched();
     });

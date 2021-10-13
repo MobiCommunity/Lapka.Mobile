@@ -10,6 +10,7 @@ const tokenKey = 'token';
 const refreshTokenKey = 'refresh_token';
 const expiresKey = 'expires';
 const usernameKey = 'username';
+const userKey = 'userKey';
 
 @LazySingleton(as: AuthUserStore)
 class AuthUserStoreImpl implements AuthUserStore {
@@ -110,10 +111,20 @@ class AuthUserStoreImpl implements AuthUserStore {
   }
 
   @override
-  void setUser(User user) {
+  Future<void> setUser(User user) async {
     currentUser = user;
+    await Glutton.eat(userKey, user.toJson());
   }
 
   @override
-  User? getUser() => currentUser;
+  Future<User?> getUser() async {
+    try {
+      return currentUser ??
+          User.fromJson(
+            await Glutton.vomit(userKey),
+          );
+    } catch (exp) {
+      return null;
+    }
+  }
 }
