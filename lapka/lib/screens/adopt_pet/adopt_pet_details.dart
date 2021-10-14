@@ -2,25 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lapka/components/app_bar/custom_app_bar.dart';
-
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/basic/image_button.dart';
-import 'package:lapka/components/screens/adopt_pet/basic_pet_info_row.dart';
+import 'package:lapka/components/basic/image_carusel.dart';
 import 'package:lapka/components/basic/loading_indicator.dart';
 import 'package:lapka/components/basic/rounded_image.dart';
 import 'package:lapka/components/dialogs/basic_dialog.dart';
-import 'package:lapka/components/basic/image_carusel.dart';
+import 'package:lapka/components/dialogs/login_dialog.dart';
+import 'package:lapka/components/screens/adopt_pet/basic_pet_info_row.dart';
+import 'package:lapka/injector.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/adopt_pet/bloc/adopt_pet_details_bloc.dart';
-import 'package:lapka/components/dialogs/login_dialog.dart';
-import 'package:lapka/repository/adopt_pet_repository.dart';
+import 'package:lapka/providers/adopt_pet/bloc/like_pet_bloc.dart';
 import 'package:lapka/screens/login/login_page.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/settings/request_settings.dart';
+import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 
 class AdoptPetDetails extends StatelessWidget {
   String id;
+
   AdoptPetDetails({Key? key, required this.id}) : super(key: key);
 
   _share() {
@@ -230,16 +232,22 @@ class AdoptPetDetails extends StatelessWidget {
                   height: 1,
                 ),
                 Expanded(
-                  child: ImageButton(
-                      color: BasicColors.lightGreen,
-                      onPressed: () {
-                        _adopt(context);
-                      },
-                      trailling: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: SvgPicture.asset('lib/assets/paw-symbol.svg',
-                              color: BasicColors.white)),
-                      text: 'ADOPTUJ'),
+                  child: StreamBuilder<AuthState>(
+                    stream: getIt.get<AuthBroadcaster>().state,
+                    builder: (context, data) {
+                      return ImageButton(
+                          color: BasicColors.lightGreen,
+                          onPressed: () {
+                            data.data is Authenticated ? null : _adopt(context);
+                          },
+                          trailling: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              child: SvgPicture.asset(
+                                  'lib/assets/paw-symbol.svg',
+                                  color: BasicColors.white)),
+                          text: 'ADOPTUJ');
+                    },
+                  ),
                 ),
               ],
             )
@@ -251,8 +259,15 @@ class AdoptPetDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AdoptPetDetailsBloc(AdoptPetRepositoryApi()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AdoptPetDetailsBloc>(
+          create: (BuildContext context) => getIt.get<AdoptPetDetailsBloc>(),
+        ),
+        BlocProvider<LikePetBloc>(
+          create: (BuildContext context) => getIt.get<LikePetBloc>(),
+        ),
+      ],
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: CustomAppBar(

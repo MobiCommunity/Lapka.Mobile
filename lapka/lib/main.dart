@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AdoptPetListBloc(AdoptPetRepositoryApi()),
+          create: (context) => getIt.get<AdoptPetListBloc>(),
         ),
         BlocProvider(
           create: (context) => ShelterListBloc(ShelterRepositoryApi()),

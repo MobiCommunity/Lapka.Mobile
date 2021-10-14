@@ -22,6 +22,18 @@ class _$AdoptPetDetailsEventTearOff {
       id,
     );
   }
+
+  _Like like(String id) {
+    return _Like(
+      id,
+    );
+  }
+
+  _Dislike dislike(String id) {
+    return _Dislike(
+      id,
+    );
+  }
 }
 
 /// @nodoc
@@ -34,32 +46,44 @@ mixin _$AdoptPetDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getDetails,
+    required TResult Function(String id) like,
+    required TResult Function(String id) dislike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String id)? getDetails,
+    TResult Function(String id)? like,
+    TResult Function(String id)? dislike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getDetails,
+    TResult Function(String id)? like,
+    TResult Function(String id)? dislike,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetDetails value) getDetails,
+    required TResult Function(_Like value) like,
+    required TResult Function(_Dislike value) dislike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetDetails value)? getDetails,
+    TResult Function(_Like value)? like,
+    TResult Function(_Dislike value)? dislike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetDetails value)? getDetails,
+    TResult Function(_Like value)? like,
+    TResult Function(_Dislike value)? dislike,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,6 +191,8 @@ class _$_GetDetails implements _GetDetails {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getDetails,
+    required TResult Function(String id) like,
+    required TResult Function(String id) dislike,
   }) {
     return getDetails(id);
   }
@@ -175,6 +201,8 @@ class _$_GetDetails implements _GetDetails {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String id)? getDetails,
+    TResult Function(String id)? like,
+    TResult Function(String id)? dislike,
   }) {
     return getDetails?.call(id);
   }
@@ -183,6 +211,8 @@ class _$_GetDetails implements _GetDetails {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getDetails,
+    TResult Function(String id)? like,
+    TResult Function(String id)? dislike,
     required TResult orElse(),
   }) {
     if (getDetails != null) {
@@ -195,6 +225,8 @@ class _$_GetDetails implements _GetDetails {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetDetails value) getDetails,
+    required TResult Function(_Like value) like,
+    required TResult Function(_Dislike value) dislike,
   }) {
     return getDetails(this);
   }
@@ -203,6 +235,8 @@ class _$_GetDetails implements _GetDetails {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetDetails value)? getDetails,
+    TResult Function(_Like value)? like,
+    TResult Function(_Dislike value)? dislike,
   }) {
     return getDetails?.call(this);
   }
@@ -211,6 +245,8 @@ class _$_GetDetails implements _GetDetails {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetDetails value)? getDetails,
+    TResult Function(_Like value)? like,
+    TResult Function(_Dislike value)? dislike,
     required TResult orElse(),
   }) {
     if (getDetails != null) {
@@ -228,6 +264,288 @@ abstract class _GetDetails implements AdoptPetDetailsEvent {
   @override
   @JsonKey(ignore: true)
   _$GetDetailsCopyWith<_GetDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$LikeCopyWith<$Res>
+    implements $AdoptPetDetailsEventCopyWith<$Res> {
+  factory _$LikeCopyWith(_Like value, $Res Function(_Like) then) =
+      __$LikeCopyWithImpl<$Res>;
+  @override
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$LikeCopyWithImpl<$Res> extends _$AdoptPetDetailsEventCopyWithImpl<$Res>
+    implements _$LikeCopyWith<$Res> {
+  __$LikeCopyWithImpl(_Like _value, $Res Function(_Like) _then)
+      : super(_value, (v) => _then(v as _Like));
+
+  @override
+  _Like get _value => super._value as _Like;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_Like(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Like implements _Like {
+  const _$_Like(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'AdoptPetDetailsEvent.like(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Like &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$LikeCopyWith<_Like> get copyWith =>
+      __$LikeCopyWithImpl<_Like>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getDetails,
+    required TResult Function(String id) like,
+    required TResult Function(String id) dislike,
+  }) {
+    return like(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String id)? getDetails,
+    TResult Function(String id)? like,
+    TResult Function(String id)? dislike,
+  }) {
+    return like?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getDetails,
+    TResult Function(String id)? like,
+    TResult Function(String id)? dislike,
+    required TResult orElse(),
+  }) {
+    if (like != null) {
+      return like(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetDetails value) getDetails,
+    required TResult Function(_Like value) like,
+    required TResult Function(_Dislike value) dislike,
+  }) {
+    return like(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetDetails value)? getDetails,
+    TResult Function(_Like value)? like,
+    TResult Function(_Dislike value)? dislike,
+  }) {
+    return like?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetDetails value)? getDetails,
+    TResult Function(_Like value)? like,
+    TResult Function(_Dislike value)? dislike,
+    required TResult orElse(),
+  }) {
+    if (like != null) {
+      return like(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Like implements AdoptPetDetailsEvent {
+  const factory _Like(String id) = _$_Like;
+
+  @override
+  String get id => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$LikeCopyWith<_Like> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$DislikeCopyWith<$Res>
+    implements $AdoptPetDetailsEventCopyWith<$Res> {
+  factory _$DislikeCopyWith(_Dislike value, $Res Function(_Dislike) then) =
+      __$DislikeCopyWithImpl<$Res>;
+  @override
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$DislikeCopyWithImpl<$Res>
+    extends _$AdoptPetDetailsEventCopyWithImpl<$Res>
+    implements _$DislikeCopyWith<$Res> {
+  __$DislikeCopyWithImpl(_Dislike _value, $Res Function(_Dislike) _then)
+      : super(_value, (v) => _then(v as _Dislike));
+
+  @override
+  _Dislike get _value => super._value as _Dislike;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_Dislike(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Dislike implements _Dislike {
+  const _$_Dislike(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'AdoptPetDetailsEvent.dislike(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Dislike &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DislikeCopyWith<_Dislike> get copyWith =>
+      __$DislikeCopyWithImpl<_Dislike>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getDetails,
+    required TResult Function(String id) like,
+    required TResult Function(String id) dislike,
+  }) {
+    return dislike(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String id)? getDetails,
+    TResult Function(String id)? like,
+    TResult Function(String id)? dislike,
+  }) {
+    return dislike?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getDetails,
+    TResult Function(String id)? like,
+    TResult Function(String id)? dislike,
+    required TResult orElse(),
+  }) {
+    if (dislike != null) {
+      return dislike(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetDetails value) getDetails,
+    required TResult Function(_Like value) like,
+    required TResult Function(_Dislike value) dislike,
+  }) {
+    return dislike(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetDetails value)? getDetails,
+    TResult Function(_Like value)? like,
+    TResult Function(_Dislike value)? dislike,
+  }) {
+    return dislike?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetDetails value)? getDetails,
+    TResult Function(_Like value)? like,
+    TResult Function(_Dislike value)? dislike,
+    required TResult orElse(),
+  }) {
+    if (dislike != null) {
+      return dislike(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Dislike implements AdoptPetDetailsEvent {
+  const factory _Dislike(String id) = _$_Dislike;
+
+  @override
+  String get id => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$DislikeCopyWith<_Dislike> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
