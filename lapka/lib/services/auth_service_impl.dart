@@ -27,6 +27,8 @@ class AuthServiceImpl extends AuthService {
   void _init() async {
     await checkToken();
     if (await _userService.isTokenValid()) {
+      _authBroadcaster.updateState(AuthState.authenticated());
+
       await _fetchUserDataUseCase(
         (await _userService.getUserId())!,
       );
@@ -35,10 +37,6 @@ class AuthServiceImpl extends AuthService {
 
   @override
   Future<void> checkToken() async {
-    if (await _userService.isTokenValid()) {
-      _authBroadcaster.updateState(AuthState.authenticated());
-    }
-
     if (await _shouldRefreshToken()) {
       final Result<Token, NetworkExceptions> response =
           await _refreshTokenUseCase(

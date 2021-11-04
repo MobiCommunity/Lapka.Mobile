@@ -1,21 +1,21 @@
 import 'dart:convert';
 import 'package:http/http.dart';
 
-enum Type {post,get}
+enum Type { post, get }
 
 class Requests {
-
-  static sendRequest(String urlArgument, dynamic parametersArgument, Type type)async {
+  static sendRequest(
+      String urlArgument, dynamic parametersArgument, Type type) async {
     Map<String, String> header;
     Uri url = Uri.parse(urlArgument);
 
     header = {"Content-type": "application/json"};
-    try{
+    try {
       Response? response;
-      if(type == Type.post)
-        response = await post(url, headers: header, body: jsonEncode(parametersArgument));
-      else if(type == Type.get)
-        response = await get(url, headers: header);
+      if (type == Type.post)
+        response = await post(url,
+            headers: header, body: jsonEncode(parametersArgument));
+      else if (type == Type.get) response = await get(url, headers: header);
 
       print(urlArgument);
       print(header);
@@ -24,7 +24,7 @@ class Requests {
       print(response.body);
 
       return response;
-    }catch(e){
+    } catch (e) {
       print(e);
     }
   }

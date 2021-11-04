@@ -14,8 +14,8 @@ abstract class AdoptPetRepository {
 class AdoptPetRepositoryApi with AdoptPetRepository {
   @override
   Future<List<Pet>> getAllPets() async {
-    Response res =
-        await Requests.sendRequest(baseUrl + 'api/pets/shelter/pet', null, Type.get);
+    Response res = await Requests.sendRequest(
+        baseUrl + 'api/pets/shelter/pet', null, Type.get);
 
     try {
       return List<Pet>.from(
@@ -42,8 +42,8 @@ class AdoptPetRepositoryApi with AdoptPetRepository {
   @override
   Future<Pet> getPetDetails(String id) async {
     try {
-      Response res =
-          await Requests.sendRequest(baseUrl + 'api/pets/shelter/pet/$id', null, Type.get);
+      Response res = await Requests.sendRequest(
+          baseUrl + 'api/pets/shelter/pet/$id', null, Type.get);
 
       return Pet.fromJson(json.decode(res.body));
     } catch (e) {

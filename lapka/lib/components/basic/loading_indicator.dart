@@ -13,7 +13,6 @@ class _LoadingIndicatorState extends State<LoadingIndicator>
   void dispose() {
     animationController!.dispose();
     super.dispose();
-
   }
 
   @override
@@ -28,8 +27,8 @@ class _LoadingIndicatorState extends State<LoadingIndicator>
   Widget build(BuildContext context) {
     return Center(
       child: CircularProgressIndicator(
-        valueColor: animationController!
-            .drive(ColorTween(begin: BasicColors.lightGreen, end: BasicColors.darkGreen)),
+        valueColor: animationController!.drive(ColorTween(
+            begin: BasicColors.lightGreen, end: BasicColors.darkGreen)),
       ),
     );
   }

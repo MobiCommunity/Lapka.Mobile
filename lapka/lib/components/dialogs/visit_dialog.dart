@@ -22,7 +22,7 @@ class _VisitDialogState extends State<VisitDialog> {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController weighController = TextEditingController();
   bool status = true;
-  DateTime? birthDate; 
+  DateTime? birthDate;
   List<String> treatments = [];
 
   _spacer() {

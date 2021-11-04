@@ -40,66 +40,66 @@ class VolunteerDetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(BuildContext context, Shelter shelter){
+  Widget _buildBody(BuildContext context, Shelter shelter) {
     return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 100,
+          ),
+          Container(
+            height: 33,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(33),
+                    topLeft: Radius.circular(33)),
+                color: BasicColors.lightGrey),
+          ),
+          Container(
+            color: BasicColors.lightGrey,
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
+                ShelterComp(
+                    shelterName: shelter.name!,
+                    logoWidget: Container(
+                        width: 60,
+                        height: 65,
+                        decoration: BoxDecoration(
+                          color: BasicColors.grey,
+                        )),
+                    upperText: '(' +
+                        // LocationHelper.getDistance(
+                        //         context.read<LocationProvider>().position,
+                        //         shelter.address!.geoLocation!)
+                        //     .toStringAsFixed(1) +
+                        ' km) ${shelter.address!.city}',
+                    lowerText: 'ul. ${shelter.address!.street}'),
                 SizedBox(
-                  height: 100,
+                  height: 20,
                 ),
-                Container(
-                  height: 33,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(33),
-                          topLeft: Radius.circular(33)),
-                      color: BasicColors.lightGrey),
+                _smallLineSpacer(),
+                SizedBox(
+                  height: 20,
                 ),
-                Container(
-                  color: BasicColors.lightGrey,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      ShelterComp(
-                          shelterName: shelter.name!,
-                          logoWidget: Container(
-                              width: 60,
-                              height: 65,
-                              decoration: BoxDecoration(
-                                color: BasicColors.grey,
-                              )),
-                          upperText: '(' +
-                              // LocationHelper.getDistance(
-                              //         context.read<LocationProvider>().position,
-                              //         shelter.address!.geoLocation!)
-                              //     .toStringAsFixed(1) +
-                              ' km) ${shelter.address!.city}',
-                          lowerText: 'ul. ${shelter.address!.street}'),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      _smallLineSpacer(),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      SupportSchelterCard(),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      SupportSchelterCard(),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      SupportSchelterCard(),
-                      SizedBox(
-                        height: 16,
-                      )
-                    ],
-                  ),
+                SupportSchelterCard(),
+                SizedBox(
+                  height: 16,
                 ),
+                SupportSchelterCard(),
+                SizedBox(
+                  height: 16,
+                ),
+                SupportSchelterCard(),
+                SizedBox(
+                  height: 16,
+                )
               ],
             ),
-          );
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -114,15 +114,14 @@ class VolunteerDetailsPage extends StatelessWidget {
             showBack: true,
           ),
           body: BlocBuilder<ShelterDetailsBloc, ShelterDetailsState>(
-            builder: (context, state){
+            builder: (context, state) {
               return state.when(
-                initial: ()=> _initial(context),
-                loading: _loading,
-                loaded: (shelter) => _buildBody(context ,shelter),
-                error: (message)=> _error(message)
-                );
-            },)
-          ),
+                  initial: () => _initial(context),
+                  loading: _loading,
+                  loaded: (shelter) => _buildBody(context, shelter),
+                  error: (message) => _error(message));
+            },
+          )),
     );
   }
 }

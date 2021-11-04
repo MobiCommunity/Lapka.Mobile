@@ -6,7 +6,9 @@ import 'package:lapka/screens/report/homeless_report.dart';
 import 'package:lapka/settings/colors.dart';
 
 class ConfirmPosDialog extends StatelessWidget {
-  const ConfirmPosDialog({Key? key, required this.onAccept, required this.onCancel}) : super(key: key);
+  const ConfirmPosDialog(
+      {Key? key, required this.onAccept, required this.onCancel})
+      : super(key: key);
   final Function() onCancel;
   final Function() onAccept;
   @override
@@ -22,13 +24,16 @@ class ConfirmPosDialog extends StatelessWidget {
                   color: BasicColors.white,
                   borderRadius: BorderRadius.all(Radius.circular(12.0))),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24.0,),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 24.0,
+                  ),
+                  child: Column(mainAxisSize: MainAxisSize.min, children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: BasicText.heading2('Czy chcesz zatwierdzić tę lokacje?',center: true,),
+                      child: BasicText.heading2(
+                        'Czy chcesz zatwierdzić tę lokacje?',
+                        center: true,
+                      ),
                     ),
                     SizedBox(height: 16),
                     Padding(
@@ -36,39 +41,41 @@ class ConfirmPosDialog extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(
-                              child: Container(
-                                child: BasicButton(
-                                    color: BasicColors.white,
-                                    textColor: BasicColors.darkGrey.withOpacity(0.8),
-                                    text: 'Usuń',
-                                    onPressed: () {onCancel();}),
-                              ),
+                            child: Container(
+                              child: BasicButton(
+                                  color: BasicColors.white,
+                                  textColor:
+                                      BasicColors.darkGrey.withOpacity(0.8),
+                                  text: 'Usuń',
+                                  onPressed: () {
+                                    onCancel();
+                                  }),
                             ),
-                            SizedBox(
-                              width: 8,
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: BasicButton(
+                                  text: 'Zatwierdź',
+                                  onPressed: () {
+                                    onAccept();
+                                  }),
                             ),
-                            Expanded(
-                              child: Container(
-                                child: BasicButton(
-                                    text: 'Zatwierdź',
-                                    onPressed: () {onAccept();}
-                                        ),
-                              ),
-                            ),
+                          ),
                         ],
                       ),
-                    ),     
-                  ]
-                )
-              ),
+                    ),
+                  ])),
             ),
           ),
           Container(
             height: 44,
             alignment: Alignment.topRight,
             child: CancelButton(
-                onPressed: () => Navigator.of(context, rootNavigator: false).pop()
-            ),
+                onPressed: () =>
+                    Navigator.of(context, rootNavigator: false).pop()),
           )
         ],
       ),

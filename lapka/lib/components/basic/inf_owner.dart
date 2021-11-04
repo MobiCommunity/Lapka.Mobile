@@ -7,8 +7,7 @@ import 'package:lapka/settings/colors.dart';
 import 'package:lapka/components/basic/custom_checkbox.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-class InfOwner extends StatefulWidget{
+class InfOwner extends StatefulWidget {
   final Widget petImg;
   final int phoneNumber;
 
@@ -20,7 +19,7 @@ class InfOwner extends StatefulWidget{
 
 class _InfOwnerState extends State<InfOwner> {
   bool inHome = false;
-  changeState(bool state){
+  changeState(bool state) {
     setState(() {
       inHome = state;
     });
@@ -37,10 +36,10 @@ class _InfOwnerState extends State<InfOwner> {
             child: Container(
               decoration: BoxDecoration(
                   color: BasicColors.white,
-                  borderRadius: BorderRadius.circular(12)
-              ),
+                  borderRadius: BorderRadius.circular(12)),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -57,21 +56,45 @@ class _InfOwnerState extends State<InfOwner> {
                     SizedBox(height: 16, width: 0),
                     Row(
                       children: [
-                        CustomCheckbox(isChecked: inHome, onPressCallback: (){changeState(true);},),
-                        SizedBox(width: 8, height: 0,),
+                        CustomCheckbox(
+                          isChecked: inHome,
+                          onPressCallback: () {
+                            changeState(true);
+                          },
+                        ),
+                        SizedBox(
+                          width: 8,
+                          height: 0,
+                        ),
                         BasicText.body14Light('Tak'),
-                        SizedBox(width: 83, height: 0,),
-                        CustomCheckbox(isChecked: !inHome, onPressCallback: (){changeState(false);},),
-                        SizedBox(width: 8, height: 0,),
+                        SizedBox(
+                          width: 83,
+                          height: 0,
+                        ),
+                        CustomCheckbox(
+                          isChecked: !inHome,
+                          onPressCallback: () {
+                            changeState(false);
+                          },
+                        ),
+                        SizedBox(
+                          width: 8,
+                          height: 0,
+                        ),
                         BasicText.body14Light('Nie'),
                       ],
                     ),
                     SizedBox(height: 22, width: 0),
-                    Container(height: 1, width: double.infinity, color: BasicColors.grey,),
+                    Container(
+                      height: 1,
+                      width: double.infinity,
+                      color: BasicColors.grey,
+                    ),
                     SizedBox(height: 22, width: 0),
                     BasicText.body14Bold('Kontakt do właściciela'),
                     SizedBox(height: 4, width: 0),
-                    BasicText.body14Light('Ostatnia prosta! Dzięki Tobie Monia wkrótce wróci do domu. Skontaktuj się z właścicielem zwierzaka telefonicznie lub za pośrednictwem naszej aplikacji.'),
+                    BasicText.body14Light(
+                        'Ostatnia prosta! Dzięki Tobie Monia wkrótce wróci do domu. Skontaktuj się z właścicielem zwierzaka telefonicznie lub za pośrednictwem naszej aplikacji.'),
                     SizedBox(height: 12, width: 0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,25 +104,38 @@ class _InfOwnerState extends State<InfOwner> {
                             children: [
                               SvgPicture.asset('lib/assets/phone-icon.svg'),
                               SizedBox(height: 0, width: 8),
-                              BasicText.body14Light((widget.phoneNumber.toString()).replaceAllMapped(RegExp(r".{3}"), (match) => "${match.group(0)} ")),
-                              BasicText.body14Light((widget.phoneNumber.toString()).replaceFirstMapped(RegExp(r".{2}"), (match) => "${match.group(0)} ").replaceAllMapped(RegExp(r".{4}"), (match) => "${match.group(0)} ")),
+                              BasicText.body14Light(
+                                  (widget.phoneNumber.toString())
+                                      .replaceAllMapped(RegExp(r".{3}"),
+                                          (match) => "${match.group(0)} ")),
+                              BasicText.body14Light(
+                                  (widget.phoneNumber.toString())
+                                      .replaceFirstMapped(RegExp(r".{2}"),
+                                          (match) => "${match.group(0)} ")
+                                      .replaceAllMapped(RegExp(r".{4}"),
+                                          (match) => "${match.group(0)} ")),
                             ],
                           ),
                         ),
-                        MsgOwnerButton(onPressed: () async {
-                          // Android
-                          String uri = 'sms:${widget.phoneNumber.toString()}';
-                          if (await canLaunch(uri)) {
-                            await launch(uri);
-                          } else {
-                            // iOS
-
+                        MsgOwnerButton(
+                          onPressed: () async {
+                            // Android
+                            String uri = 'sms:${widget.phoneNumber.toString()}';
                             if (await canLaunch(uri)) {
                               await launch(uri);
                             } else {
-                              throw 'Could not launch $uri';
+                              // iOS
+
+                              if (await canLaunch(uri)) {
+                                await launch(uri);
+                              } else {
+                                throw 'Could not launch $uri';
+                              }
                             }
-                          };}, text: 'NAPISZ WIADOMOŚĆ',),
+                            ;
+                          },
+                          text: 'NAPISZ WIADOMOŚĆ',
+                        ),
                       ],
                     )
                   ],
@@ -121,4 +157,3 @@ class _InfOwnerState extends State<InfOwner> {
     );
   }
 }
-

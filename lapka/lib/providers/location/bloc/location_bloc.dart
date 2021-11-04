@@ -24,9 +24,8 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       } catch (e) {
         yield LocationState.error('error');
       }
-    } 
-    else if (event is _GetPosition) {
+    } else if (event is _GetPosition) {
       yield LocationState.determined(_repository);
-    } 
+    }
   }
 }

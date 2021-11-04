@@ -34,9 +34,10 @@ class _ImageCaruselState extends State<ImageCarusel> {
               }),
         ),
         Container(
-          padding: EdgeInsets.only(top:235),
-          alignment: Alignment.topCenter,
-          child: ImageIndicator(current: _current, lenght: widget.images.length))
+            padding: EdgeInsets.only(top: 235),
+            alignment: Alignment.topCenter,
+            child:
+                ImageIndicator(current: _current, lenght: widget.images.length))
       ],
     );
   }
@@ -44,7 +45,8 @@ class _ImageCaruselState extends State<ImageCarusel> {
 
 class ImageIndicator extends StatefulWidget {
   int current, lenght;
-  ImageIndicator({ Key? key , required this.current, required this.lenght}) : super(key: key);
+  ImageIndicator({Key? key, required this.current, required this.lenght})
+      : super(key: key);
 
   @override
   _ImageIndicatorState createState() => _ImageIndicatorState();
@@ -57,33 +59,32 @@ class _ImageIndicatorState extends State<ImageIndicator> {
     _generateIndicators();
     super.initState();
   }
-  _generateIndicators(){
+
+  _generateIndicators() {
     indicators = [];
-    if(widget.lenght == 1) {indicators.add(Container());return;}
+    if (widget.lenght == 1) {
+      indicators.add(Container());
+      return;
+    }
     for (var i = 0; i < widget.lenght; i++) {
-      if(i == widget.current) indicators.add(
-        Container(
-          height: 4,
-          width: 20,
-          decoration: BoxDecoration(
-            color: BasicColors.white.withOpacity(0.8),
-            borderRadius: BorderRadius.all(Radius.circular(2))
-          )
-        )
-      );
-      else indicators.add(
-        Container(
-          height: 4,
-          width: 10,
-          decoration: BoxDecoration(
-            color: BasicColors.white.withOpacity(0.4),
-            borderRadius: BorderRadius.all(Radius.circular(2))
-          )
-        )
-      );
-      if(i != widget.lenght-1)indicators.add(
-        SizedBox(width: 8,)
-      );
+      if (i == widget.current)
+        indicators.add(Container(
+            height: 4,
+            width: 20,
+            decoration: BoxDecoration(
+                color: BasicColors.white.withOpacity(0.8),
+                borderRadius: BorderRadius.all(Radius.circular(2)))));
+      else
+        indicators.add(Container(
+            height: 4,
+            width: 10,
+            decoration: BoxDecoration(
+                color: BasicColors.white.withOpacity(0.4),
+                borderRadius: BorderRadius.all(Radius.circular(2)))));
+      if (i != widget.lenght - 1)
+        indicators.add(SizedBox(
+          width: 8,
+        ));
     }
   }
 

@@ -4,33 +4,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/domain/auth/use_case/logout_use_case.dart';
-import 'package:lapka/domain/user/use_case/fetch_user_data_use_case.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/models/user.dart';
-import 'package:lapka/providers/login/bloc/login_bloc.dart';
 import 'package:lapka/providers/menu/bloc/menu_bloc.dart';
-import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
 import 'package:lapka/screens/login/login_page.dart';
 import 'package:lapka/screens/my_pets/my_pets_page.dart';
 import 'package:lapka/screens/report/report_page.dart';
 import 'package:lapka/screens/volunteer/volunteer_page.dart';
-import 'package:lapka/services/user_service.dart';
 import 'package:lapka/settings/colors.dart';
-import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
 import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
-import 'package:provider/provider.dart';
 
 class Menu extends StatelessWidget {
   final Animation<Offset> slideAnimation;
   final Animation<double> menuAnimation;
   final Function onMenuItemClicked;
 
-  final UserService _userService = getIt.get<UserService>();
-  final AuthBroadcaster _authBroadcaster = getIt.get<AuthBroadcaster>();
-  final FetchUserDataUseCase _fetchUserDataUseCase =
-      getIt.get<FetchUserDataUseCase>();
   final LogoutUseCase _logoutUseCase = getIt.get<LogoutUseCase>();
 
   Menu(
@@ -73,10 +63,6 @@ class Menu extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Future<void> fetchData() async {
-    _fetchUserDataUseCase((await _userService.getUserId())!);
   }
 
   @override

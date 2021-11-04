@@ -1,3 +1,3 @@
 abstract class AuthService {
- Future<void> checkToken(); 
+  Future<void> checkToken();
 }

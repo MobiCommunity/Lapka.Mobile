@@ -8,14 +8,14 @@ class Dashboard extends StatelessWidget {
   final Animation<double> scaleAnimation;
   final Widget child;
 
-  const Dashboard({
-    Key? key,
-    required this.isCollapsed,
-    required this.screenWidth,
-    required this.duration,
-    required this.scaleAnimation,
-    required this.child
-  }) : super(key: key);
+  const Dashboard(
+      {Key? key,
+      required this.isCollapsed,
+      required this.screenWidth,
+      required this.duration,
+      required this.scaleAnimation,
+      required this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +32,17 @@ class Dashboard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 25),
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                child: Container(color: BasicColors.white.withOpacity(0.2),)),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  child: Container(
+                    color: BasicColors.white.withOpacity(0.2),
+                  )),
             ),
             Padding(
-              padding: EdgeInsets.only(left: isCollapsed ? 0: 20),
+              padding: EdgeInsets.only(left: isCollapsed ? 0 : 20),
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(isCollapsed ? 0:30)),
-                child: child),
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(isCollapsed ? 0 : 30)),
+                  child: child),
             ),
           ],
         ),

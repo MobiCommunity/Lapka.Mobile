@@ -11,6 +11,6 @@ class RefreshTokenUseCase {
     this._authRepository,
   );
 
-  Future<Result<Token,NetworkExceptions>> call(String refreshToken) async =>
+  Future<Result<Token, NetworkExceptions>> call(String refreshToken) async =>
       _authRepository.refreshToken(refreshToken);
 }

@@ -18,15 +18,16 @@ import 'package:lapka/utils/location_helper.dart';
 import '../../components/basic/google_map.dart';
 
 class HomelessReportPage extends StatelessWidget {
-   HomelessReportPage({ Key? key }) : super(key: key);
-  
+  HomelessReportPage({Key? key}) : super(key: key);
+
   final TextEditingController localizationController = TextEditingController();
-  final TextEditingController tmpLocalizationController = TextEditingController();
+  final TextEditingController tmpLocalizationController =
+      TextEditingController();
   final TextEditingController infoController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
 
-  _listCallback(List<String>photos) {
+  _listCallback(List<String> photos) {
     print('callback : ${photos.length}');
   }
 
@@ -41,7 +42,10 @@ class HomelessReportPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Container(margin: EdgeInsets.only(top: 133), color: BasicColors.lightGrey,),
+          Container(
+            margin: EdgeInsets.only(top: 133),
+            color: BasicColors.lightGrey,
+          ),
           SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -65,34 +69,74 @@ class HomelessReportPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                          InkWell(
-                              onTap: () async{
-                                NavigatorHelper.push(context, MapScreen((LatLng position)async{
-                                  if(position != null){
-                                    print(position);
-                                    tmpLocalizationController.text = position.toString();
-                                    Placemark? place = await LocationHelper.getAddressFromLatLng(position);
-                                    localizationController.text = place.toString();
-                                  }
-                                }));
-                              },
-                              child: BasicFormField(
-                                enabled: false,
-                                controller: localizationController,placeholder: 'Podaj potencjalną lokalizację zwierząt',trailling: Icon(Icons.near_me, color: BasicColors.darkGreen.withOpacity(0.5),size: 30,),)
-                          ),
-                          SizedBox(height: 16,),
-                          BasicImagePicker(onListChange: _listCallback),
-                          SizedBox(height: 16,),
-                          BasicFormField(controller: infoController,placeholder: 'Dodaj info dla schroniska',maxLines: 5,),
-                          SizedBox(height: 32,),
-                          BasicText.body14('Kontakt', color: BasicColors.darkGrey,),
-                          SizedBox(height: 16,),
-                          BasicFormField(controller: nameController,placeholder: 'Imię'),
-                          SizedBox(height: 16,),
-                          BasicFormField(controller: phoneController,placeholder: 'Wpisz numer telefonu'),
-                          SizedBox(height: 16,),
-                          BasicButton(onPressed: (){}, text: "POWIADOM SCHRONISKO",color: BasicColors.lightGreen,),
-                          SizedBox(height: 16,)
+                        InkWell(
+                            onTap: () async {
+                              NavigatorHelper.push(context,
+                                  MapScreen((LatLng position) async {
+                                if (position != null) {
+                                  print(position);
+                                  tmpLocalizationController.text =
+                                      position.toString();
+                                  Placemark? place =
+                                      await LocationHelper.getAddressFromLatLng(
+                                          position);
+                                  localizationController.text =
+                                      place.toString();
+                                }
+                              }));
+                            },
+                            child: BasicFormField(
+                              enabled: false,
+                              controller: localizationController,
+                              placeholder:
+                                  'Podaj potencjalną lokalizację zwierząt',
+                              trailling: Icon(
+                                Icons.near_me,
+                                color: BasicColors.darkGreen.withOpacity(0.5),
+                                size: 30,
+                              ),
+                            )),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        BasicImagePicker(onListChange: _listCallback),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        BasicFormField(
+                          controller: infoController,
+                          placeholder: 'Dodaj info dla schroniska',
+                          maxLines: 5,
+                        ),
+                        SizedBox(
+                          height: 32,
+                        ),
+                        BasicText.body14(
+                          'Kontakt',
+                          color: BasicColors.darkGrey,
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        BasicFormField(
+                            controller: nameController, placeholder: 'Imię'),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        BasicFormField(
+                            controller: phoneController,
+                            placeholder: 'Wpisz numer telefonu'),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        BasicButton(
+                          onPressed: () {},
+                          text: "POWIADOM SCHRONISKO",
+                          color: BasicColors.lightGreen,
+                        ),
+                        SizedBox(
+                          height: 16,
+                        )
                       ],
                     ),
                   ),

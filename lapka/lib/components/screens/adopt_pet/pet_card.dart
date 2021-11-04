@@ -12,14 +12,13 @@ import 'package:lapka/settings/request_settings.dart';
 import 'package:lapka/utils/check_conectivity.dart';
 import 'package:lapka/utils/date_helper.dart';
 
-
 class PetCard extends StatelessWidget {
   final Pet pet;
   const PetCard({Key? key, required this.pet}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    int age = DateTimeHelper.getDuration(pet.birthDay!); 
+    int age = DateTimeHelper.getDuration(pet.birthDay!);
     return Container(
       decoration: BoxDecoration(
         color: BasicColors.white,
@@ -28,7 +27,9 @@ class PetCard extends StatelessWidget {
       child: Column(
         children: [
           Stack(children: [
-            ImageFromUrl(imageUrl: imagesUrl + 'api/files/${pet.mainPhotoPath}', height: 170),
+            ImageFromUrl(
+                imageUrl: imagesUrl + 'api/files/${pet.mainPhotoPath}',
+                height: 170),
             Container(
               alignment: Alignment.topRight,
               padding: EdgeInsets.all(16),
@@ -88,7 +89,8 @@ class PetCard extends StatelessWidget {
                     SizedBox(
                       width: 8,
                     ),
-                    BasicText.body14Light(age.toString() + (age == 1 ?' rok' : ' lata'))
+                    BasicText.body14Light(
+                        age.toString() + (age == 1 ? ' rok' : ' lata'))
                   ],
                 ),
                 SizedBox(height: 8),
@@ -100,7 +102,7 @@ class PetCard extends StatelessWidget {
                       width: 8,
                     ),
                     // BasicText.body14Light('${pet.shelterAddress!.name}, ${pet.shelterAddress!.city} ('
-                    //     + LocationHelper.getDistance(context.read<LocationProvider>().position, 
+                    //     + LocationHelper.getDistance(context.read<LocationProvider>().position,
                     //                         pet.shelterAddress!.geoLocation!).toStringAsFixed(1)
                     //     +
                     //     'km)'),
@@ -118,9 +120,9 @@ class PetCard extends StatelessWidget {
                     bottomLeft: Radius.circular(14),
                     bottomRight: Radius.circular(14))),
             child: InkWell(
-              onTap: () async{
-                if(await InternetConectivity.check(context)){
-                  NavigatorHelper.push(context, AdoptPetDetails(id: pet.id!)); 
+              onTap: () async {
+                if (await InternetConectivity.check(context)) {
+                  NavigatorHelper.push(context, AdoptPetDetails(id: pet.id!));
                 }
               },
               child: Row(

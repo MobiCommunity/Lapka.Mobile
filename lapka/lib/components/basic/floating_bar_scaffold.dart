@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:lapka/settings/colors.dart';
 
@@ -24,20 +23,15 @@ class FloatingBarScaffold extends StatelessWidget {
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                floating: true,
-                toolbarHeight: 236,
-                
-                backgroundColor: Colors.transparent,
-                flexibleSpace: headerSliver
-              ),
+                  floating: true,
+                  toolbarHeight: 236,
+                  backgroundColor: Colors.transparent,
+                  flexibleSpace: headerSliver),
             ];
           },
           body: Stack(
             children: [
-              Container(
-                color: BasicColors.lightGrey,
-                child: body
-              ),
+              Container(color: BasicColors.lightGrey, child: body),
               Container(
                 height: 20,
                 decoration: BoxDecoration(

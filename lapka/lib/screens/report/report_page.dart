@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/app_bar/custom_app_bar.dart';
@@ -21,7 +20,10 @@ class ReportPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Container(margin: EdgeInsets.only(top: 133), color: BasicColors.lightGrey,),
+          Container(
+            margin: EdgeInsets.only(top: 133),
+            color: BasicColors.lightGrey,
+          ),
           SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -46,25 +48,32 @@ class ReportPage extends StatelessWidget {
                       children: [
                         ReportCard(
                           title: 'Błąkające się zwierzęta',
-                          body: 'Zgłoszenia lokalizacji błąkających się zwierzaków',
+                          body:
+                              'Zgłoszenia lokalizacji błąkających się zwierzaków',
                           assetSvg: 'lib/assets/dog-face.svg',
                           onPressCallback: () {
                             NavigatorHelper.push(context, HomelessReportPage());
                           },
                         ),
-                        SizedBox(height: 16,),
+                        SizedBox(
+                          height: 16,
+                        ),
                         ReportCard(
                           title: 'Wymagające sterylizacji',
-                          body: 'Zgłoszenia lokalizacji zwierzaków do sterylizacji',
+                          body:
+                              'Zgłoszenia lokalizacji zwierzaków do sterylizacji',
                           assetSvg: 'lib/assets/scissors.svg',
                           onPressCallback: () {
                             NavigatorHelper.push(context, HomelessReportPage());
                           },
                         ),
-                        SizedBox(height: 16,),
+                        SizedBox(
+                          height: 16,
+                        ),
                         ReportCard(
                           title: 'Zgłoszenia zaginięcia',
-                          body: 'Zgłoszenia zaginięcia wraz z potencjalną lokalizacją',
+                          body:
+                              'Zgłoszenia zaginięcia wraz z potencjalną lokalizacją',
                           assetSvg: 'lib/assets/megaphone.svg',
                           onPressCallback: () {
                             NavigatorHelper.push(context, MissingReportPage());
@@ -136,7 +145,7 @@ class ReportCard extends StatelessWidget {
                 flex: 2,
                 child: SvgPicture.asset(
                   assetSvg,
-                  fit : BoxFit.fitWidth,
+                  fit: BoxFit.fitWidth,
                 ))
           ],
         ),

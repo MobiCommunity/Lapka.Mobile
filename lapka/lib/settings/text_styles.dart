@@ -124,5 +124,3 @@ const TextStyle overlineBold = TextStyle(
   fontSize: 10,
   fontWeight: FontWeight.w700,
 );
-
-

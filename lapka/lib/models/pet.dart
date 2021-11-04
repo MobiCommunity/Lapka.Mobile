@@ -6,19 +6,21 @@ import 'package:json_annotation/json_annotation.dart';
 part 'pet.freezed.dart';
 part 'pet.g.dart';
 
-bool? _boolFromInt(int? value){
-    if(value == null) return null;
-    return value == 0 ? false: true;
-  }
+bool? _boolFromInt(int? value) {
+  if (value == null) return null;
+  return value == 0 ? false : true;
+}
 
 @freezed
-abstract class Pet with _$Pet{
-
+abstract class Pet with _$Pet {
   const factory Pet(
-      {
-      String? id,
+      {String? id,
       String? name,
-      @JsonKey(name: 'sex', fromJson: _boolFromInt,) bool? sex,
+      @JsonKey(
+        name: 'sex',
+        fromJson: _boolFromInt,
+      )
+          bool? sex,
       String? race,
       int? species,
       String? mainPhotoPath,
@@ -27,11 +29,9 @@ abstract class Pet with _$Pet{
       double? weight,
       bool? sterilization,
       ShelterAddress? shelterAddress,
-      String? description
-      }) = _Pet;
+      String? description}) = _Pet;
 
   factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
-
 
   // Pet.fromJson(Map<String, dynamic> json) {
   //   id = json['id'];
@@ -69,6 +69,3 @@ abstract class Pet with _$Pet{
   //   return data;
   // }
 }
-
-
-

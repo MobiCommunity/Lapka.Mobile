@@ -8,7 +8,7 @@ class InternetConectivity {
     if (connectivityResult == ConnectivityResult.none) {
       BasicDialog.showDialogCustom(context, NoInternetDialog());
       return false;
-    } 
+    }
     return true;
   }
 }

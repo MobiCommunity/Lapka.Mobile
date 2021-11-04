@@ -8,9 +8,9 @@ part 'token.g.dart';
 abstract class Token with _$Token {
   const factory Token({
     @JsonKey(name: 'accessToken', defaultValue: '') required String accessToken,
-    @JsonKey(name: 'refreshToken', defaultValue: '') required String refreshToken,
+    @JsonKey(name: 'refreshToken', defaultValue: '')
+        required String refreshToken,
     @JsonKey(name: 'expires', defaultValue: -1) int? expires,
   }) = _Token;
-  factory Token.fromJson(Map<String, dynamic> json) =>
-      _$TokenFromJson(json);
+  factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
 }

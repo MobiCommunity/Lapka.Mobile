@@ -11,7 +11,11 @@ class BasicPetInfoRow extends StatelessWidget {
   final double weight;
   final bool sterile;
 
-  BasicPetInfoRow({required this.age, required this.petColor, required this.weight, required this.sterile});
+  BasicPetInfoRow(
+      {required this.age,
+      required this.petColor,
+      required this.weight,
+      required this.sterile});
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +24,16 @@ class BasicPetInfoRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GreyBox(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                BasicText.body14Bold(DateTimeHelper.getDuration(age).toString()),
-                BasicText.captionLight('Wiek')
-              ]
-            ),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              BasicText.body14Bold(DateTimeHelper.getDuration(age).toString()),
+              BasicText.captionLight('Wiek')
+            ]),
           ),
-          SizedBox(width: 8, height: 1,),
+          SizedBox(
+            width: 8,
+            height: 1,
+          ),
           GreyBox(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +43,10 @@ class BasicPetInfoRow extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 8, height: 1,),
+          SizedBox(
+            width: 8,
+            height: 1,
+          ),
           GreyBox(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -48,12 +56,15 @@ class BasicPetInfoRow extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 8, height: 1,),
+          SizedBox(
+            width: 8,
+            height: 1,
+          ),
           GreyBox(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BasicText.body14Bold(sterile==true?'Tak':'Nie'),
+                BasicText.body14Bold(sterile == true ? 'Tak' : 'Nie'),
                 BasicText.captionLight('Sterylizacja')
               ],
             ),

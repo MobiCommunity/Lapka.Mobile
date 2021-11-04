@@ -31,15 +31,15 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       : preferredSize = const Size.fromHeight(75.0),
         super(key: key);
 
-  _back(BuildContext context){
+  _back(BuildContext context) {
     NavigatorHelper.pop(context);
   }
 
-  _openDrawer(BuildContext context){
+  _openDrawer(BuildContext context) {
     context.read<MenuProvider>().onMenuClick();
   }
 
-  _openAccount(){
+  _openAccount() {
     print('Account');
   }
 
@@ -47,12 +47,16 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        fade ?Container(decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.8,1],
-              colors: [Colors.white, Colors.white.withOpacity(0.0)])),): Container(),
+        fade
+            ? Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        stops: [0.8, 1],
+                        colors: [Colors.white, Colors.white.withOpacity(0.0)])),
+              )
+            : Container(),
         AppBar(
           automaticallyImplyLeading: false,
           shadowColor: Colors.transparent,
@@ -62,16 +66,21 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             children: [
               showBack
                   ? InkWell(
-                      onTap: (){_back(context);},
+                      onTap: () {
+                        _back(context);
+                      },
                       child: Icon(
                         Icons.arrow_back,
                         color: fade ? BasicColors.darkGrey : BasicColors.white,
                       ))
                   : InkWell(
-                      onTap: (){
+                      onTap: () {
                         _openDrawer(context);
                       },
-                      child: SvgPicture.asset('lib/assets/menu-icon.svg', color: BasicColors.darkGrey,)),
+                      child: SvgPicture.asset(
+                        'lib/assets/menu-icon.svg',
+                        color: BasicColors.darkGrey,
+                      )),
               showLocalization
                   ? Column(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BasicDialog {
-  static Future<dynamic>showDialogCustom(BuildContext context, Widget modal,{dismissible = true}) {
+  static Future<dynamic> showDialogCustom(BuildContext context, Widget modal,
+      {dismissible = true}) {
     return showDialog(
         barrierDismissible: dismissible,
         context: context,

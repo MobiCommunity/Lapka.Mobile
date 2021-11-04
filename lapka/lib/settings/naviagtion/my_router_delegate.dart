@@ -10,7 +10,7 @@ import 'bloc/navigator_bloc.dart';
 class MyAppRouterDelegate extends RouterDelegate
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
   final GlobalKey<NavigatorState> _navigatorKey;
-    List<Page> stack = [];
+  List<Page> stack = [];
 
   MyAppRouterDelegate() : _navigatorKey = GlobalKey<NavigatorState>() {
     _init();
@@ -47,7 +47,7 @@ class MyAppRouterDelegate extends RouterDelegate
     });
   }
 
-  _changeRoot(Page page){
+  _changeRoot(Page page) {
     stack = [page];
   }
 
@@ -63,10 +63,9 @@ class MyAppRouterDelegate extends RouterDelegate
               pop: (force) {
                 _pop(context, force);
               },
-              pushReplace: (page){
+              pushReplace: (page) {
                 _changeRoot(page);
-              }
-              );
+              });
           notifyListeners();
         },
         child: Navigator(

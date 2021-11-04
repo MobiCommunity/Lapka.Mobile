@@ -17,7 +17,9 @@ class LoginFormField extends StatefulWidget {
     this.leading,
     this.password = false,
     this.validator = Validators.defaultValidator,
-  }) : super(key: key,);
+  }) : super(
+          key: key,
+        );
 
   @override
   _LoginFormFieldState createState() => _LoginFormFieldState();
@@ -46,31 +48,31 @@ class _LoginFormFieldState extends State<LoginFormField> {
         hintText: widget.placeholder,
         hintStyle: body14.copyWith(color: BasicColors.white.withOpacity(0.6)),
         contentPadding:
-        const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         filled: true,
         fillColor: Colors.transparent,
         prefixIcon: widget.leading,
         suffixIcon: widget.password
             ? GestureDetector(
-          onTap: (){
-            setState(() {
-              _visibility = !_visibility;
-            });
-            
-          },
-          child: Icon(
-                    Icons.visibility,
-                    color: BasicColors.white,
-                    size: 22,
-                  ),
-        )
+                onTap: () {
+                  setState(() {
+                    _visibility = !_visibility;
+                  });
+                },
+                child: Icon(
+                  Icons.visibility,
+                  color: BasicColors.white,
+                  size: 22,
+                ),
+              )
             : null,
         border: circularBorder.copyWith(
           borderSide: BorderSide(color: BasicColors.white),
         ),
         errorBorder: circularBorder.copyWith(
-          
-          borderSide: BorderSide(color: Colors.red,),
+          borderSide: BorderSide(
+            color: Colors.red,
+          ),
         ),
         focusedBorder: circularBorder.copyWith(
           borderSide: BorderSide(color: BasicColors.white),
