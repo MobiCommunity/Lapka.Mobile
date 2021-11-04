@@ -49,7 +49,7 @@ dependencies:
   meta:
   flutter_bloc:
   freezed_annotation:
-  json_annotation:
+  json_annotation: ^4.3.0
   flutter_secure_storage: ^4.2.1
   jwt_decoder: ^2.0.1
   flutter_portal: ^0.4.0

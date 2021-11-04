@@ -14,16 +14,207 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
+class _$PetFiltersTearOff {
+  const _$PetFiltersTearOff();
+
+  _PetFilters call({String? petName, Species? race, String? lat, String? lng}) {
+    return _PetFilters(
+      petName: petName,
+      race: race,
+      lat: lat,
+      lng: lng,
+    );
+  }
+}
+
+/// @nodoc
+const $PetFilters = _$PetFiltersTearOff();
+
+/// @nodoc
+mixin _$PetFilters {
+  String? get petName => throw _privateConstructorUsedError;
+  Species? get race => throw _privateConstructorUsedError;
+  String? get lat => throw _privateConstructorUsedError;
+  String? get lng => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PetFiltersCopyWith<PetFilters> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PetFiltersCopyWith<$Res> {
+  factory $PetFiltersCopyWith(
+          PetFilters value, $Res Function(PetFilters) then) =
+      _$PetFiltersCopyWithImpl<$Res>;
+  $Res call({String? petName, Species? race, String? lat, String? lng});
+}
+
+/// @nodoc
+class _$PetFiltersCopyWithImpl<$Res> implements $PetFiltersCopyWith<$Res> {
+  _$PetFiltersCopyWithImpl(this._value, this._then);
+
+  final PetFilters _value;
+  // ignore: unused_field
+  final $Res Function(PetFilters) _then;
+
+  @override
+  $Res call({
+    Object? petName = freezed,
+    Object? race = freezed,
+    Object? lat = freezed,
+    Object? lng = freezed,
+  }) {
+    return _then(_value.copyWith(
+      petName: petName == freezed
+          ? _value.petName
+          : petName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      race: race == freezed
+          ? _value.race
+          : race // ignore: cast_nullable_to_non_nullable
+              as Species?,
+      lat: lat == freezed
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lng: lng == freezed
+          ? _value.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$PetFiltersCopyWith<$Res> implements $PetFiltersCopyWith<$Res> {
+  factory _$PetFiltersCopyWith(
+          _PetFilters value, $Res Function(_PetFilters) then) =
+      __$PetFiltersCopyWithImpl<$Res>;
+  @override
+  $Res call({String? petName, Species? race, String? lat, String? lng});
+}
+
+/// @nodoc
+class __$PetFiltersCopyWithImpl<$Res> extends _$PetFiltersCopyWithImpl<$Res>
+    implements _$PetFiltersCopyWith<$Res> {
+  __$PetFiltersCopyWithImpl(
+      _PetFilters _value, $Res Function(_PetFilters) _then)
+      : super(_value, (v) => _then(v as _PetFilters));
+
+  @override
+  _PetFilters get _value => super._value as _PetFilters;
+
+  @override
+  $Res call({
+    Object? petName = freezed,
+    Object? race = freezed,
+    Object? lat = freezed,
+    Object? lng = freezed,
+  }) {
+    return _then(_PetFilters(
+      petName: petName == freezed
+          ? _value.petName
+          : petName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      race: race == freezed
+          ? _value.race
+          : race // ignore: cast_nullable_to_non_nullable
+              as Species?,
+      lat: lat == freezed
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lng: lng == freezed
+          ? _value.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PetFilters implements _PetFilters {
+  const _$_PetFilters({this.petName, this.race, this.lat, this.lng});
+
+  @override
+  final String? petName;
+  @override
+  final Species? race;
+  @override
+  final String? lat;
+  @override
+  final String? lng;
+
+  @override
+  String toString() {
+    return 'PetFilters(petName: $petName, race: $race, lat: $lat, lng: $lng)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PetFilters &&
+            (identical(other.petName, petName) ||
+                const DeepCollectionEquality()
+                    .equals(other.petName, petName)) &&
+            (identical(other.race, race) ||
+                const DeepCollectionEquality().equals(other.race, race)) &&
+            (identical(other.lat, lat) ||
+                const DeepCollectionEquality().equals(other.lat, lat)) &&
+            (identical(other.lng, lng) ||
+                const DeepCollectionEquality().equals(other.lng, lng)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(petName) ^
+      const DeepCollectionEquality().hash(race) ^
+      const DeepCollectionEquality().hash(lat) ^
+      const DeepCollectionEquality().hash(lng);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PetFiltersCopyWith<_PetFilters> get copyWith =>
+      __$PetFiltersCopyWithImpl<_PetFilters>(this, _$identity);
+}
+
+abstract class _PetFilters implements PetFilters {
+  const factory _PetFilters(
+      {String? petName,
+      Species? race,
+      String? lat,
+      String? lng}) = _$_PetFilters;
+
+  @override
+  String? get petName => throw _privateConstructorUsedError;
+  @override
+  Species? get race => throw _privateConstructorUsedError;
+  @override
+  String? get lat => throw _privateConstructorUsedError;
+  @override
+  String? get lng => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$PetFiltersCopyWith<_PetFilters> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$AdoptPetListEventTearOff {
   const _$AdoptPetListEventTearOff();
 
-  _GetAllPets getAllPets() {
-    return const _GetAllPets();
+  _GetPets getPets({PetFilters? filters}) {
+    return _GetPets(
+      filters: filters,
+    );
   }
 
-  _GetFilteredPets getFilteredPets(String phrase) {
-    return _GetFilteredPets(
-      phrase,
+  _UpdateFilters updateFilters(PetFilters filters) {
+    return _UpdateFilters(
+      filters,
     );
   }
 }
@@ -35,39 +226,39 @@ const $AdoptPetListEvent = _$AdoptPetListEventTearOff();
 mixin _$AdoptPetListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllPets,
-    required TResult Function(String phrase) getFilteredPets,
+    required TResult Function(PetFilters? filters) getPets,
+    required TResult Function(PetFilters filters) updateFilters,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getAllPets,
-    TResult Function(String phrase)? getFilteredPets,
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllPets,
-    TResult Function(String phrase)? getFilteredPets,
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllPets value) getAllPets,
-    required TResult Function(_GetFilteredPets value) getFilteredPets,
+    required TResult Function(_GetPets value) getPets,
+    required TResult Function(_UpdateFilters value) updateFilters,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetAllPets value)? getAllPets,
-    TResult Function(_GetFilteredPets value)? getFilteredPets,
+    TResult Function(_GetPets value)? getPets,
+    TResult Function(_UpdateFilters value)? updateFilters,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllPets value)? getAllPets,
-    TResult Function(_GetFilteredPets value)? getFilteredPets,
+    TResult Function(_GetPets value)? getPets,
+    TResult Function(_UpdateFilters value)? updateFilters,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,198 +282,104 @@ class _$AdoptPetListEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GetAllPetsCopyWith<$Res> {
-  factory _$GetAllPetsCopyWith(
-          _GetAllPets value, $Res Function(_GetAllPets) then) =
-      __$GetAllPetsCopyWithImpl<$Res>;
+abstract class _$GetPetsCopyWith<$Res> {
+  factory _$GetPetsCopyWith(_GetPets value, $Res Function(_GetPets) then) =
+      __$GetPetsCopyWithImpl<$Res>;
+  $Res call({PetFilters? filters});
+
+  $PetFiltersCopyWith<$Res>? get filters;
 }
 
 /// @nodoc
-class __$GetAllPetsCopyWithImpl<$Res>
-    extends _$AdoptPetListEventCopyWithImpl<$Res>
-    implements _$GetAllPetsCopyWith<$Res> {
-  __$GetAllPetsCopyWithImpl(
-      _GetAllPets _value, $Res Function(_GetAllPets) _then)
-      : super(_value, (v) => _then(v as _GetAllPets));
+class __$GetPetsCopyWithImpl<$Res> extends _$AdoptPetListEventCopyWithImpl<$Res>
+    implements _$GetPetsCopyWith<$Res> {
+  __$GetPetsCopyWithImpl(_GetPets _value, $Res Function(_GetPets) _then)
+      : super(_value, (v) => _then(v as _GetPets));
 
   @override
-  _GetAllPets get _value => super._value as _GetAllPets;
-}
-
-/// @nodoc
-
-class _$_GetAllPets implements _GetAllPets {
-  const _$_GetAllPets();
-
-  @override
-  String toString() {
-    return 'AdoptPetListEvent.getAllPets()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _GetAllPets);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getAllPets,
-    required TResult Function(String phrase) getFilteredPets,
-  }) {
-    return getAllPets();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getAllPets,
-    TResult Function(String phrase)? getFilteredPets,
-  }) {
-    return getAllPets?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllPets,
-    TResult Function(String phrase)? getFilteredPets,
-    required TResult orElse(),
-  }) {
-    if (getAllPets != null) {
-      return getAllPets();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllPets value) getAllPets,
-    required TResult Function(_GetFilteredPets value) getFilteredPets,
-  }) {
-    return getAllPets(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetAllPets value)? getAllPets,
-    TResult Function(_GetFilteredPets value)? getFilteredPets,
-  }) {
-    return getAllPets?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllPets value)? getAllPets,
-    TResult Function(_GetFilteredPets value)? getFilteredPets,
-    required TResult orElse(),
-  }) {
-    if (getAllPets != null) {
-      return getAllPets(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetAllPets implements AdoptPetListEvent {
-  const factory _GetAllPets() = _$_GetAllPets;
-}
-
-/// @nodoc
-abstract class _$GetFilteredPetsCopyWith<$Res> {
-  factory _$GetFilteredPetsCopyWith(
-          _GetFilteredPets value, $Res Function(_GetFilteredPets) then) =
-      __$GetFilteredPetsCopyWithImpl<$Res>;
-  $Res call({String phrase});
-}
-
-/// @nodoc
-class __$GetFilteredPetsCopyWithImpl<$Res>
-    extends _$AdoptPetListEventCopyWithImpl<$Res>
-    implements _$GetFilteredPetsCopyWith<$Res> {
-  __$GetFilteredPetsCopyWithImpl(
-      _GetFilteredPets _value, $Res Function(_GetFilteredPets) _then)
-      : super(_value, (v) => _then(v as _GetFilteredPets));
-
-  @override
-  _GetFilteredPets get _value => super._value as _GetFilteredPets;
+  _GetPets get _value => super._value as _GetPets;
 
   @override
   $Res call({
-    Object? phrase = freezed,
+    Object? filters = freezed,
   }) {
-    return _then(_GetFilteredPets(
-      phrase == freezed
-          ? _value.phrase
-          : phrase // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_GetPets(
+      filters: filters == freezed
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as PetFilters?,
     ));
+  }
+
+  @override
+  $PetFiltersCopyWith<$Res>? get filters {
+    if (_value.filters == null) {
+      return null;
+    }
+
+    return $PetFiltersCopyWith<$Res>(_value.filters!, (value) {
+      return _then(_value.copyWith(filters: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$_GetFilteredPets implements _GetFilteredPets {
-  const _$_GetFilteredPets(this.phrase);
+class _$_GetPets implements _GetPets {
+  const _$_GetPets({this.filters});
 
   @override
-  final String phrase;
+  final PetFilters? filters;
 
   @override
   String toString() {
-    return 'AdoptPetListEvent.getFilteredPets(phrase: $phrase)';
+    return 'AdoptPetListEvent.getPets(filters: $filters)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GetFilteredPets &&
-            (identical(other.phrase, phrase) ||
-                const DeepCollectionEquality().equals(other.phrase, phrase)));
+        (other is _GetPets &&
+            (identical(other.filters, filters) ||
+                const DeepCollectionEquality().equals(other.filters, filters)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(phrase);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(filters);
 
   @JsonKey(ignore: true)
   @override
-  _$GetFilteredPetsCopyWith<_GetFilteredPets> get copyWith =>
-      __$GetFilteredPetsCopyWithImpl<_GetFilteredPets>(this, _$identity);
+  _$GetPetsCopyWith<_GetPets> get copyWith =>
+      __$GetPetsCopyWithImpl<_GetPets>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllPets,
-    required TResult Function(String phrase) getFilteredPets,
+    required TResult Function(PetFilters? filters) getPets,
+    required TResult Function(PetFilters filters) updateFilters,
   }) {
-    return getFilteredPets(phrase);
+    return getPets(filters);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getAllPets,
-    TResult Function(String phrase)? getFilteredPets,
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
   }) {
-    return getFilteredPets?.call(phrase);
+    return getPets?.call(filters);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllPets,
-    TResult Function(String phrase)? getFilteredPets,
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
     required TResult orElse(),
   }) {
-    if (getFilteredPets != null) {
-      return getFilteredPets(phrase);
+    if (getPets != null) {
+      return getPets(filters);
     }
     return orElse();
   }
@@ -290,47 +387,365 @@ class _$_GetFilteredPets implements _GetFilteredPets {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllPets value) getAllPets,
-    required TResult Function(_GetFilteredPets value) getFilteredPets,
+    required TResult Function(_GetPets value) getPets,
+    required TResult Function(_UpdateFilters value) updateFilters,
   }) {
-    return getFilteredPets(this);
+    return getPets(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetAllPets value)? getAllPets,
-    TResult Function(_GetFilteredPets value)? getFilteredPets,
+    TResult Function(_GetPets value)? getPets,
+    TResult Function(_UpdateFilters value)? updateFilters,
   }) {
-    return getFilteredPets?.call(this);
+    return getPets?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllPets value)? getAllPets,
-    TResult Function(_GetFilteredPets value)? getFilteredPets,
+    TResult Function(_GetPets value)? getPets,
+    TResult Function(_UpdateFilters value)? updateFilters,
     required TResult orElse(),
   }) {
-    if (getFilteredPets != null) {
-      return getFilteredPets(this);
+    if (getPets != null) {
+      return getPets(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetFilteredPets implements AdoptPetListEvent {
-  const factory _GetFilteredPets(String phrase) = _$_GetFilteredPets;
+abstract class _GetPets implements AdoptPetListEvent {
+  const factory _GetPets({PetFilters? filters}) = _$_GetPets;
 
-  String get phrase => throw _privateConstructorUsedError;
+  PetFilters? get filters => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$GetFilteredPetsCopyWith<_GetFilteredPets> get copyWith =>
+  _$GetPetsCopyWith<_GetPets> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UpdateFiltersCopyWith<$Res> {
+  factory _$UpdateFiltersCopyWith(
+          _UpdateFilters value, $Res Function(_UpdateFilters) then) =
+      __$UpdateFiltersCopyWithImpl<$Res>;
+  $Res call({PetFilters filters});
+
+  $PetFiltersCopyWith<$Res> get filters;
+}
+
+/// @nodoc
+class __$UpdateFiltersCopyWithImpl<$Res>
+    extends _$AdoptPetListEventCopyWithImpl<$Res>
+    implements _$UpdateFiltersCopyWith<$Res> {
+  __$UpdateFiltersCopyWithImpl(
+      _UpdateFilters _value, $Res Function(_UpdateFilters) _then)
+      : super(_value, (v) => _then(v as _UpdateFilters));
+
+  @override
+  _UpdateFilters get _value => super._value as _UpdateFilters;
+
+  @override
+  $Res call({
+    Object? filters = freezed,
+  }) {
+    return _then(_UpdateFilters(
+      filters == freezed
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as PetFilters,
+    ));
+  }
+
+  @override
+  $PetFiltersCopyWith<$Res> get filters {
+    return $PetFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateFilters implements _UpdateFilters {
+  const _$_UpdateFilters(this.filters);
+
+  @override
+  final PetFilters filters;
+
+  @override
+  String toString() {
+    return 'AdoptPetListEvent.updateFilters(filters: $filters)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _UpdateFilters &&
+            (identical(other.filters, filters) ||
+                const DeepCollectionEquality().equals(other.filters, filters)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(filters);
+
+  @JsonKey(ignore: true)
+  @override
+  _$UpdateFiltersCopyWith<_UpdateFilters> get copyWith =>
+      __$UpdateFiltersCopyWithImpl<_UpdateFilters>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PetFilters? filters) getPets,
+    required TResult Function(PetFilters filters) updateFilters,
+  }) {
+    return updateFilters(filters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
+  }) {
+    return updateFilters?.call(filters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
+    required TResult orElse(),
+  }) {
+    if (updateFilters != null) {
+      return updateFilters(filters);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPets value) getPets,
+    required TResult Function(_UpdateFilters value) updateFilters,
+  }) {
+    return updateFilters(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetPets value)? getPets,
+    TResult Function(_UpdateFilters value)? updateFilters,
+  }) {
+    return updateFilters?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPets value)? getPets,
+    TResult Function(_UpdateFilters value)? updateFilters,
+    required TResult orElse(),
+  }) {
+    if (updateFilters != null) {
+      return updateFilters(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateFilters implements AdoptPetListEvent {
+  const factory _UpdateFilters(PetFilters filters) = _$_UpdateFilters;
+
+  PetFilters get filters => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$UpdateFiltersCopyWith<_UpdateFilters> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$AdoptPetListStateTearOff {
   const _$AdoptPetListStateTearOff();
+
+  _AdoptPetListState call(
+      {required ListState listState, required PetFilters filters}) {
+    return _AdoptPetListState(
+      listState: listState,
+      filters: filters,
+    );
+  }
+}
+
+/// @nodoc
+const $AdoptPetListState = _$AdoptPetListStateTearOff();
+
+/// @nodoc
+mixin _$AdoptPetListState {
+  ListState get listState => throw _privateConstructorUsedError;
+  PetFilters get filters => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AdoptPetListStateCopyWith<AdoptPetListState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AdoptPetListStateCopyWith<$Res> {
+  factory $AdoptPetListStateCopyWith(
+          AdoptPetListState value, $Res Function(AdoptPetListState) then) =
+      _$AdoptPetListStateCopyWithImpl<$Res>;
+  $Res call({ListState listState, PetFilters filters});
+
+  $ListStateCopyWith<$Res> get listState;
+  $PetFiltersCopyWith<$Res> get filters;
+}
+
+/// @nodoc
+class _$AdoptPetListStateCopyWithImpl<$Res>
+    implements $AdoptPetListStateCopyWith<$Res> {
+  _$AdoptPetListStateCopyWithImpl(this._value, this._then);
+
+  final AdoptPetListState _value;
+  // ignore: unused_field
+  final $Res Function(AdoptPetListState) _then;
+
+  @override
+  $Res call({
+    Object? listState = freezed,
+    Object? filters = freezed,
+  }) {
+    return _then(_value.copyWith(
+      listState: listState == freezed
+          ? _value.listState
+          : listState // ignore: cast_nullable_to_non_nullable
+              as ListState,
+      filters: filters == freezed
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as PetFilters,
+    ));
+  }
+
+  @override
+  $ListStateCopyWith<$Res> get listState {
+    return $ListStateCopyWith<$Res>(_value.listState, (value) {
+      return _then(_value.copyWith(listState: value));
+    });
+  }
+
+  @override
+  $PetFiltersCopyWith<$Res> get filters {
+    return $PetFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$AdoptPetListStateCopyWith<$Res>
+    implements $AdoptPetListStateCopyWith<$Res> {
+  factory _$AdoptPetListStateCopyWith(
+          _AdoptPetListState value, $Res Function(_AdoptPetListState) then) =
+      __$AdoptPetListStateCopyWithImpl<$Res>;
+  @override
+  $Res call({ListState listState, PetFilters filters});
+
+  @override
+  $ListStateCopyWith<$Res> get listState;
+  @override
+  $PetFiltersCopyWith<$Res> get filters;
+}
+
+/// @nodoc
+class __$AdoptPetListStateCopyWithImpl<$Res>
+    extends _$AdoptPetListStateCopyWithImpl<$Res>
+    implements _$AdoptPetListStateCopyWith<$Res> {
+  __$AdoptPetListStateCopyWithImpl(
+      _AdoptPetListState _value, $Res Function(_AdoptPetListState) _then)
+      : super(_value, (v) => _then(v as _AdoptPetListState));
+
+  @override
+  _AdoptPetListState get _value => super._value as _AdoptPetListState;
+
+  @override
+  $Res call({
+    Object? listState = freezed,
+    Object? filters = freezed,
+  }) {
+    return _then(_AdoptPetListState(
+      listState: listState == freezed
+          ? _value.listState
+          : listState // ignore: cast_nullable_to_non_nullable
+              as ListState,
+      filters: filters == freezed
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as PetFilters,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AdoptPetListState implements _AdoptPetListState {
+  const _$_AdoptPetListState({required this.listState, required this.filters});
+
+  @override
+  final ListState listState;
+  @override
+  final PetFilters filters;
+
+  @override
+  String toString() {
+    return 'AdoptPetListState(listState: $listState, filters: $filters)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AdoptPetListState &&
+            (identical(other.listState, listState) ||
+                const DeepCollectionEquality()
+                    .equals(other.listState, listState)) &&
+            (identical(other.filters, filters) ||
+                const DeepCollectionEquality().equals(other.filters, filters)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(listState) ^
+      const DeepCollectionEquality().hash(filters);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AdoptPetListStateCopyWith<_AdoptPetListState> get copyWith =>
+      __$AdoptPetListStateCopyWithImpl<_AdoptPetListState>(this, _$identity);
+}
+
+abstract class _AdoptPetListState implements AdoptPetListState {
+  const factory _AdoptPetListState(
+      {required ListState listState,
+      required PetFilters filters}) = _$_AdoptPetListState;
+
+  @override
+  ListState get listState => throw _privateConstructorUsedError;
+  @override
+  PetFilters get filters => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$AdoptPetListStateCopyWith<_AdoptPetListState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+class _$ListStateTearOff {
+  const _$ListStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -354,10 +769,10 @@ class _$AdoptPetListStateTearOff {
 }
 
 /// @nodoc
-const $AdoptPetListState = _$AdoptPetListStateTearOff();
+const $ListState = _$ListStateTearOff();
 
 /// @nodoc
-mixin _$AdoptPetListState {
+mixin _$ListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -411,20 +826,18 @@ mixin _$AdoptPetListState {
 }
 
 /// @nodoc
-abstract class $AdoptPetListStateCopyWith<$Res> {
-  factory $AdoptPetListStateCopyWith(
-          AdoptPetListState value, $Res Function(AdoptPetListState) then) =
-      _$AdoptPetListStateCopyWithImpl<$Res>;
+abstract class $ListStateCopyWith<$Res> {
+  factory $ListStateCopyWith(ListState value, $Res Function(ListState) then) =
+      _$ListStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AdoptPetListStateCopyWithImpl<$Res>
-    implements $AdoptPetListStateCopyWith<$Res> {
-  _$AdoptPetListStateCopyWithImpl(this._value, this._then);
+class _$ListStateCopyWithImpl<$Res> implements $ListStateCopyWith<$Res> {
+  _$ListStateCopyWithImpl(this._value, this._then);
 
-  final AdoptPetListState _value;
+  final ListState _value;
   // ignore: unused_field
-  final $Res Function(AdoptPetListState) _then;
+  final $Res Function(ListState) _then;
 }
 
 /// @nodoc
@@ -434,7 +847,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$AdoptPetListStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$ListStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -450,7 +863,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'AdoptPetListState.initial()';
+    return 'ListState.initial()';
   }
 
   @override
@@ -536,7 +949,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements AdoptPetListState {
+abstract class _Initial implements ListState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -547,7 +960,7 @@ abstract class _$LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$AdoptPetListStateCopyWithImpl<$Res>
+class __$LoadingCopyWithImpl<$Res> extends _$ListStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
   __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
       : super(_value, (v) => _then(v as _Loading));
@@ -563,7 +976,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'AdoptPetListState.loading()';
+    return 'ListState.loading()';
   }
 
   @override
@@ -649,7 +1062,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements AdoptPetListState {
+abstract class _Loading implements ListState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -661,7 +1074,7 @@ abstract class _$LoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadedCopyWithImpl<$Res> extends _$AdoptPetListStateCopyWithImpl<$Res>
+class __$LoadedCopyWithImpl<$Res> extends _$ListStateCopyWithImpl<$Res>
     implements _$LoadedCopyWith<$Res> {
   __$LoadedCopyWithImpl(_Loaded _value, $Res Function(_Loaded) _then)
       : super(_value, (v) => _then(v as _Loaded));
@@ -692,7 +1105,7 @@ class _$_Loaded implements _Loaded {
 
   @override
   String toString() {
-    return 'AdoptPetListState.loaded(pets: $pets)';
+    return 'ListState.loaded(pets: $pets)';
   }
 
   @override
@@ -787,7 +1200,7 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements AdoptPetListState {
+abstract class _Loaded implements ListState {
   const factory _Loaded(List<Pet> pets) = _$_Loaded;
 
   List<Pet> get pets => throw _privateConstructorUsedError;
@@ -803,7 +1216,7 @@ abstract class _$ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$AdoptPetListStateCopyWithImpl<$Res>
+class __$ErrorCopyWithImpl<$Res> extends _$ListStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -834,7 +1247,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'AdoptPetListState.error(errorMsg: $errorMsg)';
+    return 'ListState.error(errorMsg: $errorMsg)';
   }
 
   @override
@@ -930,7 +1343,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements AdoptPetListState {
+abstract class _Error implements ListState {
   const factory _Error(String errorMsg) = _$_Error;
 
   String get errorMsg => throw _privateConstructorUsedError;

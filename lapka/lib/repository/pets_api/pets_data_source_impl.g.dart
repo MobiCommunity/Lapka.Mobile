@@ -14,9 +14,15 @@ class _PetsDataSourceImpl implements PetsDataSourceImpl {
   String? baseUrl;
 
   @override
-  Future<List<Pet>> getAllPets() async {
+  Future<List<Pet>> getPets(petName, race, lat, lng) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'name': petName,
+      r'race': race,
+      r'latitude': lat,
+      r'longitude': lng
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Pet>>(
         Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)

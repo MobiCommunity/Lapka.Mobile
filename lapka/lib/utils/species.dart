@@ -1,8 +1,19 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'species.g.dart';
+
+@JsonEnum(alwaysCreate: true)
 enum Species {
+  @JsonValue('All')
   All,
+  @JsonValue('Dogs')
   Dogs,
+  @JsonValue('Cats')
   Cats,
+  @JsonValue('Rabbits')
   Rabbits,
+  @JsonValue('Parrots')
   Parrots,
 }
 
@@ -23,4 +34,8 @@ List<String> getSpeciesList() {
     list.add(getStringFromSpecies(element));
   });
   return list;
+}
+
+extension SpecieJSONValue on Species {
+  String get value => _$SpeciesEnumMap[this]!;
 }

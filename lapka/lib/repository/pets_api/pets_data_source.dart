@@ -1,7 +1,8 @@
 import 'package:lapka/models/pet.dart';
 
 abstract class PetsDataSource {
-  Future<List<Pet>> getAllPets();
+  Future<List<Pet>> getPets(
+      String? petName, String? race, String? lat, String? lng);
 
   Future<Pet> getPetDetails(String id);
 

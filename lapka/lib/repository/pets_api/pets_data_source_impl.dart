@@ -13,7 +13,12 @@ abstract class PetsDataSourceImpl extends PetsDataSource {
   factory PetsDataSourceImpl(@Named("Pets") Dio dio) = _PetsDataSourceImpl;
 
   @GET('/shelter/pet')
-  Future<List<Pet>> getAllPets();
+  Future<List<Pet>> getPets(
+    @Query('name') String? petName,
+    @Query('race') String? race,
+    @Query('latitude') String? lat,
+    @Query('longitude') String? lng,
+  );
 
   @GET('/shelter/pet{id}')
   Future<Pet> getPetDetails(@Path() String id);

@@ -12,8 +12,8 @@ import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/adopt_pet/bloc/adopt_pet_list_bloc.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/settings/colors.dart';
-import 'package:lapka/utils/species.dart';
 import 'package:lapka/utils/location_helper.dart';
+import 'package:lapka/utils/species.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -54,7 +54,7 @@ class AdoptPetListPage extends StatelessWidget {
                 ),
                 BlocBuilder<AdoptPetListBloc, AdoptPetListState>(
                     builder: (context, state) {
-                  return state.when(
+                  return state.listState.when(
                       initial: () => _initial(context),
                       loading: _loading,
                       loaded: _buildList,
@@ -94,10 +94,14 @@ class AdoptPetListPage extends StatelessWidget {
   }
 
   _onSearch(BuildContext context) {
+    final bloc = context.read<AdoptPetListBloc>();
     FocusScope.of(context).unfocus();
     _panelController.close();
-    BlocProvider.of<AdoptPetListBloc>(context)
-        .add(AdoptPetListEvent.getFilteredPets(_filterController.text));
+    bloc.add(
+      AdoptPetListEvent.getPets(
+        filters: bloc.state.filters.copyWith(petName: _filterController.text),
+      ),
+    );
   }
 
   Widget _filters(BuildContext context) {
@@ -129,8 +133,15 @@ class AdoptPetListPage extends StatelessWidget {
                     controller: _filterController,
                   ),
                 ),
-                SpeciesSelector(
-                  selected: Species.All,
+                BlocBuilder<AdoptPetListBloc, AdoptPetListState>(
+                  builder: (context, state) => SpeciesSelector(
+                    onChange: (specie) => context.read<AdoptPetListBloc>().add(
+                          AdoptPetListEvent.updateFilters(
+                            state.filters.copyWith(race: specie),
+                          ),
+                        ),
+                    selected: state.filters.race,
+                  ),
                 ),
                 Container(
                     alignment: Alignment.bottomCenter,
@@ -150,7 +161,7 @@ class AdoptPetListPage extends StatelessWidget {
 
   Widget _initial(BuildContext context) {
     final bloc = BlocProvider.of<AdoptPetListBloc>(context);
-    bloc.add(AdoptPetListEvent.getAllPets());
+    bloc.add(AdoptPetListEvent.getPets());
     return SliverToBoxAdapter(child: Container());
   }
 

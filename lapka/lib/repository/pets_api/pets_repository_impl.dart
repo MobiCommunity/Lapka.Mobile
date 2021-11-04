@@ -4,6 +4,7 @@ import 'package:lapka/repository/network_exceptions.dart';
 import 'package:lapka/repository/pets_api/pets_data_source.dart';
 import 'package:lapka/repository/pets_api/pets_repository.dart';
 import 'package:lapka/repository/result.dart';
+import 'package:lapka/utils/species.dart';
 
 @Injectable(as: PetsRepository)
 class PetsRepositoryImpl implements PetsRepository {
@@ -14,9 +15,11 @@ class PetsRepositoryImpl implements PetsRepository {
   );
 
   @override
-  Future<Result<List<Pet>, NetworkExceptions>> getAllPets() async {
+  Future<Result<List<Pet>, NetworkExceptions>> getPets(
+      String? petName, Species? race, String? lat, String? lng) async {
     try {
-      final List<Pet> pets = await _petsDataSource.getAllPets();
+      final List<Pet> pets =
+          await _petsDataSource.getPets(petName, race?.value, lat, lng);
       return Result.success(data: pets);
     } catch (exp) {
       return Result.failure(error: NetworkExceptions.getDioException(exp));

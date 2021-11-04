@@ -5,11 +5,19 @@ import 'package:lapka/settings/colors.dart';
 import 'package:lapka/utils/species.dart';
 import 'package:provider/provider.dart';
 
-class SpeciesSelector extends StatelessWidget {
-  final Species selected;
-  const SpeciesSelector({Key? key, required this.selected}) : super(key: key);
+typedef OnSpecierChange = Function(Species specie);
 
-  _onTap(BuildContext context, Species species) {
+class SpeciesSelector extends StatelessWidget {
+  final Species? selected;
+  final OnSpecierChange onChange;
+  const SpeciesSelector({
+    Key? key,
+     this.selected = Species.All,
+    required this.onChange,
+  }) : super(key: key);
+
+  _onTap(BuildContext context, Species species) { 
+    onChange.call(species);
     //context.read<AdoptPetProvider>().speciesFilter = species;
   }
 
