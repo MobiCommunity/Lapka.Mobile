@@ -66,12 +66,11 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       get<_i11.UserService>(),
       get<_i3.AuthBroadcaster>()));
   gh.factory<_i19.LogoutUseCase>(() => _i19.LogoutUseCase(
-      get<_i15.AuthenticationRepository>(), get<_i11.UserService>()));
-  gh.lazySingleton<_i20.MenuBloc>(() => _i20.MenuBloc(
+      get<_i15.AuthenticationRepository>(),
       get<_i11.UserService>(),
-      get<_i3.AuthBroadcaster>(),
-      get<_i9.UserRepository>(),
-      get<_i19.LogoutUseCase>()));
+      get<_i3.AuthBroadcaster>()));
+  gh.factory<_i20.MenuBloc>(() => _i20.MenuBloc(get<_i11.UserService>(),
+      get<_i3.AuthBroadcaster>(), get<_i17.FetchUserDataUseCase>()));
   gh.factory<_i21.RefreshTokenUseCase>(
       () => _i21.RefreshTokenUseCase(get<_i15.AuthenticationRepository>()));
   gh.factory<_i22.RegisterBloc>(

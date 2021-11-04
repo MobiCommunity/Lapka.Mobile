@@ -30,7 +30,6 @@ class UserServiceImpl extends UserService {
     if (refreshToken != null) {
       _futuresArray.add(Glutton.eat(refreshTokenKey, refreshToken));
     }
-
     await Future.wait(_futuresArray);
   }
 
@@ -60,12 +59,13 @@ class UserServiceImpl extends UserService {
   @override
   Future<bool> isTokenStored() async {
     try {
-      var tokenInfo = await Future.wait([
+      final tokenInfo = await Future.wait([
         Glutton.vomit(tokenKey),
         Glutton.vomit(expiresKey),
       ]);
 
-      if (!tokenInfo[0].isNullOrEmpty() && !tokenInfo[1].isNullOrEmpty()) {
+      if (!(tokenInfo[0] as String?).isNullOrEmpty() &&
+          (tokenInfo[1] as int?) != null) {
         return true;
       }
 

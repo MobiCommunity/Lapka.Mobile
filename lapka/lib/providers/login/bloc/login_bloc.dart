@@ -75,8 +75,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _handleSuccessSignIn(Token token) async* {
     try {
+      print('saveToken');
       await _saveToken(token);
-      String userId = JwtDecoder.decode(token.accessToken)['unique_name'];
+            print('saved');
+
       yield _Success();
       _authBroadcaster.updateState(AuthState.authenticated());
     } catch (e) {
