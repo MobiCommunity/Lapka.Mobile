@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_button.dart';
 import 'package:lapka/components/basic/basic_text.dart';
@@ -54,26 +53,6 @@ class _LoginPageState extends State<LoginPage> {
 
   _loginGoogle() {
     throw UnimplementedError();
-  }
-
-  _loginFacebook() async {
-    final facebookLogin = FacebookLogin();
-    final result = await facebookLogin.logIn();
-    switch (result.status) {
-      case FacebookLoginStatus.success:
-        if (result.accessToken != null) {
-          context
-              .read<LoginBloc>()
-              .add(LoginEvent.singInFb(result.accessToken!.token));
-        }
-        break;
-      case FacebookLoginStatus.cancel:
-        print('canceled');
-        break;
-      case FacebookLoginStatus.error:
-        print('error');
-        break;
-    }
   }
 
   @override
@@ -195,7 +174,9 @@ class _LoginPageState extends State<LoginPage> {
                       Row(
                         children: [
                           InkWell(
-                              onTap: _loginGoogle,
+                              onTap: () => context.read<LoginBloc>().add(
+                                    const LoginEvent.singInGoogle(),
+                                  ),
                               child: SvgPicture.asset(
                                 'lib/assets/google.svg',
                                 color: BasicColors.white,
@@ -205,7 +186,9 @@ class _LoginPageState extends State<LoginPage> {
                             width: 25,
                           ),
                           InkWell(
-                            onTap: _loginFacebook,
+                            onTap: () => context.read<LoginBloc>().add(
+                                  const LoginEvent.singInFb(),
+                                ),
                             child: SvgPicture.asset(
                               'lib/assets/facebook-logo.svg',
                               height: 36,

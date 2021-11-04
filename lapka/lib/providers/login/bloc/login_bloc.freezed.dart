@@ -24,16 +24,12 @@ class _$LoginEventTearOff {
     );
   }
 
-  _SingInGoogle singInGoogle(String accessToken) {
-    return _SingInGoogle(
-      accessToken,
-    );
+  _SingInGoogle singInGoogle() {
+    return const _SingInGoogle();
   }
 
-  _SingInFb singInFb(String accessToken) {
-    return _SingInFb(
-      accessToken,
-    );
+  _SingInFb singInFb() {
+    return const _SingInFb();
   }
 }
 
@@ -45,22 +41,22 @@ mixin _$LoginEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String name, String password) singIn,
-    required TResult Function(String accessToken) singInGoogle,
-    required TResult Function(String accessToken) singInFb,
+    required TResult Function() singInGoogle,
+    required TResult Function() singInFb,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
+    TResult Function()? singInGoogle,
+    TResult Function()? singInFb,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
+    TResult Function()? singInGoogle,
+    TResult Function()? singInFb,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,8 +184,8 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String name, String password) singIn,
-    required TResult Function(String accessToken) singInGoogle,
-    required TResult Function(String accessToken) singInFb,
+    required TResult Function() singInGoogle,
+    required TResult Function() singInFb,
   }) {
     return singIn(name, password);
   }
@@ -198,8 +194,8 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
+    TResult Function()? singInGoogle,
+    TResult Function()? singInFb,
   }) {
     return singIn?.call(name, password);
   }
@@ -208,8 +204,8 @@ class _$_SingIn with DiagnosticableTreeMixin implements _SingIn {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
+    TResult Function()? singInGoogle,
+    TResult Function()? singInFb,
     required TResult orElse(),
   }) {
     if (singIn != null) {
@@ -267,7 +263,6 @@ abstract class _$SingInGoogleCopyWith<$Res> {
   factory _$SingInGoogleCopyWith(
           _SingInGoogle value, $Res Function(_SingInGoogle) then) =
       __$SingInGoogleCopyWithImpl<$Res>;
-  $Res call({String accessToken});
 }
 
 /// @nodoc
@@ -279,89 +274,62 @@ class __$SingInGoogleCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
 
   @override
   _SingInGoogle get _value => super._value as _SingInGoogle;
-
-  @override
-  $Res call({
-    Object? accessToken = freezed,
-  }) {
-    return _then(_SingInGoogle(
-      accessToken == freezed
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
-  const _$_SingInGoogle(this.accessToken);
-
-  @override
-  final String accessToken;
+  const _$_SingInGoogle();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LoginEvent.singInGoogle(accessToken: $accessToken)';
+    return 'LoginEvent.singInGoogle()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'LoginEvent.singInGoogle'))
-      ..add(DiagnosticsProperty('accessToken', accessToken));
+    properties..add(DiagnosticsProperty('type', 'LoginEvent.singInGoogle'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _SingInGoogle &&
-            (identical(other.accessToken, accessToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.accessToken, accessToken)));
+    return identical(this, other) || (other is _SingInGoogle);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(accessToken);
-
-  @JsonKey(ignore: true)
-  @override
-  _$SingInGoogleCopyWith<_SingInGoogle> get copyWith =>
-      __$SingInGoogleCopyWithImpl<_SingInGoogle>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String name, String password) singIn,
-    required TResult Function(String accessToken) singInGoogle,
-    required TResult Function(String accessToken) singInFb,
+    required TResult Function() singInGoogle,
+    required TResult Function() singInFb,
   }) {
-    return singInGoogle(accessToken);
+    return singInGoogle();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
+    TResult Function()? singInGoogle,
+    TResult Function()? singInFb,
   }) {
-    return singInGoogle?.call(accessToken);
+    return singInGoogle?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
+    TResult Function()? singInGoogle,
+    TResult Function()? singInFb,
     required TResult orElse(),
   }) {
     if (singInGoogle != null) {
-      return singInGoogle(accessToken);
+      return singInGoogle();
     }
     return orElse();
   }
@@ -402,19 +370,13 @@ class _$_SingInGoogle with DiagnosticableTreeMixin implements _SingInGoogle {
 }
 
 abstract class _SingInGoogle implements LoginEvent {
-  const factory _SingInGoogle(String accessToken) = _$_SingInGoogle;
-
-  String get accessToken => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$SingInGoogleCopyWith<_SingInGoogle> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _SingInGoogle() = _$_SingInGoogle;
 }
 
 /// @nodoc
 abstract class _$SingInFbCopyWith<$Res> {
   factory _$SingInFbCopyWith(_SingInFb value, $Res Function(_SingInFb) then) =
       __$SingInFbCopyWithImpl<$Res>;
-  $Res call({String accessToken});
 }
 
 /// @nodoc
@@ -425,89 +387,62 @@ class __$SingInFbCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
 
   @override
   _SingInFb get _value => super._value as _SingInFb;
-
-  @override
-  $Res call({
-    Object? accessToken = freezed,
-  }) {
-    return _then(_SingInFb(
-      accessToken == freezed
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
-  const _$_SingInFb(this.accessToken);
-
-  @override
-  final String accessToken;
+  const _$_SingInFb();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LoginEvent.singInFb(accessToken: $accessToken)';
+    return 'LoginEvent.singInFb()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'LoginEvent.singInFb'))
-      ..add(DiagnosticsProperty('accessToken', accessToken));
+    properties..add(DiagnosticsProperty('type', 'LoginEvent.singInFb'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _SingInFb &&
-            (identical(other.accessToken, accessToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.accessToken, accessToken)));
+    return identical(this, other) || (other is _SingInFb);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(accessToken);
-
-  @JsonKey(ignore: true)
-  @override
-  _$SingInFbCopyWith<_SingInFb> get copyWith =>
-      __$SingInFbCopyWithImpl<_SingInFb>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String name, String password) singIn,
-    required TResult Function(String accessToken) singInGoogle,
-    required TResult Function(String accessToken) singInFb,
+    required TResult Function() singInGoogle,
+    required TResult Function() singInFb,
   }) {
-    return singInFb(accessToken);
+    return singInFb();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
+    TResult Function()? singInGoogle,
+    TResult Function()? singInFb,
   }) {
-    return singInFb?.call(accessToken);
+    return singInFb?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? singIn,
-    TResult Function(String accessToken)? singInGoogle,
-    TResult Function(String accessToken)? singInFb,
+    TResult Function()? singInGoogle,
+    TResult Function()? singInFb,
     required TResult orElse(),
   }) {
     if (singInFb != null) {
-      return singInFb(accessToken);
+      return singInFb();
     }
     return orElse();
   }
@@ -548,12 +483,7 @@ class _$_SingInFb with DiagnosticableTreeMixin implements _SingInFb {
 }
 
 abstract class _SingInFb implements LoginEvent {
-  const factory _SingInFb(String accessToken) = _$_SingInFb;
-
-  String get accessToken => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$SingInFbCopyWith<_SingInFb> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _SingInFb() = _$_SingInFb;
 }
 
 /// @nodoc

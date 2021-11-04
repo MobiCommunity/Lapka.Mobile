@@ -17,7 +17,7 @@ class AuthInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    getIt.get<AuthService>().checkToken();
+    await getIt.get<AuthService>().checkToken();
     final _token = await getIt.get<UserService>().getToken();
 
     if (_token != null && _token.isNotEmpty) {

@@ -27,10 +27,6 @@ class Menu extends StatelessWidget {
   final Animation<double> menuAnimation;
   final Function onMenuItemClicked;
 
-  final UserService _userService = getIt.get<UserService>();
-  final AuthBroadcaster _authBroadcaster = getIt.get<AuthBroadcaster>();
-  final FetchUserDataUseCase _fetchUserDataUseCase =
-      getIt.get<FetchUserDataUseCase>();
   final LogoutUseCase _logoutUseCase = getIt.get<LogoutUseCase>();
 
   Menu(
@@ -73,10 +69,6 @@ class Menu extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Future<void> fetchData() async {
-    _fetchUserDataUseCase((await _userService.getUserId())!);
   }
 
   @override

@@ -22,9 +22,11 @@ class UserServiceImpl extends UserService {
     String? refreshToken,
     int? expires,
   ) async {
+    final expiresInMiliseconds = expires != null ? expires * 1000 : expires;
+
     List<Future<bool>> _futuresArray = [
       Glutton.eat(tokenKey, token),
-      Glutton.eat(expiresKey, expires),
+      Glutton.eat(expiresKey, expiresInMiliseconds),
     ];
 
     if (refreshToken != null) {
@@ -81,11 +83,13 @@ class UserServiceImpl extends UserService {
       return false;
     }
 
-    String expiresDateTime = await Glutton.vomit(expiresKey);
+    int expiresSecondsSinceEpoch = await Glutton.vomit(expiresKey);
     DateTime expireInDate;
 
     try {
-      expireInDate = DateTime.parse(expiresDateTime).toLocal();
+      expireInDate =
+          DateTime.fromMillisecondsSinceEpoch(expiresSecondsSinceEpoch)
+              .toLocal();
     } catch (exp) {
       expireInDate = DateTime.now();
     }
