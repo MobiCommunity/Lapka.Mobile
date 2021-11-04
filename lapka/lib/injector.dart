@@ -36,15 +36,6 @@ abstract class RegisterModule {
     responseBody: true,
   );
 
-  //
-  // final Fresh _fresh = Fresh<Token>(
-  //     tokenHeader: (Token token) =>
-  //     {
-  //       'Authentication': token.accessToken,
-  //
-  //     }, tokenStorage: InMemoryTokenStorage<Token>(), refreshToken: );
-  //
-
   @Named("Identity")
   @lazySingleton
   Dio identityDio() {
