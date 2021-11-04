@@ -9,7 +9,11 @@ class BasicDropdownButton extends StatefulWidget {
   final Function() onChangeCallback;
   final String? initialVal;
   const BasicDropdownButton(
-      {required this.items, this.placeholder = '',required this.onChangeCallback, this.initialVal, Key? key})
+      {required this.items,
+      this.placeholder = '',
+      required this.onChangeCallback,
+      this.initialVal,
+      Key? key})
       : super(key: key);
 
   @override
@@ -20,13 +24,14 @@ class _BasicDropdownButtonState extends State<BasicDropdownButton> {
   final circularBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
   );
-  String? selectedValue ;
+  String? selectedValue;
 
   @override
   void initState() {
     selectedValue = widget.initialVal;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(

@@ -10,4 +10,3 @@ class RegisterState with _$RegisterState {
 
   const factory RegisterState.error(NetworkExceptions exception) = _Error;
 }
-

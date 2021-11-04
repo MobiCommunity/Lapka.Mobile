@@ -2,12 +2,11 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:lapka/utils/location_helper.dart';
 
-
-class LocationRepository{
+class LocationRepository {
   Position? position;
   String? city;
 
-  Future determineLocation()async {
+  Future determineLocation() async {
     Geolocator geolocator = Geolocator();
 
     bool serviceEnabled;
@@ -29,12 +28,14 @@ class LocationRepository{
     if (permission == LocationPermission.deniedForever) {
       throw Exception();
     }
-    try{
-    position = await Geolocator.getCurrentPosition(forceAndroidLocationManager: true, timeLimit: Duration(seconds: 1));
-    }catch(e){
+    try {
+      position = await Geolocator.getCurrentPosition(
+          forceAndroidLocationManager: true, timeLimit: Duration(seconds: 1));
+    } catch (e) {
       throw Exception();
     }
-    Placemark? placemark = await LocationHelper.getAddressFromPosition(position!);
+    Placemark? placemark =
+        await LocationHelper.getAddressFromPosition(position!);
     city = placemark!.locality;
   }
- }
+}

@@ -23,21 +23,16 @@ class MsgOwnerButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.all(Radius.circular(8))
-        ),
+            color: color, borderRadius: BorderRadius.all(Radius.circular(8))),
         child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 11,horizontal: 11),
+            padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 11),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BasicText.overline(text!,color: textColor ?? BasicColors.white)
+                BasicText.overline(text!, color: textColor ?? BasicColors.white)
               ],
-            )
-        ),
+            )),
       ),
     );
   }
 }
-
-

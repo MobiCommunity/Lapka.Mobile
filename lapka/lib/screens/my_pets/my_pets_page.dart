@@ -51,25 +51,29 @@ class MyPetsPage extends StatelessWidget {
                 ),
                 BlocBuilder<MyPetsBloc, MyPetsState>(
                   builder: (context, state) {
-                    return state.when(initial: () =>_initial(context) , 
-                    loading: _loading , 
-                    loaded: (list) => _body(context, list), 
-                    error: (message) => _error(message) 
-                    );
+                    return state.when(
+                        initial: () => _initial(context),
+                        loading: _loading,
+                        loaded: (list) => _body(context, list),
+                        error: (message) => _error(message));
                   },
                 ),
-                
               ],
             ),
             Container(
-              alignment: Alignment.bottomCenter,
-              padding: EdgeInsets.all(20),
-              child: BasicButton(onPressed: (){
-                NavigatorHelper.push(context, EditMyPetPage(
-                  creation: true,
-                  //pet: Pet(name: 'name', race: 'race1', color: 'Color1', weight: 12.6, species: 1 ,sex: true, birthDay: DateTime.now(),sterilization: true),
-                ));
-              }, text: 'DODAJ ZWIERZAKA',))
+                alignment: Alignment.bottomCenter,
+                padding: EdgeInsets.all(20),
+                child: BasicButton(
+                  onPressed: () {
+                    NavigatorHelper.push(
+                        context,
+                        EditMyPetPage(
+                          creation: true,
+                          //pet: Pet(name: 'name', race: 'race1', color: 'Color1', weight: 12.6, species: 1 ,sex: true, birthDay: DateTime.now(),sterilization: true),
+                        ));
+                  },
+                  text: 'DODAJ ZWIERZAKA',
+                ))
           ],
         ));
   }
@@ -92,28 +96,29 @@ class MyPetsPage extends StatelessWidget {
   }
 
   Widget _body(BuildContext context, List<Pet> pets) {
-        return SliverList(
-          delegate: SliverChildBuilderDelegate((context, index) {
-            Pet pet = pets[index];
-            return Container(
-              color: BasicColors.lightGrey,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 16, left: 20, right: 20),
-                child: Column(
-                  children: [
-                    MyPetComp(pet: pet),
-                    pets.length - 1 != index
-                        ? Padding(
-                            padding: const EdgeInsets.only(left: 76, top: 24),
-                            child: _smallLineSpacer(),
-                          )
-                        : Container(height: 100,),
-                  ],
-                ),
-              ),
-            );
-          }, childCount: pets.length),
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
+        Pet pet = pets[index];
+        return Container(
+          color: BasicColors.lightGrey,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 16, left: 20, right: 20),
+            child: Column(
+              children: [
+                MyPetComp(pet: pet),
+                pets.length - 1 != index
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 76, top: 24),
+                        child: _smallLineSpacer(),
+                      )
+                    : Container(
+                        height: 100,
+                      ),
+              ],
+            ),
+          ),
         );
-      
+      }, childCount: pets.length),
+    );
   }
 }

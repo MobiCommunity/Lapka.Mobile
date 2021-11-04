@@ -6,10 +6,15 @@ part 'shelter.freezed.dart';
 part 'shelter.g.dart';
 
 @freezed
-class Shelter with _$Shelter{
-
-  const factory Shelter({String? id , String? name, ShelterAddress? address, String? phoneNumber, String? email}) = _Shelter;
-  factory Shelter.fromJson(Map<String, dynamic> json) => _$ShelterFromJson(json);
+class Shelter with _$Shelter {
+  const factory Shelter(
+      {String? id,
+      String? name,
+      ShelterAddress? address,
+      String? phoneNumber,
+      String? email}) = _Shelter;
+  factory Shelter.fromJson(Map<String, dynamic> json) =>
+      _$ShelterFromJson(json);
 
   // Shelter.fromJson(Map<String, dynamic> json) {
   //   id = json['id'];

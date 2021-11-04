@@ -6,9 +6,8 @@ part 'my_pet_event.g.dart';
 
 @freezed
 abstract class MyPetEvent with _$MyPetEvent {
-  const factory MyPetEvent({
-    @Default('') String description, required DateTime date
-  }) = _MyPetEvent;
+  const factory MyPetEvent(
+      {@Default('') String description, required DateTime date}) = _MyPetEvent;
   factory MyPetEvent.fromJson(Map<String, dynamic> json) =>
       _$MyPetEventFromJson(json);
 }

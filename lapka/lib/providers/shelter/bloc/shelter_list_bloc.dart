@@ -18,7 +18,7 @@ class ShelterListBloc extends Bloc<ShelterListEvent, ShelterListState> {
   Stream<ShelterListState> mapEventToState(
     ShelterListEvent event,
   ) async* {
-   if(event is _GetShelters){
+    if (event is _GetShelters) {
       yield ShelterListState.loading();
       try {
         final shelters = await _repository.getAllShelters();
@@ -26,6 +26,6 @@ class ShelterListBloc extends Bloc<ShelterListEvent, ShelterListState> {
       } catch (e) {
         yield ShelterListState.error('Error');
       }
-   }
+    }
   }
 }

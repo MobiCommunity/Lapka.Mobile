@@ -14,16 +14,18 @@ class BasicFormField extends StatefulWidget {
   final Function validator;
   final TextInputType textInputType;
 
-  BasicFormField({
-    Key? key,
-    required this.controller,
-    this.placeholder = '',
-    this.enabled = true,
-    this.trailling,
-    this.maxLines = 1,
-    this.validator = Validators.defaultValidator,
-    this.textInputType = TextInputType.text
-  }) : super(key: key,);
+  BasicFormField(
+      {Key? key,
+      required this.controller,
+      this.placeholder = '',
+      this.enabled = true,
+      this.trailling,
+      this.maxLines = 1,
+      this.validator = Validators.defaultValidator,
+      this.textInputType = TextInputType.text})
+      : super(
+          key: key,
+        );
 
   @override
   _BasicFormFieldState createState() => _BasicFormFieldState();
@@ -33,7 +35,6 @@ class _BasicFormFieldState extends State<BasicFormField> {
   final circularBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
   );
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,17 +48,18 @@ class _BasicFormFieldState extends State<BasicFormField> {
       keyboardType: widget.textInputType,
       decoration: InputDecoration(
         hintText: widget.placeholder,
-        hintStyle: body14.copyWith(color: BasicColors.darkGrey.withOpacity(0.3)),
+        hintStyle:
+            body14.copyWith(color: BasicColors.darkGrey.withOpacity(0.3)),
         contentPadding:
-        const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         filled: true,
         fillColor: Colors.white,
         suffixIcon: Padding(
-          padding: const EdgeInsets.only(right :20.0),
+          padding: const EdgeInsets.only(right: 20.0),
           child: widget.trailling,
         ),
         border: circularBorder.copyWith(
-         borderSide: BorderSide(color: BasicColors.greyOutlineBorder),
+          borderSide: BorderSide(color: BasicColors.greyOutlineBorder),
         ),
         errorBorder: circularBorder.copyWith(
           borderSide: BorderSide(color: Colors.red),

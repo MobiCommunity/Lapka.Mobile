@@ -33,7 +33,9 @@ class EditMyPetPage extends StatefulWidget {
     print(pet.toString());
     if (!creation) {
       if (this.pet != null) {
-        this.pet!.species != null?  species = getStringFromSpecies(Species.values[this.pet!.species!]): null;
+        this.pet!.species != null
+            ? species = getStringFromSpecies(Species.values[this.pet!.species!])
+            : null;
         petNameController.text = this.pet!.name!;
         raceController.text = this.pet!.race!;
         pet!.color != null ? colorController.text = pet!.color! : null;
@@ -43,7 +45,6 @@ class EditMyPetPage extends StatefulWidget {
         birthDate = pet!.birthDay;
         sex = pet!.sex;
         sterilizated = pet!.sterilization;
-        
       } else {
         this.pet = Pet();
       }
@@ -88,7 +89,7 @@ class _EditMyPetPageState extends State<EditMyPetPage> {
 
   _listCallback(List<String> list) {}
 
-  void _changeSpecies(String val){
+  void _changeSpecies(String val) {
     widget.species = val;
     setState(() {});
   }
@@ -309,9 +310,7 @@ class _EditMyPetPageState extends State<EditMyPetPage> {
       validator: (text) => Validators.multiValidator([
         VaidatorModel(Validators.notEmpty, 'Musisz podać datę'),
       ], text),
-      onChangeCallback: (DateTime date) {
-        
-      },
+      onChangeCallback: (DateTime date) {},
     );
   }
 
@@ -365,9 +364,7 @@ class _EditMyPetPageState extends State<EditMyPetPage> {
 
   BasicDropdownButton _speciesBuilder() {
     return BasicDropdownButton(
-      onChangeCallback: () {
-
-      },
+      onChangeCallback: () {},
       placeholder: 'Wybierz gatunek',
       items: _species,
       initialVal: widget.species,

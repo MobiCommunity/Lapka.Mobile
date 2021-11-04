@@ -14,7 +14,7 @@ class UserRepositoryImpl implements UserRepository {
   );
 
   @override
-  Future<Result<User,NetworkExceptions>> getUserData(String userId) async {
+  Future<Result<User, NetworkExceptions>> getUserData(String userId) async {
     try {
       final User user = await _userDataSource.getUserData(userId);
       return Result.success(data: user);

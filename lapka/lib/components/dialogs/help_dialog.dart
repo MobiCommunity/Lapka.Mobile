@@ -147,22 +147,23 @@ class HelpDialog extends StatelessWidget {
                                 print('ravioli');
                                 Clipboard.setData(
                                     ClipboardData(text: accountNumber));
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      elevation: 0,
-                                      backgroundColor: Colors.transparent,
-                                      padding: EdgeInsets.zero,
-                                        content:
-                                            Padding(
-                                              padding: const EdgeInsets.all(8.0),
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(Radius.circular(8)),
-                                                child: Container(
-                                                  padding: EdgeInsets.all(16),
-                                                  color: BasicColors.white,
-                                                  child: BasicText.body14('Skopiowano!')),
-                                              ),
-                                            )));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                        elevation: 0,
+                                        backgroundColor: Colors.transparent,
+                                        padding: EdgeInsets.zero,
+                                        content: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(8)),
+                                            child: Container(
+                                                padding: EdgeInsets.all(16),
+                                                color: BasicColors.white,
+                                                child: BasicText.body14(
+                                                    'Skopiowano!')),
+                                          ),
+                                        )));
                               },
                               child:
                                   SvgPicture.asset('lib/assets/copy-icon.svg'),
@@ -181,7 +182,7 @@ class HelpDialog extends StatelessWidget {
             alignment: Alignment.topRight,
             child: CancelButton(
               onPressed: () {
-                Navigator.of(context,rootNavigator: false).pop();
+                Navigator.of(context, rootNavigator: false).pop();
               },
             ),
           )

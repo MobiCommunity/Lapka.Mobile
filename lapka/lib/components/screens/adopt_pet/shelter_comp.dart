@@ -9,28 +9,45 @@ class ShelterComp extends StatelessWidget {
   final String lowerText;
   final Widget logoWidget;
 
-  ShelterComp({required this.shelterName, required this.logoWidget, required this.upperText, required this.lowerText,});
+  ShelterComp({
+    required this.shelterName,
+    required this.logoWidget,
+    required this.upperText,
+    required this.lowerText,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         logoWidget,
-        SizedBox(height: 1, width: 11,),
+        SizedBox(
+          height: 1,
+          width: 11,
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BasicText.body14Bold(shelterName),
-            SizedBox(height: 7, width: 1,),
+            SizedBox(
+              height: 7,
+              width: 1,
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SvgPicture.asset('lib/assets/geo-sign.svg'),
-                SizedBox(height: 1, width: 4,),
+                SizedBox(
+                  height: 1,
+                  width: 4,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 1, width: 1,),
+                    SizedBox(
+                      height: 1,
+                      width: 1,
+                    ),
                     BasicText.body14Light(upperText),
                     BasicText.body14Bold(lowerText)
                   ],

@@ -10,4 +10,3 @@ class LoginState with _$LoginState {
 
   const factory LoginState.error(NetworkExceptions exception) = _Error;
 }
-

@@ -33,6 +33,6 @@ class AdoptPetListBloc extends Bloc<AdoptPetListEvent, AdoptPetListState> {
       } catch (e) {
         yield AdoptPetListState.error('Error');
       }
-    } 
+    }
   }
 }

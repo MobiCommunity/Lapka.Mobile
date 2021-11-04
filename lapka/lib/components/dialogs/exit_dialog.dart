@@ -50,9 +50,12 @@ class ExitDialog extends StatelessWidget {
                             child: Container(
                               child: BasicButton(
                                   color: BasicColors.white,
-                                  textColor: BasicColors.darkGrey.withOpacity(0.8),
+                                  textColor:
+                                      BasicColors.darkGrey.withOpacity(0.8),
                                   text: 'Pozostań',
-                                  onPressed: () => Navigator.of(context, rootNavigator: true).pop(false)),
+                                  onPressed: () =>
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop(false)),
                             ),
                           ),
                           SizedBox(
@@ -62,8 +65,9 @@ class ExitDialog extends StatelessWidget {
                             child: Container(
                               child: BasicButton(
                                   text: 'Wyjdź',
-                                  onPressed: () => Navigator.of(context, rootNavigator: true).pop(true)
-                                      ),
+                                  onPressed: () =>
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop(true)),
                             ),
                           ),
                         ],
@@ -77,7 +81,9 @@ class ExitDialog extends StatelessWidget {
           Container(
             height: 44,
             alignment: Alignment.topRight,
-            child: CancelButton(onPressed: () => Navigator.of(context, rootNavigator: true).pop(false)),
+            child: CancelButton(
+                onPressed: () =>
+                    Navigator.of(context, rootNavigator: true).pop(false)),
           )
         ],
       ),

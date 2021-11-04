@@ -43,8 +43,9 @@ class MyPetComp extends StatelessWidget {
                   children: [
                     BasicText.heading20Bold(pet.name!),
                     InkWell(
-                      onTap: (){
-                        BasicDialog.showDialogCustom(context, VisitDialog((){}));
+                      onTap: () {
+                        BasicDialog.showDialogCustom(
+                            context, VisitDialog(() {}));
                       },
                       child: SvgPicture.asset(
                         'lib/assets/three-dots.svg',
@@ -109,7 +110,11 @@ class MyPetComp extends StatelessWidget {
                               ),
                               BasicTextButton(
                                   onPressed: () {
-                                    NavigatorHelper.push(context, DetailsMyPets(pet: pet,));
+                                    NavigatorHelper.push(
+                                        context,
+                                        DetailsMyPets(
+                                          pet: pet,
+                                        ));
                                   },
                                   text: 'Książeczka zdrowia',
                                   underline: true)

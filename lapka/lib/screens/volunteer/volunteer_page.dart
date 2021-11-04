@@ -24,7 +24,10 @@ class VolunteerPage extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            Container(margin: EdgeInsets.only(top: 133), color: BasicColors.lightGrey,),
+            Container(
+              margin: EdgeInsets.only(top: 133),
+              color: BasicColors.lightGrey,
+            ),
             CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
@@ -41,12 +44,12 @@ class VolunteerPage extends StatelessWidget {
                   ),
                 ),
                 BlocBuilder<ShelterListBloc, ShelterListState>(
-                  builder: (context, state){ 
+                  builder: (context, state) {
                     return state.when(
-                      initial: () => _initial(context),
-                      loading: _loading,
-                      loaded: (shelters) => _body(shelters),
-                      error: (message) => _error(message));
+                        initial: () => _initial(context),
+                        loading: _loading,
+                        loaded: (shelters) => _body(shelters),
+                        error: (message) => _error(message));
                   },
                 )
               ],
@@ -57,58 +60,63 @@ class VolunteerPage extends StatelessWidget {
 
   Widget _body(List<Shelter> shelters) {
     return SliverList(
-          delegate: SliverChildBuilderDelegate((context, index) {
-            return Container(
-              color: BasicColors.lightGrey,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 16, left: 20, right: 20),
-                child: InkWell(
-                  onTap: () {
-                    NavigatorHelper.push(context, VolunteerDetailsPage(id: shelters[index].id!,));
-                    
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(14)),
-                      color: BasicColors.white
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: ShelterComp(
-                          shelterName: shelters[index].name!,
-                          logoWidget: Container(
-                              width: 60,
-                              height: 65,
-                              decoration: BoxDecoration(
-                                color: BasicColors.grey,
-                              )),
-                          upperText: '(' +
-                              // LocationHelper.getDistance(
-                              //         context.read<LocationProvider>().position,
-                              //         shelters[index].address!.geoLocation!)
-                              //     .toStringAsFixed(1) +
-                              'km) ${shelters[index].address!.city}',
-                          lowerText: 'ul. ' + shelters[index].address!.street!),
-                    ),
-                  ),
+      delegate: SliverChildBuilderDelegate((context, index) {
+        return Container(
+          color: BasicColors.lightGrey,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 16, left: 20, right: 20),
+            child: InkWell(
+              onTap: () {
+                NavigatorHelper.push(
+                    context,
+                    VolunteerDetailsPage(
+                      id: shelters[index].id!,
+                    ));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(14)),
+                    color: BasicColors.white),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ShelterComp(
+                      shelterName: shelters[index].name!,
+                      logoWidget: Container(
+                          width: 60,
+                          height: 65,
+                          decoration: BoxDecoration(
+                            color: BasicColors.grey,
+                          )),
+                      upperText: '(' +
+                          // LocationHelper.getDistance(
+                          //         context.read<LocationProvider>().position,
+                          //         shelters[index].address!.geoLocation!)
+                          //     .toStringAsFixed(1) +
+                          'km) ${shelters[index].address!.city}',
+                      lowerText: 'ul. ' + shelters[index].address!.street!),
                 ),
               ),
-            );
-          }, childCount: shelters.length),
+            ),
+          ),
         );
+      }, childCount: shelters.length),
+    );
   }
 
-  Widget _initial(BuildContext context){
-    final bloc= BlocProvider.of<ShelterListBloc>(context);
+  Widget _initial(BuildContext context) {
+    final bloc = BlocProvider.of<ShelterListBloc>(context);
     bloc.add(ShelterListEvent.getShelters());
     return SliverToBoxAdapter(child: Container());
   }
 
-  Widget _loading(){
+  Widget _loading() {
     return SliverToBoxAdapter(child: LoadingIndicator());
   }
 
-  Widget _error(String msg){
-    return SliverToBoxAdapter(child: Center(child: BasicText.body14(msg),));
+  Widget _error(String msg) {
+    return SliverToBoxAdapter(
+        child: Center(
+      child: BasicText.body14(msg),
+    ));
   }
 }

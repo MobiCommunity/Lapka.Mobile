@@ -5,10 +5,14 @@ part 'shelter_adress.freezed.dart';
 part 'shelter_adress.g.dart';
 
 @freezed
-abstract class ShelterAddress with _$ShelterAddress{
-
-  const factory ShelterAddress({String? name, String? city, String? street, GeoLocation? geoLocation}) = _ShelterAddress;
-  factory ShelterAddress.fromJson(Map<String, dynamic> json) => _$ShelterAddressFromJson(json);
+abstract class ShelterAddress with _$ShelterAddress {
+  const factory ShelterAddress(
+      {String? name,
+      String? city,
+      String? street,
+      GeoLocation? geoLocation}) = _ShelterAddress;
+  factory ShelterAddress.fromJson(Map<String, dynamic> json) =>
+      _$ShelterAddressFromJson(json);
 
   // ShelterAddress.fromJson(Map<String, dynamic> json) {
   //   name = json['name'];

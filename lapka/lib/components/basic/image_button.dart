@@ -7,7 +7,7 @@ class ImageButton extends StatelessWidget {
   final Widget trailling;
   final String text;
   final Color color;
-  final bool shadow; 
+  final bool shadow;
 
   const ImageButton(
       {required this.onPressed,
@@ -22,17 +22,16 @@ class ImageButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-             BoxShadow(
-                    color: shadow ? BasicColors.shadow: Colors.transparent,
-                    spreadRadius: 0,
-                    blurRadius: 20,
-                    offset: Offset(2, 3),
-                  )
-          ]
-        ),
+            color: color,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: shadow ? BasicColors.shadow : Colors.transparent,
+                spreadRadius: 0,
+                blurRadius: 20,
+                offset: Offset(2, 3),
+              )
+            ]),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

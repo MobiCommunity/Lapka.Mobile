@@ -6,7 +6,8 @@ import 'package:lapka/components/basic/cancel_button.dart';
 import 'package:lapka/settings/colors.dart';
 
 class LoginDialog extends StatelessWidget {
-  const LoginDialog({Key? key, required this.onExit, required this.onLogin}) : super(key: key);
+  const LoginDialog({Key? key, required this.onExit, required this.onLogin})
+      : super(key: key);
   final Function() onLogin;
   final Function() onExit;
   @override
@@ -46,10 +47,8 @@ class LoginDialog extends StatelessWidget {
                     SizedBox(height: 10),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: BasicButton(
-                        text: 'ZALOGUJ SIĘ',
-                        onPressed: onLogin
-                      ),
+                      child:
+                          BasicButton(text: 'ZALOGUJ SIĘ', onPressed: onLogin),
                     ),
                   ],
                 ),
@@ -59,9 +58,7 @@ class LoginDialog extends StatelessWidget {
           Container(
             height: 44,
             alignment: Alignment.topRight,
-            child: CancelButton(
-              onPressed: onExit
-            ),
+            child: CancelButton(onPressed: onExit),
           )
         ],
       ),

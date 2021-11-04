@@ -57,8 +57,9 @@ class _MapScreenState extends State<MapScreen> {
                                     onAccept: () {
                                       Navigator.of(context).pop();
                                       print('Accept');
-                                      if(place.isNotEmpty){
-                                        widget.onAcceptCallback(place.first.position);
+                                      if (place.isNotEmpty) {
+                                        widget.onAcceptCallback(
+                                            place.first.position);
                                       }
                                       NavigatorHelper.pop(context);
                                     },

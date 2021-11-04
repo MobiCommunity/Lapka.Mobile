@@ -6,7 +6,11 @@ class ImageFromUrl extends StatelessWidget {
   final String imageUrl;
   final double height;
   final bool rounded;
-  const ImageFromUrl({Key? key, required this.imageUrl, required this.height, this.rounded = true})
+  const ImageFromUrl(
+      {Key? key,
+      required this.imageUrl,
+      required this.height,
+      this.rounded = true})
       : super(key: key);
 
   @override
@@ -16,7 +20,7 @@ class ImageFromUrl extends StatelessWidget {
       imageBuilder: (context, imageProvider) => Container(
         height: height,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(rounded ? 14 :0),
+          borderRadius: BorderRadius.circular(rounded ? 14 : 0),
           image: DecorationImage(
             image: imageProvider,
             fit: BoxFit.cover,
@@ -28,7 +32,8 @@ class ImageFromUrl extends StatelessWidget {
       errorWidget: (context, url, error) => Container(
           height: height,
           decoration: BoxDecoration(
-              color: Colors.grey, borderRadius: BorderRadius.circular(rounded ? 14 :0))),
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(rounded ? 14 : 0))),
     );
   }
 }

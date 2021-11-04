@@ -17,7 +17,7 @@ class MyPetsBloc extends Bloc<MyPetsEvent, MyPetsState> {
   Stream<MyPetsState> mapEventToState(
     MyPetsEvent event,
   ) async* {
-    if(event is _GetMyPets){
+    if (event is _GetMyPets) {
       yield MyPetsState.loading();
       try {
         final pets = await _repository.getAllPets();

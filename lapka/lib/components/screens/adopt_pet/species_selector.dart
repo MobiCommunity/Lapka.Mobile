@@ -129,7 +129,6 @@ class SpeciesButton extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             child: Container(
                 alignment: Alignment.center,
-                
                 child: SvgPicture.asset(
                   asset,
                   color: selected

@@ -55,7 +55,10 @@ class _MissingReportPageState extends State<MissingReportPage> {
       ),
       body: Stack(
         children: [
-          Container(margin: EdgeInsets.only(top: 133), color: BasicColors.lightGrey,),
+          Container(
+            margin: EdgeInsets.only(top: 133),
+            color: BasicColors.lightGrey,
+          ),
           SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -83,14 +86,14 @@ class _MissingReportPageState extends State<MissingReportPage> {
                         children: [
                           BasicDatePicker(
                             initialDate: DateTime.now(),
-                            firsDate: DateTime.now().subtract(Duration(days: 30)),
+                            firsDate:
+                                DateTime.now().subtract(Duration(days: 30)),
                             lastDate: DateTime.now(),
                             placeholder: 'Data zaginięcia',
                             validator: (text) => Validators.multiValidator([
-                                    VaidatorModel(
-                                        Validators.notEmpty, 'Musisz podać datę'),
-                                    
-                                  ], text),
+                              VaidatorModel(
+                                  Validators.notEmpty, 'Musisz podać datę'),
+                            ], text),
                             onChangeCallback: (DateTime date) {},
                           ),
                           SizedBox(
@@ -98,7 +101,8 @@ class _MissingReportPageState extends State<MissingReportPage> {
                           ),
                           BasicFormField(
                             controller: localizationController,
-                            placeholder: 'Podaj potencjalną lokalizację zwierząt',
+                            placeholder:
+                                'Podaj potencjalną lokalizację zwierząt',
                             trailling: Icon(
                               Icons.near_me,
                               color: BasicColors.darkGreen.withOpacity(0.5),
@@ -124,7 +128,11 @@ class _MissingReportPageState extends State<MissingReportPage> {
                           BasicDropdownButton(
                             onChangeCallback: () {},
                             placeholder: 'Wybierz kategorie',
-                            items: ['Kategoria 1', 'Kategoria 2', 'Kategoria 3'],
+                            items: [
+                              'Kategoria 1',
+                              'Kategoria 2',
+                              'Kategoria 3'
+                            ],
                           ),
                           SizedBox(
                             height: 16,
@@ -132,7 +140,11 @@ class _MissingReportPageState extends State<MissingReportPage> {
                           BasicDropdownButton(
                             onChangeCallback: () {},
                             placeholder: 'Wybierz rasę',
-                            items: ['Kategoria 1', 'Kategoria 2', 'Kategoria 3'],
+                            items: [
+                              'Kategoria 1',
+                              'Kategoria 2',
+                              'Kategoria 3'
+                            ],
                           ),
                           SizedBox(
                             height: 16,
@@ -176,7 +188,11 @@ class _MissingReportPageState extends State<MissingReportPage> {
                           BasicDropdownButton(
                             onChangeCallback: () {},
                             placeholder: 'Wybierz kolor',
-                            items: ['Kategoria 1', 'Kategoria 2', 'Kategoria 3'],
+                            items: [
+                              'Kategoria 1',
+                              'Kategoria 2',
+                              'Kategoria 3'
+                            ],
                           ),
                           SizedBox(
                             height: 16,
@@ -209,7 +225,8 @@ class _MissingReportPageState extends State<MissingReportPage> {
                           ),
                           BasicFormField(
                             controller: infoController,
-                            placeholder: 'Inne informacje o zaginionym zwierzaku ',
+                            placeholder:
+                                'Inne informacje o zaginionym zwierzaku ',
                             maxLines: 5,
                           ),
                           SizedBox(
@@ -224,8 +241,8 @@ class _MissingReportPageState extends State<MissingReportPage> {
                           ),
                           BasicFormField(
                               validator: (text) => Validators.multiValidator([
-                                    VaidatorModel(
-                                        Validators.notEmpty, 'Musisz podać imię'),
+                                    VaidatorModel(Validators.notEmpty,
+                                        'Musisz podać imię'),
                                   ], text),
                               controller: nameController,
                               placeholder: 'Imię'),
@@ -235,10 +252,10 @@ class _MissingReportPageState extends State<MissingReportPage> {
                           BasicFormField(
                               textInputType: TextInputType.phone,
                               validator: (text) => Validators.multiValidator([
-                                    VaidatorModel(
-                                        Validators.notEmpty, 'Musisz podać numer'),
-                                    VaidatorModel(
-                                        Validators.phone, 'Nieprawidłowy numer'),
+                                    VaidatorModel(Validators.notEmpty,
+                                        'Musisz podać numer'),
+                                    VaidatorModel(Validators.phone,
+                                        'Nieprawidłowy numer'),
                                   ], text),
                               controller: phoneController,
                               placeholder: 'Wpisz numer telefonu'),
