@@ -2,26 +2,21 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lapka/models/new_user_data.dart';
-import 'package:lapka/repository/api_result.dart';
+import 'package:lapka/repository/result.dart';
 import 'package:lapka/repository/identity_api/authentication/authentication_repository.dart';
 import 'package:lapka/repository/network_exceptions.dart';
-import 'package:lapka/repository/user/auth_user_store.dart';
-import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 
 part 'register_bloc.freezed.dart';
-
 part 'register_event.dart';
-
 part 'register_state.dart';
 
 @injectable
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   AuthenticationRepository _repository;
-  AuthUserStore _authUserStore;
-  AuthBroadcaster _authBroadcaster;
 
-  RegisterBloc(this._repository, this._authUserStore, this._authBroadcaster)
-      : super(_Idle());
+  RegisterBloc(
+    this._repository,
+  ) : super(_Idle());
 
   @override
   Stream<RegisterState> mapEventToState(
@@ -34,7 +29,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Stream<RegisterState> _handleSignUp(_SingUp event) async* {
-    final ApiResult<void> result = await _repository.signUp(
+    final Result<void, NetworkExceptions> result = await _repository.signUp(
       NewUserData(
         username: event.username,
         firstName: event.firstName,

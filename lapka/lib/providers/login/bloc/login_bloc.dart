@@ -4,26 +4,23 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:lapka/models/token.dart';
-import 'package:lapka/repository/api_result.dart';
 import 'package:lapka/repository/identity_api/authentication/authentication_repository.dart';
-import 'package:lapka/repository/identity_api/user/user_repository.dart';
 import 'package:lapka/repository/network_exceptions.dart';
-import 'package:lapka/repository/user/auth_user_store.dart';
+import 'package:lapka/repository/result.dart';
+import 'package:lapka/services/user_service.dart';
 import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 
 part 'login_bloc.freezed.dart';
-
 part 'login_event.dart';
-
 part 'login_state.dart';
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   AuthenticationRepository _repository;
-  AuthUserStore _authUserStore;
+  UserService _userService;
   AuthBroadcaster _authBroadcaster;
 
-  LoginBloc(this._repository, this._authUserStore, this._authBroadcaster)
+  LoginBloc(this._repository, this._userService, this._authBroadcaster)
       : super(_Idle());
 
   @override
@@ -41,7 +38,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Stream<LoginState> _handleSignInGoogle(_SingInGoogle event) async* {
-    ApiResult<Token> tokenResult =
+    Result<Token,NetworkExceptions> tokenResult =
         await _repository.singInGoogle(event.accessToken);
 
     yield* tokenResult.when(success: (token) async* {
@@ -52,7 +49,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Stream<LoginState> _handleSignInFb(_SingInFb event) async* {
-    ApiResult<Token> tokenResult =
+    Result<Token,NetworkExceptions> tokenResult =
         await _repository.singInFb(event.accessToken);
 
     yield* tokenResult.when(success: (token) async* {
@@ -63,7 +60,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Stream<LoginState> _handleSingIn(_SingIn event) async* {
-    ApiResult<Token> tokenResult =
+    Result<Token, NetworkExceptions> tokenResult =
         await _repository.singIn(event.name, event.password);
 
     yield* tokenResult.when(
@@ -81,7 +78,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       await _saveToken(token);
       String userId = JwtDecoder.decode(token.accessToken)['unique_name'];
       yield _Success();
-      _authBroadcaster.updateState(AuthState.authenticated(userId));
+      _authBroadcaster.updateState(AuthState.authenticated());
     } catch (e) {
       yield _Error(
           NetworkExceptions.unexpectedError(exception: e as Exception));
@@ -89,7 +86,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Future<void> _saveToken(Token token) async {
-    await _authUserStore.saveToken(
+    await _userService.saveToken(
       token,
     );
   }

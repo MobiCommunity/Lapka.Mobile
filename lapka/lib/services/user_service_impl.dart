@@ -1,10 +1,11 @@
 import 'package:glutton/glutton.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:lapka/models/token.dart';
 import 'package:lapka/models/user.dart';
-import 'package:lapka/repository/user/auth_user_store.dart';
+import 'package:lapka/models/token.dart';
+import 'package:lapka/services/user_service.dart';
 import 'package:lapka/utils/extensions.dart';
+import 'package:rxdart/subjects.dart';
 
 const tokenKey = 'token';
 const refreshTokenKey = 'refresh_token';
@@ -12,9 +13,9 @@ const expiresKey = 'expires';
 const usernameKey = 'username';
 const userKey = 'userKey';
 
-@LazySingleton(as: AuthUserStore)
-class AuthUserStoreImpl implements AuthUserStore {
-  User? currentUser;
+@LazySingleton(as: UserService)
+class UserServiceImpl extends UserService {
+  final _userBroadcaster = BehaviorSubject<User?>();
 
   Future<void> _save(
     String token,
@@ -41,7 +42,6 @@ class AuthUserStoreImpl implements AuthUserStore {
       token.accessToken,
       token.refreshToken,
       token.expires,
-      // username,
     );
   }
 
@@ -95,12 +95,8 @@ class AuthUserStoreImpl implements AuthUserStore {
 
   @override
   Future<void> deleteAllUserData() async {
-    currentUser = null;
     await Glutton.flush();
   }
-
-  @override
-  Future<bool> isUserStored() async => (await getUser()) != null;
 
   @override
   Future<String?> getUserId() async {
@@ -111,18 +107,17 @@ class AuthUserStoreImpl implements AuthUserStore {
   }
 
   @override
-  Future<void> setUser(User user) async {
-    currentUser = user;
-    await Glutton.eat(userKey, user.toJson());
+  Stream<User?> observeUser() => _userBroadcaster.stream;
+
+  @override
+  Future<void> updateUserData(User? user) async {
+    return _userBroadcaster.add(user);
   }
 
   @override
-  Future<User?> getUser() async {
+  User? getCurrentUser() {
     try {
-      return currentUser ??
-          User.fromJson(
-            await Glutton.vomit(userKey),
-          );
+      return _userBroadcaster.value;
     } catch (exp) {
       return null;
     }

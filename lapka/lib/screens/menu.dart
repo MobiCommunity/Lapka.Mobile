@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
+import 'package:lapka/domain/auth/use_case/logout_use_case.dart';
+import 'package:lapka/domain/user/use_case/fetch_user_data_use_case.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/models/user.dart';
 import 'package:lapka/providers/login/bloc/login_bloc.dart';
+import 'package:lapka/providers/menu/bloc/menu_bloc.dart';
 import 'package:lapka/providers/menuProvider.dart';
-import 'package:lapka/providers/user/user_bloc.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
 import 'package:lapka/screens/login/login_page.dart';
 import 'package:lapka/screens/my_pets/my_pets_page.dart';
 import 'package:lapka/screens/report/report_page.dart';
 import 'package:lapka/screens/volunteer/volunteer_page.dart';
+import 'package:lapka/services/user_service.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
 import 'package:lapka/settings/naviagtion/navigator_helper.dart';
@@ -24,7 +27,13 @@ class Menu extends StatelessWidget {
   final Animation<double> menuAnimation;
   final Function onMenuItemClicked;
 
-  const Menu(
+  final UserService _userService = getIt.get<UserService>();
+  final AuthBroadcaster _authBroadcaster = getIt.get<AuthBroadcaster>();
+  final FetchUserDataUseCase _fetchUserDataUseCase =
+      getIt.get<FetchUserDataUseCase>();
+  final LogoutUseCase _logoutUseCase = getIt.get<LogoutUseCase>();
+
+  Menu(
       {Key? key,
       required this.slideAnimation,
       required this.menuAnimation,
@@ -66,6 +75,10 @@ class Menu extends StatelessWidget {
     );
   }
 
+  Future<void> fetchData() async {
+    _fetchUserDataUseCase((await _userService.getUserId())!);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SlideTransition(
@@ -76,17 +89,23 @@ class Menu extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20.0),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: BlocBuilder<UserBloc, UserState>(
-                builder: (BuildContext context, UserState state) {
+            child:
+                BlocBuilder<MenuBloc, MenuBlocState>(builder: (context, state) {
               return Column(
                 //mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(),
-                  state.when(
-                        fetched: (user) => _avatarBuilder(user),
-                        unfetched: () => _buildLoginMenuItem(context),
+                  state.authState.when(
+                        authenticated: () {
+                          if (state.user != null) {
+                            return _avatarBuilder(state.user!);
+                          } else {
+                            return Text('No data');
+                          }
+                        },
+                        unauthenticated: () => _buildLoginMenuItem(context),
                       ) ??
                       _buildLoginMenuItem(context),
                   _buildMenuItem(
@@ -142,17 +161,16 @@ class Menu extends StatelessWidget {
                   ),
                   Container(),
                   Visibility(
-                    visible: state is Fetched,
+                    visible: state.authState is Authenticated,
                     child: _bigLineSpacer(),
                   ),
                   Visibility(
-                    visible: state is Fetched,
+                    visible: state.authState is Authenticated,
                     child: _buildMenuItem(
                       context,
                       name: 'Wyloguj się',
                       icon: 'lib/assets/logout-icon.svg',
-                      onTap: () =>
-                          context.read<UserBloc>().add(UserEvent.logOut()),
+                      onTap: () => _logoutUseCase(),
                     ),
                   ),
                   Container()

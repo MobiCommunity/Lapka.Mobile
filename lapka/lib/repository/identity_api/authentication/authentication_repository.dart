@@ -1,17 +1,18 @@
 import 'package:lapka/models/new_user_data.dart';
 import 'package:lapka/models/token.dart';
-import 'package:lapka/repository/api_result.dart';
+import 'package:lapka/repository/network_exceptions.dart';
+import 'package:lapka/repository/result.dart';
 
 abstract class AuthenticationRepository {
-  Future<ApiResult<Token>> singIn(String email, String password);
+  Future<Result<Token,NetworkExceptions>> singIn(String email, String password);
 
-  Future<ApiResult<Token>> singInGoogle(String token);
+  Future<Result<Token,NetworkExceptions>> singInGoogle(String token);
 
-  Future<ApiResult<Token>> singInFb(String token);
+  Future<Result<Token,NetworkExceptions>> singInFb(String token);
 
-  Future<ApiResult<void>> signUp(NewUserData newUser);
+  Future<Result<void,NetworkExceptions>> signUp(NewUserData newUser);
 
-  Future<ApiResult<Token>> refreshToken(String refreshToken);
+  Future<Result<Token,NetworkExceptions>> refreshToken(String refreshToken);
 
-  Future<ApiResult<void>> revokeRefreshToken(String refreshToken);
+  Future<Result<void,NetworkExceptions>> revokeRefreshToken(String refreshToken);
 }

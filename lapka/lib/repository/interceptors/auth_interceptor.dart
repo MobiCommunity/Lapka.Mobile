@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:lapka/domain/auth/use_case/logout_use_case.dart';
 import 'package:lapka/injector.dart';
-import 'package:lapka/providers/user/user_bloc.dart';
-import 'package:lapka/repository/user/auth_user_store.dart';
-import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
+import 'package:lapka/services/auth_service.dart';
+import 'package:lapka/services/user_service.dart';
 
 const TOKEN_KEY_NAME = "Authorization";
 
@@ -14,15 +14,11 @@ const TOKEN_KEY_NAME = "Authorization";
 
 @injectable
 class AuthInterceptor extends Interceptor {
-  AuthBroadcaster _authBroadcaster;
-
-  AuthInterceptor(this._authBroadcaster);
-
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    getIt.get<UserBloc>().checkToken();
-    final _token = await getIt.get<AuthUserStore>().getToken();
+    getIt.get<AuthService>().checkToken();
+    final _token = await getIt.get<UserService>().getToken();
 
     if (_token != null && _token.isNotEmpty) {
       options.queryParameters.addAll({
@@ -35,7 +31,8 @@ class AuthInterceptor extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     if (response.statusCode == 401) {
-      getIt.get<UserBloc>().add(UserEvent.logOut());
+      getIt.get<LogoutUseCase>().call();
+      // getIt.get<UserBloc>().add(UserEvent.logOut());
     }
     handler.next(response);
   }

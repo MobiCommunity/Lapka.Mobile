@@ -1,7 +1,7 @@
 import 'package:lapka/models/token.dart';
 import 'package:lapka/models/user.dart';
 
-abstract class AuthUserStore {
+abstract class UserService {
   Future<void> saveToken(
     Token token,
   );
@@ -16,11 +16,11 @@ abstract class AuthUserStore {
 
   Future<void> deleteAllUserData();
 
-  Future<bool> isUserStored();
-
   Future<String?> getUserId();
 
-  Future<void> setUser(User user);
+  Future<void> updateUserData(User? user);
 
-  Future<User?> getUser();
+  Stream<User?> observeUser();
+
+  User? getCurrentUser();
 }
