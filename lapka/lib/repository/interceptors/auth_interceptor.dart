@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:lapka/domain/auth/use_case/logout_use_case.dart';
+import 'package:lapka/domain/auth/use_cases/logout_use_case.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/services/auth_service.dart';
 import 'package:lapka/services/user_service.dart';
@@ -32,7 +32,6 @@ class AuthInterceptor extends Interceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     if (response.statusCode == 401) {
       getIt.get<LogoutUseCase>().call();
-      // getIt.get<UserBloc>().add(UserEvent.logOut());
     }
     handler.next(response);
   }

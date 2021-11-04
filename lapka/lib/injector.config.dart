@@ -9,27 +9,27 @@ import 'package:fresh_dio/fresh_dio.dart' as _i8;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'domain/auth/use_case/facebook_login_use_case.dart' as _i28;
-import 'domain/auth/use_case/google_login_use_case.dart' as _i30;
-import 'domain/auth/use_case/logout_use_case.dart' as _i33;
-import 'domain/auth/use_case/refresh_token_use_case.dart' as _i35;
-import 'domain/user/use_case/fetch_user_data_use_case.dart' as _i29;
+import 'domain/auth/use_cases/facebook_login_use_case.dart' as _i30;
+import 'domain/auth/use_cases/google_login_use_case.dart' as _i32;
+import 'domain/auth/use_cases/logout_use_case.dart' as _i35;
+import 'domain/auth/use_cases/refresh_token_use_case.dart' as _i37;
+import 'domain/user/use_cases/fetch_user_data_use_case.dart' as _i31;
 import 'injector.dart' as _i39;
 import 'providers/adopt_pet/bloc/adopt_pet_details_bloc.dart' as _i24;
 import 'providers/adopt_pet/bloc/adopt_pet_list_bloc.dart' as _i25;
-import 'providers/adopt_pet/bloc/like_pet_bloc.dart' as _i31;
+import 'providers/adopt_pet/bloc/like_pet_bloc.dart' as _i33;
 import 'providers/global_loader/global_loader_cubit.dart' as _i11;
-import 'providers/login/bloc/login_bloc.dart' as _i32;
-import 'providers/menu/bloc/menu_bloc.dart' as _i34;
-import 'providers/register/register_bloc.dart' as _i36;
+import 'providers/login/bloc/login_bloc.dart' as _i34;
+import 'providers/menu/bloc/menu_bloc.dart' as _i36;
+import 'providers/register/register_bloc.dart' as _i38;
 import 'repository/identity_api/authentication/authentication_data_source.dart'
     as _i5;
 import 'repository/identity_api/authentication/authentication_data_source_impl.dart'
     as _i6;
 import 'repository/identity_api/authentication/authentication_repository.dart'
-    as _i26;
+    as _i28;
 import 'repository/identity_api/authentication/authentication_repository_impl.dart'
-    as _i27;
+    as _i29;
 import 'repository/identity_api/user/user_data_source.dart' as _i18;
 import 'repository/identity_api/user/user_data_source_impl.dart' as _i19;
 import 'repository/identity_api/user/user_repository.dart' as _i20;
@@ -39,8 +39,8 @@ import 'repository/pets_api/pets_data_source.dart' as _i14;
 import 'repository/pets_api/pets_data_source_impl.dart' as _i15;
 import 'repository/pets_api/pets_repository.dart' as _i16;
 import 'repository/pets_api/pets_repository_impl.dart' as _i17;
-import 'services/auth_service.dart' as _i37;
-import 'services/auth_service_impl.dart' as _i38;
+import 'services/auth_service.dart' as _i26;
+import 'services/auth_service_impl.dart' as _i27;
 import 'services/facebook_auth_service.dart' as _i9;
 import 'services/facebook_auth_service_impl.dart' as _i10;
 import 'services/google_sign_in_service.dart' as _i12;
@@ -86,38 +86,38 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i24.AdoptPetDetailsBloc(get<_i16.PetsRepository>()));
   gh.factory<_i25.AdoptPetListBloc>(
       () => _i25.AdoptPetListBloc(get<_i16.PetsRepository>()));
-  gh.factory<_i26.AuthenticationRepository>(() =>
-      _i27.AuthenticationRepositoryImpl(get<_i5.AuthenticationDataSource>(),
-          get<_i9.FacebookAuthService>(), get<_i12.GoogleSignInService>()));
-  gh.factory<_i28.FacebookLoginUseCase>(
-      () => _i28.FacebookLoginUseCase(get<_i26.AuthenticationRepository>()));
-  gh.factory<_i29.FetchUserDataUseCase>(() => _i29.FetchUserDataUseCase(
-      get<_i20.UserRepository>(), get<_i22.UserService>()));
-  gh.factory<_i30.GoogleLoginUseCase>(
-      () => _i30.GoogleLoginUseCase(get<_i26.AuthenticationRepository>()));
-  gh.factory<_i31.LikePetBloc>(
-      () => _i31.LikePetBloc(get<_i16.PetsRepository>()));
-  gh.factory<_i32.LoginBloc>(() => _i32.LoginBloc(
-      get<_i26.AuthenticationRepository>(),
+  gh.lazySingleton<_i26.AuthService>(() => _i27.AuthServiceImpl(
       get<_i22.UserService>(),
       get<_i3.AuthBroadcaster>(),
-      get<_i28.FacebookLoginUseCase>(),
-      get<_i30.GoogleLoginUseCase>()));
-  gh.factory<_i33.LogoutUseCase>(() => _i33.LogoutUseCase(
-      get<_i26.AuthenticationRepository>(),
+      get<dynamic>(),
+      get<dynamic>()));
+  gh.factory<_i28.AuthenticationRepository>(() =>
+      _i29.AuthenticationRepositoryImpl(get<_i5.AuthenticationDataSource>(),
+          get<_i9.FacebookAuthService>(), get<_i12.GoogleSignInService>()));
+  gh.factory<_i30.FacebookLoginUseCase>(
+      () => _i30.FacebookLoginUseCase(get<_i28.AuthenticationRepository>()));
+  gh.factory<_i31.FetchUserDataUseCase>(() => _i31.FetchUserDataUseCase(
+      get<_i20.UserRepository>(), get<_i22.UserService>()));
+  gh.factory<_i32.GoogleLoginUseCase>(
+      () => _i32.GoogleLoginUseCase(get<_i28.AuthenticationRepository>()));
+  gh.factory<_i33.LikePetBloc>(
+      () => _i33.LikePetBloc(get<_i16.PetsRepository>()));
+  gh.factory<_i34.LoginBloc>(() => _i34.LoginBloc(
+      get<_i28.AuthenticationRepository>(),
+      get<_i22.UserService>(),
+      get<_i3.AuthBroadcaster>(),
+      get<dynamic>(),
+      get<dynamic>()));
+  gh.factory<_i35.LogoutUseCase>(() => _i35.LogoutUseCase(
+      get<_i28.AuthenticationRepository>(),
       get<_i22.UserService>(),
       get<_i3.AuthBroadcaster>()));
-  gh.factory<_i34.MenuBloc>(() => _i34.MenuBloc(get<_i22.UserService>(),
-      get<_i3.AuthBroadcaster>(), get<_i29.FetchUserDataUseCase>()));
-  gh.factory<_i35.RefreshTokenUseCase>(
-      () => _i35.RefreshTokenUseCase(get<_i26.AuthenticationRepository>()));
-  gh.factory<_i36.RegisterBloc>(
-      () => _i36.RegisterBloc(get<_i26.AuthenticationRepository>()));
-  gh.lazySingleton<_i37.AuthService>(() => _i38.AuthServiceImpl(
-      get<_i22.UserService>(),
-      get<_i3.AuthBroadcaster>(),
-      get<_i35.RefreshTokenUseCase>(),
-      get<_i29.FetchUserDataUseCase>()));
+  gh.factory<_i36.MenuBloc>(() => _i36.MenuBloc(
+      get<_i22.UserService>(), get<_i3.AuthBroadcaster>(), get<dynamic>()));
+  gh.factory<_i37.RefreshTokenUseCase>(
+      () => _i37.RefreshTokenUseCase(get<_i28.AuthenticationRepository>()));
+  gh.factory<_i38.RegisterBloc>(
+      () => _i38.RegisterBloc(get<_i28.AuthenticationRepository>()));
   return get;
 }
 

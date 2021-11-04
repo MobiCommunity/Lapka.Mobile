@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
-import 'package:lapka/domain/auth/use_case/refresh_token_use_case.dart';
-import 'package:lapka/domain/user/use_case/fetch_user_data_use_case.dart';
+import 'package:lapka/domain/auth/use_cases/refresh_token_use_case.dart';
+import 'package:lapka/domain/user/use_cases/fetch_user_data_use_case.dart';
 import 'package:lapka/models/token.dart';
 import 'package:lapka/repository/network_exceptions.dart';
 import 'package:lapka/repository/result.dart';

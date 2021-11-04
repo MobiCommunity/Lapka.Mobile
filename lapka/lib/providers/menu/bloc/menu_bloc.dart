@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:lapka/domain/auth/use_case/logout_use_case.dart';
-import 'package:lapka/domain/user/use_case/fetch_user_data_use_case.dart';
+import 'package:lapka/domain/user/use_cases/fetch_user_data_use_case.dart';
 import 'package:lapka/models/user.dart';
-import 'package:lapka/repository/identity_api/user/user_repository.dart';
 import 'package:lapka/services/user_service.dart';
 import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 

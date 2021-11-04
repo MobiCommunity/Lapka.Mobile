@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
-import 'package:lapka/domain/auth/use_case/logout_use_case.dart';
+import 'package:lapka/domain/auth/use_cases/logout_use_case.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/models/user.dart';
 import 'package:lapka/providers/menu/bloc/menu_bloc.dart';
