@@ -1,14 +1,15 @@
 import 'package:lapka/models/pet.dart';
-import 'package:lapka/repository/api_result.dart';
+import 'package:lapka/repository/network_exceptions.dart';
+import 'package:lapka/repository/result.dart';
 
 abstract class PetsRepository {
-  Future<ApiResult<List<Pet>>> getAllPets();
+  Future<Result<List<Pet>, NetworkExceptions>> getAllPets();
 
-  Future<ApiResult<Pet>> getPetDetails(String id);
+  Future<Result<Pet, NetworkExceptions>> getPetDetails(String id);
 
-  Future<ApiResult<void>> likePet(String id);
+  Future<Result<void, NetworkExceptions>> likePet(String id);
 
-  Future<ApiResult<void>> dislikePet(String id);
+  Future<Result<void, NetworkExceptions>> dislikePet(String id);
 
-  Future<ApiResult<List<Pet>>> getAllLikedPets();
+  Future<Result<List<Pet>, NetworkExceptions>> getAllLikedPets();
 }

@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
-import 'package:lapka/models/token.dart';
 import 'package:lapka/models/user.dart';
-import 'package:lapka/repository/api_result.dart';
+import 'package:lapka/repository/result.dart';
 import 'package:lapka/repository/identity_api/user/user_data_source.dart';
 import 'package:lapka/repository/identity_api/user/user_repository.dart';
 import 'package:lapka/repository/network_exceptions.dart';
@@ -15,12 +14,12 @@ class UserRepositoryImpl implements UserRepository {
   );
 
   @override
-  Future<ApiResult<User>> getUserData(String userId) async {
+  Future<Result<User,NetworkExceptions>> getUserData(String userId) async {
     try {
       final User user = await _userDataSource.getUserData(userId);
-      return ApiResult.success(data: user);
+      return Result.success(data: user);
     } catch (exp) {
-      return ApiResult.failure(error: NetworkExceptions.getDioException(exp));
+      return Result.failure(error: NetworkExceptions.getDioException(exp));
     }
   }
 }

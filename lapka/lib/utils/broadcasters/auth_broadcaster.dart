@@ -6,7 +6,7 @@ part 'auth_broadcaster.freezed.dart';
 
 @freezed
 class AuthState with _$AuthState {
-  const factory AuthState.authenticated(String userId) = Authenticated;
+  const factory AuthState.authenticated() = Authenticated;
 
   const factory AuthState.unauthenticated() = Unauthenticated;
 }

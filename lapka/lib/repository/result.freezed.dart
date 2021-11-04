@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'api_result.dart';
+part of 'result.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,104 +14,106 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$ApiResultTearOff {
-  const _$ApiResultTearOff();
+class _$ResultTearOff {
+  const _$ResultTearOff();
 
-  Success<T> success<T>({T? data}) {
-    return Success<T>(
+  Success<T, E> success<T, E>({T? data}) {
+    return Success<T, E>(
       data: data,
     );
   }
 
-  Failure<T> failure<T>({required NetworkExceptions error}) {
-    return Failure<T>(
+  Failure<T, E> failure<T, E>({required E error}) {
+    return Failure<T, E>(
       error: error,
     );
   }
 }
 
 /// @nodoc
-const $ApiResult = _$ApiResultTearOff();
+const $Result = _$ResultTearOff();
 
 /// @nodoc
-mixin _$ApiResult<T> {
+mixin _$Result<T, E> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T? data) success,
-    required TResult Function(NetworkExceptions error) failure,
+    required TResult Function(E error) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T? data)? success,
-    TResult Function(NetworkExceptions error)? failure,
+    TResult Function(E error)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T? data)? success,
-    TResult Function(NetworkExceptions error)? failure,
+    TResult Function(E error)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Success<T> value) success,
-    required TResult Function(Failure<T> value) failure,
+    required TResult Function(Success<T, E> value) success,
+    required TResult Function(Failure<T, E> value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Failure<T> value)? failure,
+    TResult Function(Success<T, E> value)? success,
+    TResult Function(Failure<T, E> value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Failure<T> value)? failure,
+    TResult Function(Success<T, E> value)? success,
+    TResult Function(Failure<T, E> value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ApiResultCopyWith<T, $Res> {
-  factory $ApiResultCopyWith(
-          ApiResult<T> value, $Res Function(ApiResult<T>) then) =
-      _$ApiResultCopyWithImpl<T, $Res>;
+abstract class $ResultCopyWith<T, E, $Res> {
+  factory $ResultCopyWith(
+          Result<T, E> value, $Res Function(Result<T, E>) then) =
+      _$ResultCopyWithImpl<T, E, $Res>;
 }
 
 /// @nodoc
-class _$ApiResultCopyWithImpl<T, $Res> implements $ApiResultCopyWith<T, $Res> {
-  _$ApiResultCopyWithImpl(this._value, this._then);
+class _$ResultCopyWithImpl<T, E, $Res> implements $ResultCopyWith<T, E, $Res> {
+  _$ResultCopyWithImpl(this._value, this._then);
 
-  final ApiResult<T> _value;
+  final Result<T, E> _value;
   // ignore: unused_field
-  final $Res Function(ApiResult<T>) _then;
+  final $Res Function(Result<T, E>) _then;
 }
 
 /// @nodoc
-abstract class $SuccessCopyWith<T, $Res> {
-  factory $SuccessCopyWith(Success<T> value, $Res Function(Success<T>) then) =
-      _$SuccessCopyWithImpl<T, $Res>;
+abstract class $SuccessCopyWith<T, E, $Res> {
+  factory $SuccessCopyWith(
+          Success<T, E> value, $Res Function(Success<T, E>) then) =
+      _$SuccessCopyWithImpl<T, E, $Res>;
   $Res call({T? data});
 }
 
 /// @nodoc
-class _$SuccessCopyWithImpl<T, $Res> extends _$ApiResultCopyWithImpl<T, $Res>
-    implements $SuccessCopyWith<T, $Res> {
-  _$SuccessCopyWithImpl(Success<T> _value, $Res Function(Success<T>) _then)
-      : super(_value, (v) => _then(v as Success<T>));
+class _$SuccessCopyWithImpl<T, E, $Res> extends _$ResultCopyWithImpl<T, E, $Res>
+    implements $SuccessCopyWith<T, E, $Res> {
+  _$SuccessCopyWithImpl(
+      Success<T, E> _value, $Res Function(Success<T, E>) _then)
+      : super(_value, (v) => _then(v as Success<T, E>));
 
   @override
-  Success<T> get _value => super._value as Success<T>;
+  Success<T, E> get _value => super._value as Success<T, E>;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(Success<T>(
+    return _then(Success<T, E>(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -122,7 +124,7 @@ class _$SuccessCopyWithImpl<T, $Res> extends _$ApiResultCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$Success<T> implements Success<T> {
+class _$Success<T, E> implements Success<T, E> {
   const _$Success({this.data});
 
   @override
@@ -130,13 +132,13 @@ class _$Success<T> implements Success<T> {
 
   @override
   String toString() {
-    return 'ApiResult<$T>.success(data: $data)';
+    return 'Result<$T, $E>.success(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Success<T> &&
+        (other is Success<T, E> &&
             (identical(other.data, data) ||
                 const DeepCollectionEquality().equals(other.data, data)));
   }
@@ -147,14 +149,14 @@ class _$Success<T> implements Success<T> {
 
   @JsonKey(ignore: true)
   @override
-  $SuccessCopyWith<T, Success<T>> get copyWith =>
-      _$SuccessCopyWithImpl<T, Success<T>>(this, _$identity);
+  $SuccessCopyWith<T, E, Success<T, E>> get copyWith =>
+      _$SuccessCopyWithImpl<T, E, Success<T, E>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T? data) success,
-    required TResult Function(NetworkExceptions error) failure,
+    required TResult Function(E error) failure,
   }) {
     return success(data);
   }
@@ -163,7 +165,7 @@ class _$Success<T> implements Success<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T? data)? success,
-    TResult Function(NetworkExceptions error)? failure,
+    TResult Function(E error)? failure,
   }) {
     return success?.call(data);
   }
@@ -172,7 +174,7 @@ class _$Success<T> implements Success<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T? data)? success,
-    TResult Function(NetworkExceptions error)? failure,
+    TResult Function(E error)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -184,8 +186,8 @@ class _$Success<T> implements Success<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Success<T> value) success,
-    required TResult Function(Failure<T> value) failure,
+    required TResult Function(Success<T, E> value) success,
+    required TResult Function(Failure<T, E> value) failure,
   }) {
     return success(this);
   }
@@ -193,8 +195,8 @@ class _$Success<T> implements Success<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Failure<T> value)? failure,
+    TResult Function(Success<T, E> value)? success,
+    TResult Function(Failure<T, E> value)? failure,
   }) {
     return success?.call(this);
   }
@@ -202,8 +204,8 @@ class _$Success<T> implements Success<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Failure<T> value)? failure,
+    TResult Function(Success<T, E> value)? success,
+    TResult Function(Failure<T, E> value)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -213,70 +215,63 @@ class _$Success<T> implements Success<T> {
   }
 }
 
-abstract class Success<T> implements ApiResult<T> {
-  const factory Success({T? data}) = _$Success<T>;
+abstract class Success<T, E> implements Result<T, E> {
+  const factory Success({T? data}) = _$Success<T, E>;
 
   T? get data => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SuccessCopyWith<T, Success<T>> get copyWith =>
+  $SuccessCopyWith<T, E, Success<T, E>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FailureCopyWith<T, $Res> {
-  factory $FailureCopyWith(Failure<T> value, $Res Function(Failure<T>) then) =
-      _$FailureCopyWithImpl<T, $Res>;
-  $Res call({NetworkExceptions error});
-
-  $NetworkExceptionsCopyWith<$Res> get error;
+abstract class $FailureCopyWith<T, E, $Res> {
+  factory $FailureCopyWith(
+          Failure<T, E> value, $Res Function(Failure<T, E>) then) =
+      _$FailureCopyWithImpl<T, E, $Res>;
+  $Res call({E error});
 }
 
 /// @nodoc
-class _$FailureCopyWithImpl<T, $Res> extends _$ApiResultCopyWithImpl<T, $Res>
-    implements $FailureCopyWith<T, $Res> {
-  _$FailureCopyWithImpl(Failure<T> _value, $Res Function(Failure<T>) _then)
-      : super(_value, (v) => _then(v as Failure<T>));
+class _$FailureCopyWithImpl<T, E, $Res> extends _$ResultCopyWithImpl<T, E, $Res>
+    implements $FailureCopyWith<T, E, $Res> {
+  _$FailureCopyWithImpl(
+      Failure<T, E> _value, $Res Function(Failure<T, E>) _then)
+      : super(_value, (v) => _then(v as Failure<T, E>));
 
   @override
-  Failure<T> get _value => super._value as Failure<T>;
+  Failure<T, E> get _value => super._value as Failure<T, E>;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(Failure<T>(
+    return _then(Failure<T, E>(
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as NetworkExceptions,
+              as E,
     ));
-  }
-
-  @override
-  $NetworkExceptionsCopyWith<$Res> get error {
-    return $NetworkExceptionsCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$Failure<T> implements Failure<T> {
+class _$Failure<T, E> implements Failure<T, E> {
   const _$Failure({required this.error});
 
   @override
-  final NetworkExceptions error;
+  final E error;
 
   @override
   String toString() {
-    return 'ApiResult<$T>.failure(error: $error)';
+    return 'Result<$T, $E>.failure(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Failure<T> &&
+        (other is Failure<T, E> &&
             (identical(other.error, error) ||
                 const DeepCollectionEquality().equals(other.error, error)));
   }
@@ -287,14 +282,14 @@ class _$Failure<T> implements Failure<T> {
 
   @JsonKey(ignore: true)
   @override
-  $FailureCopyWith<T, Failure<T>> get copyWith =>
-      _$FailureCopyWithImpl<T, Failure<T>>(this, _$identity);
+  $FailureCopyWith<T, E, Failure<T, E>> get copyWith =>
+      _$FailureCopyWithImpl<T, E, Failure<T, E>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T? data) success,
-    required TResult Function(NetworkExceptions error) failure,
+    required TResult Function(E error) failure,
   }) {
     return failure(error);
   }
@@ -303,7 +298,7 @@ class _$Failure<T> implements Failure<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T? data)? success,
-    TResult Function(NetworkExceptions error)? failure,
+    TResult Function(E error)? failure,
   }) {
     return failure?.call(error);
   }
@@ -312,7 +307,7 @@ class _$Failure<T> implements Failure<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T? data)? success,
-    TResult Function(NetworkExceptions error)? failure,
+    TResult Function(E error)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -324,8 +319,8 @@ class _$Failure<T> implements Failure<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Success<T> value) success,
-    required TResult Function(Failure<T> value) failure,
+    required TResult Function(Success<T, E> value) success,
+    required TResult Function(Failure<T, E> value) failure,
   }) {
     return failure(this);
   }
@@ -333,8 +328,8 @@ class _$Failure<T> implements Failure<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Failure<T> value)? failure,
+    TResult Function(Success<T, E> value)? success,
+    TResult Function(Failure<T, E> value)? failure,
   }) {
     return failure?.call(this);
   }
@@ -342,8 +337,8 @@ class _$Failure<T> implements Failure<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Failure<T> value)? failure,
+    TResult Function(Success<T, E> value)? success,
+    TResult Function(Failure<T, E> value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -353,11 +348,11 @@ class _$Failure<T> implements Failure<T> {
   }
 }
 
-abstract class Failure<T> implements ApiResult<T> {
-  const factory Failure({required NetworkExceptions error}) = _$Failure<T>;
+abstract class Failure<T, E> implements Result<T, E> {
+  const factory Failure({required E error}) = _$Failure<T, E>;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  E get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FailureCopyWith<T, Failure<T>> get copyWith =>
+  $FailureCopyWith<T, E, Failure<T, E>> get copyWith =>
       throw _privateConstructorUsedError;
 }

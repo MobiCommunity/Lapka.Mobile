@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lapka/components/app_bar/custom_app_bar.dart';
+import 'package:lapka/injector.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
+import 'package:lapka/providers/menu/bloc/menu_bloc.dart';
 import 'package:lapka/providers/menuProvider.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
 import 'package:lapka/screens/dasboard.dart';
@@ -85,10 +88,13 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout>
         backgroundColor: BasicColors.darkGreen,
         body: Stack(
           children: [
-            Menu(
-                slideAnimation: _slideAnimation,
-                menuAnimation: _menuScaleAnimation,
-                onMenuItemClicked: onMenuItemClicked),
+            BlocProvider(
+              create: (_) => getIt.get<MenuBloc>(),
+              child: Menu(
+                  slideAnimation: _slideAnimation,
+                  menuAnimation: _menuScaleAnimation,
+                  onMenuItemClicked: onMenuItemClicked),
+            ),
             Dashboard(
               duration: duration,
               scaleAnimation: _scaleAnimation,

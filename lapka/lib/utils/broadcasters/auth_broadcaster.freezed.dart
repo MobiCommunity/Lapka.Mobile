@@ -17,10 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
-  Authenticated authenticated(String userId) {
-    return Authenticated(
-      userId,
-    );
+  Authenticated authenticated() {
+    return const Authenticated();
   }
 
   Unauthenticated unauthenticated() {
@@ -35,19 +33,19 @@ const $AuthState = _$AuthStateTearOff();
 mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) authenticated,
+    required TResult Function() authenticated,
     required TResult Function() unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String userId)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) =>
@@ -93,7 +91,6 @@ abstract class $AuthenticatedCopyWith<$Res> {
   factory $AuthenticatedCopyWith(
           Authenticated value, $Res Function(Authenticated) then) =
       _$AuthenticatedCopyWithImpl<$Res>;
-  $Res call({String userId});
 }
 
 /// @nodoc
@@ -105,77 +102,53 @@ class _$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
   @override
   Authenticated get _value => super._value as Authenticated;
-
-  @override
-  $Res call({
-    Object? userId = freezed,
-  }) {
-    return _then(Authenticated(
-      userId == freezed
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$Authenticated implements Authenticated {
-  const _$Authenticated(this.userId);
-
-  @override
-  final String userId;
+  const _$Authenticated();
 
   @override
   String toString() {
-    return 'AuthState.authenticated(userId: $userId)';
+    return 'AuthState.authenticated()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Authenticated &&
-            (identical(other.userId, userId) ||
-                const DeepCollectionEquality().equals(other.userId, userId)));
+    return identical(this, other) || (other is Authenticated);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userId);
-
-  @JsonKey(ignore: true)
-  @override
-  $AuthenticatedCopyWith<Authenticated> get copyWith =>
-      _$AuthenticatedCopyWithImpl<Authenticated>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) authenticated,
+    required TResult Function() authenticated,
     required TResult Function() unauthenticated,
   }) {
-    return authenticated(userId);
+    return authenticated();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String userId)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
   }) {
-    return authenticated?.call(userId);
+    return authenticated?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
-      return authenticated(userId);
+      return authenticated();
     }
     return orElse();
   }
@@ -213,12 +186,7 @@ class _$Authenticated implements Authenticated {
 }
 
 abstract class Authenticated implements AuthState {
-  const factory Authenticated(String userId) = _$Authenticated;
-
-  String get userId => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AuthenticatedCopyWith<Authenticated> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory Authenticated() = _$Authenticated;
 }
 
 /// @nodoc
@@ -260,7 +228,7 @@ class _$Unauthenticated implements Unauthenticated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) authenticated,
+    required TResult Function() authenticated,
     required TResult Function() unauthenticated,
   }) {
     return unauthenticated();
@@ -269,7 +237,7 @@ class _$Unauthenticated implements Unauthenticated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String userId)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
   }) {
     return unauthenticated?.call();
@@ -278,7 +246,7 @@ class _$Unauthenticated implements Unauthenticated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
