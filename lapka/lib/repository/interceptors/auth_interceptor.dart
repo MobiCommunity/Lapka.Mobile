@@ -17,11 +17,16 @@ class AuthInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    await getIt.get<AuthService>().checkToken();
+    if (options.headers.containsKey('requiresToken')) {
+      options.headers.remove('requiresToken');
+print('tutaj ${options.uri}}');
+      await getIt.get<AuthService>().checkToken();
+    }
+
     final _token = await getIt.get<UserService>().getToken();
 
     if (_token != null && _token.isNotEmpty) {
-      options.queryParameters.addAll({
+      options.headers.addAll({
         TOKEN_KEY_NAME: _token,
       });
     }

@@ -19,7 +19,10 @@ class _UserDataSourceImpl implements UserDataSourceImpl {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<User>(
-        Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+        Options(
+                method: 'GET',
+                headers: <String, dynamic>{r'requiresToken': null},
+                extra: _extra)
             .compose(_dio.options, '/user/$id',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));

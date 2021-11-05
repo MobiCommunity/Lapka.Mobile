@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' hide Headers;
 import 'package:injectable/injectable.dart';
 import 'package:lapka/models/new_user_data.dart';
 import 'package:lapka/models/token.dart';

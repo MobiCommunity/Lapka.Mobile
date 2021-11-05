@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' hide Headers;
 import 'package:injectable/injectable.dart';
 import 'package:lapka/models/user.dart';
 import 'package:lapka/repository/identity_api/user/user_data_source.dart';
@@ -14,5 +14,8 @@ abstract class UserDataSourceImpl extends UserDataSource {
 
   @override
   @GET('/user/{id}')
+    @Headers(<String, dynamic>{
+    "requiresToken": true,
+  })
   Future<User> getUserData(@Path() String id);
 }

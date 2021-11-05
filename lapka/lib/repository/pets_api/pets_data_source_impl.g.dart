@@ -25,7 +25,10 @@ class _PetsDataSourceImpl implements PetsDataSourceImpl {
     queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Pet>>(
-        Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+        Options(
+                method: 'GET',
+                headers: <String, dynamic>{r'requiresToken': null},
+                extra: _extra)
             .compose(_dio.options, '/shelter/pet',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
@@ -41,7 +44,10 @@ class _PetsDataSourceImpl implements PetsDataSourceImpl {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<Pet>(
-        Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+        Options(
+                method: 'GET',
+                headers: <String, dynamic>{r'requiresToken': null},
+                extra: _extra)
             .compose(_dio.options, '/shelter/pet$id',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
@@ -54,11 +60,13 @@ class _PetsDataSourceImpl implements PetsDataSourceImpl {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    await _dio.fetch<void>(_setStreamType<void>(
-        Options(method: 'PATCH', headers: <String, dynamic>{}, extra: _extra)
-            .compose(_dio.options, '/shelter/pet$id/like',
-                queryParameters: queryParameters, data: _data)
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+            method: 'PATCH',
+            headers: <String, dynamic>{r'requiresToken': null},
+            extra: _extra)
+        .compose(_dio.options, '/shelter/pet$id/like',
+            queryParameters: queryParameters, data: _data)
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
@@ -67,11 +75,13 @@ class _PetsDataSourceImpl implements PetsDataSourceImpl {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    await _dio.fetch<void>(_setStreamType<void>(
-        Options(method: 'PATCH', headers: <String, dynamic>{}, extra: _extra)
-            .compose(_dio.options, '/shelter/pet$id/dislike',
-                queryParameters: queryParameters, data: _data)
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+            method: 'PATCH',
+            headers: <String, dynamic>{r'requiresToken': null},
+            extra: _extra)
+        .compose(_dio.options, '/shelter/pet$id/dislike',
+            queryParameters: queryParameters, data: _data)
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
@@ -81,7 +91,10 @@ class _PetsDataSourceImpl implements PetsDataSourceImpl {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Pet>>(
-        Options(method: 'PATCH', headers: <String, dynamic>{}, extra: _extra)
+        Options(
+                method: 'PATCH',
+                headers: <String, dynamic>{r'requiresToken': null},
+                extra: _extra)
             .compose(_dio.options, '/shelter/pet/like',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
