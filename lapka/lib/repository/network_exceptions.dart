@@ -171,7 +171,8 @@ class NetworkExceptions with _$NetworkExceptions {
         errorMessage = 'Bad request';
       },
       unauthorisedRequest: (exception) {
-        errorMessage = BaseError.fromJson(exception?.response?.data).reason ??
+        errorMessage = 
+        // BaseError.fromJson(exception?.response?.data).reason ??
             'Unauthorised request';
       },
       unexpectedError: (Exception? exp) {

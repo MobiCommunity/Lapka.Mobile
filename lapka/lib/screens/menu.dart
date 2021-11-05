@@ -6,8 +6,11 @@ import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/domain/auth/use_cases/logout_use_case.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/models/user.dart';
+import 'package:lapka/providers/adopt_pet/bloc/adopt_pet_list_bloc.dart';
+import 'package:lapka/providers/base_pet_list_bloc/base_pet_list_bloc.dart';
 import 'package:lapka/providers/menu/bloc/menu_bloc.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
+import 'package:lapka/screens/liked_pets/liked_pets_page.dart';
 import 'package:lapka/screens/login/login_page.dart';
 import 'package:lapka/screens/my_pets/my_pets_page.dart';
 import 'package:lapka/screens/report/report_page.dart';
@@ -102,7 +105,7 @@ class Menu extends StatelessWidget {
                   ),
                   _buildMenuItem(
                     context,
-                    widget: AdoptPetListPage(),
+                    widget: LikedPetsPage(),
                     name: 'Ulubione zwierzaki',
                     icon: 'lib/assets/paw-symbol.svg',
                   ),

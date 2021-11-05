@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/components/dialogs/exit_dialog.dart';
+import 'package:lapka/providers/adopt_pet/bloc/adopt_pet_list_bloc.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_list_page.dart';
 
 import 'bloc/navigator_bloc.dart';

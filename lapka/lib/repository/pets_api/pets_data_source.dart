@@ -10,5 +10,6 @@ abstract class PetsDataSource {
 
   Future<void> dislikePet(String id);
 
-  Future<List<Pet>> getAllLikedPets();
+  Future<List<Pet>> getAllLikedPets(
+      String? petName, String? race, String? lat, String? lng);
 }

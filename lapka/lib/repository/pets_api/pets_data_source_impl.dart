@@ -13,9 +13,7 @@ abstract class PetsDataSourceImpl extends PetsDataSource {
   factory PetsDataSourceImpl(@Named("Pets") Dio dio) = _PetsDataSourceImpl;
 
   @GET('/shelter/pet')
-    @Headers(<String, dynamic>{
-    "requiresToken": true,
-  })
+  @Headers(<String, dynamic>{"requiresToken": true})
   Future<List<Pet>> getPets(
     @Query('name') String? petName,
     @Query('race') String? race,
@@ -23,27 +21,24 @@ abstract class PetsDataSourceImpl extends PetsDataSource {
     @Query('longitude') String? lng,
   );
 
-  @GET('/shelter/pet{id}')
-    @Headers(<String, dynamic>{
-    "requiresToken": true,
-  })
+  @GET('/shelter/pet/{id}')
+  @Headers(<String, dynamic>{"requiresToken": true})
   Future<Pet> getPetDetails(@Path() String id);
 
-  @PATCH('/shelter/pet{id}/like')
-    @Headers(<String, dynamic>{
-    "requiresToken": true,
-  })
+  @PATCH('/shelter/pet/{id}/like')
+  @Headers(<String, dynamic>{"requiresToken": true})
   Future<void> likePet(@Path() String id);
 
-  @PATCH('/shelter/pet{id}/dislike')
-    @Headers(<String, dynamic>{
-    "requiresToken": true,
-  })
+  @PATCH('/shelter/pet/{id}/dislike')
+  @Headers(<String, dynamic>{"requiresToken": true})
   Future<void> dislikePet(@Path() String id);
 
-  @PATCH('/shelter/pet/like')
-    @Headers(<String, dynamic>{
-    "requiresToken": true,
-  })
-  Future<List<Pet>> getAllLikedPets();
+  @GET('/shelter/pet/like')
+  @Headers(<String, dynamic>{"requiresToken": true})
+  Future<List<Pet>> getAllLikedPets(
+    @Query('name') String? petName,
+    @Query('race') String? race,
+    @Query('latitude') String? lat,
+    @Query('longitude') String? lng,
+  );
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lapka/components/app_bar/custom_app_bar.dart';
 import 'package:lapka/injector.dart';
+import 'package:lapka/providers/adopt_pet/bloc/adopt_pet_list_bloc.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/providers/menu/bloc/menu_bloc.dart';
 import 'package:lapka/providers/menuProvider.dart';

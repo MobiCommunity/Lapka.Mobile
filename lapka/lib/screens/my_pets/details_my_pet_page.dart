@@ -11,11 +11,9 @@ import 'package:lapka/components/screens/adopt_pet/basic_pet_info_row.dart';
 import 'package:lapka/models/my_pet_event.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/my_pets/bloc/details_my_pets_bloc.dart';
-import 'package:lapka/providers/my_pets/bloc/edit_my_pets_bloc.dart';
 import 'package:lapka/repository/my_pets_repository.dart';
 import 'package:lapka/settings/colors.dart';
 import 'package:lapka/settings/request_settings.dart';
-import 'package:lapka/settings/text_styles.dart';
 import 'package:lapka/utils/date_helper.dart';
 
 class DetailsMyPets extends StatelessWidget {

@@ -1,11 +1,11 @@
-part of 'adopt_pet_list_bloc.dart';
+part of 'base_pet_list_bloc.dart';
 
 @freezed
-class AdoptPetListState with _$AdoptPetListState {
-  const factory AdoptPetListState({
+class BasePetListBlocState with _$BasePetListBlocState {
+  const factory BasePetListBlocState({
     required ListState listState,
     required PetFilters filters,
-  }) = _AdoptPetListState;
+  }) = _BasePetListBlocState;
 }
 
 @freezed

@@ -10,6 +10,7 @@ import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/components/dialogs/no_internet_dialog.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/providers/global_loader/global_loader_cubit.dart';
+import 'package:lapka/providers/liked_pets/bloc/bloc/liked_pets_bloc.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/providers/login/bloc/login_bloc.dart';
 import 'package:lapka/providers/loginProvider.dart';
@@ -18,8 +19,6 @@ import 'package:lapka/providers/my_pets/bloc/edit_my_pets_bloc.dart';
 import 'package:lapka/providers/my_pets/bloc/my_pets_bloc.dart';
 import 'package:lapka/providers/register/register_bloc.dart';
 import 'package:lapka/providers/shelter/bloc/shelter_list_bloc.dart';
-import 'package:lapka/providers/menu/bloc/menu_bloc.dart';
-import 'package:lapka/repository/adopt_pet_repository.dart';
 import 'package:lapka/repository/location_repository.dart';
 import 'package:lapka/repository/my_pets_repository.dart';
 import 'package:lapka/repository/shelter_repository.dart';
@@ -48,6 +47,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt.get<AdoptPetListBloc>(),
         ),
+        
         BlocProvider(
           create: (context) => ShelterListBloc(ShelterRepositoryApi()),
         ),
@@ -77,11 +77,11 @@ class MyApp extends StatelessWidget {
             return getIt.get<LoginBloc>();
           },
         ),
-        // BlocProvider(
-        //   create: (context) {
-        //     return getIt.get<UserBloc>();
-        //   },
-        // ),
+        BlocProvider(
+          create: (context) {
+            return getIt.get<LikedPetsBloc>();
+          },
+        ),
       ],
       child: MultiProvider(
           providers: [

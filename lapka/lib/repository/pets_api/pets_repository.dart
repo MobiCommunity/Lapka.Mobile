@@ -13,5 +13,6 @@ abstract class PetsRepository {
 
   Future<Result<void, NetworkExceptions>> dislikePet(String id);
 
-  Future<Result<List<Pet>, NetworkExceptions>> getAllLikedPets();
+  Future<Result<List<Pet>, NetworkExceptions>> getAllLikedPets(
+      String? petName, Species? race, String? lat, String? lng);
 }

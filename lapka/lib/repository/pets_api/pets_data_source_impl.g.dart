@@ -48,7 +48,7 @@ class _PetsDataSourceImpl implements PetsDataSourceImpl {
                 method: 'GET',
                 headers: <String, dynamic>{r'requiresToken': null},
                 extra: _extra)
-            .compose(_dio.options, '/shelter/pet$id',
+            .compose(_dio.options, '/shelter/pet/$id',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Pet.fromJson(_result.data!);
@@ -64,7 +64,7 @@ class _PetsDataSourceImpl implements PetsDataSourceImpl {
             method: 'PATCH',
             headers: <String, dynamic>{r'requiresToken': null},
             extra: _extra)
-        .compose(_dio.options, '/shelter/pet$id/like',
+        .compose(_dio.options, '/shelter/pet/$id/like',
             queryParameters: queryParameters, data: _data)
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
@@ -79,20 +79,26 @@ class _PetsDataSourceImpl implements PetsDataSourceImpl {
             method: 'PATCH',
             headers: <String, dynamic>{r'requiresToken': null},
             extra: _extra)
-        .compose(_dio.options, '/shelter/pet$id/dislike',
+        .compose(_dio.options, '/shelter/pet/$id/dislike',
             queryParameters: queryParameters, data: _data)
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<Pet>> getAllLikedPets() async {
+  Future<List<Pet>> getAllLikedPets(petName, race, lat, lng) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'name': petName,
+      r'race': race,
+      r'latitude': lat,
+      r'longitude': lng
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Pet>>(
         Options(
-                method: 'PATCH',
+                method: 'GET',
                 headers: <String, dynamic>{r'requiresToken': null},
                 extra: _extra)
             .compose(_dio.options, '/shelter/pet/like',

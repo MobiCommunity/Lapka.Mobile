@@ -27,7 +27,7 @@ print('tutaj ${options.uri}}');
 
     if (_token != null && _token.isNotEmpty) {
       options.headers.addAll({
-        TOKEN_KEY_NAME: _token,
+        TOKEN_KEY_NAME: 'Bearer $_token',
       });
     }
     handler.next(options);

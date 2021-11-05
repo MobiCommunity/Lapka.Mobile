@@ -47,9 +47,9 @@ class PetsRepositoryImpl implements PetsRepository {
   }
 
   @override
-  Future<Result<List<Pet>, NetworkExceptions>> getAllLikedPets() async {
+  Future<Result<List<Pet>, NetworkExceptions>> getAllLikedPets(String? petName, Species? race, String? lat, String? lng) async {
     try {
-      final List<Pet> pets = await _petsDataSource.getAllLikedPets();
+      final List<Pet> pets = await _petsDataSource.getAllLikedPets(petName, race?.value, lat, lng);
       return Result.success(data: pets);
     } catch (exp) {
       return Result.failure(error: NetworkExceptions.getDioException(exp));
