@@ -217,6 +217,18 @@ class _$BasePetListBlocEventTearOff {
       filters,
     );
   }
+
+  LikePet likePet(String petId) {
+    return LikePet(
+      petId,
+    );
+  }
+
+  DislikePet dislikePet(String petId) {
+    return DislikePet(
+      petId,
+    );
+  }
 }
 
 /// @nodoc
@@ -228,18 +240,24 @@ mixin _$BasePetListBlocEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(PetFilters? filters) getPets,
     required TResult Function(PetFilters filters) updateFilters,
+    required TResult Function(String petId) likePet,
+    required TResult Function(String petId) dislikePet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(PetFilters? filters)? getPets,
     TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PetFilters? filters)? getPets,
     TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -247,18 +265,24 @@ mixin _$BasePetListBlocEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPets value) getPets,
     required TResult Function(UpdateFilters value) updateFilters,
+    required TResult Function(LikePet value) likePet,
+    required TResult Function(DislikePet value) dislikePet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(GetPets value)? getPets,
     TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPets value)? getPets,
     TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -359,6 +383,8 @@ class _$GetPets implements GetPets {
   TResult when<TResult extends Object?>({
     required TResult Function(PetFilters? filters) getPets,
     required TResult Function(PetFilters filters) updateFilters,
+    required TResult Function(String petId) likePet,
+    required TResult Function(String petId) dislikePet,
   }) {
     return getPets(filters);
   }
@@ -368,6 +394,8 @@ class _$GetPets implements GetPets {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(PetFilters? filters)? getPets,
     TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
   }) {
     return getPets?.call(filters);
   }
@@ -377,6 +405,8 @@ class _$GetPets implements GetPets {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PetFilters? filters)? getPets,
     TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
     required TResult orElse(),
   }) {
     if (getPets != null) {
@@ -390,6 +420,8 @@ class _$GetPets implements GetPets {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPets value) getPets,
     required TResult Function(UpdateFilters value) updateFilters,
+    required TResult Function(LikePet value) likePet,
+    required TResult Function(DislikePet value) dislikePet,
   }) {
     return getPets(this);
   }
@@ -399,6 +431,8 @@ class _$GetPets implements GetPets {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(GetPets value)? getPets,
     TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
   }) {
     return getPets?.call(this);
   }
@@ -408,6 +442,8 @@ class _$GetPets implements GetPets {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPets value)? getPets,
     TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
     required TResult orElse(),
   }) {
     if (getPets != null) {
@@ -501,6 +537,8 @@ class _$UpdateFilters implements UpdateFilters {
   TResult when<TResult extends Object?>({
     required TResult Function(PetFilters? filters) getPets,
     required TResult Function(PetFilters filters) updateFilters,
+    required TResult Function(String petId) likePet,
+    required TResult Function(String petId) dislikePet,
   }) {
     return updateFilters(filters);
   }
@@ -510,6 +548,8 @@ class _$UpdateFilters implements UpdateFilters {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(PetFilters? filters)? getPets,
     TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
   }) {
     return updateFilters?.call(filters);
   }
@@ -519,6 +559,8 @@ class _$UpdateFilters implements UpdateFilters {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PetFilters? filters)? getPets,
     TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
     required TResult orElse(),
   }) {
     if (updateFilters != null) {
@@ -532,6 +574,8 @@ class _$UpdateFilters implements UpdateFilters {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPets value) getPets,
     required TResult Function(UpdateFilters value) updateFilters,
+    required TResult Function(LikePet value) likePet,
+    required TResult Function(DislikePet value) dislikePet,
   }) {
     return updateFilters(this);
   }
@@ -541,6 +585,8 @@ class _$UpdateFilters implements UpdateFilters {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(GetPets value)? getPets,
     TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
   }) {
     return updateFilters?.call(this);
   }
@@ -550,6 +596,8 @@ class _$UpdateFilters implements UpdateFilters {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPets value)? getPets,
     TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
     required TResult orElse(),
   }) {
     if (updateFilters != null) {
@@ -569,14 +617,305 @@ abstract class UpdateFilters implements BasePetListBlocEvent {
 }
 
 /// @nodoc
+abstract class $LikePetCopyWith<$Res> {
+  factory $LikePetCopyWith(LikePet value, $Res Function(LikePet) then) =
+      _$LikePetCopyWithImpl<$Res>;
+  $Res call({String petId});
+}
+
+/// @nodoc
+class _$LikePetCopyWithImpl<$Res>
+    extends _$BasePetListBlocEventCopyWithImpl<$Res>
+    implements $LikePetCopyWith<$Res> {
+  _$LikePetCopyWithImpl(LikePet _value, $Res Function(LikePet) _then)
+      : super(_value, (v) => _then(v as LikePet));
+
+  @override
+  LikePet get _value => super._value as LikePet;
+
+  @override
+  $Res call({
+    Object? petId = freezed,
+  }) {
+    return _then(LikePet(
+      petId == freezed
+          ? _value.petId
+          : petId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LikePet implements LikePet {
+  const _$LikePet(this.petId);
+
+  @override
+  final String petId;
+
+  @override
+  String toString() {
+    return 'BasePetListBlocEvent.likePet(petId: $petId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is LikePet &&
+            (identical(other.petId, petId) ||
+                const DeepCollectionEquality().equals(other.petId, petId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(petId);
+
+  @JsonKey(ignore: true)
+  @override
+  $LikePetCopyWith<LikePet> get copyWith =>
+      _$LikePetCopyWithImpl<LikePet>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PetFilters? filters) getPets,
+    required TResult Function(PetFilters filters) updateFilters,
+    required TResult Function(String petId) likePet,
+    required TResult Function(String petId) dislikePet,
+  }) {
+    return likePet(petId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
+  }) {
+    return likePet?.call(petId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
+    required TResult orElse(),
+  }) {
+    if (likePet != null) {
+      return likePet(petId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPets value) getPets,
+    required TResult Function(UpdateFilters value) updateFilters,
+    required TResult Function(LikePet value) likePet,
+    required TResult Function(DislikePet value) dislikePet,
+  }) {
+    return likePet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetPets value)? getPets,
+    TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
+  }) {
+    return likePet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPets value)? getPets,
+    TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
+    required TResult orElse(),
+  }) {
+    if (likePet != null) {
+      return likePet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LikePet implements BasePetListBlocEvent {
+  const factory LikePet(String petId) = _$LikePet;
+
+  String get petId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LikePetCopyWith<LikePet> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DislikePetCopyWith<$Res> {
+  factory $DislikePetCopyWith(
+          DislikePet value, $Res Function(DislikePet) then) =
+      _$DislikePetCopyWithImpl<$Res>;
+  $Res call({String petId});
+}
+
+/// @nodoc
+class _$DislikePetCopyWithImpl<$Res>
+    extends _$BasePetListBlocEventCopyWithImpl<$Res>
+    implements $DislikePetCopyWith<$Res> {
+  _$DislikePetCopyWithImpl(DislikePet _value, $Res Function(DislikePet) _then)
+      : super(_value, (v) => _then(v as DislikePet));
+
+  @override
+  DislikePet get _value => super._value as DislikePet;
+
+  @override
+  $Res call({
+    Object? petId = freezed,
+  }) {
+    return _then(DislikePet(
+      petId == freezed
+          ? _value.petId
+          : petId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DislikePet implements DislikePet {
+  const _$DislikePet(this.petId);
+
+  @override
+  final String petId;
+
+  @override
+  String toString() {
+    return 'BasePetListBlocEvent.dislikePet(petId: $petId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is DislikePet &&
+            (identical(other.petId, petId) ||
+                const DeepCollectionEquality().equals(other.petId, petId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(petId);
+
+  @JsonKey(ignore: true)
+  @override
+  $DislikePetCopyWith<DislikePet> get copyWith =>
+      _$DislikePetCopyWithImpl<DislikePet>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PetFilters? filters) getPets,
+    required TResult Function(PetFilters filters) updateFilters,
+    required TResult Function(String petId) likePet,
+    required TResult Function(String petId) dislikePet,
+  }) {
+    return dislikePet(petId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
+  }) {
+    return dislikePet?.call(petId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PetFilters? filters)? getPets,
+    TResult Function(PetFilters filters)? updateFilters,
+    TResult Function(String petId)? likePet,
+    TResult Function(String petId)? dislikePet,
+    required TResult orElse(),
+  }) {
+    if (dislikePet != null) {
+      return dislikePet(petId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPets value) getPets,
+    required TResult Function(UpdateFilters value) updateFilters,
+    required TResult Function(LikePet value) likePet,
+    required TResult Function(DislikePet value) dislikePet,
+  }) {
+    return dislikePet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetPets value)? getPets,
+    TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
+  }) {
+    return dislikePet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPets value)? getPets,
+    TResult Function(UpdateFilters value)? updateFilters,
+    TResult Function(LikePet value)? likePet,
+    TResult Function(DislikePet value)? dislikePet,
+    required TResult orElse(),
+  }) {
+    if (dislikePet != null) {
+      return dislikePet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DislikePet implements BasePetListBlocEvent {
+  const factory DislikePet(String petId) = _$DislikePet;
+
+  String get petId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DislikePetCopyWith<DislikePet> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$BasePetListBlocStateTearOff {
   const _$BasePetListBlocStateTearOff();
 
   _BasePetListBlocState call(
-      {required ListState listState, required PetFilters filters}) {
+      {required ListState listState,
+      required PetFilters filters,
+      required AuthState authState}) {
     return _BasePetListBlocState(
       listState: listState,
       filters: filters,
+      authState: authState,
     );
   }
 }
@@ -588,6 +927,7 @@ const $BasePetListBlocState = _$BasePetListBlocStateTearOff();
 mixin _$BasePetListBlocState {
   ListState get listState => throw _privateConstructorUsedError;
   PetFilters get filters => throw _privateConstructorUsedError;
+  AuthState get authState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BasePetListBlocStateCopyWith<BasePetListBlocState> get copyWith =>
@@ -599,10 +939,11 @@ abstract class $BasePetListBlocStateCopyWith<$Res> {
   factory $BasePetListBlocStateCopyWith(BasePetListBlocState value,
           $Res Function(BasePetListBlocState) then) =
       _$BasePetListBlocStateCopyWithImpl<$Res>;
-  $Res call({ListState listState, PetFilters filters});
+  $Res call({ListState listState, PetFilters filters, AuthState authState});
 
   $ListStateCopyWith<$Res> get listState;
   $PetFiltersCopyWith<$Res> get filters;
+  $AuthStateCopyWith<$Res> get authState;
 }
 
 /// @nodoc
@@ -618,6 +959,7 @@ class _$BasePetListBlocStateCopyWithImpl<$Res>
   $Res call({
     Object? listState = freezed,
     Object? filters = freezed,
+    Object? authState = freezed,
   }) {
     return _then(_value.copyWith(
       listState: listState == freezed
@@ -628,6 +970,10 @@ class _$BasePetListBlocStateCopyWithImpl<$Res>
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as PetFilters,
+      authState: authState == freezed
+          ? _value.authState
+          : authState // ignore: cast_nullable_to_non_nullable
+              as AuthState,
     ));
   }
 
@@ -644,6 +990,13 @@ class _$BasePetListBlocStateCopyWithImpl<$Res>
       return _then(_value.copyWith(filters: value));
     });
   }
+
+  @override
+  $AuthStateCopyWith<$Res> get authState {
+    return $AuthStateCopyWith<$Res>(_value.authState, (value) {
+      return _then(_value.copyWith(authState: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -653,12 +1006,14 @@ abstract class _$BasePetListBlocStateCopyWith<$Res>
           $Res Function(_BasePetListBlocState) then) =
       __$BasePetListBlocStateCopyWithImpl<$Res>;
   @override
-  $Res call({ListState listState, PetFilters filters});
+  $Res call({ListState listState, PetFilters filters, AuthState authState});
 
   @override
   $ListStateCopyWith<$Res> get listState;
   @override
   $PetFiltersCopyWith<$Res> get filters;
+  @override
+  $AuthStateCopyWith<$Res> get authState;
 }
 
 /// @nodoc
@@ -676,6 +1031,7 @@ class __$BasePetListBlocStateCopyWithImpl<$Res>
   $Res call({
     Object? listState = freezed,
     Object? filters = freezed,
+    Object? authState = freezed,
   }) {
     return _then(_BasePetListBlocState(
       listState: listState == freezed
@@ -686,6 +1042,10 @@ class __$BasePetListBlocStateCopyWithImpl<$Res>
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as PetFilters,
+      authState: authState == freezed
+          ? _value.authState
+          : authState // ignore: cast_nullable_to_non_nullable
+              as AuthState,
     ));
   }
 }
@@ -694,16 +1054,20 @@ class __$BasePetListBlocStateCopyWithImpl<$Res>
 
 class _$_BasePetListBlocState implements _BasePetListBlocState {
   const _$_BasePetListBlocState(
-      {required this.listState, required this.filters});
+      {required this.listState,
+      required this.filters,
+      required this.authState});
 
   @override
   final ListState listState;
   @override
   final PetFilters filters;
+  @override
+  final AuthState authState;
 
   @override
   String toString() {
-    return 'BasePetListBlocState(listState: $listState, filters: $filters)';
+    return 'BasePetListBlocState(listState: $listState, filters: $filters, authState: $authState)';
   }
 
   @override
@@ -714,14 +1078,19 @@ class _$_BasePetListBlocState implements _BasePetListBlocState {
                 const DeepCollectionEquality()
                     .equals(other.listState, listState)) &&
             (identical(other.filters, filters) ||
-                const DeepCollectionEquality().equals(other.filters, filters)));
+                const DeepCollectionEquality()
+                    .equals(other.filters, filters)) &&
+            (identical(other.authState, authState) ||
+                const DeepCollectionEquality()
+                    .equals(other.authState, authState)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(listState) ^
-      const DeepCollectionEquality().hash(filters);
+      const DeepCollectionEquality().hash(filters) ^
+      const DeepCollectionEquality().hash(authState);
 
   @JsonKey(ignore: true)
   @override
@@ -733,12 +1102,15 @@ class _$_BasePetListBlocState implements _BasePetListBlocState {
 abstract class _BasePetListBlocState implements BasePetListBlocState {
   const factory _BasePetListBlocState(
       {required ListState listState,
-      required PetFilters filters}) = _$_BasePetListBlocState;
+      required PetFilters filters,
+      required AuthState authState}) = _$_BasePetListBlocState;
 
   @override
   ListState get listState => throw _privateConstructorUsedError;
   @override
   PetFilters get filters => throw _privateConstructorUsedError;
+  @override
+  AuthState get authState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BasePetListBlocStateCopyWith<_BasePetListBlocState> get copyWith =>

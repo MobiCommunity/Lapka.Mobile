@@ -27,6 +27,7 @@ abstract class Pet with _$Pet {
       DateTime? birthDay,
       String? color,
       double? weight,
+      @Default(false) bool isLiked,
       bool? sterilization,
       ShelterAddress? shelterAddress,
       String? description}) = _Pet;

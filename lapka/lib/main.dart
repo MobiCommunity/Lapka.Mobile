@@ -10,7 +10,7 @@ import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/components/dialogs/no_internet_dialog.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/providers/global_loader/global_loader_cubit.dart';
-import 'package:lapka/providers/liked_pets/bloc/bloc/liked_pets_bloc.dart';
+import 'package:lapka/providers/liked_pets/bloc/liked_pets_bloc.dart';
 import 'package:lapka/providers/location/bloc/location_bloc.dart';
 import 'package:lapka/providers/login/bloc/login_bloc.dart';
 import 'package:lapka/providers/loginProvider.dart';

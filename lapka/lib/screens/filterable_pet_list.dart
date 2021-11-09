@@ -4,6 +4,7 @@ import 'package:lapka/components/basic/basic_button.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/basic/image_button.dart';
 import 'package:lapka/components/basic/loading_indicator.dart';
+import 'package:lapka/components/dialogs/login_dialog.dart';
 import 'package:lapka/components/screens/adopt_pet/input_filter.dart';
 import 'package:lapka/components/screens/adopt_pet/pet_card.dart';
 import 'package:lapka/components/screens/adopt_pet/species_selector.dart';
@@ -14,11 +15,20 @@ import 'package:lapka/settings/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-enum ListType { pet_adoption, liked_pets, missing_pets }
+enum ListType { petAdoption, likedPets, missingPets }
 
-class FilterablePetList<T extends BasePetListBloc> extends StatelessWidget {
-   TextEditingController _filterController = TextEditingController();
-  PanelController _panelController = PanelController();
+class FilterablePetList<T extends BasePetListBloc> extends StatefulWidget {
+  final ListType listType;
+
+  const FilterablePetList({Key? key, required this.listType}) : super(key: key);
+
+  @override
+  State<FilterablePetList<T>> createState() => _FilterablePetListState<T>();
+}
+
+class _FilterablePetListState<T extends BasePetListBloc> extends State<FilterablePetList<T>> {
+  final TextEditingController _filterController = TextEditingController();
+  final PanelController _panelController = PanelController();
 
   @override
   Widget build(BuildContext context) {
@@ -166,6 +176,19 @@ class FilterablePetList<T extends BasePetListBloc> extends StatelessWidget {
     ));
   }
 
+  void _onLikeDislikePet(Pet pet, BuildContext context) {
+    context.read<AdoptPetListBloc>().state.authState.when(
+          authenticated: () => pet.isLiked
+              ? context
+                  .read<AdoptPetListBloc>()
+                  .add(BasePetListBlocEvent.dislikePet(pet.id!))
+              : context
+                  .read<AdoptPetListBloc>()
+                  .add(BasePetListBlocEvent.likePet(pet.id!)),
+          unauthenticated: () => LoginDialog.show(context),
+        );
+  }
+
   Widget _buildList(List<Pet> pets) {
     return SliverList(
         delegate: SliverChildBuilderDelegate((context, i) {
@@ -175,10 +198,17 @@ class FilterablePetList<T extends BasePetListBloc> extends StatelessWidget {
           padding: EdgeInsets.only(
               bottom: i == pets.length - 1 ? 80 : 16, left: 20, right: 20),
           child: PetCard(
+            onLikeDislikeCallback: () => _onLikeDislikePet(pets[i], context),
             pet: pets[i],
           ),
         ),
       );
     }, childCount: pets.length));
+  }
+
+  @override
+  void dispose() {
+    _filterController.dispose();
+    super.dispose();
   }
 }

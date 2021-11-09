@@ -5,6 +5,7 @@ class BasePetListBlocState with _$BasePetListBlocState {
   const factory BasePetListBlocState({
     required ListState listState,
     required PetFilters filters,
+    required AuthState authState,
   }) = _BasePetListBlocState;
 }
 

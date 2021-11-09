@@ -6,13 +6,13 @@ import 'package:lapka/utils/location_helper.dart';
 import 'package:provider/src/provider.dart';
 
 class ScreenWrapper extends StatelessWidget {
-  final String? title;
+  final String title;
   final bool withLocalization;
   final List<Widget> children;
 
   const ScreenWrapper({
     Key? key,
-    this.title,
+    this.title = '',
     required this.children,
     this.withLocalization = false,
   }) : super(key: key);
@@ -27,6 +27,7 @@ class ScreenWrapper extends StatelessWidget {
             ? LocationHelper.getCityName(_locationListener(context))
             : '',
         showLocalization: withLocalization,
+        title: title ,
       ),
       body: Stack(
         children: [

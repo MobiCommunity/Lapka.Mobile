@@ -18,6 +18,7 @@ _$_Pet _$$_PetFromJson(Map<String, dynamic> json) => _$_Pet(
           : DateTime.parse(json['birthDay'] as String),
       color: json['color'] as String?,
       weight: (json['weight'] as num?)?.toDouble(),
+      isLiked: json['isLiked'] as bool? ?? false,
       sterilization: json['sterilization'] as bool?,
       shelterAddress: json['shelterAddress'] == null
           ? null
@@ -36,6 +37,7 @@ Map<String, dynamic> _$$_PetToJson(_$_Pet instance) => <String, dynamic>{
       'birthDay': instance.birthDay?.toIso8601String(),
       'color': instance.color,
       'weight': instance.weight,
+      'isLiked': instance.isLiked,
       'sterilization': instance.sterilization,
       'shelterAddress': instance.shelterAddress,
       'description': instance.description,

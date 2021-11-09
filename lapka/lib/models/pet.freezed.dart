@@ -31,6 +31,7 @@ class _$PetTearOff {
       DateTime? birthDay,
       String? color,
       double? weight,
+      bool isLiked = false,
       bool? sterilization,
       ShelterAddress? shelterAddress,
       String? description}) {
@@ -44,6 +45,7 @@ class _$PetTearOff {
       birthDay: birthDay,
       color: color,
       weight: weight,
+      isLiked: isLiked,
       sterilization: sterilization,
       shelterAddress: shelterAddress,
       description: description,
@@ -70,6 +72,7 @@ mixin _$Pet {
   DateTime? get birthDay => throw _privateConstructorUsedError;
   String? get color => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
+  bool get isLiked => throw _privateConstructorUsedError;
   bool? get sterilization => throw _privateConstructorUsedError;
   ShelterAddress? get shelterAddress => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -93,6 +96,7 @@ abstract class $PetCopyWith<$Res> {
       DateTime? birthDay,
       String? color,
       double? weight,
+      bool isLiked,
       bool? sterilization,
       ShelterAddress? shelterAddress,
       String? description});
@@ -119,6 +123,7 @@ class _$PetCopyWithImpl<$Res> implements $PetCopyWith<$Res> {
     Object? birthDay = freezed,
     Object? color = freezed,
     Object? weight = freezed,
+    Object? isLiked = freezed,
     Object? sterilization = freezed,
     Object? shelterAddress = freezed,
     Object? description = freezed,
@@ -160,6 +165,10 @@ class _$PetCopyWithImpl<$Res> implements $PetCopyWith<$Res> {
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as double?,
+      isLiked: isLiked == freezed
+          ? _value.isLiked
+          : isLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
       sterilization: sterilization == freezed
           ? _value.sterilization
           : sterilization // ignore: cast_nullable_to_non_nullable
@@ -202,6 +211,7 @@ abstract class _$PetCopyWith<$Res> implements $PetCopyWith<$Res> {
       DateTime? birthDay,
       String? color,
       double? weight,
+      bool isLiked,
       bool? sterilization,
       ShelterAddress? shelterAddress,
       String? description});
@@ -230,6 +240,7 @@ class __$PetCopyWithImpl<$Res> extends _$PetCopyWithImpl<$Res>
     Object? birthDay = freezed,
     Object? color = freezed,
     Object? weight = freezed,
+    Object? isLiked = freezed,
     Object? sterilization = freezed,
     Object? shelterAddress = freezed,
     Object? description = freezed,
@@ -271,6 +282,10 @@ class __$PetCopyWithImpl<$Res> extends _$PetCopyWithImpl<$Res>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as double?,
+      isLiked: isLiked == freezed
+          ? _value.isLiked
+          : isLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
       sterilization: sterilization == freezed
           ? _value.sterilization
           : sterilization // ignore: cast_nullable_to_non_nullable
@@ -300,6 +315,7 @@ class _$_Pet implements _Pet {
       this.birthDay,
       this.color,
       this.weight,
+      this.isLiked = false,
       this.sterilization,
       this.shelterAddress,
       this.description});
@@ -325,6 +341,9 @@ class _$_Pet implements _Pet {
   final String? color;
   @override
   final double? weight;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isLiked;
   @override
   final bool? sterilization;
   @override
@@ -334,7 +353,7 @@ class _$_Pet implements _Pet {
 
   @override
   String toString() {
-    return 'Pet(id: $id, name: $name, sex: $sex, race: $race, species: $species, mainPhotoPath: $mainPhotoPath, birthDay: $birthDay, color: $color, weight: $weight, sterilization: $sterilization, shelterAddress: $shelterAddress, description: $description)';
+    return 'Pet(id: $id, name: $name, sex: $sex, race: $race, species: $species, mainPhotoPath: $mainPhotoPath, birthDay: $birthDay, color: $color, weight: $weight, isLiked: $isLiked, sterilization: $sterilization, shelterAddress: $shelterAddress, description: $description)';
   }
 
   @override
@@ -362,6 +381,9 @@ class _$_Pet implements _Pet {
                 const DeepCollectionEquality().equals(other.color, color)) &&
             (identical(other.weight, weight) ||
                 const DeepCollectionEquality().equals(other.weight, weight)) &&
+            (identical(other.isLiked, isLiked) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLiked, isLiked)) &&
             (identical(other.sterilization, sterilization) ||
                 const DeepCollectionEquality()
                     .equals(other.sterilization, sterilization)) &&
@@ -385,6 +407,7 @@ class _$_Pet implements _Pet {
       const DeepCollectionEquality().hash(birthDay) ^
       const DeepCollectionEquality().hash(color) ^
       const DeepCollectionEquality().hash(weight) ^
+      const DeepCollectionEquality().hash(isLiked) ^
       const DeepCollectionEquality().hash(sterilization) ^
       const DeepCollectionEquality().hash(shelterAddress) ^
       const DeepCollectionEquality().hash(description);
@@ -411,6 +434,7 @@ abstract class _Pet implements Pet {
       DateTime? birthDay,
       String? color,
       double? weight,
+      bool isLiked,
       bool? sterilization,
       ShelterAddress? shelterAddress,
       String? description}) = _$_Pet;
@@ -436,6 +460,8 @@ abstract class _Pet implements Pet {
   String? get color => throw _privateConstructorUsedError;
   @override
   double? get weight => throw _privateConstructorUsedError;
+  @override
+  bool get isLiked => throw _privateConstructorUsedError;
   @override
   bool? get sterilization => throw _privateConstructorUsedError;
   @override

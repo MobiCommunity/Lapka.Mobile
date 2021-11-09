@@ -3,9 +3,26 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_button.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/basic/cancel_button.dart';
+import 'package:lapka/components/dialogs/basic_dialog.dart';
+import 'package:lapka/screens/login/login_page.dart';
 import 'package:lapka/settings/colors.dart';
+import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 
 class LoginDialog extends StatelessWidget {
+  static Future<dynamic> show(BuildContext context) async {
+    BasicDialog.showDialogCustom(
+      context,
+      LoginDialog(
+        onExit: () {
+          Navigator.pop(context);
+        },
+        onLogin: () {
+          NavigatorHelper.push(context, LoginPage());
+        },
+      ),
+    );
+  }
+
   const LoginDialog({Key? key, required this.onExit, required this.onLogin})
       : super(key: key);
   final Function() onLogin;

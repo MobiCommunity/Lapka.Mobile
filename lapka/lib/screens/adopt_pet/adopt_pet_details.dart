@@ -7,16 +7,13 @@ import 'package:lapka/components/basic/image_button.dart';
 import 'package:lapka/components/basic/image_carusel.dart';
 import 'package:lapka/components/basic/loading_indicator.dart';
 import 'package:lapka/components/basic/rounded_image.dart';
-import 'package:lapka/components/dialogs/basic_dialog.dart';
 import 'package:lapka/components/dialogs/login_dialog.dart';
 import 'package:lapka/components/screens/adopt_pet/basic_pet_info_row.dart';
 import 'package:lapka/injector.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/adopt_pet/bloc/adopt_pet_details_bloc.dart';
-import 'package:lapka/providers/adopt_pet/bloc/like_pet_bloc.dart';
-import 'package:lapka/screens/login/login_page.dart';
+import 'package:lapka/providers/adopt_pet/bloc/adopt_pet_list_bloc.dart';
 import 'package:lapka/settings/colors.dart';
-import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/settings/request_settings.dart';
 import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 
@@ -30,13 +27,7 @@ class AdoptPetDetails extends StatelessWidget {
   }
 
   _adopt(context) {
-    BasicDialog.showDialogCustom(
-        context,
-        LoginDialog(onExit: () {
-          Navigator.pop(context);
-        }, onLogin: () {
-          NavigatorHelper.push(context, LoginPage());
-        }));
+    LoginDialog.show(context);
   }
 
   Widget _initial(BuildContext context) {
@@ -217,13 +208,18 @@ class AdoptPetDetails extends StatelessWidget {
             Row(
               children: [
                 ImageButton(
-                  onPressed: () => context.read<LikePetBloc>().add(LikePetEvent.like(id)),
+                  onPressed: () => pet.isLiked
+                      ? context
+                          .read<AdoptPetDetailsBloc>()
+                          .add(AdoptPetDetailsEvent.dislike(id))
+                      : context
+                          .read<AdoptPetDetailsBloc>()
+                          .add(AdoptPetDetailsEvent.like(id)),
                   trailling: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: SvgPicture.asset(
                       'lib/assets/heart-icon.svg',
                       color: BasicColors.white,
-                    
                     ),
                   ),
                 ),
@@ -259,15 +255,8 @@ class AdoptPetDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<AdoptPetDetailsBloc>(
-          create: (BuildContext context) => getIt.get<AdoptPetDetailsBloc>(),
-        ),
-        BlocProvider<LikePetBloc>(
-          create: (BuildContext context) => getIt.get<LikePetBloc>(),
-        ),
-      ],
+    return BlocProvider<AdoptPetDetailsBloc>(
+      create: (BuildContext context) => getIt.get<AdoptPetDetailsBloc>(),
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: CustomAppBar(
@@ -280,7 +269,7 @@ class AdoptPetDetails extends StatelessWidget {
         ),
         body: BlocBuilder<AdoptPetDetailsBloc, AdoptPetDetailsState>(
             builder: (context, state) {
-          return state.when(
+          return state.detailsState.when(
               initial: () => _initial(context),
               loading: _loading,
               loaded: (pet) => _buildDetails(context, pet),

@@ -553,6 +553,184 @@ abstract class _Dislike implements AdoptPetDetailsEvent {
 class _$AdoptPetDetailsStateTearOff {
   const _$AdoptPetDetailsStateTearOff();
 
+  _AdoptPetDetailsState call(
+      {required DetailsState detailsState, required AuthState authState}) {
+    return _AdoptPetDetailsState(
+      detailsState: detailsState,
+      authState: authState,
+    );
+  }
+}
+
+/// @nodoc
+const $AdoptPetDetailsState = _$AdoptPetDetailsStateTearOff();
+
+/// @nodoc
+mixin _$AdoptPetDetailsState {
+  DetailsState get detailsState => throw _privateConstructorUsedError;
+  AuthState get authState => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AdoptPetDetailsStateCopyWith<AdoptPetDetailsState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AdoptPetDetailsStateCopyWith<$Res> {
+  factory $AdoptPetDetailsStateCopyWith(AdoptPetDetailsState value,
+          $Res Function(AdoptPetDetailsState) then) =
+      _$AdoptPetDetailsStateCopyWithImpl<$Res>;
+  $Res call({DetailsState detailsState, AuthState authState});
+
+  $DetailsStateCopyWith<$Res> get detailsState;
+  $AuthStateCopyWith<$Res> get authState;
+}
+
+/// @nodoc
+class _$AdoptPetDetailsStateCopyWithImpl<$Res>
+    implements $AdoptPetDetailsStateCopyWith<$Res> {
+  _$AdoptPetDetailsStateCopyWithImpl(this._value, this._then);
+
+  final AdoptPetDetailsState _value;
+  // ignore: unused_field
+  final $Res Function(AdoptPetDetailsState) _then;
+
+  @override
+  $Res call({
+    Object? detailsState = freezed,
+    Object? authState = freezed,
+  }) {
+    return _then(_value.copyWith(
+      detailsState: detailsState == freezed
+          ? _value.detailsState
+          : detailsState // ignore: cast_nullable_to_non_nullable
+              as DetailsState,
+      authState: authState == freezed
+          ? _value.authState
+          : authState // ignore: cast_nullable_to_non_nullable
+              as AuthState,
+    ));
+  }
+
+  @override
+  $DetailsStateCopyWith<$Res> get detailsState {
+    return $DetailsStateCopyWith<$Res>(_value.detailsState, (value) {
+      return _then(_value.copyWith(detailsState: value));
+    });
+  }
+
+  @override
+  $AuthStateCopyWith<$Res> get authState {
+    return $AuthStateCopyWith<$Res>(_value.authState, (value) {
+      return _then(_value.copyWith(authState: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$AdoptPetDetailsStateCopyWith<$Res>
+    implements $AdoptPetDetailsStateCopyWith<$Res> {
+  factory _$AdoptPetDetailsStateCopyWith(_AdoptPetDetailsState value,
+          $Res Function(_AdoptPetDetailsState) then) =
+      __$AdoptPetDetailsStateCopyWithImpl<$Res>;
+  @override
+  $Res call({DetailsState detailsState, AuthState authState});
+
+  @override
+  $DetailsStateCopyWith<$Res> get detailsState;
+  @override
+  $AuthStateCopyWith<$Res> get authState;
+}
+
+/// @nodoc
+class __$AdoptPetDetailsStateCopyWithImpl<$Res>
+    extends _$AdoptPetDetailsStateCopyWithImpl<$Res>
+    implements _$AdoptPetDetailsStateCopyWith<$Res> {
+  __$AdoptPetDetailsStateCopyWithImpl(
+      _AdoptPetDetailsState _value, $Res Function(_AdoptPetDetailsState) _then)
+      : super(_value, (v) => _then(v as _AdoptPetDetailsState));
+
+  @override
+  _AdoptPetDetailsState get _value => super._value as _AdoptPetDetailsState;
+
+  @override
+  $Res call({
+    Object? detailsState = freezed,
+    Object? authState = freezed,
+  }) {
+    return _then(_AdoptPetDetailsState(
+      detailsState: detailsState == freezed
+          ? _value.detailsState
+          : detailsState // ignore: cast_nullable_to_non_nullable
+              as DetailsState,
+      authState: authState == freezed
+          ? _value.authState
+          : authState // ignore: cast_nullable_to_non_nullable
+              as AuthState,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AdoptPetDetailsState implements _AdoptPetDetailsState {
+  const _$_AdoptPetDetailsState(
+      {required this.detailsState, required this.authState});
+
+  @override
+  final DetailsState detailsState;
+  @override
+  final AuthState authState;
+
+  @override
+  String toString() {
+    return 'AdoptPetDetailsState(detailsState: $detailsState, authState: $authState)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AdoptPetDetailsState &&
+            (identical(other.detailsState, detailsState) ||
+                const DeepCollectionEquality()
+                    .equals(other.detailsState, detailsState)) &&
+            (identical(other.authState, authState) ||
+                const DeepCollectionEquality()
+                    .equals(other.authState, authState)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(detailsState) ^
+      const DeepCollectionEquality().hash(authState);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AdoptPetDetailsStateCopyWith<_AdoptPetDetailsState> get copyWith =>
+      __$AdoptPetDetailsStateCopyWithImpl<_AdoptPetDetailsState>(
+          this, _$identity);
+}
+
+abstract class _AdoptPetDetailsState implements AdoptPetDetailsState {
+  const factory _AdoptPetDetailsState(
+      {required DetailsState detailsState,
+      required AuthState authState}) = _$_AdoptPetDetailsState;
+
+  @override
+  DetailsState get detailsState => throw _privateConstructorUsedError;
+  @override
+  AuthState get authState => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$AdoptPetDetailsStateCopyWith<_AdoptPetDetailsState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+class _$DetailsStateTearOff {
+  const _$DetailsStateTearOff();
+
   _Initial initial() {
     return const _Initial();
   }
@@ -575,10 +753,10 @@ class _$AdoptPetDetailsStateTearOff {
 }
 
 /// @nodoc
-const $AdoptPetDetailsState = _$AdoptPetDetailsStateTearOff();
+const $DetailsState = _$DetailsStateTearOff();
 
 /// @nodoc
-mixin _$AdoptPetDetailsState {
+mixin _$DetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -632,20 +810,19 @@ mixin _$AdoptPetDetailsState {
 }
 
 /// @nodoc
-abstract class $AdoptPetDetailsStateCopyWith<$Res> {
-  factory $AdoptPetDetailsStateCopyWith(AdoptPetDetailsState value,
-          $Res Function(AdoptPetDetailsState) then) =
-      _$AdoptPetDetailsStateCopyWithImpl<$Res>;
+abstract class $DetailsStateCopyWith<$Res> {
+  factory $DetailsStateCopyWith(
+          DetailsState value, $Res Function(DetailsState) then) =
+      _$DetailsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AdoptPetDetailsStateCopyWithImpl<$Res>
-    implements $AdoptPetDetailsStateCopyWith<$Res> {
-  _$AdoptPetDetailsStateCopyWithImpl(this._value, this._then);
+class _$DetailsStateCopyWithImpl<$Res> implements $DetailsStateCopyWith<$Res> {
+  _$DetailsStateCopyWithImpl(this._value, this._then);
 
-  final AdoptPetDetailsState _value;
+  final DetailsState _value;
   // ignore: unused_field
-  final $Res Function(AdoptPetDetailsState) _then;
+  final $Res Function(DetailsState) _then;
 }
 
 /// @nodoc
@@ -655,8 +832,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res>
-    extends _$AdoptPetDetailsStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$DetailsStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -672,7 +848,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'AdoptPetDetailsState.initial()';
+    return 'DetailsState.initial()';
   }
 
   @override
@@ -758,7 +934,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements AdoptPetDetailsState {
+abstract class _Initial implements DetailsState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -769,8 +945,7 @@ abstract class _$LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res>
-    extends _$AdoptPetDetailsStateCopyWithImpl<$Res>
+class __$LoadingCopyWithImpl<$Res> extends _$DetailsStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
   __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
       : super(_value, (v) => _then(v as _Loading));
@@ -786,7 +961,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'AdoptPetDetailsState.loading()';
+    return 'DetailsState.loading()';
   }
 
   @override
@@ -872,7 +1047,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements AdoptPetDetailsState {
+abstract class _Loading implements DetailsState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -886,8 +1061,7 @@ abstract class _$LoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadedCopyWithImpl<$Res>
-    extends _$AdoptPetDetailsStateCopyWithImpl<$Res>
+class __$LoadedCopyWithImpl<$Res> extends _$DetailsStateCopyWithImpl<$Res>
     implements _$LoadedCopyWith<$Res> {
   __$LoadedCopyWithImpl(_Loaded _value, $Res Function(_Loaded) _then)
       : super(_value, (v) => _then(v as _Loaded));
@@ -925,7 +1099,7 @@ class _$_Loaded implements _Loaded {
 
   @override
   String toString() {
-    return 'AdoptPetDetailsState.loaded(pet: $pet)';
+    return 'DetailsState.loaded(pet: $pet)';
   }
 
   @override
@@ -1020,7 +1194,7 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements AdoptPetDetailsState {
+abstract class _Loaded implements DetailsState {
   const factory _Loaded(Pet pet) = _$_Loaded;
 
   Pet get pet => throw _privateConstructorUsedError;
@@ -1036,8 +1210,7 @@ abstract class _$ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res>
-    extends _$AdoptPetDetailsStateCopyWithImpl<$Res>
+class __$ErrorCopyWithImpl<$Res> extends _$DetailsStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -1068,7 +1241,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'AdoptPetDetailsState.error(message: $message)';
+    return 'DetailsState.error(message: $message)';
   }
 
   @override
@@ -1163,7 +1336,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements AdoptPetDetailsState {
+abstract class _Error implements DetailsState {
   const factory _Error(String message) = _$_Error;
 
   String get message => throw _privateConstructorUsedError;

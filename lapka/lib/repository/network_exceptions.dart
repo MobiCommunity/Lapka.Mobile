@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:lapka/models/errors/base_error.dart';
 
 part 'network_exceptions.freezed.dart';
 
@@ -171,8 +170,8 @@ class NetworkExceptions with _$NetworkExceptions {
         errorMessage = 'Bad request';
       },
       unauthorisedRequest: (exception) {
-        errorMessage = 
-        // BaseError.fromJson(exception?.response?.data).reason ??
+        errorMessage =
+            // BaseError.fromJson(exception?.response?.data).reason ??
             'Unauthorised request';
       },
       unexpectedError: (Exception? exp) {
@@ -204,5 +203,10 @@ class NetworkExceptions with _$NetworkExceptions {
       },
     );
     return errorMessage;
+  }
+
+  @override
+  String toString() {
+    return getErrorMessage(this);
   }
 }

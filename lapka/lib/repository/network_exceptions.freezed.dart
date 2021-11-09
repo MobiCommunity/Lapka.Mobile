@@ -313,11 +313,6 @@ class _$RequestCancelled implements RequestCancelled {
   final DioError? exception;
 
   @override
-  String toString() {
-    return 'NetworkExceptions.requestCancelled(exception: $exception)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is RequestCancelled &&
@@ -536,11 +531,6 @@ class _$UnauthorisedRequest implements UnauthorisedRequest {
 
   @override
   final DioError? exception;
-
-  @override
-  String toString() {
-    return 'NetworkExceptions.unauthorisedRequest(exception: $exception)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -763,11 +753,6 @@ class _$BadRequest implements BadRequest {
   final Exception? exception;
 
   @override
-  String toString() {
-    return 'NetworkExceptions.badRequest(exception: $exception)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is BadRequest &&
@@ -983,11 +968,6 @@ class _$NotFound implements NotFound {
 
   @override
   final DioError? exception;
-
-  @override
-  String toString() {
-    return 'NetworkExceptions.notFound(exception: $exception)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -1210,11 +1190,6 @@ class _$MethodNotAllowed implements MethodNotAllowed {
   final Exception? exception;
 
   @override
-  String toString() {
-    return 'NetworkExceptions.methodNotAllowed(exception: $exception)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is MethodNotAllowed &&
@@ -1433,11 +1408,6 @@ class _$NotAcceptable implements NotAcceptable {
 
   @override
   final Exception? exception;
-
-  @override
-  String toString() {
-    return 'NetworkExceptions.notAcceptable(exception: $exception)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -1660,11 +1630,6 @@ class _$RequestTimeout implements RequestTimeout {
   final DioError? exception;
 
   @override
-  String toString() {
-    return 'NetworkExceptions.requestTimeout(exception: $exception)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is RequestTimeout &&
@@ -1885,11 +1850,6 @@ class _$SendTimeout implements SendTimeout {
   final DioError? exception;
 
   @override
-  String toString() {
-    return 'NetworkExceptions.sendTimeout(exception: $exception)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is SendTimeout &&
@@ -2105,11 +2065,6 @@ class _$Conflict implements Conflict {
 
   @override
   final DioError? exception;
-
-  @override
-  String toString() {
-    return 'NetworkExceptions.conflict(exception: $exception)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -2330,11 +2285,6 @@ class _$InternalServerError implements InternalServerError {
 
   @override
   final DioError? exception;
-
-  @override
-  String toString() {
-    return 'NetworkExceptions.internalServerError(exception: $exception)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -2558,11 +2508,6 @@ class _$NotImplemented implements NotImplemented {
   final Exception? exception;
 
   @override
-  String toString() {
-    return 'NetworkExceptions.notImplemented(exception: $exception)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is NotImplemented &&
@@ -2781,11 +2726,6 @@ class _$ServiceUnavailable implements ServiceUnavailable {
 
   @override
   final DioError? exception;
-
-  @override
-  String toString() {
-    return 'NetworkExceptions.serviceUnavailable(exception: $exception)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -3007,11 +2947,6 @@ class _$NoInternetConnection implements NoInternetConnection {
 
   @override
   final Exception? exception;
-
-  @override
-  String toString() {
-    return 'NetworkExceptions.noInternetConnection(exception: $exception)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -3236,11 +3171,6 @@ class _$FormatException implements FormatException {
   final Exception? exception;
 
   @override
-  String toString() {
-    return 'NetworkExceptions.formatException(exception: $exception)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is FormatException &&
@@ -3459,11 +3389,6 @@ class _$UnableToProcess implements UnableToProcess {
 
   @override
   final Exception? exception;
-
-  @override
-  String toString() {
-    return 'NetworkExceptions.unableToProcess(exception: $exception)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -3686,11 +3611,6 @@ class _$DefaultError implements DefaultError {
   final DioError? exception;
 
   @override
-  String toString() {
-    return 'NetworkExceptions.defaultError(exception: $exception)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is DefaultError &&
@@ -3909,11 +3829,6 @@ class _$UnexpectedError implements UnexpectedError {
 
   @override
   final Exception? exception;
-
-  @override
-  String toString() {
-    return 'NetworkExceptions.unexpectedError(exception: $exception)';
-  }
 
   @override
   bool operator ==(dynamic other) {

@@ -17,6 +17,7 @@ class AuthBroadcaster {
       BehaviorSubject.seeded(AuthState.unauthenticated());
 
   Stream<AuthState> get state => _broadcaster.stream;
+  AuthState get currentState => _broadcaster.value;
 
   void updateState(AuthState newState) {
     _broadcaster.add(newState);

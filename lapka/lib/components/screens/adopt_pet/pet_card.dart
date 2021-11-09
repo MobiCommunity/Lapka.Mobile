@@ -1,20 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lapka/components/basic/basic_text.dart';
 import 'package:lapka/components/basic/rounded_image.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/screens/adopt_pet/adopt_pet_details.dart';
 import 'package:lapka/settings/colors.dart';
-import 'package:lapka/settings/naviagtion/bloc/navigator_bloc.dart';
 import 'package:lapka/settings/naviagtion/navigator_helper.dart';
 import 'package:lapka/settings/request_settings.dart';
 import 'package:lapka/utils/check_conectivity.dart';
 import 'package:lapka/utils/date_helper.dart';
 
+enum PetCardType { adopt, lost, liked }
+
 class PetCard extends StatelessWidget {
   final Pet pet;
-  const PetCard({Key? key, required this.pet}) : super(key: key);
+  final VoidCallback onLikeDislikeCallback;
+  final PetCardType petCardType;
+  const PetCard({
+    Key? key,
+    required this.pet,
+    required this.onLikeDislikeCallback,
+  })  : petCardType = PetCardType.liked,
+        super(key: key);
+
+  const PetCard.adopt({
+    Key? key,
+    required this.pet,
+    required this.onLikeDislikeCallback,
+  })  : petCardType = PetCardType.adopt,
+        super(key: key);
+
+  const PetCard.lost({
+    Key? key,
+    required this.pet,
+    required this.onLikeDislikeCallback,
+  })  : petCardType = PetCardType.lost,
+        super(key: key);
+
+  static const _heartFilledIcon = const Icon(
+    Icons.favorite,
+    color: BasicColors.white,
+    size: 16,
+  );
+
+  static const _heartOutlinedIcon = const Icon(
+    Icons.favorite_outline,
+    color: BasicColors.white,
+    size: 16,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -26,29 +59,38 @@ class PetCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Stack(children: [
-            ImageFromUrl(
+          Stack(
+            children: [
+              ImageFromUrl(
                 imageUrl: imagesUrl + 'api/files/${pet.mainPhotoPath}',
-                height: 170),
-            Container(
-              alignment: Alignment.topRight,
-              padding: EdgeInsets.all(16),
-              child: Container(
-                height: 32,
-                width: 32,
-                decoration: new BoxDecoration(
-                  color: BasicColors.darkGrey.withOpacity(0.5),
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                    child: Icon(
-                  Icons.favorite,
-                  color: BasicColors.white,
-                  size: 16,
-                )),
+                height: 170,
               ),
-            )
-          ]),
+              Container(
+                alignment: Alignment.topRight,
+                padding: EdgeInsets.all(4),
+                child: RawMaterialButton(
+                  shape: CircleBorder(),
+                  onPressed: onLikeDislikeCallback,
+                  constraints: BoxConstraints.tightFor(
+                    height: 48,
+                    width: 48,
+                  ),
+                  child: Container(
+                    height: 32,
+                    width: 32,
+                    decoration: new BoxDecoration(
+                      color: BasicColors.darkGrey.withOpacity(0.5),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child:
+                          pet.isLiked ? _heartFilledIcon : _heartOutlinedIcon,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
@@ -112,37 +154,48 @@ class PetCard extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            height: 42,
-            decoration: BoxDecoration(
-                color: BasicColors.darkGreen,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(14),
-                    bottomRight: Radius.circular(14))),
-            child: InkWell(
-              onTap: () async {
-                if (await InternetConectivity.check(context)) {
-                  NavigatorHelper.push(context, AdoptPetDetails(id: pet.id!));
-                }
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  BasicText.subtitleBold(
-                    "Poznaj mnie",
-                    color: BasicColors.white,
-                  ),
-                  SizedBox(
-                    width: 6,
-                  ),
-                  Icon(Icons.pets, color: BasicColors.white, size: 20)
-                ],
+          Visibility(
+            visible: petCardType != PetCardType.liked,
+            child: Container(
+              height: 42,
+              decoration: BoxDecoration(
+                  color: BasicColors.darkGreen,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(14),
+                      bottomRight: Radius.circular(14))),
+              child: InkWell(
+                onTap: () async {
+                  if (await InternetConectivity.check(context)) {
+                    NavigatorHelper.push(context, AdoptPetDetails(id: pet.id!));
+                  }
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    BasicText.subtitleBold(
+                      getTextFromEnum,
+                      color: BasicColors.white,
+                    ),
+                    SizedBox(
+                      width: 6,
+                    ),
+                    Icon(Icons.pets, color: BasicColors.white, size: 20)
+                  ],
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
+  }
+
+  String get getTextFromEnum {
+    if (petCardType == PetCardType.adopt) {
+      return "Poznaj mnie";
+    } else {
+      return "Widziałem to zwierzę";
+    }
   }
 }

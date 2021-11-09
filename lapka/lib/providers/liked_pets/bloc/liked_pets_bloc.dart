@@ -1,18 +1,30 @@
 import 'package:injectable/injectable.dart';
+import 'package:lapka/domain/pet/use_cases/dislike_pet_use_case.dart';
 import 'package:lapka/domain/pet/use_cases/get_liked_pet_list_use_case.dart';
+import 'package:lapka/domain/pet/use_cases/like_pet_use_case.dart';
 import 'package:lapka/models/pet.dart';
 import 'package:lapka/providers/base_pet_list_bloc/base_pet_list_bloc.dart';
 import 'package:lapka/repository/network_exceptions.dart';
 import 'package:lapka/repository/result.dart';
+import 'package:lapka/utils/broadcasters/auth_broadcaster.dart';
 
 @injectable
 class LikedPetsBloc extends BasePetListBloc {
   final GetLikedPetListUseCase _getLikedPetListUseCase;
+  final LikePetUseCase _likePetUseCase;
+  final DislikePetUseCase _dislikePetUseCase;
+  final AuthBroadcaster _authBroadcaster;
 
   LikedPetsBloc(
     this._getLikedPetListUseCase,
-  );
-
+    this._likePetUseCase,
+    this._dislikePetUseCase,
+    this._authBroadcaster,
+  ) : super(
+          _likePetUseCase,
+          _dislikePetUseCase,
+          _authBroadcaster,
+        );
   @override
   Stream<BasePetListBlocState> mapEventToState(
       BasePetListBlocEvent event) async* {
@@ -37,11 +49,14 @@ class LikedPetsBloc extends BasePetListBloc {
       }
 
       yield petsResult.when(
-        success: (pets) => state.copyWith(
-          listState: ListState.loaded(pets!),
-        ),
+        success: (pets) {
+          petList = pets!;
+          return state.copyWith(
+            listState: ListState.loaded(pets),
+          );
+        },
         failure: (error) => state.copyWith(
-          listState: ListState.error(NetworkExceptions.getErrorMessage(error)),
+          listState: ListState.error(error.toString()),
         ),
       );
     } else if (event is UpdateFilters) {
