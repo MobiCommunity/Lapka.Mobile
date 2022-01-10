@@ -19,7 +19,6 @@ class AuthInterceptor extends Interceptor {
       RequestOptions options, RequestInterceptorHandler handler) async {
     if (options.headers.containsKey('requiresToken')) {
       options.headers.remove('requiresToken');
-print('tutaj ${options.uri}}');
       await getIt.get<AuthService>().checkToken();
     }
 
